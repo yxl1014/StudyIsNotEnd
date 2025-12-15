@@ -1,0 +1,28 @@
+docker run -d `
+  --name mysql-windows `
+  -p 13306:3306 `
+  -e MYSQL_ROOT_PASSWORD=123456 `
+  -v "C:\Users\16274\Desktop\classover\dockerfile\mysql\data:/var/lib/mysql" `
+  -v "C:\Users\16274\Desktop\classover\dockerfile\mysql\logs:/var/log/mysql" `
+  -v "C:\Users\16274\Desktop\classover\dockerfile\mysql\config:/etc/mysql/conf.d" `
+  mysql
+
+
+docker run --name nacos-standalone-derby `
+    -e MODE=standalone `
+    -e NACOS_AUTH_TOKEN=BWZraXPPsxGEFcPe4qPwHZRxYMFEpGq7hFKbqGabdz0= `
+    -e NACOS_AUTH_IDENTITY_KEY=${your_nacos_server_identity_key} `
+    -e NACOS_AUTH_IDENTITY_VALUE=${your_nacos_server_identity_value} `
+    -p 8080:8080 \
+    -p 8848:8848 \
+    -p 9848:9848 \
+    -d nacos/nacos-server:latest
+
+
+
+# 持久化数据 + 密码认证
+docker run -d --name redis-server   `
+  -p 6379:6379  `
+  -v C:\Users\16274\Desktop\classover\dockerfile\redis\data:/data  `
+  -v C:\Users\16274\Desktop\classover\dockerfile\redis\conf/redis.conf:/usr/local/etc/redis/redis.conf  `
+  redis redis-server /usr/local/etc/redis/redis.conf --requirepass "123456"
