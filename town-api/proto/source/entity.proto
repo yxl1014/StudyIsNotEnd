@@ -1,0 +1,183 @@
+syntax = "proto3";
+package po;
+
+option java_outer_classname = "EntityProto";
+option java_package = "po";
+option java_multiple_files = true;
+
+import "base.proto";
+
+// 登录用户信息
+message UserInfo {
+  optional int32 userTel = 1;// 用户电话
+  optional string userName = 2; // 用户姓名
+  optional string userPwd = 3; // 用户密码
+  optional string userTown = 4; // 用户所属村庄
+  optional TUserPower userPower = 5; // 用户权限
+  optional int64 userCreateTime = 6; // 用户注册时间
+  optional TUserFlagType flagType = 7; // 用户标记状态
+}
+
+// 用户标记信息
+enum TUserFlagType
+{
+  TUFT_DEFAULT = 0; // 默认正常状态
+  TUFT_BAN = 1; // 冻结
+  TUFT_FLAG = 2; // 标记
+}
+
+// 用户权限类型
+enum TUserPower{
+  TUP_CM = 0; // 村民
+  TUP_CGM = 1; // 村干部
+}
+
+// 公告信息
+message NoticeInfo{
+  optional int64 noticeId = 1; // 公告idE
+  optional TNoticeType noticeType = 2; // 公告类型
+  optional int64 noticeCreateTime = 3; // 公告发布时间，MS时间戳
+  optional string noticeTitle = 4; // 公告标题
+  optional string noticeContext = 5; // 公告正文
+  optional int32 writerTel = 6; // 发布者电话
+  optional string writerName = 7; // 发布者姓名
+  optional bool isTop = 8; // 是否置顶
+  optional bool isAcceptRead = 9; // 是否需要确认阅读
+  repeated bytes noticeAtt = 10; // 公告附件-直接就是二进制文件
+}
+
+// 公告类型
+enum TNoticeType
+{
+  TNT_TZ = 0; // 通知
+  TNT_ZP = 1; // 招聘
+  TNT_HD = 2; // 活动
+  TNT_ZFXC = 3; // 政府宣传
+  TNT_GKZW = 4; // 公开政务
+}
+
+// 用户阅读公告记录信息 有信息则阅读过
+message UserReadNoticeInfo{
+  optional int32 readId = 1; // 自增唯一id
+  optional int32 readUserTel = 2; // 阅读用户电话
+  optional int64 readNoticeId = 3; // 公告唯一ID
+}
+
+// 修改记录
+message UpdateInfo{
+  optional int32 updateId = 1; // 自增唯一id
+  optional int64 infoId = 2; // 修改内容唯一ID
+  optional TUpdateInfoType infoType = 3; // 修改内容类型
+  optional bytes beforeMsg = 4; // 修改前protobuf序列化信息
+  optional bytes afterMsg = 5; // 修改后protobuf序列化信息
+  optional int64 updateTime = 6; // 修改时间
+  optional int32 updateUserTel = 7; // 修改人电话
+  optional string updateName = 8; // 修改人姓名
+}
+
+// 修改记录内容
+enum TUpdateInfoType
+{
+  TUIT_NOTICE = 0; // 公告
+  TUIT_USER = 1; // 用户信息
+  TUIT_PEOPLE = 2; // 人员信息
+}
+
+// 问题信息
+message QuestionInfo{
+  optional int32 questId = 1; // 自增唯一id
+  optional QuestionType questType = 2; // 问题类型
+  optional string questContext = 3; // 问题详细描述
+  repeated bytes questPhoto = 4; // 问题上传附件
+  optional int32 questWriterTel = 5; // 问题提出者电话
+  optional QuestionNodeType nodeTpe = 6; // 问题节点
+  optional int32 choiceUser = 7; // 指定处理人电话
+}
+
+// 问题处理节点
+enum QuestionNodeType
+{
+  TQNT_PRE = 0; // 待处理
+  TQNT_MID = 1; // 处理中
+  TQNT_TAIL = 2; // 已处理
+  TQNT_CLOSE = 3; // 问题不处理
+}
+
+// 问题类型
+enum QuestionType
+{
+  TQT_WSHJ = 0; // 卫生环境
+  TQT_LLJF = 1; // 邻里纠纷
+  TQT_JCSS = 2; // 基础设施损坏
+  TQT_GBZF = 3; // 干部作风
+}
+
+// 问题处理结束记录
+message QuestionHandlingInfo{
+  optional int32 handlingId = 1; // 自增唯一id
+  optional int32 questId = 2; // 事务Id
+  optional QuestionHandlingType handlingType = 3; // 处理结果
+  optional int32 handlingUserTel = 4; //处理人
+  repeated bytes handlingCtx = 5; // 处理凭证
+  optional int64 handlingTime = 6; // 处理时间 MS
+}
+
+// 问题处理结果
+enum QuestionHandlingType
+{
+  TQHT_END = 0; // 处理完成
+  TQHT_HAS_QUEST = 1; // 还存在问题
+  TQHT_CANNOT = 2; // 暂时无法解决
+}
+
+// 主动通知用户信息,因推送时不确定用户在不在线，所以使用上线客户端主动拉取的方式
+message NotifyUserInfo
+{
+  optional MsgType msgType = 1; // 消息类型
+  optional bytes msgCtx = 2; // 消息内容
+}
+
+// 学习模块
+message StudyInfo{
+  optional int32 studyId = 1; // 自增唯一id
+  optional StudyType studyType = 2; // 学习内容类型
+  optional int64 studyCreateTime = 3; // 学习内容创建时间
+  optional string studyTitle = 4; // 学习标题
+  optional string studyTip = 5; // 学习内容简介
+  repeated bytes studyContent = 6; // 学习内容
+  optional bool isOpen = 7; // 是否公开
+  optional bool isTop = 8; // 是否首页展示
+  optional int32 readCount = 9; // 阅读次数
+}
+
+// 用户收藏信息
+message UserStarStudyInfo
+{
+  optional int32 starId = 1; // 自增唯一id
+  optional int32 userTel = 2; // 用户电话
+  optional int32 studyId = 3; // 学习内容id
+}
+
+// 学习类型
+enum StudyType{
+  TST_ZCJD = 0; // 政策解读
+  TST_NJTG = 1; // 农技推广
+  TST_JKYS = 2; // 健康养生
+  TST_FLCS = 3; // 法律常识
+}
+
+// 家庭信息
+message PeopleInfo{
+  optional string peopleCardId = 1; // 人员身份证号
+  optional string peopleName = 2; // 人员姓名
+  optional string peopleHouseId = 3; // 人员家庭户编号
+  optional string peopleCtx = 4; // 人员情况描述
+}
+
+// 家庭信息修改申请
+message PeopleUpdateApply{
+  optional int32 applyId = 1; // 自增唯一id
+  optional int32 applyUserId = 2; // 申请人电话
+  optional int64 applyCreateTime = 3; // 申请时间
+  optional bytes newPeople = 4; // PeopleInfo的序列化后内容
+}

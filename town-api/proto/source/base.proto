@@ -1,0 +1,26 @@
+syntax = "proto3";
+package po;
+
+option java_outer_classname = "BaseProto";
+option java_package = "po";
+option java_multiple_files = true;
+
+// 消息类型
+enum MsgType
+{
+  TMT_DEFAULT = 0;  // 默认
+  TMT_TEST = 1;     // 测试请求体
+  TMT_TEST_RESP = 2; // 测试返回体
+
+  TMT_LoginReq = 3;    // 登录请求
+  TMT_LoginRsp = 4; // 登录返回
+
+  TMT_RegisterReq = 5; // 注册请求
+  TMT_RegisterRsp = 6; // 注册返回
+
+  TMT_UpdateUserInfoReq = 7; // 修改用户信息（管理员）
+  TMT_UpdateUserInfoRsp = 8; // 修改用户信息（管理员） - 回执
+
+  TMT_CreateNoticeReq = 9; // 发布公告（管理员）
+  TMT_CreateNoticeRsp = 10; // 发布公告（管理员） - 回执
+}
