@@ -103,6 +103,294 @@ public enum MsgType
    * <code>TMT_CreateNoticeRsp = 10;</code>
    */
   TMT_CreateNoticeRsp(10),
+  /**
+   * <pre>
+   * 修改公告（管理员）
+   * </pre>
+   *
+   * <code>TMT_UpdateNoticeReq = 11;</code>
+   */
+  TMT_UpdateNoticeReq(11),
+  /**
+   * <pre>
+   * 修改公告（管理员） - 回执
+   * </pre>
+   *
+   * <code>TMT_UpdateNoticeRsp = 12;</code>
+   */
+  TMT_UpdateNoticeRsp(12),
+  /**
+   * <pre>
+   * 获取公告
+   * </pre>
+   *
+   * <code>TMT_ListNoticeReq = 13;</code>
+   */
+  TMT_ListNoticeReq(13),
+  /**
+   * <pre>
+   * 获取公告 - 回执
+   * </pre>
+   *
+   * <code>TMT_ListNoticeRsp = 14;</code>
+   */
+  TMT_ListNoticeRsp(14),
+  /**
+   * <pre>
+   * 标记已读
+   * </pre>
+   *
+   * <code>TMT_SetNoticeReadReq = 15;</code>
+   */
+  TMT_SetNoticeReadReq(15),
+  /**
+   * <pre>
+   * 标记已读 - 回执
+   * </pre>
+   *
+   * <code>TMT_SetNoticeReadRsp = 16;</code>
+   */
+  TMT_SetNoticeReadRsp(16),
+  /**
+   * <pre>
+   * 查看修改记录（管理员）
+   * </pre>
+   *
+   * <code>TMT_ListUpdateInfoReq = 17;</code>
+   */
+  TMT_ListUpdateInfoReq(17),
+  /**
+   * <pre>
+   * 查看修改记录（管理员） - 回执
+   * </pre>
+   *
+   * <code>TMT_ListUpdateInfoRsp = 18;</code>
+   */
+  TMT_ListUpdateInfoRsp(18),
+  /**
+   * <pre>
+   * 村民发布问题
+   * </pre>
+   *
+   * <code>TMT_CreateQuestionReq = 19;</code>
+   */
+  TMT_CreateQuestionReq(19),
+  /**
+   * <pre>
+   * 村民发布问题 - 回执
+   * </pre>
+   *
+   * <code>TMT_CreateQuestionRsp = 20;</code>
+   */
+  TMT_CreateQuestionRsp(20),
+  /**
+   * <pre>
+   * 修改问题（管理员）
+   * </pre>
+   *
+   * <code>TMT_UpdateQuestionReq = 21;</code>
+   */
+  TMT_UpdateQuestionReq(21),
+  /**
+   * <pre>
+   * 修改问题（管理员） - 回执
+   * </pre>
+   *
+   * <code>TMT_UpdateQuestionRsp = 22;</code>
+   */
+  TMT_UpdateQuestionRsp(22),
+  /**
+   * <pre>
+   * 获取所有问题处理结果（管理员）
+   * </pre>
+   *
+   * <code>TMT_ListQuestionHandlingReq = 23;</code>
+   */
+  TMT_ListQuestionHandlingReq(23),
+  /**
+   * <pre>
+   * 获取所有问题处理结果（管理员） - 回执
+   * </pre>
+   *
+   * <code>TMT_ListQuestionHandlingRsp = 24;</code>
+   */
+  TMT_ListQuestionHandlingRsp(24),
+  /**
+   * <pre>
+   * 获取问题列表 村民：获取自己提出的问题，村干部：获取所有未分配处理人和处理人是自己的。
+   * </pre>
+   *
+   * <code>TMT_ListQuestionReq = 25;</code>
+   */
+  TMT_ListQuestionReq(25),
+  /**
+   * <pre>
+   * 获取问题列表 - 回执
+   * </pre>
+   *
+   * <code>TMT_ListQuestionRsp = 26;</code>
+   */
+  TMT_ListQuestionRsp(26),
+  /**
+   * <pre>
+   * 获取所有用户待收取的信息，发送成功后就删除
+   * </pre>
+   *
+   * <code>TMT_ListNotifyUserInfoReq = 27;</code>
+   */
+  TMT_ListNotifyUserInfoReq(27),
+  /**
+   * <pre>
+   * 获取所有用户待收取的信息 - 回执回执
+   * </pre>
+   *
+   * <code>TMT_ListNotifyUserInfoRsp = 28;</code>
+   */
+  TMT_ListNotifyUserInfoRsp(28),
+  /**
+   * <pre>
+   * 创建学习资料（管理员）
+   * </pre>
+   *
+   * <code>TMT_CreateStudyReq = 29;</code>
+   */
+  TMT_CreateStudyReq(29),
+  /**
+   * <pre>
+   * 创建学习资料（管理员） - 回执
+   * </pre>
+   *
+   * <code>TMT_CreateStudyRsp = 30;</code>
+   */
+  TMT_CreateStudyRsp(30),
+  /**
+   * <pre>
+   * 修改学习资料（管理员）
+   * </pre>
+   *
+   * <code>TMT_UpdateStudyReq = 31;</code>
+   */
+  TMT_UpdateStudyReq(31),
+  /**
+   * <pre>
+   * 修改学习资料（管理员） - 回执
+   * </pre>
+   *
+   * <code>TMT_UpdateStudyRsp = 32;</code>
+   */
+  TMT_UpdateStudyRsp(32),
+  /**
+   * <pre>
+   * 获取学习信息
+   * </pre>
+   *
+   * <code>TMT_ListStudyReq = 33;</code>
+   */
+  TMT_ListStudyReq(33),
+  /**
+   * <pre>
+   * 获取学习信息 - 回执
+   * </pre>
+   *
+   * <code>TMT_ListStudyRsp = 34;</code>
+   */
+  TMT_ListStudyRsp(34),
+  /**
+   * <pre>
+   * 收藏学习内容
+   * </pre>
+   *
+   * <code>TMT_StarStudyReq = 35;</code>
+   */
+  TMT_StarStudyReq(35),
+  /**
+   * <pre>
+   * 收藏学习内容 - 回执
+   * </pre>
+   *
+   * <code>TMT_StarStudyRsp = 36;</code>
+   */
+  TMT_StarStudyRsp(36),
+  /**
+   * <pre>
+   * 获取收藏列表
+   * </pre>
+   *
+   * <code>TMT_ListUserStarStudyReq = 37;</code>
+   */
+  TMT_ListUserStarStudyReq(37),
+  /**
+   * <pre>
+   * 获取收藏列表 - 回执
+   * </pre>
+   *
+   * <code>TMT_ListUserStarStudyRsp = 38;</code>
+   */
+  TMT_ListUserStarStudyRsp(38),
+  /**
+   * <pre>
+   * 创建家庭信息（管理员）
+   * </pre>
+   *
+   * <code>TMT_CreatePeopleReq = 39;</code>
+   */
+  TMT_CreatePeopleReq(39),
+  /**
+   * <pre>
+   * 创建家庭信息（管理员） - 回执
+   * </pre>
+   *
+   * <code>TMT_CreatePeopleRsp = 40;</code>
+   */
+  TMT_CreatePeopleRsp(40),
+  /**
+   * <pre>
+   * 修改家庭信息（管理员）
+   * </pre>
+   *
+   * <code>TMT_UpdatePeopleReq = 41;</code>
+   */
+  TMT_UpdatePeopleReq(41),
+  /**
+   * <pre>
+   * 修改家庭信息（管理员） - 回执
+   * </pre>
+   *
+   * <code>TMT_UpdatePeopleRsp = 42;</code>
+   */
+  TMT_UpdatePeopleRsp(42),
+  /**
+   * <pre>
+   * 提交修改申请
+   * </pre>
+   *
+   * <code>TMT_CreatePeopleUpdateApplyReq = 43;</code>
+   */
+  TMT_CreatePeopleUpdateApplyReq(43),
+  /**
+   * <pre>
+   * 提交修改申请 - 回执
+   * </pre>
+   *
+   * <code>TMT_CreatePeopleUpdateApplyRsp = 44;</code>
+   */
+  TMT_CreatePeopleUpdateApplyRsp(44),
+  /**
+   * <pre>
+   * 删除修改申请（管理员）
+   * </pre>
+   *
+   * <code>TMT_DelPeopleUpdateApplyReq = 45;</code>
+   */
+  TMT_DelPeopleUpdateApplyReq(45),
+  /**
+   * <pre>
+   * 删除修改申请（管理员） - 回执
+   * </pre>
+   *
+   * <code>TMT_DelPeopleUpdateApplyRsp = 46;</code>
+   */
+  TMT_DelPeopleUpdateApplyRsp(46),
   UNRECOGNIZED(-1),
   ;
 
@@ -203,6 +491,294 @@ public enum MsgType
    * <code>TMT_CreateNoticeRsp = 10;</code>
    */
   public static final int TMT_CreateNoticeRsp_VALUE = 10;
+  /**
+   * <pre>
+   * 修改公告（管理员）
+   * </pre>
+   *
+   * <code>TMT_UpdateNoticeReq = 11;</code>
+   */
+  public static final int TMT_UpdateNoticeReq_VALUE = 11;
+  /**
+   * <pre>
+   * 修改公告（管理员） - 回执
+   * </pre>
+   *
+   * <code>TMT_UpdateNoticeRsp = 12;</code>
+   */
+  public static final int TMT_UpdateNoticeRsp_VALUE = 12;
+  /**
+   * <pre>
+   * 获取公告
+   * </pre>
+   *
+   * <code>TMT_ListNoticeReq = 13;</code>
+   */
+  public static final int TMT_ListNoticeReq_VALUE = 13;
+  /**
+   * <pre>
+   * 获取公告 - 回执
+   * </pre>
+   *
+   * <code>TMT_ListNoticeRsp = 14;</code>
+   */
+  public static final int TMT_ListNoticeRsp_VALUE = 14;
+  /**
+   * <pre>
+   * 标记已读
+   * </pre>
+   *
+   * <code>TMT_SetNoticeReadReq = 15;</code>
+   */
+  public static final int TMT_SetNoticeReadReq_VALUE = 15;
+  /**
+   * <pre>
+   * 标记已读 - 回执
+   * </pre>
+   *
+   * <code>TMT_SetNoticeReadRsp = 16;</code>
+   */
+  public static final int TMT_SetNoticeReadRsp_VALUE = 16;
+  /**
+   * <pre>
+   * 查看修改记录（管理员）
+   * </pre>
+   *
+   * <code>TMT_ListUpdateInfoReq = 17;</code>
+   */
+  public static final int TMT_ListUpdateInfoReq_VALUE = 17;
+  /**
+   * <pre>
+   * 查看修改记录（管理员） - 回执
+   * </pre>
+   *
+   * <code>TMT_ListUpdateInfoRsp = 18;</code>
+   */
+  public static final int TMT_ListUpdateInfoRsp_VALUE = 18;
+  /**
+   * <pre>
+   * 村民发布问题
+   * </pre>
+   *
+   * <code>TMT_CreateQuestionReq = 19;</code>
+   */
+  public static final int TMT_CreateQuestionReq_VALUE = 19;
+  /**
+   * <pre>
+   * 村民发布问题 - 回执
+   * </pre>
+   *
+   * <code>TMT_CreateQuestionRsp = 20;</code>
+   */
+  public static final int TMT_CreateQuestionRsp_VALUE = 20;
+  /**
+   * <pre>
+   * 修改问题（管理员）
+   * </pre>
+   *
+   * <code>TMT_UpdateQuestionReq = 21;</code>
+   */
+  public static final int TMT_UpdateQuestionReq_VALUE = 21;
+  /**
+   * <pre>
+   * 修改问题（管理员） - 回执
+   * </pre>
+   *
+   * <code>TMT_UpdateQuestionRsp = 22;</code>
+   */
+  public static final int TMT_UpdateQuestionRsp_VALUE = 22;
+  /**
+   * <pre>
+   * 获取所有问题处理结果（管理员）
+   * </pre>
+   *
+   * <code>TMT_ListQuestionHandlingReq = 23;</code>
+   */
+  public static final int TMT_ListQuestionHandlingReq_VALUE = 23;
+  /**
+   * <pre>
+   * 获取所有问题处理结果（管理员） - 回执
+   * </pre>
+   *
+   * <code>TMT_ListQuestionHandlingRsp = 24;</code>
+   */
+  public static final int TMT_ListQuestionHandlingRsp_VALUE = 24;
+  /**
+   * <pre>
+   * 获取问题列表 村民：获取自己提出的问题，村干部：获取所有未分配处理人和处理人是自己的。
+   * </pre>
+   *
+   * <code>TMT_ListQuestionReq = 25;</code>
+   */
+  public static final int TMT_ListQuestionReq_VALUE = 25;
+  /**
+   * <pre>
+   * 获取问题列表 - 回执
+   * </pre>
+   *
+   * <code>TMT_ListQuestionRsp = 26;</code>
+   */
+  public static final int TMT_ListQuestionRsp_VALUE = 26;
+  /**
+   * <pre>
+   * 获取所有用户待收取的信息，发送成功后就删除
+   * </pre>
+   *
+   * <code>TMT_ListNotifyUserInfoReq = 27;</code>
+   */
+  public static final int TMT_ListNotifyUserInfoReq_VALUE = 27;
+  /**
+   * <pre>
+   * 获取所有用户待收取的信息 - 回执回执
+   * </pre>
+   *
+   * <code>TMT_ListNotifyUserInfoRsp = 28;</code>
+   */
+  public static final int TMT_ListNotifyUserInfoRsp_VALUE = 28;
+  /**
+   * <pre>
+   * 创建学习资料（管理员）
+   * </pre>
+   *
+   * <code>TMT_CreateStudyReq = 29;</code>
+   */
+  public static final int TMT_CreateStudyReq_VALUE = 29;
+  /**
+   * <pre>
+   * 创建学习资料（管理员） - 回执
+   * </pre>
+   *
+   * <code>TMT_CreateStudyRsp = 30;</code>
+   */
+  public static final int TMT_CreateStudyRsp_VALUE = 30;
+  /**
+   * <pre>
+   * 修改学习资料（管理员）
+   * </pre>
+   *
+   * <code>TMT_UpdateStudyReq = 31;</code>
+   */
+  public static final int TMT_UpdateStudyReq_VALUE = 31;
+  /**
+   * <pre>
+   * 修改学习资料（管理员） - 回执
+   * </pre>
+   *
+   * <code>TMT_UpdateStudyRsp = 32;</code>
+   */
+  public static final int TMT_UpdateStudyRsp_VALUE = 32;
+  /**
+   * <pre>
+   * 获取学习信息
+   * </pre>
+   *
+   * <code>TMT_ListStudyReq = 33;</code>
+   */
+  public static final int TMT_ListStudyReq_VALUE = 33;
+  /**
+   * <pre>
+   * 获取学习信息 - 回执
+   * </pre>
+   *
+   * <code>TMT_ListStudyRsp = 34;</code>
+   */
+  public static final int TMT_ListStudyRsp_VALUE = 34;
+  /**
+   * <pre>
+   * 收藏学习内容
+   * </pre>
+   *
+   * <code>TMT_StarStudyReq = 35;</code>
+   */
+  public static final int TMT_StarStudyReq_VALUE = 35;
+  /**
+   * <pre>
+   * 收藏学习内容 - 回执
+   * </pre>
+   *
+   * <code>TMT_StarStudyRsp = 36;</code>
+   */
+  public static final int TMT_StarStudyRsp_VALUE = 36;
+  /**
+   * <pre>
+   * 获取收藏列表
+   * </pre>
+   *
+   * <code>TMT_ListUserStarStudyReq = 37;</code>
+   */
+  public static final int TMT_ListUserStarStudyReq_VALUE = 37;
+  /**
+   * <pre>
+   * 获取收藏列表 - 回执
+   * </pre>
+   *
+   * <code>TMT_ListUserStarStudyRsp = 38;</code>
+   */
+  public static final int TMT_ListUserStarStudyRsp_VALUE = 38;
+  /**
+   * <pre>
+   * 创建家庭信息（管理员）
+   * </pre>
+   *
+   * <code>TMT_CreatePeopleReq = 39;</code>
+   */
+  public static final int TMT_CreatePeopleReq_VALUE = 39;
+  /**
+   * <pre>
+   * 创建家庭信息（管理员） - 回执
+   * </pre>
+   *
+   * <code>TMT_CreatePeopleRsp = 40;</code>
+   */
+  public static final int TMT_CreatePeopleRsp_VALUE = 40;
+  /**
+   * <pre>
+   * 修改家庭信息（管理员）
+   * </pre>
+   *
+   * <code>TMT_UpdatePeopleReq = 41;</code>
+   */
+  public static final int TMT_UpdatePeopleReq_VALUE = 41;
+  /**
+   * <pre>
+   * 修改家庭信息（管理员） - 回执
+   * </pre>
+   *
+   * <code>TMT_UpdatePeopleRsp = 42;</code>
+   */
+  public static final int TMT_UpdatePeopleRsp_VALUE = 42;
+  /**
+   * <pre>
+   * 提交修改申请
+   * </pre>
+   *
+   * <code>TMT_CreatePeopleUpdateApplyReq = 43;</code>
+   */
+  public static final int TMT_CreatePeopleUpdateApplyReq_VALUE = 43;
+  /**
+   * <pre>
+   * 提交修改申请 - 回执
+   * </pre>
+   *
+   * <code>TMT_CreatePeopleUpdateApplyRsp = 44;</code>
+   */
+  public static final int TMT_CreatePeopleUpdateApplyRsp_VALUE = 44;
+  /**
+   * <pre>
+   * 删除修改申请（管理员）
+   * </pre>
+   *
+   * <code>TMT_DelPeopleUpdateApplyReq = 45;</code>
+   */
+  public static final int TMT_DelPeopleUpdateApplyReq_VALUE = 45;
+  /**
+   * <pre>
+   * 删除修改申请（管理员） - 回执
+   * </pre>
+   *
+   * <code>TMT_DelPeopleUpdateApplyRsp = 46;</code>
+   */
+  public static final int TMT_DelPeopleUpdateApplyRsp_VALUE = 46;
 
 
   public final int getNumber() {
@@ -240,6 +816,42 @@ public enum MsgType
       case 8: return TMT_UpdateUserInfoRsp;
       case 9: return TMT_CreateNoticeReq;
       case 10: return TMT_CreateNoticeRsp;
+      case 11: return TMT_UpdateNoticeReq;
+      case 12: return TMT_UpdateNoticeRsp;
+      case 13: return TMT_ListNoticeReq;
+      case 14: return TMT_ListNoticeRsp;
+      case 15: return TMT_SetNoticeReadReq;
+      case 16: return TMT_SetNoticeReadRsp;
+      case 17: return TMT_ListUpdateInfoReq;
+      case 18: return TMT_ListUpdateInfoRsp;
+      case 19: return TMT_CreateQuestionReq;
+      case 20: return TMT_CreateQuestionRsp;
+      case 21: return TMT_UpdateQuestionReq;
+      case 22: return TMT_UpdateQuestionRsp;
+      case 23: return TMT_ListQuestionHandlingReq;
+      case 24: return TMT_ListQuestionHandlingRsp;
+      case 25: return TMT_ListQuestionReq;
+      case 26: return TMT_ListQuestionRsp;
+      case 27: return TMT_ListNotifyUserInfoReq;
+      case 28: return TMT_ListNotifyUserInfoRsp;
+      case 29: return TMT_CreateStudyReq;
+      case 30: return TMT_CreateStudyRsp;
+      case 31: return TMT_UpdateStudyReq;
+      case 32: return TMT_UpdateStudyRsp;
+      case 33: return TMT_ListStudyReq;
+      case 34: return TMT_ListStudyRsp;
+      case 35: return TMT_StarStudyReq;
+      case 36: return TMT_StarStudyRsp;
+      case 37: return TMT_ListUserStarStudyReq;
+      case 38: return TMT_ListUserStarStudyRsp;
+      case 39: return TMT_CreatePeopleReq;
+      case 40: return TMT_CreatePeopleRsp;
+      case 41: return TMT_UpdatePeopleReq;
+      case 42: return TMT_UpdatePeopleRsp;
+      case 43: return TMT_CreatePeopleUpdateApplyReq;
+      case 44: return TMT_CreatePeopleUpdateApplyRsp;
+      case 45: return TMT_DelPeopleUpdateApplyReq;
+      case 46: return TMT_DelPeopleUpdateApplyRsp;
       default: return null;
     }
   }

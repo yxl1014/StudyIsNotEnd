@@ -260,9 +260,9 @@ message CreatePeopleUpdateApplyReq{
 // 提交修改申请 - 回执
 message CreatePeopleUpdateApplyRsp{}
 
-// 删除修改申请
+// 删除修改申请（管理员）
 message DelPeopleUpdateApplyReq{
   optional int32 applyId = 1;
 }
-// 删除修改申请 - 回执
+// 删除修改申请（管理员） - 回执
 message DelPeopleUpdateApplyRsp{}

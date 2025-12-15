@@ -7,7 +7,7 @@ package po;
 
 /**
  * <pre>
- * 删除修改申请 - 回执
+ * 删除修改申请（管理员） - 回执
  * </pre>
  *
  * Protobuf type {@code po.DelPeopleUpdateApplyRsp}
@@ -195,7 +195,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * 删除修改申请 - 回执
+   * 删除修改申请（管理员） - 回执
    * </pre>
    *
    * Protobuf type {@code po.DelPeopleUpdateApplyRsp}

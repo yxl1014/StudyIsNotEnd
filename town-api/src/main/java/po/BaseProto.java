@@ -35,14 +35,38 @@ public final class BaseProto extends com.google.protobuf.GeneratedFile {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nbase.proto\022\002po*\361\001\n\007MsgType\022\017\n\013TMT_DEFA" +
+      "\n\nbase.proto\022\002po*\273\t\n\007MsgType\022\017\n\013TMT_DEFA" +
       "ULT\020\000\022\014\n\010TMT_TEST\020\001\022\021\n\rTMT_TEST_RESP\020\002\022\020" +
       "\n\014TMT_LoginReq\020\003\022\020\n\014TMT_LoginRsp\020\004\022\023\n\017TM" +
       "T_RegisterReq\020\005\022\023\n\017TMT_RegisterRsp\020\006\022\031\n\025" +
       "TMT_UpdateUserInfoReq\020\007\022\031\n\025TMT_UpdateUse" +
       "rInfoRsp\020\010\022\027\n\023TMT_CreateNoticeReq\020\t\022\027\n\023T" +
-      "MT_CreateNoticeRsp\020\nB\021\n\002poB\tBaseProtoP\001b" +
-      "\006proto3"
+      "MT_CreateNoticeRsp\020\n\022\027\n\023TMT_UpdateNotice" +
+      "Req\020\013\022\027\n\023TMT_UpdateNoticeRsp\020\014\022\025\n\021TMT_Li" +
+      "stNoticeReq\020\r\022\025\n\021TMT_ListNoticeRsp\020\016\022\030\n\024" +
+      "TMT_SetNoticeReadReq\020\017\022\030\n\024TMT_SetNoticeR" +
+      "eadRsp\020\020\022\031\n\025TMT_ListUpdateInfoReq\020\021\022\031\n\025T" +
+      "MT_ListUpdateInfoRsp\020\022\022\031\n\025TMT_CreateQues" +
+      "tionReq\020\023\022\031\n\025TMT_CreateQuestionRsp\020\024\022\031\n\025" +
+      "TMT_UpdateQuestionReq\020\025\022\031\n\025TMT_UpdateQue" +
+      "stionRsp\020\026\022\037\n\033TMT_ListQuestionHandlingRe" +
+      "q\020\027\022\037\n\033TMT_ListQuestionHandlingRsp\020\030\022\027\n\023" +
+      "TMT_ListQuestionReq\020\031\022\027\n\023TMT_ListQuestio" +
+      "nRsp\020\032\022\035\n\031TMT_ListNotifyUserInfoReq\020\033\022\035\n" +
+      "\031TMT_ListNotifyUserInfoRsp\020\034\022\026\n\022TMT_Crea" +
+      "teStudyReq\020\035\022\026\n\022TMT_CreateStudyRsp\020\036\022\026\n\022" +
+      "TMT_UpdateStudyReq\020\037\022\026\n\022TMT_UpdateStudyR" +
+      "sp\020 \022\024\n\020TMT_ListStudyReq\020!\022\024\n\020TMT_ListSt" +
+      "udyRsp\020\"\022\024\n\020TMT_StarStudyReq\020#\022\024\n\020TMT_St" +
+      "arStudyRsp\020$\022\034\n\030TMT_ListUserStarStudyReq" +
+      "\020%\022\034\n\030TMT_ListUserStarStudyRsp\020&\022\027\n\023TMT_" +
+      "CreatePeopleReq\020\'\022\027\n\023TMT_CreatePeopleRsp" +
+      "\020(\022\027\n\023TMT_UpdatePeopleReq\020)\022\027\n\023TMT_Updat" +
+      "ePeopleRsp\020*\022\"\n\036TMT_CreatePeopleUpdateAp" +
+      "plyReq\020+\022\"\n\036TMT_CreatePeopleUpdateApplyR" +
+      "sp\020,\022\037\n\033TMT_DelPeopleUpdateApplyReq\020-\022\037\n" +
+      "\033TMT_DelPeopleUpdateApplyRsp\020.B\021\n\002poB\tBa" +
+      "seProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
