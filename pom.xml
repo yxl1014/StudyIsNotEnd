@@ -13,6 +13,8 @@
         <module>town-api</module>
         <module>town-consumer</module>
         <module>town-provider</module>
+        <module>town-dao</module>
+        <module>town-dao-provider</module>
     </modules>
 
     <properties>

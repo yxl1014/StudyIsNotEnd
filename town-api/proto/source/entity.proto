@@ -34,7 +34,7 @@ enum TUserPower{
 
 // 公告信息
 message NoticeInfo{
-  optional int64 noticeId = 1; // 公告idE
+  optional int32 noticeId = 1; // 公告id
   optional TNoticeType noticeType = 2; // 公告类型
   optional int64 noticeCreateTime = 3; // 公告发布时间，MS时间戳
   optional string noticeTitle = 4; // 公告标题
@@ -90,8 +90,9 @@ message QuestionInfo{
   optional string questContext = 3; // 问题详细描述
   repeated bytes questPhoto = 4; // 问题上传附件
   optional int32 questWriterTel = 5; // 问题提出者电话
-  optional QuestionNodeType nodeTpe = 6; // 问题节点
+  optional QuestionNodeType nodeType = 6; // 问题节点
   optional int32 choiceUser = 7; // 指定处理人电话
+  optional int64 questTime = 8; // 问题时间
 }
 
 // 问题处理节点
