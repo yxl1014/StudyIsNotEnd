@@ -36,7 +36,7 @@ private static final long serialVersionUID = 0L;
     noticeTitle_ = "";
     noticeContext_ = "";
     writerName_ = "";
-    noticeAtt_ = emptyList(com.google.protobuf.ByteString.class);
+    noticeAtt_ = com.google.protobuf.ByteString.EMPTY;
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
@@ -54,13 +54,13 @@ private static final long serialVersionUID = 0L;
 
   private int bitField0_;
   public static final int NOTICEID_FIELD_NUMBER = 1;
-  private long noticeId_ = 0L;
+  private int noticeId_ = 0;
   /**
    * <pre>
-   * 公告idE
+   * 公告id
    * </pre>
    *
-   * <code>optional int64 noticeId = 1;</code>
+   * <code>optional int32 noticeId = 1;</code>
    * @return Whether the noticeId field is set.
    */
   @java.lang.Override
@@ -69,14 +69,14 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * 公告idE
+   * 公告id
    * </pre>
    *
-   * <code>optional int64 noticeId = 1;</code>
+   * <code>optional int32 noticeId = 1;</code>
    * @return The noticeId.
    */
   @java.lang.Override
-  public long getNoticeId() {
+  public int getNoticeId() {
     return noticeId_;
   }
 
@@ -403,44 +403,30 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int NOTICEATT_FIELD_NUMBER = 10;
-  @SuppressWarnings("serial")
-  private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> noticeAtt_ =
-      emptyList(com.google.protobuf.ByteString.class);
+  private com.google.protobuf.ByteString noticeAtt_ = com.google.protobuf.ByteString.EMPTY;
   /**
    * <pre>
    * 公告附件-直接就是二进制文件
    * </pre>
    *
-   * <code>repeated bytes noticeAtt = 10;</code>
-   * @return A list containing the noticeAtt.
+   * <code>optional bytes noticeAtt = 10;</code>
+   * @return Whether the noticeAtt field is set.
    */
   @java.lang.Override
-  public java.util.List<com.google.protobuf.ByteString>
-      getNoticeAttList() {
+  public boolean hasNoticeAtt() {
+    return ((bitField0_ & 0x00000200) != 0);
+  }
+  /**
+   * <pre>
+   * 公告附件-直接就是二进制文件
+   * </pre>
+   *
+   * <code>optional bytes noticeAtt = 10;</code>
+   * @return The noticeAtt.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getNoticeAtt() {
     return noticeAtt_;
-  }
-  /**
-   * <pre>
-   * 公告附件-直接就是二进制文件
-   * </pre>
-   *
-   * <code>repeated bytes noticeAtt = 10;</code>
-   * @return The count of noticeAtt.
-   */
-  public int getNoticeAttCount() {
-    return noticeAtt_.size();
-  }
-  /**
-   * <pre>
-   * 公告附件-直接就是二进制文件
-   * </pre>
-   *
-   * <code>repeated bytes noticeAtt = 10;</code>
-   * @param index The index of the element to return.
-   * @return The noticeAtt at the given index.
-   */
-  public com.google.protobuf.ByteString getNoticeAtt(int index) {
-    return noticeAtt_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -458,7 +444,7 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeInt64(1, noticeId_);
+      output.writeInt32(1, noticeId_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       output.writeEnum(2, noticeType_);
@@ -484,8 +470,8 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000100) != 0)) {
       output.writeBool(9, isAcceptRead_);
     }
-    for (int i = 0; i < noticeAtt_.size(); i++) {
-      output.writeBytes(10, noticeAtt_.get(i));
+    if (((bitField0_ & 0x00000200) != 0)) {
+      output.writeBytes(10, noticeAtt_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -498,7 +484,7 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, noticeId_);
+        .computeInt32Size(1, noticeId_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.CodedOutputStream
@@ -529,14 +515,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(9, isAcceptRead_);
     }
-    {
-      int dataSize = 0;
-      for (int i = 0; i < noticeAtt_.size(); i++) {
-        dataSize += com.google.protobuf.CodedOutputStream
-          .computeBytesSizeNoTag(noticeAtt_.get(i));
-      }
-      size += dataSize;
-      size += 1 * getNoticeAttList().size();
+    if (((bitField0_ & 0x00000200) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBytesSize(10, noticeAtt_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -597,8 +578,11 @@ private static final long serialVersionUID = 0L;
       if (getIsAcceptRead()
           != other.getIsAcceptRead()) return false;
     }
-    if (!getNoticeAttList()
-        .equals(other.getNoticeAttList())) return false;
+    if (hasNoticeAtt() != other.hasNoticeAtt()) return false;
+    if (hasNoticeAtt()) {
+      if (!getNoticeAtt()
+          .equals(other.getNoticeAtt())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -612,8 +596,7 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     if (hasNoticeId()) {
       hash = (37 * hash) + NOTICEID_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getNoticeId());
+      hash = (53 * hash) + getNoticeId();
     }
     if (hasNoticeType()) {
       hash = (37 * hash) + NOTICETYPE_FIELD_NUMBER;
@@ -650,9 +633,9 @@ private static final long serialVersionUID = 0L;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getIsAcceptRead());
     }
-    if (getNoticeAttCount() > 0) {
+    if (hasNoticeAtt()) {
       hash = (37 * hash) + NOTICEATT_FIELD_NUMBER;
-      hash = (53 * hash) + getNoticeAttList().hashCode();
+      hash = (53 * hash) + getNoticeAtt().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -789,7 +772,7 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      noticeId_ = 0L;
+      noticeId_ = 0;
       noticeType_ = 0;
       noticeCreateTime_ = 0L;
       noticeTitle_ = "";
@@ -798,7 +781,7 @@ private static final long serialVersionUID = 0L;
       writerName_ = "";
       isTop_ = false;
       isAcceptRead_ = false;
-      noticeAtt_ = emptyList(com.google.protobuf.ByteString.class);
+      noticeAtt_ = com.google.protobuf.ByteString.EMPTY;
       return this;
     }
 
@@ -870,8 +853,8 @@ private static final long serialVersionUID = 0L;
         to_bitField0_ |= 0x00000100;
       }
       if (((from_bitField0_ & 0x00000200) != 0)) {
-        noticeAtt_.makeImmutable();
         result.noticeAtt_ = noticeAtt_;
+        to_bitField0_ |= 0x00000200;
       }
       result.bitField0_ |= to_bitField0_;
     }
@@ -921,16 +904,8 @@ private static final long serialVersionUID = 0L;
       if (other.hasIsAcceptRead()) {
         setIsAcceptRead(other.getIsAcceptRead());
       }
-      if (!other.noticeAtt_.isEmpty()) {
-        if (noticeAtt_.isEmpty()) {
-          noticeAtt_ = other.noticeAtt_;
-          noticeAtt_.makeImmutable();
-          bitField0_ |= 0x00000200;
-        } else {
-          ensureNoticeAttIsMutable();
-          noticeAtt_.addAll(other.noticeAtt_);
-        }
-        onChanged();
+      if (other.hasNoticeAtt()) {
+        setNoticeAtt(other.getNoticeAtt());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -959,7 +934,7 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              noticeId_ = input.readInt64();
+              noticeId_ = input.readInt32();
               bitField0_ |= 0x00000001;
               break;
             } // case 8
@@ -1004,9 +979,8 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 72
             case 82: {
-              com.google.protobuf.ByteString v = input.readBytes();
-              ensureNoticeAttIsMutable();
-              noticeAtt_.add(v);
+              noticeAtt_ = input.readBytes();
+              bitField0_ |= 0x00000200;
               break;
             } // case 82
             default: {
@@ -1026,13 +1000,13 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private long noticeId_ ;
+    private int noticeId_ ;
     /**
      * <pre>
-     * 公告idE
+     * 公告id
      * </pre>
      *
-     * <code>optional int64 noticeId = 1;</code>
+     * <code>optional int32 noticeId = 1;</code>
      * @return Whether the noticeId field is set.
      */
     @java.lang.Override
@@ -1041,26 +1015,26 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 公告idE
+     * 公告id
      * </pre>
      *
-     * <code>optional int64 noticeId = 1;</code>
+     * <code>optional int32 noticeId = 1;</code>
      * @return The noticeId.
      */
     @java.lang.Override
-    public long getNoticeId() {
+    public int getNoticeId() {
       return noticeId_;
     }
     /**
      * <pre>
-     * 公告idE
+     * 公告id
      * </pre>
      *
-     * <code>optional int64 noticeId = 1;</code>
+     * <code>optional int32 noticeId = 1;</code>
      * @param value The noticeId to set.
      * @return This builder for chaining.
      */
-    public Builder setNoticeId(long value) {
+    public Builder setNoticeId(int value) {
 
       noticeId_ = value;
       bitField0_ |= 0x00000001;
@@ -1069,15 +1043,15 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 公告idE
+     * 公告id
      * </pre>
      *
-     * <code>optional int64 noticeId = 1;</code>
+     * <code>optional int32 noticeId = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearNoticeId() {
       bitField0_ = (bitField0_ & ~0x00000001);
-      noticeId_ = 0L;
+      noticeId_ = 0;
       onChanged();
       return this;
     }
@@ -1697,24 +1671,29 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> noticeAtt_ = emptyList(com.google.protobuf.ByteString.class);
-    private void ensureNoticeAttIsMutable() {
-      if (!noticeAtt_.isModifiable()) {
-        noticeAtt_ = makeMutableCopy(noticeAtt_);
-      }
-      bitField0_ |= 0x00000200;
+    private com.google.protobuf.ByteString noticeAtt_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * 公告附件-直接就是二进制文件
+     * </pre>
+     *
+     * <code>optional bytes noticeAtt = 10;</code>
+     * @return Whether the noticeAtt field is set.
+     */
+    @java.lang.Override
+    public boolean hasNoticeAtt() {
+      return ((bitField0_ & 0x00000200) != 0);
     }
     /**
      * <pre>
      * 公告附件-直接就是二进制文件
      * </pre>
      *
-     * <code>repeated bytes noticeAtt = 10;</code>
-     * @return A list containing the noticeAtt.
+     * <code>optional bytes noticeAtt = 10;</code>
+     * @return The noticeAtt.
      */
-    public java.util.List<com.google.protobuf.ByteString>
-        getNoticeAttList() {
-      noticeAtt_.makeImmutable();
+    @java.lang.Override
+    public com.google.protobuf.ByteString getNoticeAtt() {
       return noticeAtt_;
     }
     /**
@@ -1722,39 +1701,13 @@ private static final long serialVersionUID = 0L;
      * 公告附件-直接就是二进制文件
      * </pre>
      *
-     * <code>repeated bytes noticeAtt = 10;</code>
-     * @return The count of noticeAtt.
-     */
-    public int getNoticeAttCount() {
-      return noticeAtt_.size();
-    }
-    /**
-     * <pre>
-     * 公告附件-直接就是二进制文件
-     * </pre>
-     *
-     * <code>repeated bytes noticeAtt = 10;</code>
-     * @param index The index of the element to return.
-     * @return The noticeAtt at the given index.
-     */
-    public com.google.protobuf.ByteString getNoticeAtt(int index) {
-      return noticeAtt_.get(index);
-    }
-    /**
-     * <pre>
-     * 公告附件-直接就是二进制文件
-     * </pre>
-     *
-     * <code>repeated bytes noticeAtt = 10;</code>
-     * @param index The index to set the value at.
+     * <code>optional bytes noticeAtt = 10;</code>
      * @param value The noticeAtt to set.
      * @return This builder for chaining.
      */
-    public Builder setNoticeAtt(
-        int index, com.google.protobuf.ByteString value) {
+    public Builder setNoticeAtt(com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
-      ensureNoticeAttIsMutable();
-      noticeAtt_.set(index, value);
+      noticeAtt_ = value;
       bitField0_ |= 0x00000200;
       onChanged();
       return this;
@@ -1764,47 +1717,12 @@ private static final long serialVersionUID = 0L;
      * 公告附件-直接就是二进制文件
      * </pre>
      *
-     * <code>repeated bytes noticeAtt = 10;</code>
-     * @param value The noticeAtt to add.
-     * @return This builder for chaining.
-     */
-    public Builder addNoticeAtt(com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
-      ensureNoticeAttIsMutable();
-      noticeAtt_.add(value);
-      bitField0_ |= 0x00000200;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 公告附件-直接就是二进制文件
-     * </pre>
-     *
-     * <code>repeated bytes noticeAtt = 10;</code>
-     * @param values The noticeAtt to add.
-     * @return This builder for chaining.
-     */
-    public Builder addAllNoticeAtt(
-        java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
-      ensureNoticeAttIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, noticeAtt_);
-      bitField0_ |= 0x00000200;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 公告附件-直接就是二进制文件
-     * </pre>
-     *
-     * <code>repeated bytes noticeAtt = 10;</code>
+     * <code>optional bytes noticeAtt = 10;</code>
      * @return This builder for chaining.
      */
     public Builder clearNoticeAtt() {
-      noticeAtt_ = emptyList(com.google.protobuf.ByteString.class);
       bitField0_ = (bitField0_ & ~0x00000200);
+      noticeAtt_ = getDefaultInstance().getNoticeAtt();
       onChanged();
       return this;
     }

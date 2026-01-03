@@ -1,8 +1,10 @@
 package demo.netty;
 
-import demo.controller.ServiceManager;
+import demo.manager.ServiceManager;
 import demo.netty.handler.in.ServerListenerHandler;
+import demo.netty.handler.in.TaskDistributeInHandler;
 import demo.netty.handler.in.TokenLoginInHandler;
+import demo.transfer.RequestTransfer;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
@@ -19,8 +21,10 @@ import po.RequestMsg;
 public class NettyServerHandler extends ChannelInitializer<SocketChannel> {
     private static final Logger log = LoggerFactory.getLogger(NettyServerHandler.class);
     private ServiceManager serviceManager;
-    public NettyServerHandler(ServiceManager serviceManager) {
+    private RequestTransfer requestTransfer;
+    public NettyServerHandler(ServiceManager serviceManager, RequestTransfer requestTransfer) {
         this.serviceManager = serviceManager;
+        this.requestTransfer = requestTransfer;
     }
 
     @Override
@@ -51,8 +55,9 @@ public class NettyServerHandler extends ChannelInitializer<SocketChannel> {
 
 
         // 3. 业务处理器
-        pipeline.addLast("tokenHandler", new TokenLoginInHandler(serviceManager));
         pipeline.addLast("serverHandler", new ServerListenerHandler(serviceManager));
+        pipeline.addLast("tokenHandler", new TokenLoginInHandler(serviceManager));
+        pipeline.addLast("distributeHandler", new TaskDistributeInHandler(serviceManager, requestTransfer));
 
         // ========== 出站处理器（从服务器到客户端）==========
 

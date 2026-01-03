@@ -100,29 +100,19 @@ public interface QuestionHandlingInfoOrBuilder extends
    * 处理凭证
    * </pre>
    *
-   * <code>repeated bytes handlingCtx = 5;</code>
-   * @return A list containing the handlingCtx.
+   * <code>optional bytes handlingCtx = 5;</code>
+   * @return Whether the handlingCtx field is set.
    */
-  java.util.List<com.google.protobuf.ByteString> getHandlingCtxList();
+  boolean hasHandlingCtx();
   /**
    * <pre>
    * 处理凭证
    * </pre>
    *
-   * <code>repeated bytes handlingCtx = 5;</code>
-   * @return The count of handlingCtx.
+   * <code>optional bytes handlingCtx = 5;</code>
+   * @return The handlingCtx.
    */
-  int getHandlingCtxCount();
-  /**
-   * <pre>
-   * 处理凭证
-   * </pre>
-   *
-   * <code>repeated bytes handlingCtx = 5;</code>
-   * @param index The index of the element to return.
-   * @return The handlingCtx at the given index.
-   */
-  com.google.protobuf.ByteString getHandlingCtx(int index);
+  com.google.protobuf.ByteString getHandlingCtx();
 
   /**
    * <pre>

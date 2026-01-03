@@ -31,6 +31,70 @@ public enum RespCode
    * <code>TRC_ERR = 1;</code>
    */
   TRC_ERR(1),
+  /**
+   * <pre>
+   * TOKEN不存在
+   * </pre>
+   *
+   * <code>TRC_TOKEN_NOT_EXIST = 2;</code>
+   */
+  TRC_TOKEN_NOT_EXIST(2),
+  /**
+   * <pre>
+   * TOKEN失效
+   * </pre>
+   *
+   * <code>TRC_TOKEN_INVALID = 3;</code>
+   */
+  TRC_TOKEN_INVALID(3),
+  /**
+   * <pre>
+   * 解析协议失败
+   * </pre>
+   *
+   * <code>TRC_PARSE_PROTOCOL_ERR = 4;</code>
+   */
+  TRC_PARSE_PROTOCOL_ERR(4),
+  /**
+   * <pre>
+   * 请求体为空
+   * </pre>
+   *
+   * <code>TRC_REQUEST_BODY_NULL = 5;</code>
+   */
+  TRC_REQUEST_BODY_NULL(5),
+  /**
+   * <pre>
+   * 用户不存在
+   * </pre>
+   *
+   * <code>TRC_USER_NOT_EXIST = 6;</code>
+   */
+  TRC_USER_NOT_EXIST(6),
+  /**
+   * <pre>
+   * 密码错误
+   * </pre>
+   *
+   * <code>TRC_PASSWORD_ERR = 7;</code>
+   */
+  TRC_PASSWORD_ERR(7),
+  /**
+   * <pre>
+   * 数据没找到
+   * </pre>
+   *
+   * <code>TRC_DB_DATA_NOT_FOUND = 8;</code>
+   */
+  TRC_DB_DATA_NOT_FOUND(8),
+  /**
+   * <pre>
+   * 数据操作异常
+   * </pre>
+   *
+   * <code>TRC_DB_ERROR = 9;</code>
+   */
+  TRC_DB_ERROR(9),
   UNRECOGNIZED(-1),
   ;
 
@@ -59,6 +123,70 @@ public enum RespCode
    * <code>TRC_ERR = 1;</code>
    */
   public static final int TRC_ERR_VALUE = 1;
+  /**
+   * <pre>
+   * TOKEN不存在
+   * </pre>
+   *
+   * <code>TRC_TOKEN_NOT_EXIST = 2;</code>
+   */
+  public static final int TRC_TOKEN_NOT_EXIST_VALUE = 2;
+  /**
+   * <pre>
+   * TOKEN失效
+   * </pre>
+   *
+   * <code>TRC_TOKEN_INVALID = 3;</code>
+   */
+  public static final int TRC_TOKEN_INVALID_VALUE = 3;
+  /**
+   * <pre>
+   * 解析协议失败
+   * </pre>
+   *
+   * <code>TRC_PARSE_PROTOCOL_ERR = 4;</code>
+   */
+  public static final int TRC_PARSE_PROTOCOL_ERR_VALUE = 4;
+  /**
+   * <pre>
+   * 请求体为空
+   * </pre>
+   *
+   * <code>TRC_REQUEST_BODY_NULL = 5;</code>
+   */
+  public static final int TRC_REQUEST_BODY_NULL_VALUE = 5;
+  /**
+   * <pre>
+   * 用户不存在
+   * </pre>
+   *
+   * <code>TRC_USER_NOT_EXIST = 6;</code>
+   */
+  public static final int TRC_USER_NOT_EXIST_VALUE = 6;
+  /**
+   * <pre>
+   * 密码错误
+   * </pre>
+   *
+   * <code>TRC_PASSWORD_ERR = 7;</code>
+   */
+  public static final int TRC_PASSWORD_ERR_VALUE = 7;
+  /**
+   * <pre>
+   * 数据没找到
+   * </pre>
+   *
+   * <code>TRC_DB_DATA_NOT_FOUND = 8;</code>
+   */
+  public static final int TRC_DB_DATA_NOT_FOUND_VALUE = 8;
+  /**
+   * <pre>
+   * 数据操作异常
+   * </pre>
+   *
+   * <code>TRC_DB_ERROR = 9;</code>
+   */
+  public static final int TRC_DB_ERROR_VALUE = 9;
 
 
   public final int getNumber() {
@@ -87,6 +215,14 @@ public enum RespCode
     switch (value) {
       case 0: return TRC_OK;
       case 1: return TRC_ERR;
+      case 2: return TRC_TOKEN_NOT_EXIST;
+      case 3: return TRC_TOKEN_INVALID;
+      case 4: return TRC_PARSE_PROTOCOL_ERR;
+      case 5: return TRC_REQUEST_BODY_NULL;
+      case 6: return TRC_USER_NOT_EXIST;
+      case 7: return TRC_PASSWORD_ERR;
+      case 8: return TRC_DB_DATA_NOT_FOUND;
+      case 9: return TRC_DB_ERROR;
       default: return null;
     }
   }

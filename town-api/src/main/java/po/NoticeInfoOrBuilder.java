@@ -12,22 +12,22 @@ public interface NoticeInfoOrBuilder extends
 
   /**
    * <pre>
-   * 公告idE
+   * 公告id
    * </pre>
    *
-   * <code>optional int64 noticeId = 1;</code>
+   * <code>optional int32 noticeId = 1;</code>
    * @return Whether the noticeId field is set.
    */
   boolean hasNoticeId();
   /**
    * <pre>
-   * 公告idE
+   * 公告id
    * </pre>
    *
-   * <code>optional int64 noticeId = 1;</code>
+   * <code>optional int32 noticeId = 1;</code>
    * @return The noticeId.
    */
-  long getNoticeId();
+  int getNoticeId();
 
   /**
    * <pre>
@@ -225,27 +225,17 @@ public interface NoticeInfoOrBuilder extends
    * 公告附件-直接就是二进制文件
    * </pre>
    *
-   * <code>repeated bytes noticeAtt = 10;</code>
-   * @return A list containing the noticeAtt.
+   * <code>optional bytes noticeAtt = 10;</code>
+   * @return Whether the noticeAtt field is set.
    */
-  java.util.List<com.google.protobuf.ByteString> getNoticeAttList();
+  boolean hasNoticeAtt();
   /**
    * <pre>
    * 公告附件-直接就是二进制文件
    * </pre>
    *
-   * <code>repeated bytes noticeAtt = 10;</code>
-   * @return The count of noticeAtt.
+   * <code>optional bytes noticeAtt = 10;</code>
+   * @return The noticeAtt.
    */
-  int getNoticeAttCount();
-  /**
-   * <pre>
-   * 公告附件-直接就是二进制文件
-   * </pre>
-   *
-   * <code>repeated bytes noticeAtt = 10;</code>
-   * @param index The index of the element to return.
-   * @return The noticeAtt at the given index.
-   */
-  com.google.protobuf.ByteString getNoticeAtt(int index);
+  com.google.protobuf.ByteString getNoticeAtt();
 }

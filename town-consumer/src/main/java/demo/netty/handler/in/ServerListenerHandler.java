@@ -1,14 +1,12 @@
 package demo.netty.handler.in;
 
-import demo.controller.ServiceManager;
+import demo.manager.ServiceManager;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.SneakyThrows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import po.ProtocolProto;
 import po.RequestMsg;
-import po.RequestTest;
 
 public class ServerListenerHandler extends SimpleChannelInboundHandler<RequestMsg> {
     private static final Logger log = LoggerFactory.getLogger(ServerListenerHandler.class);
@@ -37,16 +35,8 @@ public class ServerListenerHandler extends SimpleChannelInboundHandler<RequestMs
     @SneakyThrows
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, RequestMsg msg) {
-        log.info("ServerListenerHandler Message class: {}, toString: {}", msg.getClass().getName(), msg);
-        switch (msg.getMsgType()) {
-            case TMT_TEST:
-                RequestTest requestTest = RequestTest.parseFrom(msg.getMsg());
-                log.info("hello {}", requestTest.getHello());
-                break;
-            default:
-                log.info("xxx");
-                break;
-        }
+        // 进行下一步
+        ctx.fireChannelRead(msg);
     }
 
 

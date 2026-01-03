@@ -29,6 +29,17 @@ enum RespCode
 {
   TRC_OK = 0;   // 成功
   TRC_ERR = 1;  // 错误
+  TRC_TOKEN_NOT_EXIST = 2; // TOKEN不存在
+  TRC_TOKEN_INVALID = 3; // TOKEN失效
+
+  TRC_PARSE_PROTOCOL_ERR = 4; // 解析协议失败
+  TRC_REQUEST_BODY_NULL = 5; // 请求体为空
+
+  TRC_USER_NOT_EXIST = 6; // 用户不存在
+  TRC_PASSWORD_ERR = 7; // 密码错误
+
+  TRC_DB_DATA_NOT_FOUND = 8; // 数据没找到
+  TRC_DB_ERROR = 9; // 数据操作异常
 }
 
 

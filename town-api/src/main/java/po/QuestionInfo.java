@@ -34,8 +34,8 @@ private static final long serialVersionUID = 0L;
   private QuestionInfo() {
     questType_ = 0;
     questContext_ = "";
-    questPhoto_ = emptyList(com.google.protobuf.ByteString.class);
-    nodeTpe_ = 0;
+    questPhoto_ = com.google.protobuf.ByteString.EMPTY;
+    nodeType_ = 0;
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
@@ -176,44 +176,30 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int QUESTPHOTO_FIELD_NUMBER = 4;
-  @SuppressWarnings("serial")
-  private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> questPhoto_ =
-      emptyList(com.google.protobuf.ByteString.class);
+  private com.google.protobuf.ByteString questPhoto_ = com.google.protobuf.ByteString.EMPTY;
   /**
    * <pre>
    * 问题上传附件
    * </pre>
    *
-   * <code>repeated bytes questPhoto = 4;</code>
-   * @return A list containing the questPhoto.
+   * <code>optional bytes questPhoto = 4;</code>
+   * @return Whether the questPhoto field is set.
    */
   @java.lang.Override
-  public java.util.List<com.google.protobuf.ByteString>
-      getQuestPhotoList() {
+  public boolean hasQuestPhoto() {
+    return ((bitField0_ & 0x00000008) != 0);
+  }
+  /**
+   * <pre>
+   * 问题上传附件
+   * </pre>
+   *
+   * <code>optional bytes questPhoto = 4;</code>
+   * @return The questPhoto.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getQuestPhoto() {
     return questPhoto_;
-  }
-  /**
-   * <pre>
-   * 问题上传附件
-   * </pre>
-   *
-   * <code>repeated bytes questPhoto = 4;</code>
-   * @return The count of questPhoto.
-   */
-  public int getQuestPhotoCount() {
-    return questPhoto_.size();
-  }
-  /**
-   * <pre>
-   * 问题上传附件
-   * </pre>
-   *
-   * <code>repeated bytes questPhoto = 4;</code>
-   * @param index The index of the element to return.
-   * @return The questPhoto at the given index.
-   */
-  public com.google.protobuf.ByteString getQuestPhoto(int index) {
-    return questPhoto_.get(index);
   }
 
   public static final int QUESTWRITERTEL_FIELD_NUMBER = 5;
@@ -228,7 +214,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasQuestWriterTel() {
-    return ((bitField0_ & 0x00000008) != 0);
+    return ((bitField0_ & 0x00000010) != 0);
   }
   /**
    * <pre>
@@ -243,40 +229,40 @@ private static final long serialVersionUID = 0L;
     return questWriterTel_;
   }
 
-  public static final int NODETPE_FIELD_NUMBER = 6;
-  private int nodeTpe_ = 0;
+  public static final int NODETYPE_FIELD_NUMBER = 6;
+  private int nodeType_ = 0;
   /**
    * <pre>
    * 问题节点
    * </pre>
    *
-   * <code>optional .po.QuestionNodeType nodeTpe = 6;</code>
-   * @return Whether the nodeTpe field is set.
+   * <code>optional .po.QuestionNodeType nodeType = 6;</code>
+   * @return Whether the nodeType field is set.
    */
-  @java.lang.Override public boolean hasNodeTpe() {
-    return ((bitField0_ & 0x00000010) != 0);
+  @java.lang.Override public boolean hasNodeType() {
+    return ((bitField0_ & 0x00000020) != 0);
   }
   /**
    * <pre>
    * 问题节点
    * </pre>
    *
-   * <code>optional .po.QuestionNodeType nodeTpe = 6;</code>
-   * @return The enum numeric value on the wire for nodeTpe.
+   * <code>optional .po.QuestionNodeType nodeType = 6;</code>
+   * @return The enum numeric value on the wire for nodeType.
    */
-  @java.lang.Override public int getNodeTpeValue() {
-    return nodeTpe_;
+  @java.lang.Override public int getNodeTypeValue() {
+    return nodeType_;
   }
   /**
    * <pre>
    * 问题节点
    * </pre>
    *
-   * <code>optional .po.QuestionNodeType nodeTpe = 6;</code>
-   * @return The nodeTpe.
+   * <code>optional .po.QuestionNodeType nodeType = 6;</code>
+   * @return The nodeType.
    */
-  @java.lang.Override public po.QuestionNodeType getNodeTpe() {
-    po.QuestionNodeType result = po.QuestionNodeType.forNumber(nodeTpe_);
+  @java.lang.Override public po.QuestionNodeType getNodeType() {
+    po.QuestionNodeType result = po.QuestionNodeType.forNumber(nodeType_);
     return result == null ? po.QuestionNodeType.UNRECOGNIZED : result;
   }
 
@@ -292,7 +278,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasChoiceUser() {
-    return ((bitField0_ & 0x00000020) != 0);
+    return ((bitField0_ & 0x00000040) != 0);
   }
   /**
    * <pre>
@@ -305,6 +291,33 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public int getChoiceUser() {
     return choiceUser_;
+  }
+
+  public static final int QUESTTIME_FIELD_NUMBER = 8;
+  private long questTime_ = 0L;
+  /**
+   * <pre>
+   * 问题时间
+   * </pre>
+   *
+   * <code>optional int64 questTime = 8;</code>
+   * @return Whether the questTime field is set.
+   */
+  @java.lang.Override
+  public boolean hasQuestTime() {
+    return ((bitField0_ & 0x00000080) != 0);
+  }
+  /**
+   * <pre>
+   * 问题时间
+   * </pre>
+   *
+   * <code>optional int64 questTime = 8;</code>
+   * @return The questTime.
+   */
+  @java.lang.Override
+  public long getQuestTime() {
+    return questTime_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -330,17 +343,20 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000004) != 0)) {
       com.google.protobuf.GeneratedMessage.writeString(output, 3, questContext_);
     }
-    for (int i = 0; i < questPhoto_.size(); i++) {
-      output.writeBytes(4, questPhoto_.get(i));
-    }
     if (((bitField0_ & 0x00000008) != 0)) {
-      output.writeInt32(5, questWriterTel_);
+      output.writeBytes(4, questPhoto_);
     }
     if (((bitField0_ & 0x00000010) != 0)) {
-      output.writeEnum(6, nodeTpe_);
+      output.writeInt32(5, questWriterTel_);
     }
     if (((bitField0_ & 0x00000020) != 0)) {
+      output.writeEnum(6, nodeType_);
+    }
+    if (((bitField0_ & 0x00000040) != 0)) {
       output.writeInt32(7, choiceUser_);
+    }
+    if (((bitField0_ & 0x00000080) != 0)) {
+      output.writeInt64(8, questTime_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -362,26 +378,25 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000004) != 0)) {
       size += com.google.protobuf.GeneratedMessage.computeStringSize(3, questContext_);
     }
-    {
-      int dataSize = 0;
-      for (int i = 0; i < questPhoto_.size(); i++) {
-        dataSize += com.google.protobuf.CodedOutputStream
-          .computeBytesSizeNoTag(questPhoto_.get(i));
-      }
-      size += dataSize;
-      size += 1 * getQuestPhotoList().size();
-    }
     if (((bitField0_ & 0x00000008) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(5, questWriterTel_);
+        .computeBytesSize(4, questPhoto_);
     }
     if (((bitField0_ & 0x00000010) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(6, nodeTpe_);
+        .computeInt32Size(5, questWriterTel_);
     }
     if (((bitField0_ & 0x00000020) != 0)) {
       size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(6, nodeType_);
+    }
+    if (((bitField0_ & 0x00000040) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(7, choiceUser_);
+    }
+    if (((bitField0_ & 0x00000080) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(8, questTime_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -412,21 +427,29 @@ private static final long serialVersionUID = 0L;
       if (!getQuestContext()
           .equals(other.getQuestContext())) return false;
     }
-    if (!getQuestPhotoList()
-        .equals(other.getQuestPhotoList())) return false;
+    if (hasQuestPhoto() != other.hasQuestPhoto()) return false;
+    if (hasQuestPhoto()) {
+      if (!getQuestPhoto()
+          .equals(other.getQuestPhoto())) return false;
+    }
     if (hasQuestWriterTel() != other.hasQuestWriterTel()) return false;
     if (hasQuestWriterTel()) {
       if (getQuestWriterTel()
           != other.getQuestWriterTel()) return false;
     }
-    if (hasNodeTpe() != other.hasNodeTpe()) return false;
-    if (hasNodeTpe()) {
-      if (nodeTpe_ != other.nodeTpe_) return false;
+    if (hasNodeType() != other.hasNodeType()) return false;
+    if (hasNodeType()) {
+      if (nodeType_ != other.nodeType_) return false;
     }
     if (hasChoiceUser() != other.hasChoiceUser()) return false;
     if (hasChoiceUser()) {
       if (getChoiceUser()
           != other.getChoiceUser()) return false;
+    }
+    if (hasQuestTime() != other.hasQuestTime()) return false;
+    if (hasQuestTime()) {
+      if (getQuestTime()
+          != other.getQuestTime()) return false;
     }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
@@ -451,21 +474,26 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + QUESTCONTEXT_FIELD_NUMBER;
       hash = (53 * hash) + getQuestContext().hashCode();
     }
-    if (getQuestPhotoCount() > 0) {
+    if (hasQuestPhoto()) {
       hash = (37 * hash) + QUESTPHOTO_FIELD_NUMBER;
-      hash = (53 * hash) + getQuestPhotoList().hashCode();
+      hash = (53 * hash) + getQuestPhoto().hashCode();
     }
     if (hasQuestWriterTel()) {
       hash = (37 * hash) + QUESTWRITERTEL_FIELD_NUMBER;
       hash = (53 * hash) + getQuestWriterTel();
     }
-    if (hasNodeTpe()) {
-      hash = (37 * hash) + NODETPE_FIELD_NUMBER;
-      hash = (53 * hash) + nodeTpe_;
+    if (hasNodeType()) {
+      hash = (37 * hash) + NODETYPE_FIELD_NUMBER;
+      hash = (53 * hash) + nodeType_;
     }
     if (hasChoiceUser()) {
       hash = (37 * hash) + CHOICEUSER_FIELD_NUMBER;
       hash = (53 * hash) + getChoiceUser();
+    }
+    if (hasQuestTime()) {
+      hash = (37 * hash) + QUESTTIME_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getQuestTime());
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -605,10 +633,11 @@ private static final long serialVersionUID = 0L;
       questId_ = 0;
       questType_ = 0;
       questContext_ = "";
-      questPhoto_ = emptyList(com.google.protobuf.ByteString.class);
+      questPhoto_ = com.google.protobuf.ByteString.EMPTY;
       questWriterTel_ = 0;
-      nodeTpe_ = 0;
+      nodeType_ = 0;
       choiceUser_ = 0;
+      questTime_ = 0L;
       return this;
     }
 
@@ -656,20 +685,24 @@ private static final long serialVersionUID = 0L;
         to_bitField0_ |= 0x00000004;
       }
       if (((from_bitField0_ & 0x00000008) != 0)) {
-        questPhoto_.makeImmutable();
         result.questPhoto_ = questPhoto_;
+        to_bitField0_ |= 0x00000008;
       }
       if (((from_bitField0_ & 0x00000010) != 0)) {
         result.questWriterTel_ = questWriterTel_;
-        to_bitField0_ |= 0x00000008;
+        to_bitField0_ |= 0x00000010;
       }
       if (((from_bitField0_ & 0x00000020) != 0)) {
-        result.nodeTpe_ = nodeTpe_;
-        to_bitField0_ |= 0x00000010;
+        result.nodeType_ = nodeType_;
+        to_bitField0_ |= 0x00000020;
       }
       if (((from_bitField0_ & 0x00000040) != 0)) {
         result.choiceUser_ = choiceUser_;
-        to_bitField0_ |= 0x00000020;
+        to_bitField0_ |= 0x00000040;
+      }
+      if (((from_bitField0_ & 0x00000080) != 0)) {
+        result.questTime_ = questTime_;
+        to_bitField0_ |= 0x00000080;
       }
       result.bitField0_ |= to_bitField0_;
     }
@@ -697,25 +730,20 @@ private static final long serialVersionUID = 0L;
         bitField0_ |= 0x00000004;
         onChanged();
       }
-      if (!other.questPhoto_.isEmpty()) {
-        if (questPhoto_.isEmpty()) {
-          questPhoto_ = other.questPhoto_;
-          questPhoto_.makeImmutable();
-          bitField0_ |= 0x00000008;
-        } else {
-          ensureQuestPhotoIsMutable();
-          questPhoto_.addAll(other.questPhoto_);
-        }
-        onChanged();
+      if (other.hasQuestPhoto()) {
+        setQuestPhoto(other.getQuestPhoto());
       }
       if (other.hasQuestWriterTel()) {
         setQuestWriterTel(other.getQuestWriterTel());
       }
-      if (other.hasNodeTpe()) {
-        setNodeTpeValue(other.getNodeTpeValue());
+      if (other.hasNodeType()) {
+        setNodeTypeValue(other.getNodeTypeValue());
       }
       if (other.hasChoiceUser()) {
         setChoiceUser(other.getChoiceUser());
+      }
+      if (other.hasQuestTime()) {
+        setQuestTime(other.getQuestTime());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -759,9 +787,8 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 26
             case 34: {
-              com.google.protobuf.ByteString v = input.readBytes();
-              ensureQuestPhotoIsMutable();
-              questPhoto_.add(v);
+              questPhoto_ = input.readBytes();
+              bitField0_ |= 0x00000008;
               break;
             } // case 34
             case 40: {
@@ -770,7 +797,7 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 40
             case 48: {
-              nodeTpe_ = input.readEnum();
+              nodeType_ = input.readEnum();
               bitField0_ |= 0x00000020;
               break;
             } // case 48
@@ -779,6 +806,11 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000040;
               break;
             } // case 56
+            case 64: {
+              questTime_ = input.readInt64();
+              bitField0_ |= 0x00000080;
+              break;
+            } // case 64
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -1037,24 +1069,29 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> questPhoto_ = emptyList(com.google.protobuf.ByteString.class);
-    private void ensureQuestPhotoIsMutable() {
-      if (!questPhoto_.isModifiable()) {
-        questPhoto_ = makeMutableCopy(questPhoto_);
-      }
-      bitField0_ |= 0x00000008;
+    private com.google.protobuf.ByteString questPhoto_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * 问题上传附件
+     * </pre>
+     *
+     * <code>optional bytes questPhoto = 4;</code>
+     * @return Whether the questPhoto field is set.
+     */
+    @java.lang.Override
+    public boolean hasQuestPhoto() {
+      return ((bitField0_ & 0x00000008) != 0);
     }
     /**
      * <pre>
      * 问题上传附件
      * </pre>
      *
-     * <code>repeated bytes questPhoto = 4;</code>
-     * @return A list containing the questPhoto.
+     * <code>optional bytes questPhoto = 4;</code>
+     * @return The questPhoto.
      */
-    public java.util.List<com.google.protobuf.ByteString>
-        getQuestPhotoList() {
-      questPhoto_.makeImmutable();
+    @java.lang.Override
+    public com.google.protobuf.ByteString getQuestPhoto() {
       return questPhoto_;
     }
     /**
@@ -1062,39 +1099,13 @@ private static final long serialVersionUID = 0L;
      * 问题上传附件
      * </pre>
      *
-     * <code>repeated bytes questPhoto = 4;</code>
-     * @return The count of questPhoto.
-     */
-    public int getQuestPhotoCount() {
-      return questPhoto_.size();
-    }
-    /**
-     * <pre>
-     * 问题上传附件
-     * </pre>
-     *
-     * <code>repeated bytes questPhoto = 4;</code>
-     * @param index The index of the element to return.
-     * @return The questPhoto at the given index.
-     */
-    public com.google.protobuf.ByteString getQuestPhoto(int index) {
-      return questPhoto_.get(index);
-    }
-    /**
-     * <pre>
-     * 问题上传附件
-     * </pre>
-     *
-     * <code>repeated bytes questPhoto = 4;</code>
-     * @param index The index to set the value at.
+     * <code>optional bytes questPhoto = 4;</code>
      * @param value The questPhoto to set.
      * @return This builder for chaining.
      */
-    public Builder setQuestPhoto(
-        int index, com.google.protobuf.ByteString value) {
+    public Builder setQuestPhoto(com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
-      ensureQuestPhotoIsMutable();
-      questPhoto_.set(index, value);
+      questPhoto_ = value;
       bitField0_ |= 0x00000008;
       onChanged();
       return this;
@@ -1104,47 +1115,12 @@ private static final long serialVersionUID = 0L;
      * 问题上传附件
      * </pre>
      *
-     * <code>repeated bytes questPhoto = 4;</code>
-     * @param value The questPhoto to add.
-     * @return This builder for chaining.
-     */
-    public Builder addQuestPhoto(com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
-      ensureQuestPhotoIsMutable();
-      questPhoto_.add(value);
-      bitField0_ |= 0x00000008;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 问题上传附件
-     * </pre>
-     *
-     * <code>repeated bytes questPhoto = 4;</code>
-     * @param values The questPhoto to add.
-     * @return This builder for chaining.
-     */
-    public Builder addAllQuestPhoto(
-        java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
-      ensureQuestPhotoIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, questPhoto_);
-      bitField0_ |= 0x00000008;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 问题上传附件
-     * </pre>
-     *
-     * <code>repeated bytes questPhoto = 4;</code>
+     * <code>optional bytes questPhoto = 4;</code>
      * @return This builder for chaining.
      */
     public Builder clearQuestPhoto() {
-      questPhoto_ = emptyList(com.google.protobuf.ByteString.class);
       bitField0_ = (bitField0_ & ~0x00000008);
+      questPhoto_ = getDefaultInstance().getQuestPhoto();
       onChanged();
       return this;
     }
@@ -1205,16 +1181,16 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int nodeTpe_ = 0;
+    private int nodeType_ = 0;
     /**
      * <pre>
      * 问题节点
      * </pre>
      *
-     * <code>optional .po.QuestionNodeType nodeTpe = 6;</code>
-     * @return Whether the nodeTpe field is set.
+     * <code>optional .po.QuestionNodeType nodeType = 6;</code>
+     * @return Whether the nodeType field is set.
      */
-    @java.lang.Override public boolean hasNodeTpe() {
+    @java.lang.Override public boolean hasNodeType() {
       return ((bitField0_ & 0x00000020) != 0);
     }
     /**
@@ -1222,23 +1198,23 @@ private static final long serialVersionUID = 0L;
      * 问题节点
      * </pre>
      *
-     * <code>optional .po.QuestionNodeType nodeTpe = 6;</code>
-     * @return The enum numeric value on the wire for nodeTpe.
+     * <code>optional .po.QuestionNodeType nodeType = 6;</code>
+     * @return The enum numeric value on the wire for nodeType.
      */
-    @java.lang.Override public int getNodeTpeValue() {
-      return nodeTpe_;
+    @java.lang.Override public int getNodeTypeValue() {
+      return nodeType_;
     }
     /**
      * <pre>
      * 问题节点
      * </pre>
      *
-     * <code>optional .po.QuestionNodeType nodeTpe = 6;</code>
-     * @param value The enum numeric value on the wire for nodeTpe to set.
+     * <code>optional .po.QuestionNodeType nodeType = 6;</code>
+     * @param value The enum numeric value on the wire for nodeType to set.
      * @return This builder for chaining.
      */
-    public Builder setNodeTpeValue(int value) {
-      nodeTpe_ = value;
+    public Builder setNodeTypeValue(int value) {
+      nodeType_ = value;
       bitField0_ |= 0x00000020;
       onChanged();
       return this;
@@ -1248,12 +1224,12 @@ private static final long serialVersionUID = 0L;
      * 问题节点
      * </pre>
      *
-     * <code>optional .po.QuestionNodeType nodeTpe = 6;</code>
-     * @return The nodeTpe.
+     * <code>optional .po.QuestionNodeType nodeType = 6;</code>
+     * @return The nodeType.
      */
     @java.lang.Override
-    public po.QuestionNodeType getNodeTpe() {
-      po.QuestionNodeType result = po.QuestionNodeType.forNumber(nodeTpe_);
+    public po.QuestionNodeType getNodeType() {
+      po.QuestionNodeType result = po.QuestionNodeType.forNumber(nodeType_);
       return result == null ? po.QuestionNodeType.UNRECOGNIZED : result;
     }
     /**
@@ -1261,14 +1237,14 @@ private static final long serialVersionUID = 0L;
      * 问题节点
      * </pre>
      *
-     * <code>optional .po.QuestionNodeType nodeTpe = 6;</code>
-     * @param value The nodeTpe to set.
+     * <code>optional .po.QuestionNodeType nodeType = 6;</code>
+     * @param value The nodeType to set.
      * @return This builder for chaining.
      */
-    public Builder setNodeTpe(po.QuestionNodeType value) {
+    public Builder setNodeType(po.QuestionNodeType value) {
       if (value == null) { throw new NullPointerException(); }
       bitField0_ |= 0x00000020;
-      nodeTpe_ = value.getNumber();
+      nodeType_ = value.getNumber();
       onChanged();
       return this;
     }
@@ -1277,12 +1253,12 @@ private static final long serialVersionUID = 0L;
      * 问题节点
      * </pre>
      *
-     * <code>optional .po.QuestionNodeType nodeTpe = 6;</code>
+     * <code>optional .po.QuestionNodeType nodeType = 6;</code>
      * @return This builder for chaining.
      */
-    public Builder clearNodeTpe() {
+    public Builder clearNodeType() {
       bitField0_ = (bitField0_ & ~0x00000020);
-      nodeTpe_ = 0;
+      nodeType_ = 0;
       onChanged();
       return this;
     }
@@ -1339,6 +1315,62 @@ private static final long serialVersionUID = 0L;
     public Builder clearChoiceUser() {
       bitField0_ = (bitField0_ & ~0x00000040);
       choiceUser_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private long questTime_ ;
+    /**
+     * <pre>
+     * 问题时间
+     * </pre>
+     *
+     * <code>optional int64 questTime = 8;</code>
+     * @return Whether the questTime field is set.
+     */
+    @java.lang.Override
+    public boolean hasQuestTime() {
+      return ((bitField0_ & 0x00000080) != 0);
+    }
+    /**
+     * <pre>
+     * 问题时间
+     * </pre>
+     *
+     * <code>optional int64 questTime = 8;</code>
+     * @return The questTime.
+     */
+    @java.lang.Override
+    public long getQuestTime() {
+      return questTime_;
+    }
+    /**
+     * <pre>
+     * 问题时间
+     * </pre>
+     *
+     * <code>optional int64 questTime = 8;</code>
+     * @param value The questTime to set.
+     * @return This builder for chaining.
+     */
+    public Builder setQuestTime(long value) {
+
+      questTime_ = value;
+      bitField0_ |= 0x00000080;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 问题时间
+     * </pre>
+     *
+     * <code>optional int64 questTime = 8;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearQuestTime() {
+      bitField0_ = (bitField0_ & ~0x00000080);
+      questTime_ = 0L;
       onChanged();
       return this;
     }

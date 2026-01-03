@@ -99,21 +99,18 @@ public class NettyTest {
             new Thread(() -> {
                 while (true) {
                     try {
-                        RequestTest.Builder builder = RequestTest.newBuilder();
-                        StringBuilder msg = new StringBuilder("world");
-                        for (int i = 0; i < 5; i++) {
-                            msg.append(random.nextInt(10));
-                        }
-                        builder.setHello(msg.toString());
-                        RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
+                        LoginReq.Builder builder = LoginReq.newBuilder();
+                        builder.setUserTel(10001);
+                        builder.setUserPwd("123456");
 
-                        msgBuilder.setMsgType(MsgType.TMT_TEST);
+                        RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
+                        msgBuilder.setMsgType(MsgType.TMT_LoginReq);
                         msgBuilder.setMsg(builder.build().toByteString());
                         RequestMsg requestMsg = msgBuilder.build();
                         System.out.println("发送消息：" + requestMsg.toString());
                         //发送数据并刷新
                         ctx.writeAndFlush(requestMsg);
-                        Thread.sleep(3000);
+                        Thread.sleep(300000);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }

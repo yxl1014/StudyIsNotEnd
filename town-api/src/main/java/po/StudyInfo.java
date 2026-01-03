@@ -35,7 +35,7 @@ private static final long serialVersionUID = 0L;
     studyType_ = 0;
     studyTitle_ = "";
     studyTip_ = "";
-    studyContent_ = emptyList(com.google.protobuf.ByteString.class);
+    studyContent_ = "";
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
@@ -263,43 +263,61 @@ private static final long serialVersionUID = 0L;
 
   public static final int STUDYCONTENT_FIELD_NUMBER = 6;
   @SuppressWarnings("serial")
-  private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> studyContent_ =
-      emptyList(com.google.protobuf.ByteString.class);
+  private volatile java.lang.Object studyContent_ = "";
   /**
    * <pre>
    * 学习内容
    * </pre>
    *
-   * <code>repeated bytes studyContent = 6;</code>
-   * @return A list containing the studyContent.
+   * <code>optional string studyContent = 6;</code>
+   * @return Whether the studyContent field is set.
    */
   @java.lang.Override
-  public java.util.List<com.google.protobuf.ByteString>
-      getStudyContentList() {
-    return studyContent_;
+  public boolean hasStudyContent() {
+    return ((bitField0_ & 0x00000020) != 0);
   }
   /**
    * <pre>
    * 学习内容
    * </pre>
    *
-   * <code>repeated bytes studyContent = 6;</code>
-   * @return The count of studyContent.
+   * <code>optional string studyContent = 6;</code>
+   * @return The studyContent.
    */
-  public int getStudyContentCount() {
-    return studyContent_.size();
+  @java.lang.Override
+  public java.lang.String getStudyContent() {
+    java.lang.Object ref = studyContent_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      studyContent_ = s;
+      return s;
+    }
   }
   /**
    * <pre>
    * 学习内容
    * </pre>
    *
-   * <code>repeated bytes studyContent = 6;</code>
-   * @param index The index of the element to return.
-   * @return The studyContent at the given index.
+   * <code>optional string studyContent = 6;</code>
+   * @return The bytes for studyContent.
    */
-  public com.google.protobuf.ByteString getStudyContent(int index) {
-    return studyContent_.get(index);
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getStudyContentBytes() {
+    java.lang.Object ref = studyContent_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      studyContent_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static final int ISOPEN_FIELD_NUMBER = 7;
@@ -314,7 +332,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasIsOpen() {
-    return ((bitField0_ & 0x00000020) != 0);
+    return ((bitField0_ & 0x00000040) != 0);
   }
   /**
    * <pre>
@@ -341,7 +359,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasIsTop() {
-    return ((bitField0_ & 0x00000040) != 0);
+    return ((bitField0_ & 0x00000080) != 0);
   }
   /**
    * <pre>
@@ -368,7 +386,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasReadCount() {
-    return ((bitField0_ & 0x00000080) != 0);
+    return ((bitField0_ & 0x00000100) != 0);
   }
   /**
    * <pre>
@@ -412,16 +430,16 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000010) != 0)) {
       com.google.protobuf.GeneratedMessage.writeString(output, 5, studyTip_);
     }
-    for (int i = 0; i < studyContent_.size(); i++) {
-      output.writeBytes(6, studyContent_.get(i));
-    }
     if (((bitField0_ & 0x00000020) != 0)) {
-      output.writeBool(7, isOpen_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 6, studyContent_);
     }
     if (((bitField0_ & 0x00000040) != 0)) {
-      output.writeBool(8, isTop_);
+      output.writeBool(7, isOpen_);
     }
     if (((bitField0_ & 0x00000080) != 0)) {
+      output.writeBool(8, isTop_);
+    }
+    if (((bitField0_ & 0x00000100) != 0)) {
       output.writeInt32(9, readCount_);
     }
     getUnknownFields().writeTo(output);
@@ -451,24 +469,18 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000010) != 0)) {
       size += com.google.protobuf.GeneratedMessage.computeStringSize(5, studyTip_);
     }
-    {
-      int dataSize = 0;
-      for (int i = 0; i < studyContent_.size(); i++) {
-        dataSize += com.google.protobuf.CodedOutputStream
-          .computeBytesSizeNoTag(studyContent_.get(i));
-      }
-      size += dataSize;
-      size += 1 * getStudyContentList().size();
-    }
     if (((bitField0_ & 0x00000020) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(7, isOpen_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(6, studyContent_);
     }
     if (((bitField0_ & 0x00000040) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(8, isTop_);
+        .computeBoolSize(7, isOpen_);
     }
     if (((bitField0_ & 0x00000080) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(8, isTop_);
+    }
+    if (((bitField0_ & 0x00000100) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(9, readCount_);
     }
@@ -511,8 +523,11 @@ private static final long serialVersionUID = 0L;
       if (!getStudyTip()
           .equals(other.getStudyTip())) return false;
     }
-    if (!getStudyContentList()
-        .equals(other.getStudyContentList())) return false;
+    if (hasStudyContent() != other.hasStudyContent()) return false;
+    if (hasStudyContent()) {
+      if (!getStudyContent()
+          .equals(other.getStudyContent())) return false;
+    }
     if (hasIsOpen() != other.hasIsOpen()) return false;
     if (hasIsOpen()) {
       if (getIsOpen()
@@ -560,9 +575,9 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + STUDYTIP_FIELD_NUMBER;
       hash = (53 * hash) + getStudyTip().hashCode();
     }
-    if (getStudyContentCount() > 0) {
+    if (hasStudyContent()) {
       hash = (37 * hash) + STUDYCONTENT_FIELD_NUMBER;
-      hash = (53 * hash) + getStudyContentList().hashCode();
+      hash = (53 * hash) + getStudyContent().hashCode();
     }
     if (hasIsOpen()) {
       hash = (37 * hash) + ISOPEN_FIELD_NUMBER;
@@ -718,7 +733,7 @@ private static final long serialVersionUID = 0L;
       studyCreateTime_ = 0L;
       studyTitle_ = "";
       studyTip_ = "";
-      studyContent_ = emptyList(com.google.protobuf.ByteString.class);
+      studyContent_ = "";
       isOpen_ = false;
       isTop_ = false;
       readCount_ = 0;
@@ -777,20 +792,20 @@ private static final long serialVersionUID = 0L;
         to_bitField0_ |= 0x00000010;
       }
       if (((from_bitField0_ & 0x00000020) != 0)) {
-        studyContent_.makeImmutable();
         result.studyContent_ = studyContent_;
+        to_bitField0_ |= 0x00000020;
       }
       if (((from_bitField0_ & 0x00000040) != 0)) {
         result.isOpen_ = isOpen_;
-        to_bitField0_ |= 0x00000020;
+        to_bitField0_ |= 0x00000040;
       }
       if (((from_bitField0_ & 0x00000080) != 0)) {
         result.isTop_ = isTop_;
-        to_bitField0_ |= 0x00000040;
+        to_bitField0_ |= 0x00000080;
       }
       if (((from_bitField0_ & 0x00000100) != 0)) {
         result.readCount_ = readCount_;
-        to_bitField0_ |= 0x00000080;
+        to_bitField0_ |= 0x00000100;
       }
       result.bitField0_ |= to_bitField0_;
     }
@@ -826,15 +841,9 @@ private static final long serialVersionUID = 0L;
         bitField0_ |= 0x00000010;
         onChanged();
       }
-      if (!other.studyContent_.isEmpty()) {
-        if (studyContent_.isEmpty()) {
-          studyContent_ = other.studyContent_;
-          studyContent_.makeImmutable();
-          bitField0_ |= 0x00000020;
-        } else {
-          ensureStudyContentIsMutable();
-          studyContent_.addAll(other.studyContent_);
-        }
+      if (other.hasStudyContent()) {
+        studyContent_ = other.studyContent_;
+        bitField0_ |= 0x00000020;
         onChanged();
       }
       if (other.hasIsOpen()) {
@@ -898,9 +907,8 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 42
             case 50: {
-              com.google.protobuf.ByteString v = input.readBytes();
-              ensureStudyContentIsMutable();
-              studyContent_.add(v);
+              studyContent_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000020;
               break;
             } // case 50
             case 56: {
@@ -1335,64 +1343,72 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> studyContent_ = emptyList(com.google.protobuf.ByteString.class);
-    private void ensureStudyContentIsMutable() {
-      if (!studyContent_.isModifiable()) {
-        studyContent_ = makeMutableCopy(studyContent_);
+    private java.lang.Object studyContent_ = "";
+    /**
+     * <pre>
+     * 学习内容
+     * </pre>
+     *
+     * <code>optional string studyContent = 6;</code>
+     * @return Whether the studyContent field is set.
+     */
+    public boolean hasStudyContent() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <pre>
+     * 学习内容
+     * </pre>
+     *
+     * <code>optional string studyContent = 6;</code>
+     * @return The studyContent.
+     */
+    public java.lang.String getStudyContent() {
+      java.lang.Object ref = studyContent_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        studyContent_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
       }
-      bitField0_ |= 0x00000020;
     }
     /**
      * <pre>
      * 学习内容
      * </pre>
      *
-     * <code>repeated bytes studyContent = 6;</code>
-     * @return A list containing the studyContent.
+     * <code>optional string studyContent = 6;</code>
+     * @return The bytes for studyContent.
      */
-    public java.util.List<com.google.protobuf.ByteString>
-        getStudyContentList() {
-      studyContent_.makeImmutable();
-      return studyContent_;
+    public com.google.protobuf.ByteString
+        getStudyContentBytes() {
+      java.lang.Object ref = studyContent_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        studyContent_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
     /**
      * <pre>
      * 学习内容
      * </pre>
      *
-     * <code>repeated bytes studyContent = 6;</code>
-     * @return The count of studyContent.
-     */
-    public int getStudyContentCount() {
-      return studyContent_.size();
-    }
-    /**
-     * <pre>
-     * 学习内容
-     * </pre>
-     *
-     * <code>repeated bytes studyContent = 6;</code>
-     * @param index The index of the element to return.
-     * @return The studyContent at the given index.
-     */
-    public com.google.protobuf.ByteString getStudyContent(int index) {
-      return studyContent_.get(index);
-    }
-    /**
-     * <pre>
-     * 学习内容
-     * </pre>
-     *
-     * <code>repeated bytes studyContent = 6;</code>
-     * @param index The index to set the value at.
+     * <code>optional string studyContent = 6;</code>
      * @param value The studyContent to set.
      * @return This builder for chaining.
      */
     public Builder setStudyContent(
-        int index, com.google.protobuf.ByteString value) {
+        java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
-      ensureStudyContentIsMutable();
-      studyContent_.set(index, value);
+      studyContent_ = value;
       bitField0_ |= 0x00000020;
       onChanged();
       return this;
@@ -1402,47 +1418,30 @@ private static final long serialVersionUID = 0L;
      * 学习内容
      * </pre>
      *
-     * <code>repeated bytes studyContent = 6;</code>
-     * @param value The studyContent to add.
-     * @return This builder for chaining.
-     */
-    public Builder addStudyContent(com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
-      ensureStudyContentIsMutable();
-      studyContent_.add(value);
-      bitField0_ |= 0x00000020;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 学习内容
-     * </pre>
-     *
-     * <code>repeated bytes studyContent = 6;</code>
-     * @param values The studyContent to add.
-     * @return This builder for chaining.
-     */
-    public Builder addAllStudyContent(
-        java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
-      ensureStudyContentIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, studyContent_);
-      bitField0_ |= 0x00000020;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 学习内容
-     * </pre>
-     *
-     * <code>repeated bytes studyContent = 6;</code>
+     * <code>optional string studyContent = 6;</code>
      * @return This builder for chaining.
      */
     public Builder clearStudyContent() {
-      studyContent_ = emptyList(com.google.protobuf.ByteString.class);
+      studyContent_ = getDefaultInstance().getStudyContent();
       bitField0_ = (bitField0_ & ~0x00000020);
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 学习内容
+     * </pre>
+     *
+     * <code>optional string studyContent = 6;</code>
+     * @param value The bytes for studyContent to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStudyContentBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      studyContent_ = value;
+      bitField0_ |= 0x00000020;
       onChanged();
       return this;
     }

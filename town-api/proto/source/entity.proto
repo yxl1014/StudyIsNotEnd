@@ -7,6 +7,13 @@ option java_multiple_files = true;
 
 import "base.proto";
 
+message TokenInfo
+{
+  optional int32 userTel = 1; // 用户电话
+  optional int64 createTime = 2; // token创建时间
+  optional string randomCode = 3; // 随机编号
+}
+
 // 登录用户信息
 message UserInfo {
   optional int32 userTel = 1;// 用户电话
@@ -43,7 +50,7 @@ message NoticeInfo{
   optional string writerName = 7; // 发布者姓名
   optional bool isTop = 8; // 是否置顶
   optional bool isAcceptRead = 9; // 是否需要确认阅读
-  repeated bytes noticeAtt = 10; // 公告附件-直接就是二进制文件
+  optional bytes noticeAtt = 10; // 公告附件-直接就是二进制文件
 }
 
 // 公告类型
@@ -88,7 +95,7 @@ message QuestionInfo{
   optional int32 questId = 1; // 自增唯一id
   optional QuestionType questType = 2; // 问题类型
   optional string questContext = 3; // 问题详细描述
-  repeated bytes questPhoto = 4; // 问题上传附件
+  optional bytes questPhoto = 4; // 问题上传附件
   optional int32 questWriterTel = 5; // 问题提出者电话
   optional QuestionNodeType nodeType = 6; // 问题节点
   optional int32 choiceUser = 7; // 指定处理人电话
@@ -119,7 +126,7 @@ message QuestionHandlingInfo{
   optional int32 questId = 2; // 事务Id
   optional QuestionHandlingType handlingType = 3; // 处理结果
   optional int32 handlingUserTel = 4; //处理人
-  repeated bytes handlingCtx = 5; // 处理凭证
+  optional bytes handlingCtx = 5; // 处理凭证
   optional int64 handlingTime = 6; // 处理时间 MS
 }
 
@@ -145,7 +152,7 @@ message StudyInfo{
   optional int64 studyCreateTime = 3; // 学习内容创建时间
   optional string studyTitle = 4; // 学习标题
   optional string studyTip = 5; // 学习内容简介
-  repeated bytes studyContent = 6; // 学习内容
+  optional string studyContent = 6; // 学习内容
   optional bool isOpen = 7; // 是否公开
   optional bool isTop = 8; // 是否首页展示
   optional int32 readCount = 9; // 阅读次数

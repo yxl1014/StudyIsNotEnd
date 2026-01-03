@@ -35,7 +35,7 @@ public final class BaseProto extends com.google.protobuf.GeneratedFile {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nbase.proto\022\002po*\273\t\n\007MsgType\022\017\n\013TMT_DEFA" +
+      "\n\nbase.proto\022\002po*\316\t\n\007MsgType\022\017\n\013TMT_DEFA" +
       "ULT\020\000\022\014\n\010TMT_TEST\020\001\022\021\n\rTMT_TEST_RESP\020\002\022\020" +
       "\n\014TMT_LoginReq\020\003\022\020\n\014TMT_LoginRsp\020\004\022\023\n\017TM" +
       "T_RegisterReq\020\005\022\023\n\017TMT_RegisterRsp\020\006\022\031\n\025" +
@@ -65,8 +65,8 @@ public final class BaseProto extends com.google.protobuf.GeneratedFile {
       "ePeopleRsp\020*\022\"\n\036TMT_CreatePeopleUpdateAp" +
       "plyReq\020+\022\"\n\036TMT_CreatePeopleUpdateApplyR" +
       "sp\020,\022\037\n\033TMT_DelPeopleUpdateApplyReq\020-\022\037\n" +
-      "\033TMT_DelPeopleUpdateApplyRsp\020.B\021\n\002poB\tBa" +
-      "seProtoP\001b\006proto3"
+      "\033TMT_DelPeopleUpdateApplyRsp\020.\022\021\n\rTMT_No" +
+      "BodyRsp\020/B\021\n\002poB\tBaseProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

@@ -139,29 +139,29 @@ public interface StudyInfoOrBuilder extends
    * 学习内容
    * </pre>
    *
-   * <code>repeated bytes studyContent = 6;</code>
-   * @return A list containing the studyContent.
+   * <code>optional string studyContent = 6;</code>
+   * @return Whether the studyContent field is set.
    */
-  java.util.List<com.google.protobuf.ByteString> getStudyContentList();
+  boolean hasStudyContent();
   /**
    * <pre>
    * 学习内容
    * </pre>
    *
-   * <code>repeated bytes studyContent = 6;</code>
-   * @return The count of studyContent.
+   * <code>optional string studyContent = 6;</code>
+   * @return The studyContent.
    */
-  int getStudyContentCount();
+  java.lang.String getStudyContent();
   /**
    * <pre>
    * 学习内容
    * </pre>
    *
-   * <code>repeated bytes studyContent = 6;</code>
-   * @param index The index of the element to return.
-   * @return The studyContent at the given index.
+   * <code>optional string studyContent = 6;</code>
+   * @return The bytes for studyContent.
    */
-  com.google.protobuf.ByteString getStudyContent(int index);
+  com.google.protobuf.ByteString
+      getStudyContentBytes();
 
   /**
    * <pre>

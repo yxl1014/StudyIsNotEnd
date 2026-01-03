@@ -91,29 +91,19 @@ public interface QuestionInfoOrBuilder extends
    * 问题上传附件
    * </pre>
    *
-   * <code>repeated bytes questPhoto = 4;</code>
-   * @return A list containing the questPhoto.
+   * <code>optional bytes questPhoto = 4;</code>
+   * @return Whether the questPhoto field is set.
    */
-  java.util.List<com.google.protobuf.ByteString> getQuestPhotoList();
+  boolean hasQuestPhoto();
   /**
    * <pre>
    * 问题上传附件
    * </pre>
    *
-   * <code>repeated bytes questPhoto = 4;</code>
-   * @return The count of questPhoto.
+   * <code>optional bytes questPhoto = 4;</code>
+   * @return The questPhoto.
    */
-  int getQuestPhotoCount();
-  /**
-   * <pre>
-   * 问题上传附件
-   * </pre>
-   *
-   * <code>repeated bytes questPhoto = 4;</code>
-   * @param index The index of the element to return.
-   * @return The questPhoto at the given index.
-   */
-  com.google.protobuf.ByteString getQuestPhoto(int index);
+  com.google.protobuf.ByteString getQuestPhoto();
 
   /**
    * <pre>
@@ -139,28 +129,28 @@ public interface QuestionInfoOrBuilder extends
    * 问题节点
    * </pre>
    *
-   * <code>optional .po.QuestionNodeType nodeTpe = 6;</code>
-   * @return Whether the nodeTpe field is set.
+   * <code>optional .po.QuestionNodeType nodeType = 6;</code>
+   * @return Whether the nodeType field is set.
    */
-  boolean hasNodeTpe();
+  boolean hasNodeType();
   /**
    * <pre>
    * 问题节点
    * </pre>
    *
-   * <code>optional .po.QuestionNodeType nodeTpe = 6;</code>
-   * @return The enum numeric value on the wire for nodeTpe.
+   * <code>optional .po.QuestionNodeType nodeType = 6;</code>
+   * @return The enum numeric value on the wire for nodeType.
    */
-  int getNodeTpeValue();
+  int getNodeTypeValue();
   /**
    * <pre>
    * 问题节点
    * </pre>
    *
-   * <code>optional .po.QuestionNodeType nodeTpe = 6;</code>
-   * @return The nodeTpe.
+   * <code>optional .po.QuestionNodeType nodeType = 6;</code>
+   * @return The nodeType.
    */
-  po.QuestionNodeType getNodeTpe();
+  po.QuestionNodeType getNodeType();
 
   /**
    * <pre>
@@ -180,4 +170,23 @@ public interface QuestionInfoOrBuilder extends
    * @return The choiceUser.
    */
   int getChoiceUser();
+
+  /**
+   * <pre>
+   * 问题时间
+   * </pre>
+   *
+   * <code>optional int64 questTime = 8;</code>
+   * @return Whether the questTime field is set.
+   */
+  boolean hasQuestTime();
+  /**
+   * <pre>
+   * 问题时间
+   * </pre>
+   *
+   * <code>optional int64 questTime = 8;</code>
+   * @return The questTime.
+   */
+  long getQuestTime();
 }

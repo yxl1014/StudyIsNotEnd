@@ -1,6 +1,7 @@
 package demo.netty;
 
-import demo.controller.ServiceManager;
+import demo.manager.ServiceManager;
+import demo.transfer.RequestTransfer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -14,13 +15,16 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties
 public class NettyConfig {
 
-    @Autowired
-    private ServiceManager serviceManager;
+    private final ServiceManager serviceManager;
+
+    private final RequestTransfer requestTransfer;
 
     final NettyProperties nettyProperties;
 
-    public NettyConfig(NettyProperties nettyProperties) {
+    public NettyConfig(NettyProperties nettyProperties, ServiceManager serviceManager, RequestTransfer requestTransfer) {
         this.nettyProperties = nettyProperties;
+        this.serviceManager = serviceManager;
+        this.requestTransfer = requestTransfer;
     }
 
     /**
@@ -50,7 +54,7 @@ public class NettyConfig {
      */
     @Bean
     public ServerBootstrap serverBootstrap() {
-        ServerBootstrap serverBootstrap = new ServerBootstrap()
+        return new ServerBootstrap()
                 // 指定使用的线程组
                 .group(boosGroup(), workerGroup())
                 // 指定使用的通道
@@ -58,7 +62,6 @@ public class NettyConfig {
                 // 指定连接超时时间
                 .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, nettyProperties.getTimeout())
                 // 指定worker处理器
-                .childHandler(new NettyServerHandler(serviceManager));
-        return serverBootstrap;
+                .childHandler(new NettyServerHandler(serviceManager, requestTransfer));
     }
 }

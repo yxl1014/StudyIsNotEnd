@@ -33,7 +33,7 @@ private static final long serialVersionUID = 0L;
   }
   private QuestionHandlingInfo() {
     handlingType_ = 0;
-    handlingCtx_ = emptyList(com.google.protobuf.ByteString.class);
+    handlingCtx_ = com.google.protobuf.ByteString.EMPTY;
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
@@ -169,44 +169,30 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int HANDLINGCTX_FIELD_NUMBER = 5;
-  @SuppressWarnings("serial")
-  private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> handlingCtx_ =
-      emptyList(com.google.protobuf.ByteString.class);
+  private com.google.protobuf.ByteString handlingCtx_ = com.google.protobuf.ByteString.EMPTY;
   /**
    * <pre>
    * 处理凭证
    * </pre>
    *
-   * <code>repeated bytes handlingCtx = 5;</code>
-   * @return A list containing the handlingCtx.
+   * <code>optional bytes handlingCtx = 5;</code>
+   * @return Whether the handlingCtx field is set.
    */
   @java.lang.Override
-  public java.util.List<com.google.protobuf.ByteString>
-      getHandlingCtxList() {
+  public boolean hasHandlingCtx() {
+    return ((bitField0_ & 0x00000010) != 0);
+  }
+  /**
+   * <pre>
+   * 处理凭证
+   * </pre>
+   *
+   * <code>optional bytes handlingCtx = 5;</code>
+   * @return The handlingCtx.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getHandlingCtx() {
     return handlingCtx_;
-  }
-  /**
-   * <pre>
-   * 处理凭证
-   * </pre>
-   *
-   * <code>repeated bytes handlingCtx = 5;</code>
-   * @return The count of handlingCtx.
-   */
-  public int getHandlingCtxCount() {
-    return handlingCtx_.size();
-  }
-  /**
-   * <pre>
-   * 处理凭证
-   * </pre>
-   *
-   * <code>repeated bytes handlingCtx = 5;</code>
-   * @param index The index of the element to return.
-   * @return The handlingCtx at the given index.
-   */
-  public com.google.protobuf.ByteString getHandlingCtx(int index) {
-    return handlingCtx_.get(index);
   }
 
   public static final int HANDLINGTIME_FIELD_NUMBER = 6;
@@ -221,7 +207,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasHandlingTime() {
-    return ((bitField0_ & 0x00000010) != 0);
+    return ((bitField0_ & 0x00000020) != 0);
   }
   /**
    * <pre>
@@ -262,10 +248,10 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000008) != 0)) {
       output.writeInt32(4, handlingUserTel_);
     }
-    for (int i = 0; i < handlingCtx_.size(); i++) {
-      output.writeBytes(5, handlingCtx_.get(i));
-    }
     if (((bitField0_ & 0x00000010) != 0)) {
+      output.writeBytes(5, handlingCtx_);
+    }
+    if (((bitField0_ & 0x00000020) != 0)) {
       output.writeInt64(6, handlingTime_);
     }
     getUnknownFields().writeTo(output);
@@ -293,16 +279,11 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(4, handlingUserTel_);
     }
-    {
-      int dataSize = 0;
-      for (int i = 0; i < handlingCtx_.size(); i++) {
-        dataSize += com.google.protobuf.CodedOutputStream
-          .computeBytesSizeNoTag(handlingCtx_.get(i));
-      }
-      size += dataSize;
-      size += 1 * getHandlingCtxList().size();
-    }
     if (((bitField0_ & 0x00000010) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBytesSize(5, handlingCtx_);
+    }
+    if (((bitField0_ & 0x00000020) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(6, handlingTime_);
     }
@@ -340,8 +321,11 @@ private static final long serialVersionUID = 0L;
       if (getHandlingUserTel()
           != other.getHandlingUserTel()) return false;
     }
-    if (!getHandlingCtxList()
-        .equals(other.getHandlingCtxList())) return false;
+    if (hasHandlingCtx() != other.hasHandlingCtx()) return false;
+    if (hasHandlingCtx()) {
+      if (!getHandlingCtx()
+          .equals(other.getHandlingCtx())) return false;
+    }
     if (hasHandlingTime() != other.hasHandlingTime()) return false;
     if (hasHandlingTime()) {
       if (getHandlingTime()
@@ -374,9 +358,9 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + HANDLINGUSERTEL_FIELD_NUMBER;
       hash = (53 * hash) + getHandlingUserTel();
     }
-    if (getHandlingCtxCount() > 0) {
+    if (hasHandlingCtx()) {
       hash = (37 * hash) + HANDLINGCTX_FIELD_NUMBER;
-      hash = (53 * hash) + getHandlingCtxList().hashCode();
+      hash = (53 * hash) + getHandlingCtx().hashCode();
     }
     if (hasHandlingTime()) {
       hash = (37 * hash) + HANDLINGTIME_FIELD_NUMBER;
@@ -522,7 +506,7 @@ private static final long serialVersionUID = 0L;
       questId_ = 0;
       handlingType_ = 0;
       handlingUserTel_ = 0;
-      handlingCtx_ = emptyList(com.google.protobuf.ByteString.class);
+      handlingCtx_ = com.google.protobuf.ByteString.EMPTY;
       handlingTime_ = 0L;
       return this;
     }
@@ -575,12 +559,12 @@ private static final long serialVersionUID = 0L;
         to_bitField0_ |= 0x00000008;
       }
       if (((from_bitField0_ & 0x00000010) != 0)) {
-        handlingCtx_.makeImmutable();
         result.handlingCtx_ = handlingCtx_;
+        to_bitField0_ |= 0x00000010;
       }
       if (((from_bitField0_ & 0x00000020) != 0)) {
         result.handlingTime_ = handlingTime_;
-        to_bitField0_ |= 0x00000010;
+        to_bitField0_ |= 0x00000020;
       }
       result.bitField0_ |= to_bitField0_;
     }
@@ -609,16 +593,8 @@ private static final long serialVersionUID = 0L;
       if (other.hasHandlingUserTel()) {
         setHandlingUserTel(other.getHandlingUserTel());
       }
-      if (!other.handlingCtx_.isEmpty()) {
-        if (handlingCtx_.isEmpty()) {
-          handlingCtx_ = other.handlingCtx_;
-          handlingCtx_.makeImmutable();
-          bitField0_ |= 0x00000010;
-        } else {
-          ensureHandlingCtxIsMutable();
-          handlingCtx_.addAll(other.handlingCtx_);
-        }
-        onChanged();
+      if (other.hasHandlingCtx()) {
+        setHandlingCtx(other.getHandlingCtx());
       }
       if (other.hasHandlingTime()) {
         setHandlingTime(other.getHandlingTime());
@@ -670,9 +646,8 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 32
             case 42: {
-              com.google.protobuf.ByteString v = input.readBytes();
-              ensureHandlingCtxIsMutable();
-              handlingCtx_.add(v);
+              handlingCtx_ = input.readBytes();
+              bitField0_ |= 0x00000010;
               break;
             } // case 42
             case 48: {
@@ -947,24 +922,29 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> handlingCtx_ = emptyList(com.google.protobuf.ByteString.class);
-    private void ensureHandlingCtxIsMutable() {
-      if (!handlingCtx_.isModifiable()) {
-        handlingCtx_ = makeMutableCopy(handlingCtx_);
-      }
-      bitField0_ |= 0x00000010;
+    private com.google.protobuf.ByteString handlingCtx_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <pre>
+     * 处理凭证
+     * </pre>
+     *
+     * <code>optional bytes handlingCtx = 5;</code>
+     * @return Whether the handlingCtx field is set.
+     */
+    @java.lang.Override
+    public boolean hasHandlingCtx() {
+      return ((bitField0_ & 0x00000010) != 0);
     }
     /**
      * <pre>
      * 处理凭证
      * </pre>
      *
-     * <code>repeated bytes handlingCtx = 5;</code>
-     * @return A list containing the handlingCtx.
+     * <code>optional bytes handlingCtx = 5;</code>
+     * @return The handlingCtx.
      */
-    public java.util.List<com.google.protobuf.ByteString>
-        getHandlingCtxList() {
-      handlingCtx_.makeImmutable();
+    @java.lang.Override
+    public com.google.protobuf.ByteString getHandlingCtx() {
       return handlingCtx_;
     }
     /**
@@ -972,39 +952,13 @@ private static final long serialVersionUID = 0L;
      * 处理凭证
      * </pre>
      *
-     * <code>repeated bytes handlingCtx = 5;</code>
-     * @return The count of handlingCtx.
-     */
-    public int getHandlingCtxCount() {
-      return handlingCtx_.size();
-    }
-    /**
-     * <pre>
-     * 处理凭证
-     * </pre>
-     *
-     * <code>repeated bytes handlingCtx = 5;</code>
-     * @param index The index of the element to return.
-     * @return The handlingCtx at the given index.
-     */
-    public com.google.protobuf.ByteString getHandlingCtx(int index) {
-      return handlingCtx_.get(index);
-    }
-    /**
-     * <pre>
-     * 处理凭证
-     * </pre>
-     *
-     * <code>repeated bytes handlingCtx = 5;</code>
-     * @param index The index to set the value at.
+     * <code>optional bytes handlingCtx = 5;</code>
      * @param value The handlingCtx to set.
      * @return This builder for chaining.
      */
-    public Builder setHandlingCtx(
-        int index, com.google.protobuf.ByteString value) {
+    public Builder setHandlingCtx(com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
-      ensureHandlingCtxIsMutable();
-      handlingCtx_.set(index, value);
+      handlingCtx_ = value;
       bitField0_ |= 0x00000010;
       onChanged();
       return this;
@@ -1014,47 +968,12 @@ private static final long serialVersionUID = 0L;
      * 处理凭证
      * </pre>
      *
-     * <code>repeated bytes handlingCtx = 5;</code>
-     * @param value The handlingCtx to add.
-     * @return This builder for chaining.
-     */
-    public Builder addHandlingCtx(com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
-      ensureHandlingCtxIsMutable();
-      handlingCtx_.add(value);
-      bitField0_ |= 0x00000010;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 处理凭证
-     * </pre>
-     *
-     * <code>repeated bytes handlingCtx = 5;</code>
-     * @param values The handlingCtx to add.
-     * @return This builder for chaining.
-     */
-    public Builder addAllHandlingCtx(
-        java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
-      ensureHandlingCtxIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, handlingCtx_);
-      bitField0_ |= 0x00000010;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 处理凭证
-     * </pre>
-     *
-     * <code>repeated bytes handlingCtx = 5;</code>
+     * <code>optional bytes handlingCtx = 5;</code>
      * @return This builder for chaining.
      */
     public Builder clearHandlingCtx() {
-      handlingCtx_ = emptyList(com.google.protobuf.ByteString.class);
       bitField0_ = (bitField0_ & ~0x00000010);
+      handlingCtx_ = getDefaultInstance().getHandlingCtx();
       onChanged();
       return this;
     }

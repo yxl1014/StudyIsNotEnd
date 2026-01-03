@@ -391,6 +391,14 @@ public enum MsgType
    * <code>TMT_DelPeopleUpdateApplyRsp = 46;</code>
    */
   TMT_DelPeopleUpdateApplyRsp(46),
+  /**
+   * <pre>
+   * 无内容返回
+   * </pre>
+   *
+   * <code>TMT_NoBodyRsp = 47;</code>
+   */
+  TMT_NoBodyRsp(47),
   UNRECOGNIZED(-1),
   ;
 
@@ -779,6 +787,14 @@ public enum MsgType
    * <code>TMT_DelPeopleUpdateApplyRsp = 46;</code>
    */
   public static final int TMT_DelPeopleUpdateApplyRsp_VALUE = 46;
+  /**
+   * <pre>
+   * 无内容返回
+   * </pre>
+   *
+   * <code>TMT_NoBodyRsp = 47;</code>
+   */
+  public static final int TMT_NoBodyRsp_VALUE = 47;
 
 
   public final int getNumber() {
@@ -852,6 +868,7 @@ public enum MsgType
       case 44: return TMT_CreatePeopleUpdateApplyRsp;
       case 45: return TMT_DelPeopleUpdateApplyReq;
       case 46: return TMT_DelPeopleUpdateApplyRsp;
+      case 47: return TMT_NoBodyRsp;
       default: return null;
     }
   }
