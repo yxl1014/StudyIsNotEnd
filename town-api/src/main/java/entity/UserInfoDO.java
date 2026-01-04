@@ -2,8 +2,10 @@ package entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class UserInfoDO {
+public class UserInfoDO implements Serializable {
     private Integer userTel;
     private String userName;
     private String userPwd;

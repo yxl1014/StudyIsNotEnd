@@ -16,6 +16,10 @@ import po.UserInfo;
 import townInterface.IDaoService;
 import townInterface.IRedisService;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 @DubboService(timeout = 300000, retries = 0)
 public class DaoManager implements IDaoService {
     private static final Logger log = LoggerFactory.getLogger(DaoManager.class);
@@ -53,9 +57,6 @@ public class DaoManager implements IDaoService {
     @Resource
     private UserStarStudyInfoMapper userStarStudyInfoMapper;
 
-    @Resource
-    private RedisManager redisManager;
-
     @Autowired
     private NoticeInfoConvert noticeInfoConvert;
     @Autowired
@@ -78,11 +79,6 @@ public class DaoManager implements IDaoService {
     private UserReadNoticeInfoConvert userReadNoticeInfoConvert;
     @Autowired
     private UserStarStudyInfoConvert userStarStudyInfoConvert;
-
-    @Override
-    public IRedisService redisService() {
-        return redisManager;
-    }
 
     @Override
     public UserInfoDO selectById(Integer userTel) {
@@ -112,5 +108,48 @@ public class DaoManager implements IDaoService {
     @Override
     public UserInfo toProto(UserInfoDO entity) {
         return userInfoConvert.toProto(entity);
+    }
+
+
+    @Resource
+    private RedisManager redisManager;
+
+    /* ======================= Key ======================= */
+
+    @Override
+    public boolean redis_exists(String key){
+        return  redisManager.exists(key);
+    }
+
+    @Override
+    public boolean redis_delete(String key){
+        return redisManager.delete(key);
+    }
+
+    @Override
+    public boolean redis_expire(String key, long seconds){
+        return redisManager.expire(key, seconds);
+    }
+
+    @Override
+    public long redis_getExpire(String key){
+        return redisManager.getExpire(key);
+    }
+
+    /* ======================= String ======================= */
+
+    @Override
+    public void redis_set(String key, Object value){
+        redisManager.set(key, value);
+    }
+
+    @Override
+    public void redis_set(String key, Object value, long seconds){
+        redisManager.set(key,value,seconds);
+    }
+
+    @Override
+    public Object redis_get(String key){
+        return redisManager.get(key);
     }
 }

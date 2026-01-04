@@ -341,14 +341,14 @@ public final class ProtocolProto extends com.google.protobuf.GeneratedFile {
       "eopleUpdateApplyH\000\210\001\001B\010\n\006_apply\"\034\n\032Creat" +
       "ePeopleUpdateApplyRsp\";\n\027DelPeopleUpdate" +
       "ApplyReq\022\024\n\007applyId\030\001 \001(\005H\000\210\001\001B\n\n\010_apply" +
-      "Id\"\031\n\027DelPeopleUpdateApplyRsp*\345\001\n\010RespCo" +
+      "Id\"\031\n\027DelPeopleUpdateApplyRsp*\374\001\n\010RespCo" +
       "de\022\n\n\006TRC_OK\020\000\022\013\n\007TRC_ERR\020\001\022\027\n\023TRC_TOKEN" +
       "_NOT_EXIST\020\002\022\025\n\021TRC_TOKEN_INVALID\020\003\022\032\n\026T" +
       "RC_PARSE_PROTOCOL_ERR\020\004\022\031\n\025TRC_REQUEST_B" +
-      "ODY_NULL\020\005\022\026\n\022TRC_USER_NOT_EXIST\020\006\022\024\n\020TR" +
-      "C_PASSWORD_ERR\020\007\022\031\n\025TRC_DB_DATA_NOT_FOUN" +
-      "D\020\010\022\020\n\014TRC_DB_ERROR\020\tB\025\n\002poB\rProtocolPro" +
-      "toP\001b\006proto3"
+      "ODY_NULL\020\005\022\031\n\025TRC_DB_DATA_NOT_FOUND\020d\022\020\n" +
+      "\014TRC_DB_ERROR\020e\022\027\n\022TRC_USER_NOT_EXIST\020\311\001" +
+      "\022\023\n\016TRC_USER_EXIST\020\312\001\022\025\n\020TRC_PASSWORD_ER" +
+      "R\020\313\001B\025\n\002poB\rProtocolProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

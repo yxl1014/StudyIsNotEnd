@@ -2,8 +2,10 @@ package entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class QuestionInfoDO {
+public class QuestionInfoDO implements Serializable {
     private Integer questionId;
     private Integer questionType;
     private String questionCtx;

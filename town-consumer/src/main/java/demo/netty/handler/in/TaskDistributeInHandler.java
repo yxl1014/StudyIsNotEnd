@@ -51,6 +51,16 @@ public class TaskDistributeInHandler extends SimpleChannelInboundHandler<Request
                         return;
                     }
                     responseMsg = requestTransfer.login(loginReq);
+                    break;
+                }
+                case TMT_RegisterReq:{
+                    RegisterReq registerReq = RegisterReq.parseFrom((msg.getMsg()));
+                    if (registerReq == null) {
+                        ctx.writeAndFlush(CommonEntityBuilder.buildNoBodyResp(RespCode.TRC_REQUEST_BODY_NULL));
+                        return;
+                    }
+                    responseMsg = requestTransfer.register(registerReq);
+                    break;
                 }
                 default: {
                     log.info("xxx");

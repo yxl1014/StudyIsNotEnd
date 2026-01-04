@@ -1,15 +1,14 @@
 package util;
 
+import entity.TokenInfoDO;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-import po.TokenInfo;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
-import java.util.HashMap;
 
 public class JwtUtil {
 
@@ -27,7 +26,7 @@ public class JwtUtil {
     /**
      * 生成 Token（claims 为 TokenInfo 对象）
      */
-    public static String generateToken(String subject, TokenInfo tokenInfo) {
+    public static String generateToken(String subject, TokenInfoDO tokenInfo) {
         try {
             Date now = new Date();
             Date expireDate = new Date(now.getTime() + EXPIRATION);
@@ -47,10 +46,10 @@ public class JwtUtil {
     /**
      * 从 Token 中解析 TokenInfo
      */
-    public static TokenInfo parseTokenInfo(String token) {
+    public static TokenInfoDO parseTokenInfo(String token) {
         try {
             Claims claims = parseClaims(token);
-            return claims.get(TOKEN_INFO_KEY, TokenInfo.class);
+            return claims.get(TOKEN_INFO_KEY, TokenInfoDO.class);
         } catch (Exception e) {
             throw new RuntimeException("解析 JWT 失败", e);
         }

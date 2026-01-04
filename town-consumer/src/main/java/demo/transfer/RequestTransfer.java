@@ -4,10 +4,7 @@ package demo.transfer;
 import demo.manager.ServiceManager;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Component;
-import po.LoginReq;
-import po.LoginRsp;
-import po.ResponseMsg;
-import po.UserInfo;
+import po.*;
 
 @Component
 public class RequestTransfer {
@@ -17,5 +14,9 @@ public class RequestTransfer {
 
     public ResponseMsg login(LoginReq msg) {
         return serviceManager.userService.login(msg);
+    }
+
+    public ResponseMsg register(RegisterReq msg) {
+        return serviceManager.userService.register(msg);
     }
 }

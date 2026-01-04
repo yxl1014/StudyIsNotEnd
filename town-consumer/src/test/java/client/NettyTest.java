@@ -99,17 +99,7 @@ public class NettyTest {
             new Thread(() -> {
                 while (true) {
                     try {
-                        LoginReq.Builder builder = LoginReq.newBuilder();
-                        builder.setUserTel(10001);
-                        builder.setUserPwd("123456");
-
-                        RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
-                        msgBuilder.setMsgType(MsgType.TMT_LoginReq);
-                        msgBuilder.setMsg(builder.build().toByteString());
-                        RequestMsg requestMsg = msgBuilder.build();
-                        System.out.println("发送消息：" + requestMsg.toString());
-                        //发送数据并刷新
-                        ctx.writeAndFlush(requestMsg);
+                        ctx.writeAndFlush(buildLoginRequestMsg());
                         Thread.sleep(300000);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
@@ -130,5 +120,41 @@ public class NettyTest {
             cause.printStackTrace();
             ctx.close();
         }
+
+        private RequestMsg buildLoginRequestMsg() {
+
+            LoginReq.Builder builder = LoginReq.newBuilder();
+            builder.setUserTel(10001);
+            builder.setUserPwd("123456");
+
+            RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
+            msgBuilder.setMsgType(MsgType.TMT_LoginReq);
+            msgBuilder.setMsg(builder.build().toByteString());
+            RequestMsg requestMsg = msgBuilder.build();
+            System.out.println("发送消息：" + requestMsg.toString());
+            return requestMsg;
+        }
+
+        private RequestMsg buildRegisterRequestMsg() {
+
+            RegisterReq.Builder register = RegisterReq.newBuilder();
+            UserInfo.Builder userInfo = UserInfo.newBuilder();
+            userInfo.setUserTel(10001);
+            userInfo.setUserPwd("123456");
+            userInfo.setUserName("xxx");
+            userInfo.setUserPower(TUserPower.TUP_CM);
+            userInfo.setUserTown("yyy");
+            userInfo.setFlagType(TUserFlagType.TUFT_DEFAULT);
+
+            register.setUserInfo(userInfo);
+
+            RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
+            msgBuilder.setMsgType(MsgType.TMT_RegisterReq);
+            msgBuilder.setMsg(register.build().toByteString());
+            RequestMsg requestMsg = msgBuilder.build();
+            System.out.println("发送消息：" + requestMsg.toString());
+            return requestMsg;
+        }
     }
+
 }

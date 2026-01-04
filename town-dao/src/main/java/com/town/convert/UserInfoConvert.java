@@ -13,8 +13,14 @@ public interface UserInfoConvert {
 
     /* Proto → Entity */
 
-    @Mapping(target = "userPower", expression = "java(proto.getUserPowerValue())")
-    @Mapping(target = "flagType", expression = "java(proto.getFlagTypeValue())")
+    @Mapping(
+            target = "userPower",
+            expression = "java(proto.getUserPowerValue())"
+    )
+    @Mapping(
+            target = "flagType",
+            expression = "java(proto.getFlagTypeValue())"
+    )
     UserInfoDO toDO(po.UserInfo proto);
 
     /* Entity → Proto */

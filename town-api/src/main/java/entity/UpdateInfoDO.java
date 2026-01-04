@@ -2,8 +2,10 @@ package entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class UpdateInfoDO {
+public class UpdateInfoDO implements Serializable {
     private Integer updateId;
     private Integer infoId;
     private Integer infoType;

@@ -7,13 +7,6 @@ option java_multiple_files = true;
 
 import "base.proto";
 
-message TokenInfo
-{
-  optional int32 userTel = 1; // 用户电话
-  optional int64 createTime = 2; // token创建时间
-  optional string randomCode = 3; // 随机编号
-}
-
 // 登录用户信息
 message UserInfo {
   optional int32 userTel = 1;// 用户电话

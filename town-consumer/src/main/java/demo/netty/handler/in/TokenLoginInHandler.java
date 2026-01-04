@@ -1,6 +1,7 @@
 package demo.netty.handler.in;
 
 import demo.manager.ServiceManager;
+import entity.TokenInfoDO;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.slf4j.Logger;
@@ -42,7 +43,7 @@ public class TokenLoginInHandler extends SimpleChannelInboundHandler<RequestMsg>
             }
         } else {
             // 验证token
-            TokenInfo tokenInfo = JwtUtil.parseTokenInfo(msg.getToken());
+            TokenInfoDO tokenInfo = JwtUtil.parseTokenInfo(msg.getToken());
 
             // 解析失败则返回
             if (tokenInfo == null) {
@@ -50,12 +51,10 @@ public class TokenLoginInHandler extends SimpleChannelInboundHandler<RequestMsg>
                 return;
             }
 
-            // 看看本地有没有
-            IRedisService redisService = serviceManager.daoService.redisService();
 
             // 看看redis
-            Object redisValue = redisService.get(ConstValue.Redis_Prefix_Token + tokenInfo.getUserTel());
-            TokenInfo redisCache = redisValue == null ? null : (TokenInfo) redisValue;
+            Object redisValue = serviceManager.daoService.redis_get(ConstValue.Redis_Prefix_Token + tokenInfo.getUserTel());
+            TokenInfoDO redisCache = redisValue == null ? null : (TokenInfoDO) redisValue;
 
             // 说明失效了
             if (redisCache == null || !redisCache.equals(tokenInfo)) {

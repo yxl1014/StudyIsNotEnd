@@ -2,8 +2,10 @@ package entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class NoticeInfoDO {
+public class NoticeInfoDO implements Serializable {
     private Integer noticeId;
     private Integer noticeType;
     private Long noticeCreateTime;

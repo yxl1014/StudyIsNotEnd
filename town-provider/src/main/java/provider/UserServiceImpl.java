@@ -1,5 +1,6 @@
 package provider;
 
+import entity.TokenInfoDO;
 import entity.UserInfoDO;
 import exception.BizException;
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -45,22 +46,43 @@ public class UserServiceImpl implements IUserService {
                 // 登陆成功
                 UserInfo proto = daoService.toProto(userInfoDO);
                 // 1、生成token
-                TokenInfo tokenInfo = TokenInfo.newBuilder()
-                        .setUserTel(proto.getUserTel())
-                        .setRandomCode(RandomUtil.RandomCode(6))
-                        .setCreateTime(new Date().getTime())
-                        .build();
+                TokenInfoDO tokenInfo = new TokenInfoDO(proto.getUserTel(),RandomUtil.RandomCode(6),new Date().getTime());
                 String token = JwtUtil.generateToken("login", tokenInfo);
 
                 // 2、token存redis
-                IRedisService redisService = daoService.redisService();
-                redisService.set("token", token, ConstValue.Redis_Token_Expire_Sec);
+                daoService.redis_set(ConstValue.Redis_Prefix_Token + proto.getUserTel(), token, ConstValue.Redis_Token_Expire_Sec);
 
                 // 3、设置返回值
                 builder.setErrCode(RespCode.TRC_OK);
                 resp.setUserInfo(proto).setToken(token);
             }
         }
+        builder.setMsg(resp.build().toByteString());
+        return builder.build();
+    }
+
+
+    @Override
+    public ResponseMsg register(RegisterReq msg) {
+        ResponseMsg.Builder builder = ResponseMsg.newBuilder().setMsgType(MsgType.TMT_RegisterRsp);
+        LoginRsp.Builder resp = LoginRsp.newBuilder();
+
+        UserInfoDO userInfoDO = daoService.toDO(msg.getUserInfo());
+        // 1、判断有没有存在的
+        UserInfoDO existUser = daoService.selectById(userInfoDO.getUserTel());
+        if (existUser != null) {
+            builder.setErrCode(RespCode.TRC_USER_EXIST);
+        } else {
+            // 2、设置创建时间
+            userInfoDO.setUserCreateTime(new Date().getTime());
+            int insert = daoService.insert(userInfoDO);
+            if (insert <= 0) {
+                builder.setErrCode(RespCode.TRC_DB_ERROR);
+            }else {
+                builder.setErrCode(RespCode.TRC_OK);
+            }
+        }
+
         builder.setMsg(resp.build().toByteString());
         return builder.build();
     }
