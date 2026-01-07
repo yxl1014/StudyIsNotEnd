@@ -8,4 +8,6 @@ public interface IUserService {
     ResponseMsg login(LoginReq msg);
 
     ResponseMsg register(RegisterReq msg);
+
+    ResponseMsg updateUserInfo(UpdateUserInfoReq msg);
 }

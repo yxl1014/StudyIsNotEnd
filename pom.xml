@@ -12,7 +12,7 @@
     <modules>
         <module>town-api</module>
         <module>town-consumer</module>
-        <module>town-provider</module>
+        <module>town-user-provider</module>
         <module>town-dao</module>
     </modules>
 

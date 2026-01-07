@@ -19,4 +19,8 @@ public class RequestTransfer {
     public ResponseMsg register(RegisterReq msg) {
         return serviceManager.userService.register(msg);
     }
+
+    public ResponseMsg updateUserInfo(UpdateUserInfoReq msg) {
+        return serviceManager.userService.updateUserInfo(msg);
+    }
 }

@@ -7,15 +7,16 @@ docker run -d `
   -v "C:\Users\16274\Desktop\classover\dockerfile\mysql\config:/etc/mysql/conf.d" `
   mysql
 
+生成AuthToken的方法，windows powershell [Convert]::ToBase64String((1..32 | ForEach-Object {Get-Random -Maximum 256}))
 
 docker run --name nacos-standalone-derby `
     -e MODE=standalone `
-    -e NACOS_AUTH_TOKEN=BWZraXPPsxGEFcPe4qPwHZRxYMFEpGq7hFKbqGabdz0= `
-    -e NACOS_AUTH_IDENTITY_KEY=${your_nacos_server_identity_key} `
-    -e NACOS_AUTH_IDENTITY_VALUE=${your_nacos_server_identity_value} `
-    -p 8080:8080 \
-    -p 8848:8848 \
-    -p 9848:9848 \
+    -e NACOS_AUTH_TOKEN=6FCpc+og8UTY4iKZUqHWTG7Sy54+rbOBshEU8goLh5I= `
+    -e NACOS_AUTH_IDENTITY_KEY=nacos `
+    -e NACOS_AUTH_IDENTITY_VALUE=123456 `
+    -p 8080:8080 `
+    -p 8848:8848 `
+    -p 9848:9848 `
     -d nacos/nacos-server:latest
 
 
@@ -23,6 +24,5 @@ docker run --name nacos-standalone-derby `
 # 持久化数据 + 密码认证
 docker run -d --name redis-server   `
   -p 6379:6379  `
-  -v C:\Users\16274\Desktop\classover\dockerfile\redis\data:/data  `
-  -v C:\Users\16274\Desktop\classover\dockerfile\redis\conf/redis.conf:/usr/local/etc/redis/redis.conf  `
+  -v E:\data\dockerdata\redis\redis.conf:/usr/local/etc/redis/redis.conf  `
   redis redis-server /usr/local/etc/redis/redis.conf --requirepass "123456"
