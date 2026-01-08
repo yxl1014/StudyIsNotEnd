@@ -1,5 +1,6 @@
 package util;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.TokenInfoDO;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -23,17 +24,19 @@ public class JwtUtil {
 
     private static final String TOKEN_INFO_KEY = "tokenInfo";
 
-    /**
-     * 生成 Token（claims 为 TokenInfo 对象）
-     */
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+
+    // 生成 Token
     public static String generateToken(String subject, TokenInfoDO tokenInfo) {
         try {
+            String tokenInfoJson = OBJECT_MAPPER.writeValueAsString(tokenInfo);
+
             Date now = new Date();
             Date expireDate = new Date(now.getTime() + EXPIRATION);
 
             return Jwts.builder()
                     .setSubject(subject)
-                    .claim(TOKEN_INFO_KEY, tokenInfo)
+                    .claim(TOKEN_INFO_KEY, tokenInfoJson)  // 存 JSON 字符串
                     .setIssuedAt(now)
                     .setExpiration(expireDate)
                     .signWith(KEY, SignatureAlgorithm.HS256)
@@ -43,13 +46,12 @@ public class JwtUtil {
         }
     }
 
-    /**
-     * 从 Token 中解析 TokenInfo
-     */
+    // 解析 Token
     public static TokenInfoDO parseTokenInfo(String token) {
         try {
             Claims claims = parseClaims(token);
-            return claims.get(TOKEN_INFO_KEY, TokenInfoDO.class);
+            String tokenInfoJson = claims.get(TOKEN_INFO_KEY, String.class); // 先取字符串
+            return OBJECT_MAPPER.readValue(tokenInfoJson, TokenInfoDO.class); // 再反序列化
         } catch (Exception e) {
             throw new RuntimeException("解析 JWT 失败", e);
         }

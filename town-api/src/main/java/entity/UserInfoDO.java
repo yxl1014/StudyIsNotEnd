@@ -13,5 +13,20 @@ public class UserInfoDO implements Serializable {
     private Integer userPower;
     private Long userCreateTime;
     private Integer flagType;
+
+    public boolean isEmpty() {
+        return (userTel == null || userTel <= 0)
+                || (isBlank(userName)
+                && isBlank(userPwd)
+                && isBlank(userTown)
+                && userPower == null
+                && userCreateTime == null
+                && flagType == null);
+    }
+
+    private boolean isBlank(String s) {
+        return s == null || s.trim().isEmpty();
+    }
+
 }
 

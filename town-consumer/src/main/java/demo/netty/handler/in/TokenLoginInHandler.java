@@ -7,7 +7,6 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import po.*;
-import townInterface.IRedisService;
 import util.CommonEntityBuilder;
 import util.ConstValue;
 import util.JwtUtil;
@@ -50,7 +49,6 @@ public class TokenLoginInHandler extends SimpleChannelInboundHandler<RequestMsg>
                 ctx.writeAndFlush(CommonEntityBuilder.buildNoBodyResp(RespCode.TRC_TOKEN_INVALID));
                 return;
             }
-
 
             // 看看redis
             Object redisValue = serviceManager.daoService.redis_get(ConstValue.Redis_Prefix_Token + tokenInfo.getUserTel());

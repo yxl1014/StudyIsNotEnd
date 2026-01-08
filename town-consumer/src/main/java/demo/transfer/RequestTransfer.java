@@ -20,7 +20,7 @@ public class RequestTransfer {
         return serviceManager.userService.register(msg);
     }
 
-    public ResponseMsg updateUserInfo(UpdateUserInfoReq msg) {
-        return serviceManager.userService.updateUserInfo(msg);
+    public ResponseMsg updateUserInfo(String token, UpdateUserInfoReq msg) {
+        return serviceManager.userService.updateUserInfo(token, msg);
     }
 }

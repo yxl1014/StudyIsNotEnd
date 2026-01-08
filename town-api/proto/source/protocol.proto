@@ -39,10 +39,13 @@ enum RespCode
 
   TRC_DB_DATA_NOT_FOUND = 100; // 数据没找到
   TRC_DB_ERROR = 101; // 数据操作异常
+  TRC_REDIS_ERROR = 102; // 操作Redis异常
 
   TRC_USER_NOT_EXIST = 201; // 用户不存在
   TRC_USER_EXIST = 202; // 用户已存在
   TRC_PASSWORD_ERR = 203; // 密码错误
+  TRC_USER_POWER_NOT_ENOUGH = 204; // 用户权限不足
+  TRC_USER_IS_BAN = 205; // 用户被冻结
 
 }
 

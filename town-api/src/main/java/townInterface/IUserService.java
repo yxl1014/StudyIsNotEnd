@@ -9,5 +9,5 @@ public interface IUserService {
 
     ResponseMsg register(RegisterReq msg);
 
-    ResponseMsg updateUserInfo(UpdateUserInfoReq msg);
+    ResponseMsg updateUserInfo(String token, UpdateUserInfoReq msg);
 }

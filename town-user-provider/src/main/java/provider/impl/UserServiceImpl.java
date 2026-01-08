@@ -5,17 +5,18 @@ import entity.UserInfoDO;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
 import po.*;
+import serviceEntity.AbstractRpcService;
+import serviceEntity.BizResult;
+import serviceEntity.UserContext;
 import townInterface.IDaoService;
 import townInterface.IUserService;
-import util.ConstValue;
-import util.JwtUtil;
-import util.RandomUtil;
+import util.*;
 
 import java.util.Date;
 import java.util.Random;
 
 @DubboService(timeout = 300000, retries = 0)
-public class UserServiceImpl implements IUserService {
+public class UserServiceImpl extends AbstractRpcService implements IUserService {
 
     @DubboReference
     public IDaoService daoService;
@@ -32,71 +33,117 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public ResponseMsg login(LoginReq msg) {
-        ResponseMsg.Builder builder = ResponseMsg.newBuilder().setMsgType(MsgType.TMT_LoginRsp);
-        LoginRsp.Builder resp = LoginRsp.newBuilder();
-        UserInfoDO userInfoDO = daoService.selectById(msg.getUserTel());
-        if (userInfoDO == null) {
-            builder.setErrCode(RespCode.TRC_USER_NOT_EXIST);
-        } else {
-            if (!userInfoDO.getUserPwd().equals(msg.getUserPwd())) {
-                builder.setErrCode(RespCode.TRC_PASSWORD_ERR);
-            } else {
-                // 登陆成功
-                UserInfo proto = daoService.toProto(userInfoDO);
-                // 1、生成token
-                TokenInfoDO tokenInfo = new TokenInfoDO(proto.getUserTel(), RandomUtil.RandomCode(6), new Date().getTime());
-                String token = JwtUtil.generateToken("login", tokenInfo);
+        return execute(MsgType.TMT_LoginRsp, null, () -> {
 
-                // 2、token存redis
-                daoService.redis_set(ConstValue.Redis_Prefix_Token + proto.getUserTel(), token, ConstValue.Redis_Token_Expire_Sec);
-
-                // 3、设置返回值
-                builder.setErrCode(RespCode.TRC_OK);
-                resp.setUserInfo(proto).setToken(token);
+            UserInfoDO user = daoService.selectById(msg.getUserTel());
+            if (user == null) {
+                return BizResult.error(RespCode.TRC_USER_NOT_EXIST);
             }
-        }
-        builder.setMsg(resp.build().toByteString());
-        return builder.build();
+
+            if (!user.getUserPwd().equals(msg.getUserPwd())) {
+                return BizResult.error(RespCode.TRC_PASSWORD_ERR);
+            }
+
+            UserInfo proto = daoService.toProto(user);
+
+            if (proto.getFlagType() == TUserFlagType.TUFT_BAN){
+                // TODO TRC_USER_IS_BAN
+                return BizResult.error(RespCode.TRC_ERR);
+            }
+
+            TokenInfoDO tokenInfo = new TokenInfoDO(
+                    proto.getUserTel(),
+                    RandomUtil.RandomCode(6),
+                    System.currentTimeMillis(),
+                    proto.getUserPower(),
+                    proto.getFlagType()
+            );
+
+            String token = JwtUtil.generateToken("login", tokenInfo);
+            daoService.redis_set(
+                    ConstValue.Redis_Prefix_Token + proto.getUserTel(),
+                    tokenInfo,
+                    ConstValue.Redis_Token_Expire_Sec
+            );
+
+            LoginRsp rsp = LoginRsp.newBuilder()
+                    .setUserInfo(proto)
+                    .setToken(token)
+                    .build();
+
+            return BizResult.ok(rsp);
+        });
     }
 
 
     @Override
     public ResponseMsg register(RegisterReq msg) {
-        ResponseMsg.Builder builder = ResponseMsg.newBuilder().setMsgType(MsgType.TMT_RegisterRsp);
-        LoginRsp.Builder resp = LoginRsp.newBuilder();
+        return execute(MsgType.TMT_RegisterRsp, null, () -> {
 
-        UserInfoDO userInfoDO = daoService.toDO(msg.getUserInfo());
-        // 1、判断有没有存在的
-        UserInfoDO existUser = daoService.selectById(userInfoDO.getUserTel());
-        if (userInfoDO.getUserTel() == 0 || userInfoDO.getUserPwd().isEmpty() || userInfoDO.getUserName().isEmpty()) {
-            //TODO TRC_PARAM_NULL
-            builder.setErrCode(RespCode.TRC_ERR);
-        } else if (existUser != null) {
-            builder.setErrCode(RespCode.TRC_USER_EXIST);
-        } else {
-            // 2、设置创建时间
-            userInfoDO.setUserCreateTime(new Date().getTime());
+            UserInfoDO userInfoDO = daoService.toDO(msg.getUserInfo());
+
+            if (userInfoDO.getUserTel() == 0
+                    || userInfoDO.getUserPwd().isEmpty()
+                    || userInfoDO.getUserName().isEmpty()) {
+                return BizResult.error(RespCode.TRC_ERR);
+            }
+
+            if (daoService.selectById(userInfoDO.getUserTel()) != null) {
+                return BizResult.error(RespCode.TRC_USER_EXIST);
+            }
+
+            userInfoDO.setUserCreateTime(System.currentTimeMillis());
             int insert = daoService.insert(userInfoDO);
             if (insert <= 0) {
-                builder.setErrCode(RespCode.TRC_DB_ERROR);
-            } else {
-                builder.setErrCode(RespCode.TRC_OK);
+                return BizResult.error(RespCode.TRC_DB_ERROR);
             }
-        }
 
-        builder.setMsg(resp.build().toByteString());
-        return builder.build();
+            RegisterRsp resp = RegisterRsp.newBuilder().build();
+            return BizResult.ok(resp);
+        });
     }
 
     @Override
-    public ResponseMsg updateUserInfo(UpdateUserInfoReq msg) {
-        ResponseMsg.Builder builder = ResponseMsg.newBuilder().setMsgType(MsgType.TMT_UpdateUserInfoRsp);
-        UpdateUserInfoRsp.Builder resp = UpdateUserInfoRsp.newBuilder();
+    public ResponseMsg updateUserInfo(String token, UpdateUserInfoReq msg) {
+        return execute(MsgType.TMT_UpdateUserInfoRsp, token, () -> {
+            TUserPower userPower = UserContext.getUserPower();
+            if (userPower != TUserPower.TUP_CGM)
+            {
+                // TODO TRC_USER_POWER_NOT_ENOUGH
+                return BizResult.error(RespCode.TRC_ERR);
+            }
 
+            UserInfoDO userInfoDO = daoService.toDO(msg.getUserInfo());
+            if (userInfoDO.isEmpty())
+            {
+                // TODO TRC_PARAM_NULL
+                return BizResult.error(RespCode.TRC_ERR);
+            }
 
+            // 判断存再不存在
+            UserInfoDO old = daoService.selectById(userInfoDO.getUserTel());
+            if (old == null)
+            {
+                return BizResult.error(RespCode.TRC_USER_NOT_EXIST);
+            }
 
+            // 更新DB
+            int update = daoService.update(userInfoDO);
+            if (update <= 0)
+            {
+                return BizResult.error(RespCode.TRC_DB_ERROR);
+            }
 
-        builder.setMsg(resp.build().toByteString());
-        return builder.build();
+            // 如果修改了就让重登，不管是啥暴力一点
+            boolean b = daoService.redis_delete(ConstValue.Redis_Prefix_Token + userInfoDO.getUserTel());
+            if (!b)
+            {
+                // TODO TRC_REDIS_ERROR
+                return BizResult.error(RespCode.TRC_DB_ERROR);
+            }
+
+            UpdateUserInfoRsp resp = UpdateUserInfoRsp.newBuilder().build();
+            return BizResult.ok(resp);
+        });
     }
 }

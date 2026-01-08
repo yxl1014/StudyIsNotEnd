@@ -14,6 +14,7 @@ import util.CommonEntityBuilder;
 
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class TaskDistributeInHandler extends SimpleChannelInboundHandler<RequestMsg> {
@@ -51,6 +52,7 @@ public class TaskDistributeInHandler extends SimpleChannelInboundHandler<Request
 
         handlerMap.put(MsgType.TMT_UpdateUserInfoReq,
                 (msg, ctx) -> handle(
+                        msg.getToken(),
                         msg.getMsg().toByteArray(),
                         UpdateUserInfoReq.parser(),
                         requestTransfer::updateUserInfo,
@@ -73,6 +75,23 @@ public class TaskDistributeInHandler extends SimpleChannelInboundHandler<Request
             return null;
         }
         return bizFunc.apply(req);
+    }
+
+    private <T extends com.google.protobuf.Message> ResponseMsg handle(
+            String token,
+            byte[] body,
+            Parser<T> parser,
+            BiFunction<String, T, ResponseMsg> bizFunc,
+            ChannelHandlerContext ctx
+    ) throws InvalidProtocolBufferException {
+        T req = parser.parseFrom(body);
+        if (req == null) {
+            ctx.writeAndFlush(
+                    CommonEntityBuilder.buildNoBodyResp(RespCode.TRC_REQUEST_BODY_NULL)
+            );
+            return null;
+        }
+        return bizFunc.apply(token, req);
     }
 
     @Override

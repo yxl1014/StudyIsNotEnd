@@ -1,5 +1,6 @@
 package client;
 
+import com.google.protobuf.InvalidProtocolBufferException;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -111,6 +112,14 @@ public class NettyTest {
         @Override
         public void channelRead(ChannelHandlerContext ctx, Object msg) {
             ResponseMsg responseMsg = (ResponseMsg) msg;
+            if (responseMsg.getMsgType() == MsgType.TMT_LoginRsp) {
+                try {
+                    LoginRsp loginRsp = LoginRsp.parseFrom(responseMsg.getMsg());
+                    System.out.println("token:" + loginRsp.getToken());
+                } catch (InvalidProtocolBufferException e) {
+                    System.out.println(e);
+                }
+            }
             System.out.println("ChatReqHandler channelRead 收到信息：" + responseMsg.toString());
         }
 
@@ -121,11 +130,29 @@ public class NettyTest {
             ctx.close();
         }
 
+        private RequestMsg buildUpdateUserInfoMsg() {
+            RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
+            msgBuilder.setMsgType(MsgType.TMT_UpdateUserInfoReq);
+            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxLFwicmFuZG9tQ29kZVwiOlwiNDUxMjAzXCIsXCJjcmVhdGVUaW1lXCI6MTc2Nzg2MjcyMTA3MyxcInVzZXJQb3dlclwiOlwiVFVQX0NHTVwiLFwidXNlckZsYWdUeXBlXCI6XCJUVUZUX0RFRkFVTFRcIn0iLCJpYXQiOjE3Njc4NjI3MjEsImV4cCI6MTc2Nzk0OTEyMX0.e6jwpJkz3xu0O_--sHgxIVXI8hm4uJJnF_sHfR2v0Po");
+            msgBuilder.setMsg(
+                    UpdateUserInfoReq.newBuilder()
+                            .setIsDel(false)
+                            .setUserInfo(
+                                    UserInfo.newBuilder()
+                                            .setUserTel(10001)
+                                            .setUserName("yyy")
+                            )
+                            .build().toByteString());
+            RequestMsg requestMsg = msgBuilder.build();
+            System.out.println("发送消息：" + requestMsg.toString());
+            return requestMsg;
+        }
+
         private RequestMsg buildLoginRequestMsg() {
 
             LoginReq.Builder builder = LoginReq.newBuilder();
-            builder.setUserTel(10001);
-            builder.setUserPwd("123456");
+            builder.setUserTel(1);
+            builder.setUserPwd("admin");
 
             RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
             msgBuilder.setMsgType(MsgType.TMT_LoginReq);

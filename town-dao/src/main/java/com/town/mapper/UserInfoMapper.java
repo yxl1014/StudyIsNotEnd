@@ -19,14 +19,28 @@ public interface UserInfoMapper {
     int insert(UserInfoDO entity);
 
     @Update("""
-        UPDATE user_info SET
-        user_name=#{userName},
-        user_pwd=#{userPwd},
-        user_town=#{userTown},
-        user_power=#{userPower},
-        flag_type=#{flagType}
-        WHERE user_tel=#{userTel}
-        """)
+            <script>
+            UPDATE user_info
+            <set>
+                <if test="userName != null">
+                    user_name = #{userName},
+                </if>
+                <if test="userPwd != null">
+                    user_pwd = #{userPwd},
+                </if>
+                <if test="userTown != null">
+                    user_town = #{userTown},
+                </if>
+                <if test="userPower != null">
+                    user_power = #{userPower},
+                </if>
+                <if test="flagType != null">
+                    flag_type = #{flagType},
+                </if>
+            </set>
+            WHERE user_tel = #{userTel}
+            </script>
+            """)
     int update(UserInfoDO entity);
 
     @Delete("DELETE FROM user_info WHERE user_tel=#{userTel}")
