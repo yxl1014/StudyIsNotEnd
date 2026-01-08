@@ -32,10 +32,11 @@ public class TaskDistributeInHandler extends SimpleChannelInboundHandler<Request
 
     private final Map<MsgType, MsgHandler> handlerMap = new EnumMap<>(MsgType.class);
 
-    /// 这是一个调度器
+    /// 这里初始化调度器
     public void init() {
+        // User
         handlerMap.put(MsgType.TMT_LoginReq,
-                (msg, ctx) -> handle(
+                (msg, ctx) -> noTokenHandle(
                         msg.getMsg().toByteArray(),
                         LoginReq.parser(),
                         requestTransfer::login,
@@ -43,7 +44,7 @@ public class TaskDistributeInHandler extends SimpleChannelInboundHandler<Request
                 ));
 
         handlerMap.put(MsgType.TMT_RegisterReq,
-                (msg, ctx) -> handle(
+                (msg, ctx) -> noTokenHandle(
                         msg.getMsg().toByteArray(),
                         RegisterReq.parser(),
                         requestTransfer::register,
@@ -58,9 +59,19 @@ public class TaskDistributeInHandler extends SimpleChannelInboundHandler<Request
                         requestTransfer::updateUserInfo,
                         ctx
                 ));
+
+        // Notice
+        handlerMap.put(MsgType.TMT_CreateNoticeReq,
+                (msg, ctx) -> handle(
+                        msg.getToken(),
+                        msg.getMsg().toByteArray(),
+                        CreateNoticeReq.parser(),
+                        requestTransfer::createNotice,
+                        ctx
+                ));
     }
 
-    private <T extends com.google.protobuf.Message> ResponseMsg handle(
+    private <T extends com.google.protobuf.Message> ResponseMsg noTokenHandle(
             byte[] body,
             Parser<T> parser,
             Function<T, ResponseMsg> bizFunc,

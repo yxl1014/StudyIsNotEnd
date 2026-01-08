@@ -45,7 +45,7 @@ public final class UserContext {
 
     /* ===== 便捷方法 ===== */
 
-    public static long getUserTel() {
+    public static int getUserTel() {
         return getRequired().getUserTel();
     }
 
@@ -55,6 +55,10 @@ public final class UserContext {
 
     public static TUserFlagType getUserFlagType(){
         return getRequired().getUserFlagType();
+    }
+
+    public static String getUserName(){
+        return getRequired().getUserName();
     }
 }
 

@@ -3,6 +3,7 @@ package demo.manager;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.stereotype.Component;
 import townInterface.IDaoService;
+import townInterface.INoticeService;
 import townInterface.IUserService;
 
 
@@ -14,4 +15,7 @@ public class ServiceManager {
 
     @DubboReference
     public IDaoService daoService;
+
+    @DubboReference
+    public INoticeService noticeService;
 }

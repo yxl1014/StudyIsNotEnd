@@ -12,7 +12,6 @@ import townInterface.IDaoService;
 import townInterface.IUserService;
 import util.*;
 
-import java.util.Date;
 import java.util.Random;
 
 @DubboService(timeout = 300000, retries = 0)
@@ -35,7 +34,7 @@ public class UserServiceImpl extends AbstractRpcService implements IUserService 
     public ResponseMsg login(LoginReq msg) {
         return execute(MsgType.TMT_LoginRsp, null, () -> {
 
-            UserInfoDO user = daoService.selectById(msg.getUserTel());
+            UserInfoDO user = daoService.user_selectById(msg.getUserTel());
             if (user == null) {
                 return BizResult.error(RespCode.TRC_USER_NOT_EXIST);
             }
@@ -47,8 +46,7 @@ public class UserServiceImpl extends AbstractRpcService implements IUserService 
             UserInfo proto = daoService.toProto(user);
 
             if (proto.getFlagType() == TUserFlagType.TUFT_BAN){
-                // TODO TRC_USER_IS_BAN
-                return BizResult.error(RespCode.TRC_ERR);
+                return BizResult.error(RespCode.TRC_USER_IS_BAN);
             }
 
             TokenInfoDO tokenInfo = new TokenInfoDO(
@@ -56,7 +54,8 @@ public class UserServiceImpl extends AbstractRpcService implements IUserService 
                     RandomUtil.RandomCode(6),
                     System.currentTimeMillis(),
                     proto.getUserPower(),
-                    proto.getFlagType()
+                    proto.getFlagType(),
+                    proto.getUserName()
             );
 
             String token = JwtUtil.generateToken("login", tokenInfo);
@@ -88,12 +87,12 @@ public class UserServiceImpl extends AbstractRpcService implements IUserService 
                 return BizResult.error(RespCode.TRC_ERR);
             }
 
-            if (daoService.selectById(userInfoDO.getUserTel()) != null) {
+            if (daoService.user_selectById(userInfoDO.getUserTel()) != null) {
                 return BizResult.error(RespCode.TRC_USER_EXIST);
             }
 
-            userInfoDO.setUserCreateTime(System.currentTimeMillis());
-            int insert = daoService.insert(userInfoDO);
+            userInfoDO.setUserCreateTime(TimeUtil.nowMillis());
+            int insert = daoService.user_insert(userInfoDO);
             if (insert <= 0) {
                 return BizResult.error(RespCode.TRC_DB_ERROR);
             }
@@ -109,37 +108,46 @@ public class UserServiceImpl extends AbstractRpcService implements IUserService 
             TUserPower userPower = UserContext.getUserPower();
             if (userPower != TUserPower.TUP_CGM)
             {
-                // TODO TRC_USER_POWER_NOT_ENOUGH
-                return BizResult.error(RespCode.TRC_ERR);
+                return BizResult.error(RespCode.TRC_USER_POWER_NOT_ENOUGH);
             }
 
             UserInfoDO userInfoDO = daoService.toDO(msg.getUserInfo());
             if (userInfoDO.isEmpty())
             {
-                // TODO TRC_PARAM_NULL
-                return BizResult.error(RespCode.TRC_ERR);
+                return BizResult.error(RespCode.TRC_PARAM_NULL);
             }
 
             // 判断存再不存在
-            UserInfoDO old = daoService.selectById(userInfoDO.getUserTel());
+            UserInfoDO old = daoService.user_selectById(userInfoDO.getUserTel());
             if (old == null)
             {
                 return BizResult.error(RespCode.TRC_USER_NOT_EXIST);
             }
 
-            // 更新DB
-            int update = daoService.update(userInfoDO);
-            if (update <= 0)
-            {
-                return BizResult.error(RespCode.TRC_DB_ERROR);
+            if (msg.getIsDel()){
+                int delete = daoService.user_delete(userInfoDO.getUserTel());
+                if (delete <= 0)
+                {
+                    return BizResult.error(RespCode.TRC_DB_ERROR);
+                }
+            }
+            else {
+                // 更新DB
+                int update = daoService.user_update(userInfoDO);
+                if (update <= 0)
+                {
+                    return BizResult.error(RespCode.TRC_DB_ERROR);
+                }
             }
 
             // 如果修改了就让重登，不管是啥暴力一点
-            boolean b = daoService.redis_delete(ConstValue.Redis_Prefix_Token + userInfoDO.getUserTel());
-            if (!b)
-            {
-                // TODO TRC_REDIS_ERROR
-                return BizResult.error(RespCode.TRC_DB_ERROR);
+            Object o = daoService.redis_get(ConstValue.Redis_Prefix_Token + userInfoDO.getUserTel());
+            if (o != null) {
+                boolean b = daoService.redis_delete(ConstValue.Redis_Prefix_Token + userInfoDO.getUserTel());
+                if (!b)
+                {
+                    return BizResult.error(RespCode.TRC_REDIS_ERROR);
+                }
             }
 
             UpdateUserInfoRsp resp = UpdateUserInfoRsp.newBuilder().build();

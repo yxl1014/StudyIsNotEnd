@@ -17,4 +17,5 @@ public class TokenInfoDO implements Serializable {
     private Long createTime; // token创建时间
     private TUserPower userPower; // 用户角色
     private TUserFlagType userFlagType; // 用户标记
+    private String userName; // 用户名
 }

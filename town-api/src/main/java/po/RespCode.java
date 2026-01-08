@@ -65,6 +65,14 @@ public enum RespCode
   TRC_REQUEST_BODY_NULL(5),
   /**
    * <pre>
+   * 参数为空
+   * </pre>
+   *
+   * <code>TRC_PARAM_NULL = 6;</code>
+   */
+  TRC_PARAM_NULL(6),
+  /**
+   * <pre>
    * 数据没找到
    * </pre>
    *
@@ -79,6 +87,14 @@ public enum RespCode
    * <code>TRC_DB_ERROR = 101;</code>
    */
   TRC_DB_ERROR(101),
+  /**
+   * <pre>
+   * 操作Redis异常
+   * </pre>
+   *
+   * <code>TRC_REDIS_ERROR = 102;</code>
+   */
+  TRC_REDIS_ERROR(102),
   /**
    * <pre>
    * 用户不存在
@@ -103,6 +119,22 @@ public enum RespCode
    * <code>TRC_PASSWORD_ERR = 203;</code>
    */
   TRC_PASSWORD_ERR(203),
+  /**
+   * <pre>
+   * 用户权限不足
+   * </pre>
+   *
+   * <code>TRC_USER_POWER_NOT_ENOUGH = 204;</code>
+   */
+  TRC_USER_POWER_NOT_ENOUGH(204),
+  /**
+   * <pre>
+   * 用户被冻结
+   * </pre>
+   *
+   * <code>TRC_USER_IS_BAN = 205;</code>
+   */
+  TRC_USER_IS_BAN(205),
   UNRECOGNIZED(-1),
   ;
 
@@ -165,6 +197,14 @@ public enum RespCode
   public static final int TRC_REQUEST_BODY_NULL_VALUE = 5;
   /**
    * <pre>
+   * 参数为空
+   * </pre>
+   *
+   * <code>TRC_PARAM_NULL = 6;</code>
+   */
+  public static final int TRC_PARAM_NULL_VALUE = 6;
+  /**
+   * <pre>
    * 数据没找到
    * </pre>
    *
@@ -179,6 +219,14 @@ public enum RespCode
    * <code>TRC_DB_ERROR = 101;</code>
    */
   public static final int TRC_DB_ERROR_VALUE = 101;
+  /**
+   * <pre>
+   * 操作Redis异常
+   * </pre>
+   *
+   * <code>TRC_REDIS_ERROR = 102;</code>
+   */
+  public static final int TRC_REDIS_ERROR_VALUE = 102;
   /**
    * <pre>
    * 用户不存在
@@ -203,6 +251,22 @@ public enum RespCode
    * <code>TRC_PASSWORD_ERR = 203;</code>
    */
   public static final int TRC_PASSWORD_ERR_VALUE = 203;
+  /**
+   * <pre>
+   * 用户权限不足
+   * </pre>
+   *
+   * <code>TRC_USER_POWER_NOT_ENOUGH = 204;</code>
+   */
+  public static final int TRC_USER_POWER_NOT_ENOUGH_VALUE = 204;
+  /**
+   * <pre>
+   * 用户被冻结
+   * </pre>
+   *
+   * <code>TRC_USER_IS_BAN = 205;</code>
+   */
+  public static final int TRC_USER_IS_BAN_VALUE = 205;
 
 
   public final int getNumber() {
@@ -235,11 +299,15 @@ public enum RespCode
       case 3: return TRC_TOKEN_INVALID;
       case 4: return TRC_PARSE_PROTOCOL_ERR;
       case 5: return TRC_REQUEST_BODY_NULL;
+      case 6: return TRC_PARAM_NULL;
       case 100: return TRC_DB_DATA_NOT_FOUND;
       case 101: return TRC_DB_ERROR;
+      case 102: return TRC_REDIS_ERROR;
       case 201: return TRC_USER_NOT_EXIST;
       case 202: return TRC_USER_EXIST;
       case 203: return TRC_PASSWORD_ERR;
+      case 204: return TRC_USER_POWER_NOT_ENOUGH;
+      case 205: return TRC_USER_IS_BAN;
       default: return null;
     }
   }

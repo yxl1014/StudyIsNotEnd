@@ -20,6 +20,8 @@ dubbo:
   application:
     name: town-dao-provider
     logger: slf4j
+    check-serializable: false
+    serialize-check-status: WARN
   protocol:
     name: dubbo
     port: 40002

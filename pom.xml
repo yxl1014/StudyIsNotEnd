@@ -14,6 +14,7 @@
         <module>town-consumer</module>
         <module>town-user-provider</module>
         <module>town-dao</module>
+        <module>town-notice-provider</module>
     </modules>
 
     <properties>

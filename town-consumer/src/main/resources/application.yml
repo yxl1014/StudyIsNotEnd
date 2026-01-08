@@ -1,8 +1,10 @@
 dubbo:
   application:
-    name: town-test-consumer
+    name: town-center-consumer
     logger: slf4j
     qos-port: 44444
+    check-serializable: false
+    serialize-check-status: WARN
   registry:
     address: nacos://${nacos.address:127.0.0.1}:8848?username=nacos&password=123456&register-consumer-url=true
     group: town-test

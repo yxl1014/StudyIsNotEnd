@@ -1,10 +1,7 @@
 package townInterface;
 
+import entity.NoticeInfoDO;
 import entity.UserInfoDO;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public interface IDaoService {
     /// redis
@@ -27,18 +24,27 @@ public interface IDaoService {
     Object redis_get(String key);
 
     /// user
-    UserInfoDO selectById(Integer userTel);
+    UserInfoDO user_selectById(Integer userTel);
 
-    int insert(UserInfoDO entity);
+    int user_insert(UserInfoDO entity);
 
-    int update(UserInfoDO entity);
+    int user_update(UserInfoDO entity);
 
-    int delete(Integer userTel);
+    int user_delete(Integer userTel);
 
     /* Proto → Entity */
     UserInfoDO toDO(po.UserInfo proto);
 
     /* Entity → Proto */
     po.UserInfo toProto(UserInfoDO entity);
+
+
+    /// notice
+    NoticeInfoDO notice_selectById(Integer id);
+    int notice_insert(NoticeInfoDO entity);
+    int notice_update(NoticeInfoDO entity);
+    int notice_delete(Integer id);
+    NoticeInfoDO toDO(po.NoticeInfo proto);
+    po.NoticeInfo toProto(NoticeInfoDO entity);
 
 }

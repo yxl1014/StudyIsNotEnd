@@ -4,6 +4,7 @@ package com.town.provider;
 import com.town.convert.*;
 import com.town.mapper.*;
 import com.town.redis.RedisManager;
+import entity.NoticeInfoDO;
 import entity.UserInfoDO;
 import exception.BizException;
 import jakarta.annotation.Resource;
@@ -11,6 +12,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import po.NoticeInfo;
 import po.RespCode;
 import po.UserInfo;
 import townInterface.IDaoService;
@@ -80,23 +82,25 @@ public class DaoManager implements IDaoService {
     @Autowired
     private UserStarStudyInfoConvert userStarStudyInfoConvert;
 
+
+    /* ======================= User ======================= */
     @Override
-    public UserInfoDO selectById(Integer userTel) {
+    public UserInfoDO user_selectById(Integer userTel) {
         return userInfoMapper.selectById(userTel);
     }
 
     @Override
-    public int insert(UserInfoDO entity) {
+    public int user_insert(UserInfoDO entity) {
         return userInfoMapper.insert(entity);
     }
 
     @Override
-    public int update(UserInfoDO entity) {
+    public int user_update(UserInfoDO entity) {
         return userInfoMapper.update(entity);
     }
 
     @Override
-    public int delete(Integer userTel) {
+    public int user_delete(Integer userTel) {
         return userInfoMapper.delete(userTel);
     }
 
@@ -109,6 +113,43 @@ public class DaoManager implements IDaoService {
     public UserInfo toProto(UserInfoDO entity) {
         return userInfoConvert.toProto(entity);
     }
+
+    /* ======================= User ======================= */
+
+    /* ======================= Notice ======================= */
+
+    @Override
+    public NoticeInfoDO notice_selectById(Integer id) {
+        return noticeInfoMapper.selectById(id);
+    }
+
+    @Override
+    public int notice_insert(NoticeInfoDO entity) {
+        return noticeInfoMapper.insert(entity);
+    }
+
+    @Override
+    public int notice_update(NoticeInfoDO entity) {
+        return noticeInfoMapper.update(entity);
+    }
+
+    @Override
+    public int notice_delete(Integer id) {
+        return noticeInfoMapper.delete(id);
+    }
+
+    @Override
+    public NoticeInfoDO toDO(NoticeInfo proto) {
+        return noticeInfoConvert.toDO(proto);
+    }
+
+    @Override
+    public NoticeInfo toProto(NoticeInfoDO entity) {
+        return noticeInfoConvert.toProto(entity);
+    }
+
+    /* ======================= Notice ======================= */
+
 
 
     @Resource

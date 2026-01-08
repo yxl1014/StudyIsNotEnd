@@ -100,7 +100,7 @@ public class NettyTest {
             new Thread(() -> {
                 while (true) {
                     try {
-                        ctx.writeAndFlush(buildLoginRequestMsg());
+                        ctx.writeAndFlush(buildCreateNoticeMsg());
                         Thread.sleep(300000);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
@@ -130,17 +130,35 @@ public class NettyTest {
             ctx.close();
         }
 
+        private RequestMsg buildCreateNoticeMsg() {
+            RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
+            msgBuilder.setMsgType(MsgType.TMT_CreateNoticeReq);
+            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxLFwicmFuZG9tQ29kZVwiOlwiMzA1NTIzXCIsXCJjcmVhdGVUaW1lXCI6MTc2Nzg4Nzk2NDYwNixcInVzZXJQb3dlclwiOlwiVFVQX0NHTVwiLFwidXNlckZsYWdUeXBlXCI6XCJUVUZUX0RFRkFVTFRcIixcInVzZXJOYW1lXCI6XCJhZG1pblwifSIsImlhdCI6MTc2Nzg4Nzk2NCwiZXhwIjoxNzY3OTc0MzY0fQ.jI9D34OVHHNYAh-8u2Zs8tTf7jGjgqP1SdazRKBkrs8");
+            msgBuilder.setMsg(
+                    CreateNoticeReq.newBuilder()
+                            .setNoticeInfo(
+                                    NoticeInfo.newBuilder()
+                                            .setNoticeType(TNoticeType.TNT_TZ)
+                                            .setNoticeTitle("测试通知标题")
+                                            .setNoticeContext("测试通知正文正文正文正文正文正文")
+                            )
+                            .build().toByteString());
+            RequestMsg requestMsg = msgBuilder.build();
+            System.out.println("发送消息：" + requestMsg.toString());
+            return requestMsg;
+        }
+
         private RequestMsg buildUpdateUserInfoMsg() {
             RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
             msgBuilder.setMsgType(MsgType.TMT_UpdateUserInfoReq);
-            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxLFwicmFuZG9tQ29kZVwiOlwiNDUxMjAzXCIsXCJjcmVhdGVUaW1lXCI6MTc2Nzg2MjcyMTA3MyxcInVzZXJQb3dlclwiOlwiVFVQX0NHTVwiLFwidXNlckZsYWdUeXBlXCI6XCJUVUZUX0RFRkFVTFRcIn0iLCJpYXQiOjE3Njc4NjI3MjEsImV4cCI6MTc2Nzk0OTEyMX0.e6jwpJkz3xu0O_--sHgxIVXI8hm4uJJnF_sHfR2v0Po");
+            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxLFwicmFuZG9tQ29kZVwiOlwiMDQwMDMzXCIsXCJjcmVhdGVUaW1lXCI6MTc2Nzg4NDczODQxNCxcInVzZXJQb3dlclwiOlwiVFVQX0NHTVwiLFwidXNlckZsYWdUeXBlXCI6XCJUVUZUX0RFRkFVTFRcIn0iLCJpYXQiOjE3Njc4ODQ3MzgsImV4cCI6MTc2Nzk3MTEzOH0.1WYcMAg_g6oL7MFN2L-xbP_FjQl_oHMiNE5YQCDsEEY");
             msgBuilder.setMsg(
                     UpdateUserInfoReq.newBuilder()
                             .setIsDel(false)
                             .setUserInfo(
                                     UserInfo.newBuilder()
                                             .setUserTel(10001)
-                                            .setUserName("yyy")
+                                            .setUserName("zzz")
                             )
                             .build().toByteString());
             RequestMsg requestMsg = msgBuilder.build();
