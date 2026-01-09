@@ -22,6 +22,11 @@ public class UpdateServiceImpl extends AbstractRpcService implements IUpdateServ
     public IDaoService daoService;
 
     @Override
+    public IUpdateService updateService() {
+        return null;
+    }
+
+    @Override
     public RespCode addUpdateInfo(UpdateInfoDO updateInfoDO) {
         int insert = daoService.update_insert(updateInfoDO);
         if (insert <= 0){

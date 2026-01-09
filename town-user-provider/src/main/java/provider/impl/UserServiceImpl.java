@@ -1,14 +1,19 @@
 package provider.impl;
 
+import entity.NoticeInfoDO;
 import entity.TokenInfoDO;
+import entity.UpdateInfoDO;
 import entity.UserInfoDO;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import po.*;
 import serviceEntity.AbstractRpcService;
 import serviceEntity.BizResult;
 import serviceEntity.UserContext;
 import townInterface.IDaoService;
+import townInterface.IUpdateService;
 import townInterface.IUserService;
 import util.*;
 
@@ -17,8 +22,23 @@ import java.util.Random;
 @DubboService(timeout = 10000, retries = 0)
 public class UserServiceImpl extends AbstractRpcService implements IUserService {
 
+    private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
+
     @DubboReference
     public IDaoService daoService;
+
+    @DubboReference(
+            check = false,     // Update 服务不启动，Notice 服务也能启动
+            mock = "mock.UpdateServiceMock",     // 不可用时自动走 mock
+            timeout = 1000,    // 防止阻塞
+            retries = 0        // 不要重试
+    )
+    public IUpdateService updateService;
+
+    @Override
+    public IUpdateService updateService() {
+        return updateService;
+    }
 
     @Override
     public String getUserName() {
@@ -124,6 +144,7 @@ public class UserServiceImpl extends AbstractRpcService implements IUserService 
                 return BizResult.error(RespCode.TRC_USER_NOT_EXIST);
             }
 
+            UserInfoDO newInfo = null;
             if (msg.getIsDel()){
                 int delete = daoService.user_delete(userInfoDO.getUserTel());
                 if (delete <= 0)
@@ -138,7 +159,18 @@ public class UserServiceImpl extends AbstractRpcService implements IUserService 
                 {
                     return BizResult.error(RespCode.TRC_DB_ERROR);
                 }
+                newInfo = daoService.user_selectById(userInfoDO.getUserTel());
             }
+
+            // 添加修改记录
+            UpdateInfoDO update = new UpdateInfoDO();
+            update.setInfoId(userInfoDO.getUserTel());
+            update.setInfoType(TUpdateInfoType.TUIT_USER_VALUE);
+            update.setBeforeMsg(daoService.toProto(old).toByteArray());
+            update.setAfterMsg(newInfo !=null ? daoService.toProto(newInfo).toByteArray() : null);
+            update.setUpdateTime(TimeUtil.nowMillis());
+            update.setUpdateUserTel(UserContext.getUserTel());
+            update.setUpdateName(UserContext.getUserName());
 
             // 如果修改了就让重登，不管是啥暴力一点
             Object o = daoService.redis_get(ConstValue.Redis_Prefix_Token + userInfoDO.getUserTel());
@@ -151,7 +183,7 @@ public class UserServiceImpl extends AbstractRpcService implements IUserService 
             }
 
             UpdateUserInfoRsp resp = UpdateUserInfoRsp.newBuilder().build();
-            return BizResult.ok(resp);
+            return BizResult.ok(resp, update);
         });
     }
 }

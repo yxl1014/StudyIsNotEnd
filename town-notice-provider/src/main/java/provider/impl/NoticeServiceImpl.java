@@ -34,6 +34,11 @@ public class NoticeServiceImpl extends AbstractRpcService implements INoticeServ
     public IUpdateService updateService;
 
     @Override
+    public IUpdateService updateService() {
+        return updateService;
+    }
+
+    @Override
     public ResponseMsg createNotice(String token, CreateNoticeReq msg) {
         return execute(MsgType.TMT_CreateNoticeRsp, token, () -> {
             TUserPower userPower = UserContext.getUserPower();
@@ -79,13 +84,8 @@ public class NoticeServiceImpl extends AbstractRpcService implements INoticeServ
             update.setUpdateUserTel(writerTel);
             update.setUpdateName(writerName);
 
-            RespCode respCode = updateService.addUpdateInfo(update);
-            if (respCode != RespCode.TRC_OK) {
-                log.error("add update failed");
-            }
-
             CreateNoticeRsp rsp = CreateNoticeRsp.newBuilder().build();
-            return BizResult.ok(rsp);
+            return BizResult.ok(rsp, update);
         });
     }
 }
