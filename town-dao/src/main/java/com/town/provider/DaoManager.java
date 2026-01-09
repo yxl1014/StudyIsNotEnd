@@ -5,6 +5,7 @@ import com.town.convert.*;
 import com.town.mapper.*;
 import com.town.redis.RedisManager;
 import entity.NoticeInfoDO;
+import entity.UpdateInfoDO;
 import entity.UserInfoDO;
 import exception.BizException;
 import jakarta.annotation.Resource;
@@ -14,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import po.NoticeInfo;
 import po.RespCode;
+import po.UpdateInfo;
 import po.UserInfo;
 import townInterface.IDaoService;
 import townInterface.IRedisService;
@@ -22,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-@DubboService(timeout = 300000, retries = 0)
+@DubboService(timeout = 10000, retries = 0)
 public class DaoManager implements IDaoService {
     private static final Logger log = LoggerFactory.getLogger(DaoManager.class);
 
@@ -124,6 +126,11 @@ public class DaoManager implements IDaoService {
     }
 
     @Override
+    public NoticeInfoDO notice_selectByWriterAndCreateTime(Integer writerTel, Long createTime) {
+        return noticeInfoMapper.selectByWriterAndCreateTime(writerTel, createTime);
+    }
+
+    @Override
     public int notice_insert(NoticeInfoDO entity) {
         return noticeInfoMapper.insert(entity);
     }
@@ -149,6 +156,26 @@ public class DaoManager implements IDaoService {
     }
 
     /* ======================= Notice ======================= */
+
+
+    /* ======================= Update ======================= */
+
+    @Override
+    public int update_insert(UpdateInfoDO entity) {
+        return updateInfoMapper.insert(entity);
+    }
+
+    @Override
+    public UpdateInfoDO toDO(UpdateInfo proto) {
+        return updateInfoConvert.toDO(proto);
+    }
+
+    @Override
+    public UpdateInfo toProto(UpdateInfoDO entity) {
+        return updateInfoConvert.toProto(entity);
+    }
+
+    /* ======================= Update ======================= */
 
 
 

@@ -1,9 +1,12 @@
 package com.town.convert;
 
+import com.google.protobuf.ByteString;
 import com.town.convert.commonUtil.ProtoCommonMapper;
 import entity.NoticeInfoDO;
+import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 @Mapper(
         componentModel = "spring",
@@ -20,7 +23,17 @@ public interface NoticeInfoConvert {
     /* Entity → Proto */
 
     @Mapping(target = "noticeType", expression = "java(po.TNoticeType.forNumber(entity.getNoticeType()))")
-    @Mapping(target = "noticeAtt", expression = "java(entity.getNoticeAtt() == null ? null : com.google.protobuf.ByteString.copyFrom(entity.getNoticeAtt()))")
+    @Mapping(target = "noticeAtt", ignore = true)
     po.NoticeInfo toProto(NoticeInfoDO entity);
+
+    @AfterMapping
+    default void fillNoticeAtt(
+            NoticeInfoDO entity,
+            @MappingTarget po.NoticeInfo.Builder builder
+    ) {
+        if (entity.getNoticeAtt() != null) {
+            builder.setNoticeAtt(ByteString.copyFrom(entity.getNoticeAtt()));
+        }
+    }
 }
 

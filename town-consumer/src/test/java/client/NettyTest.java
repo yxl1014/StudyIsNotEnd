@@ -133,7 +133,7 @@ public class NettyTest {
         private RequestMsg buildCreateNoticeMsg() {
             RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
             msgBuilder.setMsgType(MsgType.TMT_CreateNoticeReq);
-            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxLFwicmFuZG9tQ29kZVwiOlwiMzA1NTIzXCIsXCJjcmVhdGVUaW1lXCI6MTc2Nzg4Nzk2NDYwNixcInVzZXJQb3dlclwiOlwiVFVQX0NHTVwiLFwidXNlckZsYWdUeXBlXCI6XCJUVUZUX0RFRkFVTFRcIixcInVzZXJOYW1lXCI6XCJhZG1pblwifSIsImlhdCI6MTc2Nzg4Nzk2NCwiZXhwIjoxNzY3OTc0MzY0fQ.jI9D34OVHHNYAh-8u2Zs8tTf7jGjgqP1SdazRKBkrs8");
+            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxLFwicmFuZG9tQ29kZVwiOlwiNDExMTM0XCIsXCJjcmVhdGVUaW1lXCI6MTc2Nzk0NDg3MTk5OCxcInVzZXJQb3dlclwiOlwiVFVQX0NHTVwiLFwidXNlckZsYWdUeXBlXCI6XCJUVUZUX0RFRkFVTFRcIixcInVzZXJOYW1lXCI6XCJhZG1pblwifSIsImlhdCI6MTc2Nzk0NDg3MiwiZXhwIjoxNzY4MDMxMjcyfQ.982wBDDyiYMbf887zLzrBM41ukQZXgEg9aQgaLdkWKI");
             msgBuilder.setMsg(
                     CreateNoticeReq.newBuilder()
                             .setNoticeInfo(

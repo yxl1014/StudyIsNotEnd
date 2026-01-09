@@ -1,6 +1,7 @@
 package townInterface;
 
 import entity.NoticeInfoDO;
+import entity.UpdateInfoDO;
 import entity.UserInfoDO;
 
 public interface IDaoService {
@@ -41,10 +42,16 @@ public interface IDaoService {
 
     /// notice
     NoticeInfoDO notice_selectById(Integer id);
+    NoticeInfoDO notice_selectByWriterAndCreateTime(Integer writerTel, Long createTime);
     int notice_insert(NoticeInfoDO entity);
     int notice_update(NoticeInfoDO entity);
     int notice_delete(Integer id);
     NoticeInfoDO toDO(po.NoticeInfo proto);
     po.NoticeInfo toProto(NoticeInfoDO entity);
+
+    // update
+    int update_insert(UpdateInfoDO entity);
+    UpdateInfoDO toDO(po.UpdateInfo proto);
+    po.UpdateInfo toProto(UpdateInfoDO entity);
 
 }

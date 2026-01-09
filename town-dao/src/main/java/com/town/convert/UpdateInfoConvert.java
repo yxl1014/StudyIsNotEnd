@@ -1,8 +1,11 @@
 package com.town.convert;
 
+import com.google.protobuf.ByteString;
 import entity.UpdateInfoDO;
+import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface UpdateInfoConvert {
@@ -18,15 +21,29 @@ public interface UpdateInfoConvert {
     )
     UpdateInfoDO toDO(po.UpdateInfo proto);
 
-    @Mapping(target = "infoType", expression = "java(po.TUpdateInfoType.forNumber(entity.getInfoType()))")
     @Mapping(
-            target = "beforeMsg",
-            expression = "java(entity.getBeforeMsg() == null ? null : com.google.protobuf.ByteString.copyFrom(entity.getBeforeMsg()))"
+            target = "infoType",
+            expression = "java(po.TUpdateInfoType.forNumber(entity.getInfoType()))"
     )
-    @Mapping(
-            target = "afterMsg",
-            expression = "java(entity.getAfterMsg() == null ? null : com.google.protobuf.ByteString.copyFrom(entity.getAfterMsg()))"
-    )
+    @Mapping(target = "beforeMsg", ignore = true)
+    @Mapping(target = "afterMsg", ignore = true)
     po.UpdateInfo toProto(UpdateInfoDO entity);
+
+    /* =======================
+     * AfterMapping：安全处理 bytes → ByteString
+     * ======================= */
+
+    @AfterMapping
+    default void fillBytes(
+            UpdateInfoDO entity,
+            @MappingTarget po.UpdateInfo.Builder builder
+    ) {
+        if (entity.getBeforeMsg() != null) {
+            builder.setBeforeMsg(ByteString.copyFrom(entity.getBeforeMsg()));
+        }
+        if (entity.getAfterMsg() != null) {
+            builder.setAfterMsg(ByteString.copyFrom(entity.getAfterMsg()));
+        }
+    }
 }
 

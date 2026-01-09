@@ -14,7 +14,7 @@ import util.*;
 
 import java.util.Random;
 
-@DubboService(timeout = 300000, retries = 0)
+@DubboService(timeout = 10000, retries = 0)
 public class UserServiceImpl extends AbstractRpcService implements IUserService {
 
     @DubboReference
