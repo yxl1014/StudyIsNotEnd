@@ -1,6 +1,7 @@
 package provider.impl;
 
 
+import com.github.pagehelper.PageHelper;
 import entity.NoticeInfoDO;
 import entity.UpdateInfoDO;
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -17,6 +18,7 @@ import townInterface.IUpdateService;
 import util.TimeUtil;
 
 import java.util.Date;
+import java.util.List;
 
 @DubboService(timeout = 10000, retries = 0)
 public class NoticeServiceImpl extends AbstractRpcService implements INoticeService {
@@ -41,11 +43,6 @@ public class NoticeServiceImpl extends AbstractRpcService implements INoticeServ
     @Override
     public ResponseMsg createNotice(String token, CreateNoticeReq msg) {
         return execute(MsgType.TMT_CreateNoticeRsp, token, () -> {
-            TUserPower userPower = UserContext.getUserPower();
-            if (userPower != TUserPower.TUP_CGM) {
-                return BizResult.error(RespCode.TRC_USER_POWER_NOT_ENOUGH);
-            }
-
             if (!msg.hasNoticeInfo()) {
                 return BizResult.error(RespCode.TRC_PARAM_NULL);
             }
@@ -86,6 +83,112 @@ public class NoticeServiceImpl extends AbstractRpcService implements INoticeServ
 
             CreateNoticeRsp rsp = CreateNoticeRsp.newBuilder().build();
             return BizResult.ok(rsp, update);
+        });
+    }
+
+    @Override
+    public ResponseMsg updateNotice(String token, UpdateNoticeReq msg) {
+        return execute(MsgType.TMT_UpdateNoticeRsp, token, () -> {
+            NoticeInfoDO noticeInfoDO = daoService.toDO(msg.getNoticeInfo());
+            if (noticeInfoDO.isEmpty()) {
+                return BizResult.error(RespCode.TRC_PARAM_NULL);
+            }
+
+            NoticeInfoDO oldNotice = daoService.notice_selectById(noticeInfoDO.getNoticeId());
+            if (oldNotice == null) {
+                return BizResult.error(RespCode.TRC_NOTICE_NOT_EXIST);
+            }
+
+            NoticeInfoDO newNotice = null;
+            if (msg.getIsDel()) {
+                int delete = daoService.notice_delete(noticeInfoDO.getNoticeId());
+                if (delete <= 0) {
+                    return BizResult.error(RespCode.TRC_DB_ERROR);
+                }
+            } else {
+                if (noticeInfoDO.otherNull()) {
+                    return BizResult.error(RespCode.TRC_PARAM_NULL);
+                }
+
+                // 不让改发布时间、创建者
+                noticeInfoDO.setNoticeCreateTime(null);
+                noticeInfoDO.setWriterTel(null);
+                noticeInfoDO.setWriterName(null);
+
+                // 更新DB
+                int update = daoService.notice_update(noticeInfoDO);
+                if (update <= 0) {
+                    return BizResult.error(RespCode.TRC_DB_ERROR);
+                }
+                newNotice = daoService.notice_selectById(noticeInfoDO.getNoticeId());
+            }
+
+
+            long nowMillis = TimeUtil.nowMillis();
+            int writerTel = UserContext.getUserTel();
+            String writerName = UserContext.getUserName();
+            UpdateInfoDO update = new UpdateInfoDO();
+            update.setInfoId(msg.getNoticeInfo().getNoticeId());
+            update.setInfoType(TUpdateInfoType.TUIT_NOTICE_VALUE);
+            update.setBeforeMsg(msg.getNoticeInfo().toByteArray());
+            update.setAfterMsg(newNotice != null ? daoService.toProto(newNotice).toByteArray() : null);
+            update.setUpdateTime(nowMillis);
+            update.setUpdateUserTel(writerTel);
+            update.setUpdateName(writerName);
+
+            UpdateNoticeRsp rsp = UpdateNoticeRsp.newBuilder().build();
+            return BizResult.ok(rsp, update);
+        });
+    }
+
+
+    @Override
+    public ResponseMsg listNotice(ListNoticeReq msg) {
+        return execute(MsgType.TMT_ListNoticeRsp, null, () -> {
+            int noticeId = msg.getNoticeId();
+
+            ListNoticeRsp.Builder builder = ListNoticeRsp.newBuilder();
+            /// 代表查询所有
+            if (noticeId == 0) {
+                if (msg.getPage() <= 0 || msg.getSize() <= 0) {
+                    return BizResult.error(RespCode.TRC_PARAM_NULL);
+                }
+                PageHelper.startPage(msg.getPage(), msg.getSize());
+                for (NoticeInfoDO noticeInfoDO : daoService.notice_selectAll()) {
+                    builder.addInfos(daoService.toProto(noticeInfoDO));
+                }
+            } else {
+                NoticeInfoDO noticeInfoDO = daoService.notice_selectById(noticeId);
+                if (noticeInfoDO == null) {
+                    return BizResult.error(RespCode.TRC_NOTICE_NOT_EXIST);
+                }
+                builder.addInfos(daoService.toProto(noticeInfoDO));
+            }
+
+            ListNoticeRsp rsp = builder.build();
+            return BizResult.ok(rsp);
+        });
+    }
+
+
+    @Override
+    public ResponseMsg setNoticeRead(String token, SetNoticeReadReq msg) {
+        return execute(MsgType.TMT_SetNoticeReadRsp, token, () ->{
+            int noticeId = msg.getNoticeId();
+            if (noticeId <= 0){
+                return BizResult.error(RespCode.TRC_PARAM_NULL);
+            }
+
+            NoticeInfoDO noticeInfoDO = daoService.notice_selectById(noticeId);
+            if (noticeInfoDO == null) {
+                return BizResult.error(RespCode.TRC_NOTICE_NOT_EXIST);
+            }
+
+            // TODO
+
+
+            SetNoticeReadRsp rsp = SetNoticeReadRsp.newBuilder().build();
+            return BizResult.ok(rsp);
         });
     }
 }

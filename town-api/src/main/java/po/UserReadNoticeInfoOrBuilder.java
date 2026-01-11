@@ -15,55 +15,74 @@ public interface UserReadNoticeInfoOrBuilder extends
    * 自增唯一id
    * </pre>
    *
-   * <code>optional int32 readId = 1;</code>
-   * @return Whether the readId field is set.
+   * <code>optional int32 id = 1;</code>
+   * @return Whether the id field is set.
    */
-  boolean hasReadId();
+  boolean hasId();
   /**
    * <pre>
    * 自增唯一id
    * </pre>
    *
-   * <code>optional int32 readId = 1;</code>
-   * @return The readId.
+   * <code>optional int32 id = 1;</code>
+   * @return The id.
    */
-  int getReadId();
+  int getId();
 
   /**
    * <pre>
    * 阅读用户电话
    * </pre>
    *
-   * <code>optional int32 readUserTel = 2;</code>
-   * @return Whether the readUserTel field is set.
+   * <code>optional int32 userTel = 2;</code>
+   * @return Whether the userTel field is set.
    */
-  boolean hasReadUserTel();
+  boolean hasUserTel();
   /**
    * <pre>
    * 阅读用户电话
    * </pre>
    *
-   * <code>optional int32 readUserTel = 2;</code>
-   * @return The readUserTel.
+   * <code>optional int32 userTel = 2;</code>
+   * @return The userTel.
    */
-  int getReadUserTel();
+  int getUserTel();
 
   /**
    * <pre>
    * 公告唯一ID
    * </pre>
    *
-   * <code>optional int64 readNoticeId = 3;</code>
-   * @return Whether the readNoticeId field is set.
+   * <code>optional int32 noticeId = 3;</code>
+   * @return Whether the noticeId field is set.
    */
-  boolean hasReadNoticeId();
+  boolean hasNoticeId();
   /**
    * <pre>
    * 公告唯一ID
    * </pre>
    *
-   * <code>optional int64 readNoticeId = 3;</code>
-   * @return The readNoticeId.
+   * <code>optional int32 noticeId = 3;</code>
+   * @return The noticeId.
    */
-  long getReadNoticeId();
+  int getNoticeId();
+
+  /**
+   * <pre>
+   * 阅读时间
+   * </pre>
+   *
+   * <code>optional int64 readTime = 4;</code>
+   * @return Whether the readTime field is set.
+   */
+  boolean hasReadTime();
+  /**
+   * <pre>
+   * 阅读时间
+   * </pre>
+   *
+   * <code>optional int64 readTime = 4;</code>
+   * @return The readTime.
+   */
+  long getReadTime();
 }

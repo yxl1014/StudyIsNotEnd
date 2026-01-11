@@ -126,6 +126,11 @@ public class DaoManager implements IDaoService {
     }
 
     @Override
+    public List<NoticeInfoDO> notice_selectAll() {
+        return noticeInfoMapper.selectAll();
+    }
+
+    @Override
     public NoticeInfoDO notice_selectByWriterAndCreateTime(Integer writerTel, Long createTime) {
         return noticeInfoMapper.selectByWriterAndCreateTime(writerTel, createTime);
     }
@@ -177,7 +182,11 @@ public class DaoManager implements IDaoService {
 
     /* ======================= Update ======================= */
 
+    /* ======================= UserReadNotice ======================= */
 
+
+
+    /* ======================= UserReadNotice ======================= */
 
     @Resource
     private RedisManager redisManager;

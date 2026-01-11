@@ -135,6 +135,14 @@ public enum RespCode
    * <code>TRC_USER_IS_BAN = 205;</code>
    */
   TRC_USER_IS_BAN(205),
+  /**
+   * <pre>
+   * 公告不存在
+   * </pre>
+   *
+   * <code>TRC_NOTICE_NOT_EXIST = 301;</code>
+   */
+  TRC_NOTICE_NOT_EXIST(301),
   UNRECOGNIZED(-1),
   ;
 
@@ -267,6 +275,14 @@ public enum RespCode
    * <code>TRC_USER_IS_BAN = 205;</code>
    */
   public static final int TRC_USER_IS_BAN_VALUE = 205;
+  /**
+   * <pre>
+   * 公告不存在
+   * </pre>
+   *
+   * <code>TRC_NOTICE_NOT_EXIST = 301;</code>
+   */
+  public static final int TRC_NOTICE_NOT_EXIST_VALUE = 301;
 
 
   public final int getNumber() {
@@ -308,6 +324,7 @@ public enum RespCode
       case 203: return TRC_PASSWORD_ERR;
       case 204: return TRC_USER_POWER_NOT_ENOUGH;
       case 205: return TRC_USER_IS_BAN;
+      case 301: return TRC_NOTICE_NOT_EXIST;
       default: return null;
     }
   }

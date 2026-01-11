@@ -58,9 +58,10 @@ enum TNoticeType
 
 // 用户阅读公告记录信息 有信息则阅读过
 message UserReadNoticeInfo{
-  optional int32 readId = 1; // 自增唯一id
-  optional int32 readUserTel = 2; // 阅读用户电话
-  optional int64 readNoticeId = 3; // 公告唯一ID
+  optional int32 id = 1; // 自增唯一id
+  optional int32 userTel = 2; // 阅读用户电话
+  optional int32 noticeId = 3; // 公告唯一ID
+  optional int64 readTime = 4; // 阅读时间
 }
 
 // 修改记录

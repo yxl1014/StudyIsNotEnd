@@ -15,7 +15,7 @@ public interface SetNoticeReadReqOrBuilder extends
    * 公告ID
    * </pre>
    *
-   * <code>optional int64 noticeId = 1;</code>
+   * <code>optional int32 noticeId = 1;</code>
    * @return Whether the noticeId field is set.
    */
   boolean hasNoticeId();
@@ -24,8 +24,8 @@ public interface SetNoticeReadReqOrBuilder extends
    * 公告ID
    * </pre>
    *
-   * <code>optional int64 noticeId = 1;</code>
+   * <code>optional int32 noticeId = 1;</code>
    * @return The noticeId.
    */
-  long getNoticeId();
+  int getNoticeId();
 }

@@ -109,74 +109,75 @@ public final class EntityProto extends com.google.protobuf.GeneratedFile {
       "\n\013_noticeTypeB\023\n\021_noticeCreateTimeB\016\n\014_n" +
       "oticeTitleB\020\n\016_noticeContextB\014\n\n_writerT" +
       "elB\r\n\013_writerNameB\010\n\006_isTopB\017\n\r_isAccept" +
-      "ReadB\014\n\n_noticeAtt\"\212\001\n\022UserReadNoticeInf" +
-      "o\022\023\n\006readId\030\001 \001(\005H\000\210\001\001\022\030\n\013readUserTel\030\002 " +
-      "\001(\005H\001\210\001\001\022\031\n\014readNoticeId\030\003 \001(\003H\002\210\001\001B\t\n\007_" +
-      "readIdB\016\n\014_readUserTelB\017\n\r_readNoticeId\"" +
-      "\321\002\n\nUpdateInfo\022\025\n\010updateId\030\001 \001(\005H\000\210\001\001\022\023\n" +
-      "\006infoId\030\002 \001(\003H\001\210\001\001\022*\n\010infoType\030\003 \001(\0162\023.p" +
-      "o.TUpdateInfoTypeH\002\210\001\001\022\026\n\tbeforeMsg\030\004 \001(" +
-      "\014H\003\210\001\001\022\025\n\010afterMsg\030\005 \001(\014H\004\210\001\001\022\027\n\nupdateT" +
-      "ime\030\006 \001(\003H\005\210\001\001\022\032\n\rupdateUserTel\030\007 \001(\005H\006\210" +
-      "\001\001\022\027\n\nupdateName\030\010 \001(\tH\007\210\001\001B\013\n\t_updateId" +
-      "B\t\n\007_infoIdB\013\n\t_infoTypeB\014\n\n_beforeMsgB\013" +
-      "\n\t_afterMsgB\r\n\013_updateTimeB\020\n\016_updateUse" +
-      "rTelB\r\n\013_updateName\"\364\002\n\014QuestionInfo\022\024\n\007" +
-      "questId\030\001 \001(\005H\000\210\001\001\022(\n\tquestType\030\002 \001(\0162\020." +
-      "po.QuestionTypeH\001\210\001\001\022\031\n\014questContext\030\003 \001" +
-      "(\tH\002\210\001\001\022\027\n\nquestPhoto\030\004 \001(\014H\003\210\001\001\022\033\n\016ques" +
-      "tWriterTel\030\005 \001(\005H\004\210\001\001\022+\n\010nodeType\030\006 \001(\0162" +
-      "\024.po.QuestionNodeTypeH\005\210\001\001\022\027\n\nchoiceUser" +
-      "\030\007 \001(\005H\006\210\001\001\022\026\n\tquestTime\030\010 \001(\003H\007\210\001\001B\n\n\010_" +
-      "questIdB\014\n\n_questTypeB\017\n\r_questContextB\r" +
-      "\n\013_questPhotoB\021\n\017_questWriterTelB\013\n\t_nod" +
-      "eTypeB\r\n\013_choiceUserB\014\n\n_questTime\"\256\002\n\024Q" +
-      "uestionHandlingInfo\022\027\n\nhandlingId\030\001 \001(\005H" +
-      "\000\210\001\001\022\024\n\007questId\030\002 \001(\005H\001\210\001\001\0223\n\014handlingTy" +
-      "pe\030\003 \001(\0162\030.po.QuestionHandlingTypeH\002\210\001\001\022" +
-      "\034\n\017handlingUserTel\030\004 \001(\005H\003\210\001\001\022\030\n\013handlin" +
-      "gCtx\030\005 \001(\014H\004\210\001\001\022\031\n\014handlingTime\030\006 \001(\003H\005\210" +
-      "\001\001B\r\n\013_handlingIdB\n\n\010_questIdB\017\n\r_handli" +
-      "ngTypeB\022\n\020_handlingUserTelB\016\n\014_handlingC" +
-      "txB\017\n\r_handlingTime\"_\n\016NotifyUserInfo\022!\n" +
-      "\007msgType\030\001 \001(\0162\013.po.MsgTypeH\000\210\001\001\022\023\n\006msgC" +
-      "tx\030\002 \001(\014H\001\210\001\001B\n\n\010_msgTypeB\t\n\007_msgCtx\"\360\002\n" +
-      "\tStudyInfo\022\024\n\007studyId\030\001 \001(\005H\000\210\001\001\022%\n\tstud" +
-      "yType\030\002 \001(\0162\r.po.StudyTypeH\001\210\001\001\022\034\n\017study" +
-      "CreateTime\030\003 \001(\003H\002\210\001\001\022\027\n\nstudyTitle\030\004 \001(" +
-      "\tH\003\210\001\001\022\025\n\010studyTip\030\005 \001(\tH\004\210\001\001\022\031\n\014studyCo" +
-      "ntent\030\006 \001(\tH\005\210\001\001\022\023\n\006isOpen\030\007 \001(\010H\006\210\001\001\022\022\n" +
-      "\005isTop\030\010 \001(\010H\007\210\001\001\022\026\n\treadCount\030\t \001(\005H\010\210\001" +
-      "\001B\n\n\010_studyIdB\014\n\n_studyTypeB\022\n\020_studyCre" +
-      "ateTimeB\r\n\013_studyTitleB\013\n\t_studyTipB\017\n\r_" +
-      "studyContentB\t\n\007_isOpenB\010\n\006_isTopB\014\n\n_re" +
-      "adCount\"w\n\021UserStarStudyInfo\022\023\n\006starId\030\001" +
-      " \001(\005H\000\210\001\001\022\024\n\007userTel\030\002 \001(\005H\001\210\001\001\022\024\n\007study" +
-      "Id\030\003 \001(\005H\002\210\001\001B\t\n\007_starIdB\n\n\010_userTelB\n\n\010" +
-      "_studyId\"\264\001\n\nPeopleInfo\022\031\n\014peopleCardId\030" +
-      "\001 \001(\tH\000\210\001\001\022\027\n\npeopleName\030\002 \001(\tH\001\210\001\001\022\032\n\rp" +
-      "eopleHouseId\030\003 \001(\tH\002\210\001\001\022\026\n\tpeopleCtx\030\004 \001" +
-      "(\tH\003\210\001\001B\017\n\r_peopleCardIdB\r\n\013_peopleNameB" +
-      "\020\n\016_peopleHouseIdB\014\n\n_peopleCtx\"\267\001\n\021Peop" +
-      "leUpdateApply\022\024\n\007applyId\030\001 \001(\005H\000\210\001\001\022\030\n\013a" +
-      "pplyUserId\030\002 \001(\005H\001\210\001\001\022\034\n\017applyCreateTime" +
-      "\030\003 \001(\003H\002\210\001\001\022\026\n\tnewPeople\030\004 \001(\014H\003\210\001\001B\n\n\010_" +
-      "applyIdB\016\n\014_applyUserIdB\022\n\020_applyCreateT" +
-      "imeB\014\n\n_newPeople*>\n\rTUserFlagType\022\020\n\014TU" +
-      "FT_DEFAULT\020\000\022\014\n\010TUFT_BAN\020\001\022\r\n\tTUFT_FLAG\020" +
-      "\002*%\n\nTUserPower\022\n\n\006TUP_CM\020\000\022\013\n\007TUP_CGM\020\001" +
-      "*M\n\013TNoticeType\022\n\n\006TNT_TZ\020\000\022\n\n\006TNT_ZP\020\001\022" +
-      "\n\n\006TNT_HD\020\002\022\014\n\010TNT_ZFXC\020\003\022\014\n\010TNT_GKZW\020\004*" +
-      "B\n\017TUpdateInfoType\022\017\n\013TUIT_NOTICE\020\000\022\r\n\tT" +
-      "UIT_USER\020\001\022\017\n\013TUIT_PEOPLE\020\002*M\n\020QuestionN" +
-      "odeType\022\014\n\010TQNT_PRE\020\000\022\014\n\010TQNT_MID\020\001\022\r\n\tT" +
-      "QNT_TAIL\020\002\022\016\n\nTQNT_CLOSE\020\003*F\n\014QuestionTy" +
-      "pe\022\014\n\010TQT_WSHJ\020\000\022\014\n\010TQT_LLJF\020\001\022\014\n\010TQT_JC" +
-      "SS\020\002\022\014\n\010TQT_GBZF\020\003*I\n\024QuestionHandlingTy" +
-      "pe\022\014\n\010TQHT_END\020\000\022\022\n\016TQHT_HAS_QUEST\020\001\022\017\n\013" +
-      "TQHT_CANNOT\020\002*C\n\tStudyType\022\014\n\010TST_ZCJD\020\000" +
-      "\022\014\n\010TST_NJTG\020\001\022\014\n\010TST_JKYS\020\002\022\014\n\010TST_FLCS" +
-      "\020\003B\023\n\002poB\013EntityProtoP\001b\006proto3"
+      "ReadB\014\n\n_noticeAtt\"\226\001\n\022UserReadNoticeInf" +
+      "o\022\017\n\002id\030\001 \001(\005H\000\210\001\001\022\024\n\007userTel\030\002 \001(\005H\001\210\001\001" +
+      "\022\025\n\010noticeId\030\003 \001(\005H\002\210\001\001\022\025\n\010readTime\030\004 \001(" +
+      "\003H\003\210\001\001B\005\n\003_idB\n\n\010_userTelB\013\n\t_noticeIdB\013" +
+      "\n\t_readTime\"\321\002\n\nUpdateInfo\022\025\n\010updateId\030\001" +
+      " \001(\005H\000\210\001\001\022\023\n\006infoId\030\002 \001(\003H\001\210\001\001\022*\n\010infoTy" +
+      "pe\030\003 \001(\0162\023.po.TUpdateInfoTypeH\002\210\001\001\022\026\n\tbe" +
+      "foreMsg\030\004 \001(\014H\003\210\001\001\022\025\n\010afterMsg\030\005 \001(\014H\004\210\001" +
+      "\001\022\027\n\nupdateTime\030\006 \001(\003H\005\210\001\001\022\032\n\rupdateUser" +
+      "Tel\030\007 \001(\005H\006\210\001\001\022\027\n\nupdateName\030\010 \001(\tH\007\210\001\001B" +
+      "\013\n\t_updateIdB\t\n\007_infoIdB\013\n\t_infoTypeB\014\n\n" +
+      "_beforeMsgB\013\n\t_afterMsgB\r\n\013_updateTimeB\020" +
+      "\n\016_updateUserTelB\r\n\013_updateName\"\364\002\n\014Ques" +
+      "tionInfo\022\024\n\007questId\030\001 \001(\005H\000\210\001\001\022(\n\tquestT" +
+      "ype\030\002 \001(\0162\020.po.QuestionTypeH\001\210\001\001\022\031\n\014ques" +
+      "tContext\030\003 \001(\tH\002\210\001\001\022\027\n\nquestPhoto\030\004 \001(\014H" +
+      "\003\210\001\001\022\033\n\016questWriterTel\030\005 \001(\005H\004\210\001\001\022+\n\010nod" +
+      "eType\030\006 \001(\0162\024.po.QuestionNodeTypeH\005\210\001\001\022\027" +
+      "\n\nchoiceUser\030\007 \001(\005H\006\210\001\001\022\026\n\tquestTime\030\010 \001" +
+      "(\003H\007\210\001\001B\n\n\010_questIdB\014\n\n_questTypeB\017\n\r_qu" +
+      "estContextB\r\n\013_questPhotoB\021\n\017_questWrite" +
+      "rTelB\013\n\t_nodeTypeB\r\n\013_choiceUserB\014\n\n_que" +
+      "stTime\"\256\002\n\024QuestionHandlingInfo\022\027\n\nhandl" +
+      "ingId\030\001 \001(\005H\000\210\001\001\022\024\n\007questId\030\002 \001(\005H\001\210\001\001\0223" +
+      "\n\014handlingType\030\003 \001(\0162\030.po.QuestionHandli" +
+      "ngTypeH\002\210\001\001\022\034\n\017handlingUserTel\030\004 \001(\005H\003\210\001" +
+      "\001\022\030\n\013handlingCtx\030\005 \001(\014H\004\210\001\001\022\031\n\014handlingT" +
+      "ime\030\006 \001(\003H\005\210\001\001B\r\n\013_handlingIdB\n\n\010_questI" +
+      "dB\017\n\r_handlingTypeB\022\n\020_handlingUserTelB\016" +
+      "\n\014_handlingCtxB\017\n\r_handlingTime\"_\n\016Notif" +
+      "yUserInfo\022!\n\007msgType\030\001 \001(\0162\013.po.MsgTypeH" +
+      "\000\210\001\001\022\023\n\006msgCtx\030\002 \001(\014H\001\210\001\001B\n\n\010_msgTypeB\t\n" +
+      "\007_msgCtx\"\360\002\n\tStudyInfo\022\024\n\007studyId\030\001 \001(\005H" +
+      "\000\210\001\001\022%\n\tstudyType\030\002 \001(\0162\r.po.StudyTypeH\001" +
+      "\210\001\001\022\034\n\017studyCreateTime\030\003 \001(\003H\002\210\001\001\022\027\n\nstu" +
+      "dyTitle\030\004 \001(\tH\003\210\001\001\022\025\n\010studyTip\030\005 \001(\tH\004\210\001" +
+      "\001\022\031\n\014studyContent\030\006 \001(\tH\005\210\001\001\022\023\n\006isOpen\030\007" +
+      " \001(\010H\006\210\001\001\022\022\n\005isTop\030\010 \001(\010H\007\210\001\001\022\026\n\treadCou" +
+      "nt\030\t \001(\005H\010\210\001\001B\n\n\010_studyIdB\014\n\n_studyTypeB" +
+      "\022\n\020_studyCreateTimeB\r\n\013_studyTitleB\013\n\t_s" +
+      "tudyTipB\017\n\r_studyContentB\t\n\007_isOpenB\010\n\006_" +
+      "isTopB\014\n\n_readCount\"w\n\021UserStarStudyInfo" +
+      "\022\023\n\006starId\030\001 \001(\005H\000\210\001\001\022\024\n\007userTel\030\002 \001(\005H\001" +
+      "\210\001\001\022\024\n\007studyId\030\003 \001(\005H\002\210\001\001B\t\n\007_starIdB\n\n\010" +
+      "_userTelB\n\n\010_studyId\"\264\001\n\nPeopleInfo\022\031\n\014p" +
+      "eopleCardId\030\001 \001(\tH\000\210\001\001\022\027\n\npeopleName\030\002 \001" +
+      "(\tH\001\210\001\001\022\032\n\rpeopleHouseId\030\003 \001(\tH\002\210\001\001\022\026\n\tp" +
+      "eopleCtx\030\004 \001(\tH\003\210\001\001B\017\n\r_peopleCardIdB\r\n\013" +
+      "_peopleNameB\020\n\016_peopleHouseIdB\014\n\n_people" +
+      "Ctx\"\267\001\n\021PeopleUpdateApply\022\024\n\007applyId\030\001 \001" +
+      "(\005H\000\210\001\001\022\030\n\013applyUserId\030\002 \001(\005H\001\210\001\001\022\034\n\017app" +
+      "lyCreateTime\030\003 \001(\003H\002\210\001\001\022\026\n\tnewPeople\030\004 \001" +
+      "(\014H\003\210\001\001B\n\n\010_applyIdB\016\n\014_applyUserIdB\022\n\020_" +
+      "applyCreateTimeB\014\n\n_newPeople*>\n\rTUserFl" +
+      "agType\022\020\n\014TUFT_DEFAULT\020\000\022\014\n\010TUFT_BAN\020\001\022\r" +
+      "\n\tTUFT_FLAG\020\002*%\n\nTUserPower\022\n\n\006TUP_CM\020\000\022" +
+      "\013\n\007TUP_CGM\020\001*M\n\013TNoticeType\022\n\n\006TNT_TZ\020\000\022" +
+      "\n\n\006TNT_ZP\020\001\022\n\n\006TNT_HD\020\002\022\014\n\010TNT_ZFXC\020\003\022\014\n" +
+      "\010TNT_GKZW\020\004*B\n\017TUpdateInfoType\022\017\n\013TUIT_N" +
+      "OTICE\020\000\022\r\n\tTUIT_USER\020\001\022\017\n\013TUIT_PEOPLE\020\002*" +
+      "M\n\020QuestionNodeType\022\014\n\010TQNT_PRE\020\000\022\014\n\010TQN" +
+      "T_MID\020\001\022\r\n\tTQNT_TAIL\020\002\022\016\n\nTQNT_CLOSE\020\003*F" +
+      "\n\014QuestionType\022\014\n\010TQT_WSHJ\020\000\022\014\n\010TQT_LLJF" +
+      "\020\001\022\014\n\010TQT_JCSS\020\002\022\014\n\010TQT_GBZF\020\003*I\n\024Questi" +
+      "onHandlingType\022\014\n\010TQHT_END\020\000\022\022\n\016TQHT_HAS" +
+      "_QUEST\020\001\022\017\n\013TQHT_CANNOT\020\002*C\n\tStudyType\022\014" +
+      "\n\010TST_ZCJD\020\000\022\014\n\010TST_NJTG\020\001\022\014\n\010TST_JKYS\020\002" +
+      "\022\014\n\010TST_FLCS\020\003B\023\n\002poB\013EntityProtoP\001b\006pro" +
+      "to3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -200,7 +201,7 @@ public final class EntityProto extends com.google.protobuf.GeneratedFile {
     internal_static_po_UserReadNoticeInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_UserReadNoticeInfo_descriptor,
-        new java.lang.String[] { "ReadId", "ReadUserTel", "ReadNoticeId", });
+        new java.lang.String[] { "Id", "UserTel", "NoticeId", "ReadTime", });
     internal_static_po_UpdateInfo_descriptor =
       getDescriptor().getMessageType(3);
     internal_static_po_UpdateInfo_fieldAccessorTable = new

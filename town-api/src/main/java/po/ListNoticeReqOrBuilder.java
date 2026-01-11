@@ -15,7 +15,7 @@ public interface ListNoticeReqOrBuilder extends
    * 公告ID，不填或填0代表拉去所有
    * </pre>
    *
-   * <code>optional int64 noticeId = 1;</code>
+   * <code>optional int32 noticeId = 1;</code>
    * @return Whether the noticeId field is set.
    */
   boolean hasNoticeId();
@@ -24,8 +24,46 @@ public interface ListNoticeReqOrBuilder extends
    * 公告ID，不填或填0代表拉去所有
    * </pre>
    *
-   * <code>optional int64 noticeId = 1;</code>
+   * <code>optional int32 noticeId = 1;</code>
    * @return The noticeId.
    */
-  long getNoticeId();
+  int getNoticeId();
+
+  /**
+   * <pre>
+   * 第几页
+   * </pre>
+   *
+   * <code>optional int32 page = 2;</code>
+   * @return Whether the page field is set.
+   */
+  boolean hasPage();
+  /**
+   * <pre>
+   * 第几页
+   * </pre>
+   *
+   * <code>optional int32 page = 2;</code>
+   * @return The page.
+   */
+  int getPage();
+
+  /**
+   * <pre>
+   * 几条
+   * </pre>
+   *
+   * <code>optional int32 size = 3;</code>
+   * @return Whether the size field is set.
+   */
+  boolean hasSize();
+  /**
+   * <pre>
+   * 几条
+   * </pre>
+   *
+   * <code>optional int32 size = 3;</code>
+   * @return The size.
+   */
+  int getSize();
 }

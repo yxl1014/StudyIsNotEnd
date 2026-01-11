@@ -4,6 +4,8 @@ import entity.NoticeInfoDO;
 import entity.UpdateInfoDO;
 import entity.UserInfoDO;
 
+import java.util.List;
+
 public interface IDaoService {
     /// redis
     /* ======================= Key ======================= */
@@ -42,6 +44,7 @@ public interface IDaoService {
 
     /// notice
     NoticeInfoDO notice_selectById(Integer id);
+    List<NoticeInfoDO> notice_selectAll();
     NoticeInfoDO notice_selectByWriterAndCreateTime(Integer writerTel, Long createTime);
     int notice_insert(NoticeInfoDO entity);
     int notice_update(NoticeInfoDO entity);
@@ -49,9 +52,11 @@ public interface IDaoService {
     NoticeInfoDO toDO(po.NoticeInfo proto);
     po.NoticeInfo toProto(NoticeInfoDO entity);
 
-    // update
+    /// update
     int update_insert(UpdateInfoDO entity);
     UpdateInfoDO toDO(po.UpdateInfo proto);
     po.UpdateInfo toProto(UpdateInfoDO entity);
+
+    /// serReadNoticeInfo
 
 }

@@ -49,13 +49,13 @@ private static final long serialVersionUID = 0L;
 
   private int bitField0_;
   public static final int NOTICEID_FIELD_NUMBER = 1;
-  private long noticeId_ = 0L;
+  private int noticeId_ = 0;
   /**
    * <pre>
    * 公告ID
    * </pre>
    *
-   * <code>optional int64 noticeId = 1;</code>
+   * <code>optional int32 noticeId = 1;</code>
    * @return Whether the noticeId field is set.
    */
   @java.lang.Override
@@ -67,11 +67,11 @@ private static final long serialVersionUID = 0L;
    * 公告ID
    * </pre>
    *
-   * <code>optional int64 noticeId = 1;</code>
+   * <code>optional int32 noticeId = 1;</code>
    * @return The noticeId.
    */
   @java.lang.Override
-  public long getNoticeId() {
+  public int getNoticeId() {
     return noticeId_;
   }
 
@@ -90,7 +90,7 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeInt64(1, noticeId_);
+      output.writeInt32(1, noticeId_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -103,7 +103,7 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, noticeId_);
+        .computeInt32Size(1, noticeId_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -138,8 +138,7 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     if (hasNoticeId()) {
       hash = (37 * hash) + NOTICEID_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getNoticeId());
+      hash = (53 * hash) + getNoticeId();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -276,7 +275,7 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      noticeId_ = 0L;
+      noticeId_ = 0;
       return this;
     }
 
@@ -360,7 +359,7 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              noticeId_ = input.readInt64();
+              noticeId_ = input.readInt32();
               bitField0_ |= 0x00000001;
               break;
             } // case 8
@@ -381,13 +380,13 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private long noticeId_ ;
+    private int noticeId_ ;
     /**
      * <pre>
      * 公告ID
      * </pre>
      *
-     * <code>optional int64 noticeId = 1;</code>
+     * <code>optional int32 noticeId = 1;</code>
      * @return Whether the noticeId field is set.
      */
     @java.lang.Override
@@ -399,11 +398,11 @@ private static final long serialVersionUID = 0L;
      * 公告ID
      * </pre>
      *
-     * <code>optional int64 noticeId = 1;</code>
+     * <code>optional int32 noticeId = 1;</code>
      * @return The noticeId.
      */
     @java.lang.Override
-    public long getNoticeId() {
+    public int getNoticeId() {
       return noticeId_;
     }
     /**
@@ -411,11 +410,11 @@ private static final long serialVersionUID = 0L;
      * 公告ID
      * </pre>
      *
-     * <code>optional int64 noticeId = 1;</code>
+     * <code>optional int32 noticeId = 1;</code>
      * @param value The noticeId to set.
      * @return This builder for chaining.
      */
-    public Builder setNoticeId(long value) {
+    public Builder setNoticeId(int value) {
 
       noticeId_ = value;
       bitField0_ |= 0x00000001;
@@ -427,12 +426,12 @@ private static final long serialVersionUID = 0L;
      * 公告ID
      * </pre>
      *
-     * <code>optional int64 noticeId = 1;</code>
+     * <code>optional int32 noticeId = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearNoticeId() {
       bitField0_ = (bitField0_ & ~0x00000001);
-      noticeId_ = 0L;
+      noticeId_ = 0;
       onChanged();
       return this;
     }

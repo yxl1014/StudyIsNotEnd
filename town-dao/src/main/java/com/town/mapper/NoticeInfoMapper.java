@@ -3,11 +3,20 @@ package com.town.mapper;
 import entity.NoticeInfoDO;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface NoticeInfoMapper {
 
     @Select("SELECT * FROM notice_info WHERE notice_id = #{id}")
     NoticeInfoDO selectById(Integer id);
+
+    @Select("""
+        SELECT *
+        FROM notice_info
+        ORDER BY is_top DESC, notice_id DESC
+    """)
+    List<NoticeInfoDO> selectAll();
 
 
     @Select("SELECT * FROM notice_info WHERE writer_tel = #{writerTel} and notice_create_time = #{createTime}")

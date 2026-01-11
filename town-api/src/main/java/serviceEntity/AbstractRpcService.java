@@ -3,12 +3,15 @@ package serviceEntity;
 
 import com.google.protobuf.ByteString;
 import entity.TokenInfoDO;
+import entity.UpdateInfoDO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import po.*;
 import townInterface.IUpdateService;
+import util.CommonEntityBuilder;
 import util.TokenResolver;
 
+import java.util.ArrayList;
 import java.util.function.Supplier;
 
 
@@ -22,51 +25,99 @@ public abstract class AbstractRpcService {
 
     public abstract IUpdateService updateService();
 
+    private ArrayList<MsgType> checkTokenMsg;
+
+    public AbstractRpcService() {
+        initCheckTokenMsg();
+    }
+
+    private void initCheckTokenMsg() {
+        checkTokenMsg = new ArrayList<>();
+        checkTokenMsg.add(MsgType.TMT_UpdateUserInfoRsp);
+        checkTokenMsg.add(MsgType.TMT_CreateNoticeRsp);
+        checkTokenMsg.add(MsgType.TMT_UpdateNoticeRsp);
+    }
+
+
     protected ResponseMsg execute(
             MsgType msgType,
-            String token,                 // 入口 token
+            String token,
             Supplier<BizResult> supplier
     ) {
         try {
-            // 解析 token → TokenInfo
-            TokenInfoDO tokenInfo = TokenResolver.resolve(token);
-            if (tokenInfo != null) {
-                UserContext.set(tokenInfo);
+            TokenInfoDO tokenInfo = resolveAndBindContext(token);
+
+            ResponseMsg permissionFail = checkPermission(msgType, tokenInfo);
+            if (permissionFail != null) {
+                return permissionFail;
             }
 
-            // 执行业务逻辑
-            BizResult result = supplier.get();
+            BizResult result = doBusiness(supplier);
+            handleUpdateInfo(tokenInfo, result);
 
-            // 添加更新信息
-            if (TUserPower.TUP_CGM.equals(tokenInfo.getUserPower())
-                    && result.getUpdateInfoDO() != null
-                    && updateService() != null) {
-                RespCode respCode = updateService().addUpdateInfo(result.getUpdateInfoDO());
-                if (respCode != RespCode.TRC_OK) {
-                    log.error("add update failed updateInfo{}", result.getUpdateInfoDO().toString());
-                }
-            }
-
-            // 统一构建 ResponseMsg
-            return ResponseMsg.newBuilder()
-                    .setMsgType(msgType)
-                    .setErrCode(result.getCode())
-                    .setMsg(result.getMsg() == null
-                            ? ByteString.EMPTY
-                            : result.getMsg().toByteString())
-                    .build();
+            return CommonEntityBuilder.buildOk(msgType, result);
 
         } catch (Exception e) {
-            log.error("rpc error, type={}, err={}", msgType, e);
+            log.error("rpc error, type={}", msgType, e);
+            return CommonEntityBuilder.buildError(msgType);
+        } finally {
+            UserContext.clear();
+        }
+    }
+
+
+    /// 将token设置到threadLocal当中
+    private TokenInfoDO resolveAndBindContext(String token) {
+        TokenInfoDO tokenInfo = TokenResolver.resolve(token);
+        if (tokenInfo != null) {
+            UserContext.set(tokenInfo);
+        }
+        return tokenInfo;
+    }
+
+    /// 校验权限
+    private ResponseMsg checkPermission(MsgType msgType, TokenInfoDO tokenInfo) {
+        if (!checkTokenMsg.contains(msgType)) {
+            return null;
+        }
+
+        if (tokenInfo == null || tokenInfo.getUserPower() != TUserPower.TUP_CGM) {
             return ResponseMsg.newBuilder()
                     .setMsgType(msgType)
-                    .setErrCode(RespCode.TRC_ERR)
-                    .setMsg(ByteString.EMPTY)
+                    .setErrCode(RespCode.TRC_USER_POWER_NOT_ENOUGH)
                     .build();
+        }
+        return null;
+    }
 
-        } finally {
-            // 清理 ThreadLocal
-            UserContext.clear();
+    /// 执行逻辑
+    private BizResult doBusiness(Supplier<BizResult> supplier) {
+        BizResult result = supplier.get();
+        if (result == null) {
+            throw new IllegalStateException("BizResult must not be null");
+        }
+        return result;
+    }
+
+    /// 记录操作历史
+    private void handleUpdateInfo(TokenInfoDO tokenInfo, BizResult result) {
+        if (tokenInfo == null || tokenInfo.getUserPower() != TUserPower.TUP_CGM) {
+            return;
+        }
+
+        UpdateInfoDO updateInfo = result.getUpdateInfoDO();
+        if (updateInfo == null) {
+            return;
+        }
+
+        IUpdateService service = updateService();
+        if (service == null) {
+            return;
+        }
+
+        RespCode respCode = service.addUpdateInfo(updateInfo);
+        if (respCode != RespCode.TRC_OK) {
+            log.error("add update failed updateInfo={}", updateInfo);
         }
     }
 }

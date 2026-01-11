@@ -15,18 +15,20 @@ public class UserInfoDO implements Serializable {
     private Integer flagType;
 
     public boolean isEmpty() {
-        return (userTel == null || userTel <= 0)
-                || (isBlank(userName)
+        return userTel == null || userTel <= 0;
+    }
+
+    public boolean otherNull() {
+        return isBlank(userName)
                 && isBlank(userPwd)
                 && isBlank(userTown)
                 && userPower == null
                 && userCreateTime == null
-                && flagType == null);
+                && flagType == null;
     }
 
     private boolean isBlank(String s) {
         return s == null || s.trim().isEmpty();
     }
-
 }
 

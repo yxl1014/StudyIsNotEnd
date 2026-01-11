@@ -48,18 +48,18 @@ private static final long serialVersionUID = 0L;
   }
 
   private int bitField0_;
-  public static final int READID_FIELD_NUMBER = 1;
-  private int readId_ = 0;
+  public static final int ID_FIELD_NUMBER = 1;
+  private int id_ = 0;
   /**
    * <pre>
    * 自增唯一id
    * </pre>
    *
-   * <code>optional int32 readId = 1;</code>
-   * @return Whether the readId field is set.
+   * <code>optional int32 id = 1;</code>
+   * @return Whether the id field is set.
    */
   @java.lang.Override
-  public boolean hasReadId() {
+  public boolean hasId() {
     return ((bitField0_ & 0x00000001) != 0);
   }
   /**
@@ -67,26 +67,26 @@ private static final long serialVersionUID = 0L;
    * 自增唯一id
    * </pre>
    *
-   * <code>optional int32 readId = 1;</code>
-   * @return The readId.
+   * <code>optional int32 id = 1;</code>
+   * @return The id.
    */
   @java.lang.Override
-  public int getReadId() {
-    return readId_;
+  public int getId() {
+    return id_;
   }
 
-  public static final int READUSERTEL_FIELD_NUMBER = 2;
-  private int readUserTel_ = 0;
+  public static final int USERTEL_FIELD_NUMBER = 2;
+  private int userTel_ = 0;
   /**
    * <pre>
    * 阅读用户电话
    * </pre>
    *
-   * <code>optional int32 readUserTel = 2;</code>
-   * @return Whether the readUserTel field is set.
+   * <code>optional int32 userTel = 2;</code>
+   * @return Whether the userTel field is set.
    */
   @java.lang.Override
-  public boolean hasReadUserTel() {
+  public boolean hasUserTel() {
     return ((bitField0_ & 0x00000002) != 0);
   }
   /**
@@ -94,26 +94,26 @@ private static final long serialVersionUID = 0L;
    * 阅读用户电话
    * </pre>
    *
-   * <code>optional int32 readUserTel = 2;</code>
-   * @return The readUserTel.
+   * <code>optional int32 userTel = 2;</code>
+   * @return The userTel.
    */
   @java.lang.Override
-  public int getReadUserTel() {
-    return readUserTel_;
+  public int getUserTel() {
+    return userTel_;
   }
 
-  public static final int READNOTICEID_FIELD_NUMBER = 3;
-  private long readNoticeId_ = 0L;
+  public static final int NOTICEID_FIELD_NUMBER = 3;
+  private int noticeId_ = 0;
   /**
    * <pre>
    * 公告唯一ID
    * </pre>
    *
-   * <code>optional int64 readNoticeId = 3;</code>
-   * @return Whether the readNoticeId field is set.
+   * <code>optional int32 noticeId = 3;</code>
+   * @return Whether the noticeId field is set.
    */
   @java.lang.Override
-  public boolean hasReadNoticeId() {
+  public boolean hasNoticeId() {
     return ((bitField0_ & 0x00000004) != 0);
   }
   /**
@@ -121,12 +121,39 @@ private static final long serialVersionUID = 0L;
    * 公告唯一ID
    * </pre>
    *
-   * <code>optional int64 readNoticeId = 3;</code>
-   * @return The readNoticeId.
+   * <code>optional int32 noticeId = 3;</code>
+   * @return The noticeId.
    */
   @java.lang.Override
-  public long getReadNoticeId() {
-    return readNoticeId_;
+  public int getNoticeId() {
+    return noticeId_;
+  }
+
+  public static final int READTIME_FIELD_NUMBER = 4;
+  private long readTime_ = 0L;
+  /**
+   * <pre>
+   * 阅读时间
+   * </pre>
+   *
+   * <code>optional int64 readTime = 4;</code>
+   * @return Whether the readTime field is set.
+   */
+  @java.lang.Override
+  public boolean hasReadTime() {
+    return ((bitField0_ & 0x00000008) != 0);
+  }
+  /**
+   * <pre>
+   * 阅读时间
+   * </pre>
+   *
+   * <code>optional int64 readTime = 4;</code>
+   * @return The readTime.
+   */
+  @java.lang.Override
+  public long getReadTime() {
+    return readTime_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -144,13 +171,16 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeInt32(1, readId_);
+      output.writeInt32(1, id_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      output.writeInt32(2, readUserTel_);
+      output.writeInt32(2, userTel_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      output.writeInt64(3, readNoticeId_);
+      output.writeInt32(3, noticeId_);
+    }
+    if (((bitField0_ & 0x00000008) != 0)) {
+      output.writeInt64(4, readTime_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -163,15 +193,19 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, readId_);
+        .computeInt32Size(1, id_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, readUserTel_);
+        .computeInt32Size(2, userTel_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(3, readNoticeId_);
+        .computeInt32Size(3, noticeId_);
+    }
+    if (((bitField0_ & 0x00000008) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(4, readTime_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -188,20 +222,25 @@ private static final long serialVersionUID = 0L;
     }
     po.UserReadNoticeInfo other = (po.UserReadNoticeInfo) obj;
 
-    if (hasReadId() != other.hasReadId()) return false;
-    if (hasReadId()) {
-      if (getReadId()
-          != other.getReadId()) return false;
+    if (hasId() != other.hasId()) return false;
+    if (hasId()) {
+      if (getId()
+          != other.getId()) return false;
     }
-    if (hasReadUserTel() != other.hasReadUserTel()) return false;
-    if (hasReadUserTel()) {
-      if (getReadUserTel()
-          != other.getReadUserTel()) return false;
+    if (hasUserTel() != other.hasUserTel()) return false;
+    if (hasUserTel()) {
+      if (getUserTel()
+          != other.getUserTel()) return false;
     }
-    if (hasReadNoticeId() != other.hasReadNoticeId()) return false;
-    if (hasReadNoticeId()) {
-      if (getReadNoticeId()
-          != other.getReadNoticeId()) return false;
+    if (hasNoticeId() != other.hasNoticeId()) return false;
+    if (hasNoticeId()) {
+      if (getNoticeId()
+          != other.getNoticeId()) return false;
+    }
+    if (hasReadTime() != other.hasReadTime()) return false;
+    if (hasReadTime()) {
+      if (getReadTime()
+          != other.getReadTime()) return false;
     }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
@@ -214,18 +253,22 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasReadId()) {
-      hash = (37 * hash) + READID_FIELD_NUMBER;
-      hash = (53 * hash) + getReadId();
+    if (hasId()) {
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId();
     }
-    if (hasReadUserTel()) {
-      hash = (37 * hash) + READUSERTEL_FIELD_NUMBER;
-      hash = (53 * hash) + getReadUserTel();
+    if (hasUserTel()) {
+      hash = (37 * hash) + USERTEL_FIELD_NUMBER;
+      hash = (53 * hash) + getUserTel();
     }
-    if (hasReadNoticeId()) {
-      hash = (37 * hash) + READNOTICEID_FIELD_NUMBER;
+    if (hasNoticeId()) {
+      hash = (37 * hash) + NOTICEID_FIELD_NUMBER;
+      hash = (53 * hash) + getNoticeId();
+    }
+    if (hasReadTime()) {
+      hash = (37 * hash) + READTIME_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getReadNoticeId());
+          getReadTime());
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -362,9 +405,10 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      readId_ = 0;
-      readUserTel_ = 0;
-      readNoticeId_ = 0L;
+      id_ = 0;
+      userTel_ = 0;
+      noticeId_ = 0;
+      readTime_ = 0L;
       return this;
     }
 
@@ -400,16 +444,20 @@ private static final long serialVersionUID = 0L;
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.readId_ = readId_;
+        result.id_ = id_;
         to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.readUserTel_ = readUserTel_;
+        result.userTel_ = userTel_;
         to_bitField0_ |= 0x00000002;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.readNoticeId_ = readNoticeId_;
+        result.noticeId_ = noticeId_;
         to_bitField0_ |= 0x00000004;
+      }
+      if (((from_bitField0_ & 0x00000008) != 0)) {
+        result.readTime_ = readTime_;
+        to_bitField0_ |= 0x00000008;
       }
       result.bitField0_ |= to_bitField0_;
     }
@@ -426,14 +474,17 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(po.UserReadNoticeInfo other) {
       if (other == po.UserReadNoticeInfo.getDefaultInstance()) return this;
-      if (other.hasReadId()) {
-        setReadId(other.getReadId());
+      if (other.hasId()) {
+        setId(other.getId());
       }
-      if (other.hasReadUserTel()) {
-        setReadUserTel(other.getReadUserTel());
+      if (other.hasUserTel()) {
+        setUserTel(other.getUserTel());
       }
-      if (other.hasReadNoticeId()) {
-        setReadNoticeId(other.getReadNoticeId());
+      if (other.hasNoticeId()) {
+        setNoticeId(other.getNoticeId());
+      }
+      if (other.hasReadTime()) {
+        setReadTime(other.getReadTime());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -462,20 +513,25 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              readId_ = input.readInt32();
+              id_ = input.readInt32();
               bitField0_ |= 0x00000001;
               break;
             } // case 8
             case 16: {
-              readUserTel_ = input.readInt32();
+              userTel_ = input.readInt32();
               bitField0_ |= 0x00000002;
               break;
             } // case 16
             case 24: {
-              readNoticeId_ = input.readInt64();
+              noticeId_ = input.readInt32();
               bitField0_ |= 0x00000004;
               break;
             } // case 24
+            case 32: {
+              readTime_ = input.readInt64();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 32
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -493,17 +549,17 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private int readId_ ;
+    private int id_ ;
     /**
      * <pre>
      * 自增唯一id
      * </pre>
      *
-     * <code>optional int32 readId = 1;</code>
-     * @return Whether the readId field is set.
+     * <code>optional int32 id = 1;</code>
+     * @return Whether the id field is set.
      */
     @java.lang.Override
-    public boolean hasReadId() {
+    public boolean hasId() {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
@@ -511,25 +567,25 @@ private static final long serialVersionUID = 0L;
      * 自增唯一id
      * </pre>
      *
-     * <code>optional int32 readId = 1;</code>
-     * @return The readId.
+     * <code>optional int32 id = 1;</code>
+     * @return The id.
      */
     @java.lang.Override
-    public int getReadId() {
-      return readId_;
+    public int getId() {
+      return id_;
     }
     /**
      * <pre>
      * 自增唯一id
      * </pre>
      *
-     * <code>optional int32 readId = 1;</code>
-     * @param value The readId to set.
+     * <code>optional int32 id = 1;</code>
+     * @param value The id to set.
      * @return This builder for chaining.
      */
-    public Builder setReadId(int value) {
+    public Builder setId(int value) {
 
-      readId_ = value;
+      id_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
@@ -539,27 +595,27 @@ private static final long serialVersionUID = 0L;
      * 自增唯一id
      * </pre>
      *
-     * <code>optional int32 readId = 1;</code>
+     * <code>optional int32 id = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearReadId() {
+    public Builder clearId() {
       bitField0_ = (bitField0_ & ~0x00000001);
-      readId_ = 0;
+      id_ = 0;
       onChanged();
       return this;
     }
 
-    private int readUserTel_ ;
+    private int userTel_ ;
     /**
      * <pre>
      * 阅读用户电话
      * </pre>
      *
-     * <code>optional int32 readUserTel = 2;</code>
-     * @return Whether the readUserTel field is set.
+     * <code>optional int32 userTel = 2;</code>
+     * @return Whether the userTel field is set.
      */
     @java.lang.Override
-    public boolean hasReadUserTel() {
+    public boolean hasUserTel() {
       return ((bitField0_ & 0x00000002) != 0);
     }
     /**
@@ -567,25 +623,25 @@ private static final long serialVersionUID = 0L;
      * 阅读用户电话
      * </pre>
      *
-     * <code>optional int32 readUserTel = 2;</code>
-     * @return The readUserTel.
+     * <code>optional int32 userTel = 2;</code>
+     * @return The userTel.
      */
     @java.lang.Override
-    public int getReadUserTel() {
-      return readUserTel_;
+    public int getUserTel() {
+      return userTel_;
     }
     /**
      * <pre>
      * 阅读用户电话
      * </pre>
      *
-     * <code>optional int32 readUserTel = 2;</code>
-     * @param value The readUserTel to set.
+     * <code>optional int32 userTel = 2;</code>
+     * @param value The userTel to set.
      * @return This builder for chaining.
      */
-    public Builder setReadUserTel(int value) {
+    public Builder setUserTel(int value) {
 
-      readUserTel_ = value;
+      userTel_ = value;
       bitField0_ |= 0x00000002;
       onChanged();
       return this;
@@ -595,27 +651,27 @@ private static final long serialVersionUID = 0L;
      * 阅读用户电话
      * </pre>
      *
-     * <code>optional int32 readUserTel = 2;</code>
+     * <code>optional int32 userTel = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearReadUserTel() {
+    public Builder clearUserTel() {
       bitField0_ = (bitField0_ & ~0x00000002);
-      readUserTel_ = 0;
+      userTel_ = 0;
       onChanged();
       return this;
     }
 
-    private long readNoticeId_ ;
+    private int noticeId_ ;
     /**
      * <pre>
      * 公告唯一ID
      * </pre>
      *
-     * <code>optional int64 readNoticeId = 3;</code>
-     * @return Whether the readNoticeId field is set.
+     * <code>optional int32 noticeId = 3;</code>
+     * @return Whether the noticeId field is set.
      */
     @java.lang.Override
-    public boolean hasReadNoticeId() {
+    public boolean hasNoticeId() {
       return ((bitField0_ & 0x00000004) != 0);
     }
     /**
@@ -623,25 +679,25 @@ private static final long serialVersionUID = 0L;
      * 公告唯一ID
      * </pre>
      *
-     * <code>optional int64 readNoticeId = 3;</code>
-     * @return The readNoticeId.
+     * <code>optional int32 noticeId = 3;</code>
+     * @return The noticeId.
      */
     @java.lang.Override
-    public long getReadNoticeId() {
-      return readNoticeId_;
+    public int getNoticeId() {
+      return noticeId_;
     }
     /**
      * <pre>
      * 公告唯一ID
      * </pre>
      *
-     * <code>optional int64 readNoticeId = 3;</code>
-     * @param value The readNoticeId to set.
+     * <code>optional int32 noticeId = 3;</code>
+     * @param value The noticeId to set.
      * @return This builder for chaining.
      */
-    public Builder setReadNoticeId(long value) {
+    public Builder setNoticeId(int value) {
 
-      readNoticeId_ = value;
+      noticeId_ = value;
       bitField0_ |= 0x00000004;
       onChanged();
       return this;
@@ -651,12 +707,68 @@ private static final long serialVersionUID = 0L;
      * 公告唯一ID
      * </pre>
      *
-     * <code>optional int64 readNoticeId = 3;</code>
+     * <code>optional int32 noticeId = 3;</code>
      * @return This builder for chaining.
      */
-    public Builder clearReadNoticeId() {
+    public Builder clearNoticeId() {
       bitField0_ = (bitField0_ & ~0x00000004);
-      readNoticeId_ = 0L;
+      noticeId_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private long readTime_ ;
+    /**
+     * <pre>
+     * 阅读时间
+     * </pre>
+     *
+     * <code>optional int64 readTime = 4;</code>
+     * @return Whether the readTime field is set.
+     */
+    @java.lang.Override
+    public boolean hasReadTime() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <pre>
+     * 阅读时间
+     * </pre>
+     *
+     * <code>optional int64 readTime = 4;</code>
+     * @return The readTime.
+     */
+    @java.lang.Override
+    public long getReadTime() {
+      return readTime_;
+    }
+    /**
+     * <pre>
+     * 阅读时间
+     * </pre>
+     *
+     * <code>optional int64 readTime = 4;</code>
+     * @param value The readTime to set.
+     * @return This builder for chaining.
+     */
+    public Builder setReadTime(long value) {
+
+      readTime_ = value;
+      bitField0_ |= 0x00000008;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 阅读时间
+     * </pre>
+     *
+     * <code>optional int64 readTime = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearReadTime() {
+      bitField0_ = (bitField0_ & ~0x00000008);
+      readTime_ = 0L;
       onChanged();
       return this;
     }

@@ -49,13 +49,13 @@ private static final long serialVersionUID = 0L;
 
   private int bitField0_;
   public static final int NOTICEID_FIELD_NUMBER = 1;
-  private long noticeId_ = 0L;
+  private int noticeId_ = 0;
   /**
    * <pre>
    * 公告ID，不填或填0代表拉去所有
    * </pre>
    *
-   * <code>optional int64 noticeId = 1;</code>
+   * <code>optional int32 noticeId = 1;</code>
    * @return Whether the noticeId field is set.
    */
   @java.lang.Override
@@ -67,12 +67,66 @@ private static final long serialVersionUID = 0L;
    * 公告ID，不填或填0代表拉去所有
    * </pre>
    *
-   * <code>optional int64 noticeId = 1;</code>
+   * <code>optional int32 noticeId = 1;</code>
    * @return The noticeId.
    */
   @java.lang.Override
-  public long getNoticeId() {
+  public int getNoticeId() {
     return noticeId_;
+  }
+
+  public static final int PAGE_FIELD_NUMBER = 2;
+  private int page_ = 0;
+  /**
+   * <pre>
+   * 第几页
+   * </pre>
+   *
+   * <code>optional int32 page = 2;</code>
+   * @return Whether the page field is set.
+   */
+  @java.lang.Override
+  public boolean hasPage() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
+  /**
+   * <pre>
+   * 第几页
+   * </pre>
+   *
+   * <code>optional int32 page = 2;</code>
+   * @return The page.
+   */
+  @java.lang.Override
+  public int getPage() {
+    return page_;
+  }
+
+  public static final int SIZE_FIELD_NUMBER = 3;
+  private int size_ = 0;
+  /**
+   * <pre>
+   * 几条
+   * </pre>
+   *
+   * <code>optional int32 size = 3;</code>
+   * @return Whether the size field is set.
+   */
+  @java.lang.Override
+  public boolean hasSize() {
+    return ((bitField0_ & 0x00000004) != 0);
+  }
+  /**
+   * <pre>
+   * 几条
+   * </pre>
+   *
+   * <code>optional int32 size = 3;</code>
+   * @return The size.
+   */
+  @java.lang.Override
+  public int getSize() {
+    return size_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -90,7 +144,13 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeInt64(1, noticeId_);
+      output.writeInt32(1, noticeId_);
+    }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      output.writeInt32(2, page_);
+    }
+    if (((bitField0_ & 0x00000004) != 0)) {
+      output.writeInt32(3, size_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -103,7 +163,15 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, noticeId_);
+        .computeInt32Size(1, noticeId_);
+    }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, page_);
+    }
+    if (((bitField0_ & 0x00000004) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(3, size_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -125,6 +193,16 @@ private static final long serialVersionUID = 0L;
       if (getNoticeId()
           != other.getNoticeId()) return false;
     }
+    if (hasPage() != other.hasPage()) return false;
+    if (hasPage()) {
+      if (getPage()
+          != other.getPage()) return false;
+    }
+    if (hasSize() != other.hasSize()) return false;
+    if (hasSize()) {
+      if (getSize()
+          != other.getSize()) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -138,8 +216,15 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     if (hasNoticeId()) {
       hash = (37 * hash) + NOTICEID_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getNoticeId());
+      hash = (53 * hash) + getNoticeId();
+    }
+    if (hasPage()) {
+      hash = (37 * hash) + PAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getPage();
+    }
+    if (hasSize()) {
+      hash = (37 * hash) + SIZE_FIELD_NUMBER;
+      hash = (53 * hash) + getSize();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -276,7 +361,9 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      noticeId_ = 0L;
+      noticeId_ = 0;
+      page_ = 0;
+      size_ = 0;
       return this;
     }
 
@@ -315,6 +402,14 @@ private static final long serialVersionUID = 0L;
         result.noticeId_ = noticeId_;
         to_bitField0_ |= 0x00000001;
       }
+      if (((from_bitField0_ & 0x00000002) != 0)) {
+        result.page_ = page_;
+        to_bitField0_ |= 0x00000002;
+      }
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        result.size_ = size_;
+        to_bitField0_ |= 0x00000004;
+      }
       result.bitField0_ |= to_bitField0_;
     }
 
@@ -332,6 +427,12 @@ private static final long serialVersionUID = 0L;
       if (other == po.ListNoticeReq.getDefaultInstance()) return this;
       if (other.hasNoticeId()) {
         setNoticeId(other.getNoticeId());
+      }
+      if (other.hasPage()) {
+        setPage(other.getPage());
+      }
+      if (other.hasSize()) {
+        setSize(other.getSize());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -360,10 +461,20 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              noticeId_ = input.readInt64();
+              noticeId_ = input.readInt32();
               bitField0_ |= 0x00000001;
               break;
             } // case 8
+            case 16: {
+              page_ = input.readInt32();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 16
+            case 24: {
+              size_ = input.readInt32();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 24
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -381,13 +492,13 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private long noticeId_ ;
+    private int noticeId_ ;
     /**
      * <pre>
      * 公告ID，不填或填0代表拉去所有
      * </pre>
      *
-     * <code>optional int64 noticeId = 1;</code>
+     * <code>optional int32 noticeId = 1;</code>
      * @return Whether the noticeId field is set.
      */
     @java.lang.Override
@@ -399,11 +510,11 @@ private static final long serialVersionUID = 0L;
      * 公告ID，不填或填0代表拉去所有
      * </pre>
      *
-     * <code>optional int64 noticeId = 1;</code>
+     * <code>optional int32 noticeId = 1;</code>
      * @return The noticeId.
      */
     @java.lang.Override
-    public long getNoticeId() {
+    public int getNoticeId() {
       return noticeId_;
     }
     /**
@@ -411,11 +522,11 @@ private static final long serialVersionUID = 0L;
      * 公告ID，不填或填0代表拉去所有
      * </pre>
      *
-     * <code>optional int64 noticeId = 1;</code>
+     * <code>optional int32 noticeId = 1;</code>
      * @param value The noticeId to set.
      * @return This builder for chaining.
      */
-    public Builder setNoticeId(long value) {
+    public Builder setNoticeId(int value) {
 
       noticeId_ = value;
       bitField0_ |= 0x00000001;
@@ -427,12 +538,124 @@ private static final long serialVersionUID = 0L;
      * 公告ID，不填或填0代表拉去所有
      * </pre>
      *
-     * <code>optional int64 noticeId = 1;</code>
+     * <code>optional int32 noticeId = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearNoticeId() {
       bitField0_ = (bitField0_ & ~0x00000001);
-      noticeId_ = 0L;
+      noticeId_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int page_ ;
+    /**
+     * <pre>
+     * 第几页
+     * </pre>
+     *
+     * <code>optional int32 page = 2;</code>
+     * @return Whether the page field is set.
+     */
+    @java.lang.Override
+    public boolean hasPage() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * 第几页
+     * </pre>
+     *
+     * <code>optional int32 page = 2;</code>
+     * @return The page.
+     */
+    @java.lang.Override
+    public int getPage() {
+      return page_;
+    }
+    /**
+     * <pre>
+     * 第几页
+     * </pre>
+     *
+     * <code>optional int32 page = 2;</code>
+     * @param value The page to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPage(int value) {
+
+      page_ = value;
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 第几页
+     * </pre>
+     *
+     * <code>optional int32 page = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearPage() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      page_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int size_ ;
+    /**
+     * <pre>
+     * 几条
+     * </pre>
+     *
+     * <code>optional int32 size = 3;</code>
+     * @return Whether the size field is set.
+     */
+    @java.lang.Override
+    public boolean hasSize() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     * 几条
+     * </pre>
+     *
+     * <code>optional int32 size = 3;</code>
+     * @return The size.
+     */
+    @java.lang.Override
+    public int getSize() {
+      return size_;
+    }
+    /**
+     * <pre>
+     * 几条
+     * </pre>
+     *
+     * <code>optional int32 size = 3;</code>
+     * @param value The size to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSize(int value) {
+
+      size_ = value;
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 几条
+     * </pre>
+     *
+     * <code>optional int32 size = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearSize() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      size_ = 0;
       onChanged();
       return this;
     }

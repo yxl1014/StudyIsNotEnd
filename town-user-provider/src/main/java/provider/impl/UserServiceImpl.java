@@ -125,38 +125,31 @@ public class UserServiceImpl extends AbstractRpcService implements IUserService 
     @Override
     public ResponseMsg updateUserInfo(String token, UpdateUserInfoReq msg) {
         return execute(MsgType.TMT_UpdateUserInfoRsp, token, () -> {
-            TUserPower userPower = UserContext.getUserPower();
-            if (userPower != TUserPower.TUP_CGM)
-            {
-                return BizResult.error(RespCode.TRC_USER_POWER_NOT_ENOUGH);
-            }
-
             UserInfoDO userInfoDO = daoService.toDO(msg.getUserInfo());
-            if (userInfoDO.isEmpty())
-            {
+            if (userInfoDO.isEmpty()) {
                 return BizResult.error(RespCode.TRC_PARAM_NULL);
             }
 
             // 判断存再不存在
             UserInfoDO old = daoService.user_selectById(userInfoDO.getUserTel());
-            if (old == null)
-            {
+            if (old == null) {
                 return BizResult.error(RespCode.TRC_USER_NOT_EXIST);
             }
 
             UserInfoDO newInfo = null;
             if (msg.getIsDel()){
                 int delete = daoService.user_delete(userInfoDO.getUserTel());
-                if (delete <= 0)
-                {
+                if (delete <= 0) {
                     return BizResult.error(RespCode.TRC_DB_ERROR);
                 }
             }
             else {
+                if (userInfoDO.otherNull()) {
+                    return BizResult.error(RespCode.TRC_PARAM_NULL);
+                }
                 // 更新DB
                 int update = daoService.user_update(userInfoDO);
-                if (update <= 0)
-                {
+                if (update <= 0) {
                     return BizResult.error(RespCode.TRC_DB_ERROR);
                 }
                 newInfo = daoService.user_selectById(userInfoDO.getUserTel());
@@ -176,8 +169,7 @@ public class UserServiceImpl extends AbstractRpcService implements IUserService 
             Object o = daoService.redis_get(ConstValue.Redis_Prefix_Token + userInfoDO.getUserTel());
             if (o != null) {
                 boolean b = daoService.redis_delete(ConstValue.Redis_Prefix_Token + userInfoDO.getUserTel());
-                if (!b)
-                {
+                if (!b) {
                     return BizResult.error(RespCode.TRC_REDIS_ERROR);
                 }
             }
