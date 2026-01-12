@@ -35,7 +35,8 @@ enum RespCode
   TRC_PARSE_PROTOCOL_ERR = 4; // 解析协议失败
   TRC_REQUEST_BODY_NULL = 5; // 请求体为空
   TRC_PARAM_NULL = 6; // 参数为空
-  TRC_UPDATE_SERVICE_NOT_FOUND = 7;
+  TRC_UPDATE_SERVICE_NOT_FOUND = 7; // 更新服务未启动
+  TRC_SERVICE_UNAVAILABLE = 8; // 服务未启动
 
 
   TRC_DB_DATA_NOT_FOUND = 100; // 数据没找到

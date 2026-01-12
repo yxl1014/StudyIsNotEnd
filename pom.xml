@@ -16,6 +16,7 @@
         <module>town-dao</module>
         <module>town-notice-provider</module>
         <module>town-update-provider</module>
+        <module>town-question-provider</module>
     </modules>
 
     <properties>

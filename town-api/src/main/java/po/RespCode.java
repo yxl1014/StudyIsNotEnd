@@ -72,9 +72,21 @@ public enum RespCode
    */
   TRC_PARAM_NULL(6),
   /**
+   * <pre>
+   * 更新服务未启动
+   * </pre>
+   *
    * <code>TRC_UPDATE_SERVICE_NOT_FOUND = 7;</code>
    */
   TRC_UPDATE_SERVICE_NOT_FOUND(7),
+  /**
+   * <pre>
+   * 服务未启动
+   * </pre>
+   *
+   * <code>TRC_SERVICE_UNAVAILABLE = 8;</code>
+   */
+  TRC_SERVICE_UNAVAILABLE(8),
   /**
    * <pre>
    * 数据没找到
@@ -232,9 +244,21 @@ public enum RespCode
    */
   public static final int TRC_PARAM_NULL_VALUE = 6;
   /**
+   * <pre>
+   * 更新服务未启动
+   * </pre>
+   *
    * <code>TRC_UPDATE_SERVICE_NOT_FOUND = 7;</code>
    */
   public static final int TRC_UPDATE_SERVICE_NOT_FOUND_VALUE = 7;
+  /**
+   * <pre>
+   * 服务未启动
+   * </pre>
+   *
+   * <code>TRC_SERVICE_UNAVAILABLE = 8;</code>
+   */
+  public static final int TRC_SERVICE_UNAVAILABLE_VALUE = 8;
   /**
    * <pre>
    * 数据没找到
@@ -357,6 +381,7 @@ public enum RespCode
       case 5: return TRC_REQUEST_BODY_NULL;
       case 6: return TRC_PARAM_NULL;
       case 7: return TRC_UPDATE_SERVICE_NOT_FOUND;
+      case 8: return TRC_SERVICE_UNAVAILABLE;
       case 100: return TRC_DB_DATA_NOT_FOUND;
       case 101: return TRC_DB_ERROR;
       case 102: return TRC_REDIS_ERROR;

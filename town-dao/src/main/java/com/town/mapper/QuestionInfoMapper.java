@@ -14,22 +14,22 @@ public interface QuestionInfoMapper {
         (question_type, question_ctx, quest_photo,
          question_write_tel, node_type, choice_user, question_time)
         VALUES
-        (#{questionType}, #{questionCtx}, #{questPhoto},
-         #{questionWriteTel}, #{nodeType}, #{choiceUser}, #{questionTime})
+        (#{questType}, #{questContext}, #{questPhoto},
+         #{questWriterTel}, #{nodeType}, #{choiceUser}, #{questTime})
         """)
     @Options(useGeneratedKeys = true, keyProperty = "questionId")
     int insert(QuestionInfoDO entity);
 
     @Update("""
         UPDATE question_info SET
-        question_type = #{questionType},
-        question_ctx = #{questionCtx},
+        question_type = #{questType},
+        question_ctx = #{questContext},
         quest_photo = #{questPhoto},
-        question_write_tel = #{questionWriteTel},
+        question_write_tel = #{questWriterTel},
         node_type = #{nodeType},
         choice_user = #{choiceUser},
-        question_time = #{questionTime}
-        WHERE question_id = #{questionId}
+        question_time = #{questTime}
+        WHERE question_id = #{questId}
         """)
     int update(QuestionInfoDO entity);
 

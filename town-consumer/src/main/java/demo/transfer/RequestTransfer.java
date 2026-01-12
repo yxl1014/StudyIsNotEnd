@@ -47,4 +47,8 @@ public class RequestTransfer {
     public ResponseMsg listUpdateInfo(String token, ListUpdateInfoReq msg) {
         return serviceManager.updateService.listUpdateInfo(token, msg);
     }
+
+    public ResponseMsg createQuestion(String token, CreateQuestionReq msg) {
+        return serviceManager.questionService.createQuestion(token, msg);
+    }
 }

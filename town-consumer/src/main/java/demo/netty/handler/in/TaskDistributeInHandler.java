@@ -108,6 +108,14 @@ public class TaskDistributeInHandler extends SimpleChannelInboundHandler<Request
                         requestTransfer::listUpdateInfo,
                         ctx
                 ));
+        handlerMap.put(MsgType.TMT_CreateQuestionReq,
+                (msg, ctx) -> handle(
+                        msg.getToken(),
+                        msg.getMsg().toByteArray(),
+                        CreateQuestionReq.parser(),
+                        requestTransfer::createQuestion,
+                        ctx
+                ));
     }
 
     private <T extends com.google.protobuf.Message> ResponseMsg noTokenHandle(

@@ -2,10 +2,7 @@ package demo.manager;
 
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.stereotype.Component;
-import townInterface.IDaoService;
-import townInterface.INoticeService;
-import townInterface.IUpdateService;
-import townInterface.IUserService;
+import townInterface.*;
 
 
 // 服务集合中心
@@ -22,4 +19,7 @@ public class ServiceManager {
 
     @DubboReference
     public IUpdateService updateService;
+
+    @DubboReference
+    public IQuestionService questionService;
 }
