@@ -3,8 +3,12 @@ package mock;
 import entity.UpdateInfoDO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import po.ListUpdateInfoReq;
+import po.MsgType;
 import po.RespCode;
+import po.ResponseMsg;
 import townInterface.IUpdateService;
+import util.CommonEntityBuilder;
 
 /**
  * @author Administrator
@@ -20,5 +24,10 @@ public class UpdateServiceMock implements IUpdateService {
         log.warn("update micro not enable, updateInfoDO insert failed, updateInfoDO : {}", updateInfoDO.toString());
         // 什么都不做，直接返回成功
         return RespCode.TRC_OK;
+    }
+
+    @Override
+    public ResponseMsg listUpdateInfo(String token, ListUpdateInfoReq msg) {
+        return CommonEntityBuilder.buildError(MsgType.TMT_ListUpdateInfoRsp, RespCode.TRC_UPDATE_SERVICE_NOT_FOUND);
     }
 }

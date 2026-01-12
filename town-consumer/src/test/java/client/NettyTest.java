@@ -100,7 +100,7 @@ public class NettyTest {
             new Thread(() -> {
                 while (true) {
                     try {
-                        ctx.writeAndFlush(buildCreateNoticeMsg());
+                        ctx.writeAndFlush(buildListUpdateMsg());
                         Thread.sleep(300000);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
@@ -112,13 +112,25 @@ public class NettyTest {
         @Override
         public void channelRead(ChannelHandlerContext ctx, Object msg) {
             ResponseMsg responseMsg = (ResponseMsg) msg;
-            if (responseMsg.getMsgType() == MsgType.TMT_LoginRsp) {
-                try {
+            try {
+                if (responseMsg.getMsgType() == MsgType.TMT_LoginRsp) {
                     LoginRsp loginRsp = LoginRsp.parseFrom(responseMsg.getMsg());
                     System.out.println("token:" + loginRsp.getToken());
-                } catch (InvalidProtocolBufferException e) {
-                    System.out.println(e);
                 }
+                if (responseMsg.getMsgType() == MsgType.TMT_ListNoticeRsp) {
+                    ListNoticeRsp listNoticeRsp = ListNoticeRsp.parseFrom(responseMsg.getMsg());
+                    for (NoticeInfo noticeInfo : listNoticeRsp.getInfosList()) {
+                        System.out.println(noticeInfo.toString());
+                    }
+                }
+                if (responseMsg.getMsgType() == MsgType.TMT_ListUpdateInfoRsp) {
+                    ListUpdateInfoRsp listUpdateInfoRsp = ListUpdateInfoRsp.parseFrom(responseMsg.getMsg());
+                    for (UpdateInfo updateInfo : listUpdateInfoRsp.getInfosList()) {
+                        System.out.println(updateInfo.toString());
+                    }
+                }
+            } catch (InvalidProtocolBufferException e) {
+                System.out.println(e);
             }
             System.out.println("ChatReqHandler channelRead 收到信息：" + responseMsg.toString());
         }
@@ -130,10 +142,38 @@ public class NettyTest {
             ctx.close();
         }
 
+        private RequestMsg buildListUpdateMsg() {
+            RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
+            msgBuilder.setMsgType(MsgType.TMT_ListUpdateInfoReq);
+            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxLFwicmFuZG9tQ29kZVwiOlwiMDQxMDUzXCIsXCJjcmVhdGVUaW1lXCI6MTc2ODIwOTM0ODk1NSxcInVzZXJQb3dlclwiOlwiVFVQX0NHTVwiLFwidXNlckZsYWdUeXBlXCI6XCJUVUZUX0RFRkFVTFRcIixcInVzZXJOYW1lXCI6XCJhZG1pblwifSIsImlhdCI6MTc2ODIwOTM0OCwiZXhwIjoxNzY4Mjk1NzQ4fQ.PEJzhPOAZPwLpaVPfiOtVgG82VTtM1beVZJ2rADu3QA");
+            msgBuilder.setMsg(
+                    ListUpdateInfoReq.newBuilder()
+                            .setPage(1)
+                            .setSize(10)
+                            .build().toByteString());
+            RequestMsg requestMsg = msgBuilder.build();
+            System.out.println("发送消息：" + requestMsg.toString());
+            return requestMsg;
+        }
+
+        private RequestMsg buildListNoticeMsg() {
+            RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
+            msgBuilder.setMsgType(MsgType.TMT_ListNoticeReq);
+            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxLFwicmFuZG9tQ29kZVwiOlwiMDQxMDUzXCIsXCJjcmVhdGVUaW1lXCI6MTc2ODIwOTM0ODk1NSxcInVzZXJQb3dlclwiOlwiVFVQX0NHTVwiLFwidXNlckZsYWdUeXBlXCI6XCJUVUZUX0RFRkFVTFRcIixcInVzZXJOYW1lXCI6XCJhZG1pblwifSIsImlhdCI6MTc2ODIwOTM0OCwiZXhwIjoxNzY4Mjk1NzQ4fQ.PEJzhPOAZPwLpaVPfiOtVgG82VTtM1beVZJ2rADu3QA");
+            msgBuilder.setMsg(
+                    ListNoticeReq.newBuilder()
+                            .setPage(1)
+                            .setSize(10)
+                            .build().toByteString());
+            RequestMsg requestMsg = msgBuilder.build();
+            System.out.println("发送消息：" + requestMsg.toString());
+            return requestMsg;
+        }
+
         private RequestMsg buildCreateNoticeMsg() {
             RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
             msgBuilder.setMsgType(MsgType.TMT_CreateNoticeReq);
-            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxLFwicmFuZG9tQ29kZVwiOlwiNDExMTM0XCIsXCJjcmVhdGVUaW1lXCI6MTc2Nzk0NDg3MTk5OCxcInVzZXJQb3dlclwiOlwiVFVQX0NHTVwiLFwidXNlckZsYWdUeXBlXCI6XCJUVUZUX0RFRkFVTFRcIixcInVzZXJOYW1lXCI6XCJhZG1pblwifSIsImlhdCI6MTc2Nzk0NDg3MiwiZXhwIjoxNzY4MDMxMjcyfQ.982wBDDyiYMbf887zLzrBM41ukQZXgEg9aQgaLdkWKI");
+            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxLFwicmFuZG9tQ29kZVwiOlwiMDQxMDUzXCIsXCJjcmVhdGVUaW1lXCI6MTc2ODIwOTM0ODk1NSxcInVzZXJQb3dlclwiOlwiVFVQX0NHTVwiLFwidXNlckZsYWdUeXBlXCI6XCJUVUZUX0RFRkFVTFRcIixcInVzZXJOYW1lXCI6XCJhZG1pblwifSIsImlhdCI6MTc2ODIwOTM0OCwiZXhwIjoxNzY4Mjk1NzQ4fQ.PEJzhPOAZPwLpaVPfiOtVgG82VTtM1beVZJ2rADu3QA");
             msgBuilder.setMsg(
                     CreateNoticeReq.newBuilder()
                             .setNoticeInfo(
@@ -141,6 +181,8 @@ public class NettyTest {
                                             .setNoticeType(TNoticeType.TNT_TZ)
                                             .setNoticeTitle("测试通知标题")
                                             .setNoticeContext("测试通知正文正文正文正文正文正文")
+                                            .setIsAcceptRead(true)
+                                            .setIsTop(true)
                             )
                             .build().toByteString());
             RequestMsg requestMsg = msgBuilder.build();

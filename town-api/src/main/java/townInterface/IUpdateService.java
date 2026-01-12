@@ -1,7 +1,9 @@
 package townInterface;
 
 import entity.UpdateInfoDO;
+import po.ListUpdateInfoReq;
 import po.RespCode;
+import po.ResponseMsg;
 
 /**
  * @author Administrator
@@ -11,4 +13,6 @@ import po.RespCode;
 
 public interface IUpdateService {
     RespCode addUpdateInfo(UpdateInfoDO updateInfoDO);
+
+    ResponseMsg listUpdateInfo(String token, ListUpdateInfoReq msg);
 }

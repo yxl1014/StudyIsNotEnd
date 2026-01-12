@@ -117,6 +117,16 @@ public final class ProtocolProto extends com.google.protobuf.GeneratedFile {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_po_SetNoticeReadRsp_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_po_ListNoticeReadReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_po_ListNoticeReadReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_po_ListNoticeReadRsp_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_po_ListNoticeReadRsp_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_po_ListUpdateInfoReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -305,55 +315,60 @@ public final class ProtocolProto extends com.google.protobuf.GeneratedFile {
       "ageB\007\n\005_size\".\n\rListNoticeRsp\022\035\n\005infos\030\001" +
       " \003(\0132\016.po.NoticeInfo\"6\n\020SetNoticeReadReq" +
       "\022\025\n\010noticeId\030\001 \001(\005H\000\210\001\001B\013\n\t_noticeId\"\022\n\020" +
-      "SetNoticeReadRsp\"7\n\021ListUpdateInfoReq\022\025\n" +
-      "\010updateId\030\001 \001(\005H\000\210\001\001B\013\n\t_updateId\"2\n\021Lis" +
-      "tUpdateInfoRsp\022\035\n\005infos\030\001 \003(\0132\016.po.Updat" +
-      "eInfo\"I\n\021CreateQuestionReq\022\'\n\010question\030\001" +
-      " \001(\0132\020.po.QuestionInfoH\000\210\001\001B\013\n\t_question" +
-      "\"\023\n\021CreateQuestionRsp\"\217\001\n\021UpdateQuestion" +
-      "Req\022\'\n\010question\030\001 \001(\0132\020.po.QuestionInfoH" +
-      "\000\210\001\001\0223\n\014handlingInfo\030\002 \001(\0132\030.po.Question" +
-      "HandlingInfoH\001\210\001\001B\013\n\t_questionB\017\n\r_handl" +
-      "ingInfo\"\023\n\021UpdateQuestionRsp\"\031\n\027ListQues" +
-      "tionHandlingReq\"B\n\027ListQuestionHandlingR" +
-      "sp\022\'\n\005infos\030\001 \003(\0132\030.po.QuestionHandlingI" +
-      "nfo\"\021\n\017ListQuestionReq\"2\n\017ListQuestionRs" +
-      "p\022\037\n\005infos\030\001 \003(\0132\020.po.QuestionInfo\"\027\n\025Li" +
-      "stNotifyUserInfoReq\":\n\025ListNotifyUserInf" +
-      "oRsp\022!\n\005infos\030\001 \003(\0132\022.po.NotifyUserInfo\"" +
-      "E\n\016CreateStudyReq\022%\n\tstudyInfo\030\001 \001(\0132\r.p" +
-      "o.StudyInfoH\000\210\001\001B\014\n\n_studyInfo\"\020\n\016Create" +
-      "StudyRsp\"c\n\016UpdateStudyReq\022\022\n\005isDel\030\001 \001(" +
-      "\010H\000\210\001\001\022%\n\tstudyInfo\030\002 \001(\0132\r.po.StudyInfo" +
-      "H\001\210\001\001B\010\n\006_isDelB\014\n\n_studyInfo\"\020\n\016UpdateS" +
-      "tudyRsp\"0\n\014ListStudyReq\022\024\n\007studyId\030\001 \001(\005" +
-      "H\000\210\001\001B\n\n\010_studyId\",\n\014ListStudyRsp\022\034\n\005inf" +
-      "os\030\001 \003(\0132\r.po.StudyInfo\"0\n\014StarStudyReq\022" +
-      "\024\n\007studyId\030\001 \001(\005H\000\210\001\001B\n\n\010_studyId\"0\n\014Sta" +
-      "rStudyRsp\022\024\n\007studyId\030\001 \001(\005H\000\210\001\001B\n\n\010_stud" +
-      "yId\"\026\n\024ListUserStarStudyReq\"4\n\024ListUserS" +
-      "tarStudyRsp\022\034\n\005infos\030\001 \003(\0132\r.po.StudyInf" +
-      "o\"0\n\017CreatePeopleReq\022\035\n\005infos\030\001 \003(\0132\016.po" +
-      ".PeopleInfo\"%\n\017CreatePeopleRsp\022\022\n\nerrCar" +
-      "dIds\030\001 \003(\t\"]\n\017UpdatePeopleReq\022\022\n\005isDel\030\001" +
-      " \001(\010H\000\210\001\001\022\"\n\005infos\030\002 \001(\0132\016.po.PeopleInfo" +
-      "H\001\210\001\001B\010\n\006_isDelB\010\n\006_infos\"\021\n\017UpdatePeopl" +
-      "eRsp\"Q\n\032CreatePeopleUpdateApplyReq\022)\n\005ap" +
-      "ply\030\001 \001(\0132\025.po.PeopleUpdateApplyH\000\210\001\001B\010\n" +
-      "\006_apply\"\034\n\032CreatePeopleUpdateApplyRsp\";\n" +
-      "\027DelPeopleUpdateApplyReq\022\024\n\007applyId\030\001 \001(" +
-      "\005H\000\210\001\001B\n\n\010_applyId\"\031\n\027DelPeopleUpdateApp" +
-      "lyRsp*\366\002\n\010RespCode\022\n\n\006TRC_OK\020\000\022\013\n\007TRC_ER" +
-      "R\020\001\022\027\n\023TRC_TOKEN_NOT_EXIST\020\002\022\025\n\021TRC_TOKE" +
-      "N_INVALID\020\003\022\032\n\026TRC_PARSE_PROTOCOL_ERR\020\004\022" +
-      "\031\n\025TRC_REQUEST_BODY_NULL\020\005\022\022\n\016TRC_PARAM_" +
-      "NULL\020\006\022\031\n\025TRC_DB_DATA_NOT_FOUND\020d\022\020\n\014TRC" +
-      "_DB_ERROR\020e\022\023\n\017TRC_REDIS_ERROR\020f\022\027\n\022TRC_" +
-      "USER_NOT_EXIST\020\311\001\022\023\n\016TRC_USER_EXIST\020\312\001\022\025" +
-      "\n\020TRC_PASSWORD_ERR\020\313\001\022\036\n\031TRC_USER_POWER_" +
-      "NOT_ENOUGH\020\314\001\022\024\n\017TRC_USER_IS_BAN\020\315\001\022\031\n\024T" +
-      "RC_NOTICE_NOT_EXIST\020\255\002B\025\n\002poB\rProtocolPr" +
-      "otoP\001b\006proto3"
+      "SetNoticeReadRsp\"\023\n\021ListNoticeReadReq\"\'\n" +
+      "\021ListNoticeReadRsp\022\022\n\nnoticeList\030\001 \003(\005\"o" +
+      "\n\021ListUpdateInfoReq\022\025\n\010updateId\030\001 \001(\005H\000\210" +
+      "\001\001\022\021\n\004page\030\002 \001(\005H\001\210\001\001\022\021\n\004size\030\003 \001(\005H\002\210\001\001" +
+      "B\013\n\t_updateIdB\007\n\005_pageB\007\n\005_size\"2\n\021ListU" +
+      "pdateInfoRsp\022\035\n\005infos\030\001 \003(\0132\016.po.UpdateI" +
+      "nfo\"I\n\021CreateQuestionReq\022\'\n\010question\030\001 \001" +
+      "(\0132\020.po.QuestionInfoH\000\210\001\001B\013\n\t_question\"\023" +
+      "\n\021CreateQuestionRsp\"\217\001\n\021UpdateQuestionRe" +
+      "q\022\'\n\010question\030\001 \001(\0132\020.po.QuestionInfoH\000\210" +
+      "\001\001\0223\n\014handlingInfo\030\002 \001(\0132\030.po.QuestionHa" +
+      "ndlingInfoH\001\210\001\001B\013\n\t_questionB\017\n\r_handlin" +
+      "gInfo\"\023\n\021UpdateQuestionRsp\"\031\n\027ListQuesti" +
+      "onHandlingReq\"B\n\027ListQuestionHandlingRsp" +
+      "\022\'\n\005infos\030\001 \003(\0132\030.po.QuestionHandlingInf" +
+      "o\"\021\n\017ListQuestionReq\"2\n\017ListQuestionRsp\022" +
+      "\037\n\005infos\030\001 \003(\0132\020.po.QuestionInfo\"\027\n\025List" +
+      "NotifyUserInfoReq\":\n\025ListNotifyUserInfoR" +
+      "sp\022!\n\005infos\030\001 \003(\0132\022.po.NotifyUserInfo\"E\n" +
+      "\016CreateStudyReq\022%\n\tstudyInfo\030\001 \001(\0132\r.po." +
+      "StudyInfoH\000\210\001\001B\014\n\n_studyInfo\"\020\n\016CreateSt" +
+      "udyRsp\"c\n\016UpdateStudyReq\022\022\n\005isDel\030\001 \001(\010H" +
+      "\000\210\001\001\022%\n\tstudyInfo\030\002 \001(\0132\r.po.StudyInfoH\001" +
+      "\210\001\001B\010\n\006_isDelB\014\n\n_studyInfo\"\020\n\016UpdateStu" +
+      "dyRsp\"0\n\014ListStudyReq\022\024\n\007studyId\030\001 \001(\005H\000" +
+      "\210\001\001B\n\n\010_studyId\",\n\014ListStudyRsp\022\034\n\005infos" +
+      "\030\001 \003(\0132\r.po.StudyInfo\"0\n\014StarStudyReq\022\024\n" +
+      "\007studyId\030\001 \001(\005H\000\210\001\001B\n\n\010_studyId\"0\n\014StarS" +
+      "tudyRsp\022\024\n\007studyId\030\001 \001(\005H\000\210\001\001B\n\n\010_studyI" +
+      "d\"\026\n\024ListUserStarStudyReq\"4\n\024ListUserSta" +
+      "rStudyRsp\022\034\n\005infos\030\001 \003(\0132\r.po.StudyInfo\"" +
+      "0\n\017CreatePeopleReq\022\035\n\005infos\030\001 \003(\0132\016.po.P" +
+      "eopleInfo\"%\n\017CreatePeopleRsp\022\022\n\nerrCardI" +
+      "ds\030\001 \003(\t\"]\n\017UpdatePeopleReq\022\022\n\005isDel\030\001 \001" +
+      "(\010H\000\210\001\001\022\"\n\005infos\030\002 \001(\0132\016.po.PeopleInfoH\001" +
+      "\210\001\001B\010\n\006_isDelB\010\n\006_infos\"\021\n\017UpdatePeopleR" +
+      "sp\"Q\n\032CreatePeopleUpdateApplyReq\022)\n\005appl" +
+      "y\030\001 \001(\0132\025.po.PeopleUpdateApplyH\000\210\001\001B\010\n\006_" +
+      "apply\"\034\n\032CreatePeopleUpdateApplyRsp\";\n\027D" +
+      "elPeopleUpdateApplyReq\022\024\n\007applyId\030\001 \001(\005H" +
+      "\000\210\001\001B\n\n\010_applyId\"\031\n\027DelPeopleUpdateApply" +
+      "Rsp*\323\003\n\010RespCode\022\n\n\006TRC_OK\020\000\022\013\n\007TRC_ERR\020" +
+      "\001\022\027\n\023TRC_TOKEN_NOT_EXIST\020\002\022\025\n\021TRC_TOKEN_" +
+      "INVALID\020\003\022\032\n\026TRC_PARSE_PROTOCOL_ERR\020\004\022\031\n" +
+      "\025TRC_REQUEST_BODY_NULL\020\005\022\022\n\016TRC_PARAM_NU" +
+      "LL\020\006\022 \n\034TRC_UPDATE_SERVICE_NOT_FOUND\020\007\022\031" +
+      "\n\025TRC_DB_DATA_NOT_FOUND\020d\022\020\n\014TRC_DB_ERRO" +
+      "R\020e\022\023\n\017TRC_REDIS_ERROR\020f\022\027\n\022TRC_USER_NOT" +
+      "_EXIST\020\311\001\022\023\n\016TRC_USER_EXIST\020\312\001\022\025\n\020TRC_PA" +
+      "SSWORD_ERR\020\313\001\022\036\n\031TRC_USER_POWER_NOT_ENOU" +
+      "GH\020\314\001\022\024\n\017TRC_USER_IS_BAN\020\315\001\022\031\n\024TRC_NOTIC" +
+      "E_NOT_EXIST\020\255\002\022\036\n\031TRC_NOTICE_CAN_NOT_ACC" +
+      "EPT\020\256\002\022\031\n\024TRC_NOTICE_IS_ACCEPT\020\257\002B\025\n\002poB" +
+      "\rProtocolProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -469,182 +484,194 @@ public final class ProtocolProto extends com.google.protobuf.GeneratedFile {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_SetNoticeReadRsp_descriptor,
         new java.lang.String[] { });
-    internal_static_po_ListUpdateInfoReq_descriptor =
+    internal_static_po_ListNoticeReadReq_descriptor =
       getDescriptor().getMessageType(18);
+    internal_static_po_ListNoticeReadReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_po_ListNoticeReadReq_descriptor,
+        new java.lang.String[] { });
+    internal_static_po_ListNoticeReadRsp_descriptor =
+      getDescriptor().getMessageType(19);
+    internal_static_po_ListNoticeReadRsp_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_po_ListNoticeReadRsp_descriptor,
+        new java.lang.String[] { "NoticeList", });
+    internal_static_po_ListUpdateInfoReq_descriptor =
+      getDescriptor().getMessageType(20);
     internal_static_po_ListUpdateInfoReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_ListUpdateInfoReq_descriptor,
-        new java.lang.String[] { "UpdateId", });
+        new java.lang.String[] { "UpdateId", "Page", "Size", });
     internal_static_po_ListUpdateInfoRsp_descriptor =
-      getDescriptor().getMessageType(19);
+      getDescriptor().getMessageType(21);
     internal_static_po_ListUpdateInfoRsp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_ListUpdateInfoRsp_descriptor,
         new java.lang.String[] { "Infos", });
     internal_static_po_CreateQuestionReq_descriptor =
-      getDescriptor().getMessageType(20);
+      getDescriptor().getMessageType(22);
     internal_static_po_CreateQuestionReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_CreateQuestionReq_descriptor,
         new java.lang.String[] { "Question", });
     internal_static_po_CreateQuestionRsp_descriptor =
-      getDescriptor().getMessageType(21);
+      getDescriptor().getMessageType(23);
     internal_static_po_CreateQuestionRsp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_CreateQuestionRsp_descriptor,
         new java.lang.String[] { });
     internal_static_po_UpdateQuestionReq_descriptor =
-      getDescriptor().getMessageType(22);
+      getDescriptor().getMessageType(24);
     internal_static_po_UpdateQuestionReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_UpdateQuestionReq_descriptor,
         new java.lang.String[] { "Question", "HandlingInfo", });
     internal_static_po_UpdateQuestionRsp_descriptor =
-      getDescriptor().getMessageType(23);
+      getDescriptor().getMessageType(25);
     internal_static_po_UpdateQuestionRsp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_UpdateQuestionRsp_descriptor,
         new java.lang.String[] { });
     internal_static_po_ListQuestionHandlingReq_descriptor =
-      getDescriptor().getMessageType(24);
+      getDescriptor().getMessageType(26);
     internal_static_po_ListQuestionHandlingReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_ListQuestionHandlingReq_descriptor,
         new java.lang.String[] { });
     internal_static_po_ListQuestionHandlingRsp_descriptor =
-      getDescriptor().getMessageType(25);
+      getDescriptor().getMessageType(27);
     internal_static_po_ListQuestionHandlingRsp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_ListQuestionHandlingRsp_descriptor,
         new java.lang.String[] { "Infos", });
     internal_static_po_ListQuestionReq_descriptor =
-      getDescriptor().getMessageType(26);
+      getDescriptor().getMessageType(28);
     internal_static_po_ListQuestionReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_ListQuestionReq_descriptor,
         new java.lang.String[] { });
     internal_static_po_ListQuestionRsp_descriptor =
-      getDescriptor().getMessageType(27);
+      getDescriptor().getMessageType(29);
     internal_static_po_ListQuestionRsp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_ListQuestionRsp_descriptor,
         new java.lang.String[] { "Infos", });
     internal_static_po_ListNotifyUserInfoReq_descriptor =
-      getDescriptor().getMessageType(28);
+      getDescriptor().getMessageType(30);
     internal_static_po_ListNotifyUserInfoReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_ListNotifyUserInfoReq_descriptor,
         new java.lang.String[] { });
     internal_static_po_ListNotifyUserInfoRsp_descriptor =
-      getDescriptor().getMessageType(29);
+      getDescriptor().getMessageType(31);
     internal_static_po_ListNotifyUserInfoRsp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_ListNotifyUserInfoRsp_descriptor,
         new java.lang.String[] { "Infos", });
     internal_static_po_CreateStudyReq_descriptor =
-      getDescriptor().getMessageType(30);
+      getDescriptor().getMessageType(32);
     internal_static_po_CreateStudyReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_CreateStudyReq_descriptor,
         new java.lang.String[] { "StudyInfo", });
     internal_static_po_CreateStudyRsp_descriptor =
-      getDescriptor().getMessageType(31);
+      getDescriptor().getMessageType(33);
     internal_static_po_CreateStudyRsp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_CreateStudyRsp_descriptor,
         new java.lang.String[] { });
     internal_static_po_UpdateStudyReq_descriptor =
-      getDescriptor().getMessageType(32);
+      getDescriptor().getMessageType(34);
     internal_static_po_UpdateStudyReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_UpdateStudyReq_descriptor,
         new java.lang.String[] { "IsDel", "StudyInfo", });
     internal_static_po_UpdateStudyRsp_descriptor =
-      getDescriptor().getMessageType(33);
+      getDescriptor().getMessageType(35);
     internal_static_po_UpdateStudyRsp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_UpdateStudyRsp_descriptor,
         new java.lang.String[] { });
     internal_static_po_ListStudyReq_descriptor =
-      getDescriptor().getMessageType(34);
+      getDescriptor().getMessageType(36);
     internal_static_po_ListStudyReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_ListStudyReq_descriptor,
         new java.lang.String[] { "StudyId", });
     internal_static_po_ListStudyRsp_descriptor =
-      getDescriptor().getMessageType(35);
+      getDescriptor().getMessageType(37);
     internal_static_po_ListStudyRsp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_ListStudyRsp_descriptor,
         new java.lang.String[] { "Infos", });
     internal_static_po_StarStudyReq_descriptor =
-      getDescriptor().getMessageType(36);
+      getDescriptor().getMessageType(38);
     internal_static_po_StarStudyReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_StarStudyReq_descriptor,
         new java.lang.String[] { "StudyId", });
     internal_static_po_StarStudyRsp_descriptor =
-      getDescriptor().getMessageType(37);
+      getDescriptor().getMessageType(39);
     internal_static_po_StarStudyRsp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_StarStudyRsp_descriptor,
         new java.lang.String[] { "StudyId", });
     internal_static_po_ListUserStarStudyReq_descriptor =
-      getDescriptor().getMessageType(38);
+      getDescriptor().getMessageType(40);
     internal_static_po_ListUserStarStudyReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_ListUserStarStudyReq_descriptor,
         new java.lang.String[] { });
     internal_static_po_ListUserStarStudyRsp_descriptor =
-      getDescriptor().getMessageType(39);
+      getDescriptor().getMessageType(41);
     internal_static_po_ListUserStarStudyRsp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_ListUserStarStudyRsp_descriptor,
         new java.lang.String[] { "Infos", });
     internal_static_po_CreatePeopleReq_descriptor =
-      getDescriptor().getMessageType(40);
+      getDescriptor().getMessageType(42);
     internal_static_po_CreatePeopleReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_CreatePeopleReq_descriptor,
         new java.lang.String[] { "Infos", });
     internal_static_po_CreatePeopleRsp_descriptor =
-      getDescriptor().getMessageType(41);
+      getDescriptor().getMessageType(43);
     internal_static_po_CreatePeopleRsp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_CreatePeopleRsp_descriptor,
         new java.lang.String[] { "ErrCardIds", });
     internal_static_po_UpdatePeopleReq_descriptor =
-      getDescriptor().getMessageType(42);
+      getDescriptor().getMessageType(44);
     internal_static_po_UpdatePeopleReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_UpdatePeopleReq_descriptor,
         new java.lang.String[] { "IsDel", "Infos", });
     internal_static_po_UpdatePeopleRsp_descriptor =
-      getDescriptor().getMessageType(43);
+      getDescriptor().getMessageType(45);
     internal_static_po_UpdatePeopleRsp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_UpdatePeopleRsp_descriptor,
         new java.lang.String[] { });
     internal_static_po_CreatePeopleUpdateApplyReq_descriptor =
-      getDescriptor().getMessageType(44);
+      getDescriptor().getMessageType(46);
     internal_static_po_CreatePeopleUpdateApplyReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_CreatePeopleUpdateApplyReq_descriptor,
         new java.lang.String[] { "Apply", });
     internal_static_po_CreatePeopleUpdateApplyRsp_descriptor =
-      getDescriptor().getMessageType(45);
+      getDescriptor().getMessageType(47);
     internal_static_po_CreatePeopleUpdateApplyRsp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_CreatePeopleUpdateApplyRsp_descriptor,
         new java.lang.String[] { });
     internal_static_po_DelPeopleUpdateApplyReq_descriptor =
-      getDescriptor().getMessageType(46);
+      getDescriptor().getMessageType(48);
     internal_static_po_DelPeopleUpdateApplyReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_DelPeopleUpdateApplyReq_descriptor,
         new java.lang.String[] { "ApplyId", });
     internal_static_po_DelPeopleUpdateApplyRsp_descriptor =
-      getDescriptor().getMessageType(47);
+      getDescriptor().getMessageType(49);
     internal_static_po_DelPeopleUpdateApplyRsp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_DelPeopleUpdateApplyRsp_descriptor,

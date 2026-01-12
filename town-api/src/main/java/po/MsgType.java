@@ -399,6 +399,22 @@ public enum MsgType
    * <code>TMT_NoBodyRsp = 47;</code>
    */
   TMT_NoBodyRsp(47),
+  /**
+   * <pre>
+   * 获取已读
+   * </pre>
+   *
+   * <code>TMT_ListNoticeReadReq = 48;</code>
+   */
+  TMT_ListNoticeReadReq(48),
+  /**
+   * <pre>
+   * 获取已读 - 回执
+   * </pre>
+   *
+   * <code>TMT_ListNoticeReadRsp = 49;</code>
+   */
+  TMT_ListNoticeReadRsp(49),
   UNRECOGNIZED(-1),
   ;
 
@@ -795,6 +811,22 @@ public enum MsgType
    * <code>TMT_NoBodyRsp = 47;</code>
    */
   public static final int TMT_NoBodyRsp_VALUE = 47;
+  /**
+   * <pre>
+   * 获取已读
+   * </pre>
+   *
+   * <code>TMT_ListNoticeReadReq = 48;</code>
+   */
+  public static final int TMT_ListNoticeReadReq_VALUE = 48;
+  /**
+   * <pre>
+   * 获取已读 - 回执
+   * </pre>
+   *
+   * <code>TMT_ListNoticeReadRsp = 49;</code>
+   */
+  public static final int TMT_ListNoticeReadRsp_VALUE = 49;
 
 
   public final int getNumber() {
@@ -869,6 +901,8 @@ public enum MsgType
       case 45: return TMT_DelPeopleUpdateApplyReq;
       case 46: return TMT_DelPeopleUpdateApplyRsp;
       case 47: return TMT_NoBodyRsp;
+      case 48: return TMT_ListNoticeReadReq;
+      case 49: return TMT_ListNoticeReadRsp;
       default: return null;
     }
   }

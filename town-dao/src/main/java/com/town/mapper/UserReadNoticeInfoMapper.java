@@ -14,6 +14,9 @@ public interface UserReadNoticeInfoMapper {
     @Select("SELECT * FROM user_read_notice_info WHERE user_tel = #{userTel}")
     List<UserReadNoticeInfoDO> selectByUserTel(Integer userTel);
 
+    @Select("SELECT * FROM user_read_notice_info WHERE user_tel = #{userTel} AND notice_id = #{noticeId}")
+    List<UserReadNoticeInfoDO> selectByUserTelAndNoticeId(Integer userTel, Integer noticeId);
+
     @Insert("""
             INSERT INTO user_read_notice_info
             (user_tel, notice_id, read_time)

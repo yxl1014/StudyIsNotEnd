@@ -35,6 +35,7 @@ enum RespCode
   TRC_PARSE_PROTOCOL_ERR = 4; // 解析协议失败
   TRC_REQUEST_BODY_NULL = 5; // 请求体为空
   TRC_PARAM_NULL = 6; // 参数为空
+  TRC_UPDATE_SERVICE_NOT_FOUND = 7;
 
 
   TRC_DB_DATA_NOT_FOUND = 100; // 数据没找到
@@ -48,6 +49,8 @@ enum RespCode
   TRC_USER_IS_BAN = 205; // 用户被冻结
 
   TRC_NOTICE_NOT_EXIST = 301; // 公告不存在
+  TRC_NOTICE_CAN_NOT_ACCEPT = 302; // 此公告无需确认
+  TRC_NOTICE_IS_ACCEPT = 303; // 此公告已取人
 
 }
 
@@ -142,10 +145,22 @@ message SetNoticeReadReq
 message SetNoticeReadRsp
 {}
 
+// 获取已读
+message ListNoticeReadReq
+{}
+
+// 获取已读 - 回执
+message ListNoticeReadRsp
+{
+  repeated int32 noticeList = 1; // 已读公告列表
+}
+
 // 查看修改记录（管理员）
 message ListUpdateInfoReq
 {
   optional int32 updateId = 1; // 修改ID，不填或填0代表拉去所有
+  optional int32 page = 2; // 第几页
+  optional int32 size = 3; // 几条
 }
 
 // 查看修改记录（管理员） - 回执

@@ -72,6 +72,10 @@ public enum RespCode
    */
   TRC_PARAM_NULL(6),
   /**
+   * <code>TRC_UPDATE_SERVICE_NOT_FOUND = 7;</code>
+   */
+  TRC_UPDATE_SERVICE_NOT_FOUND(7),
+  /**
    * <pre>
    * 数据没找到
    * </pre>
@@ -143,6 +147,22 @@ public enum RespCode
    * <code>TRC_NOTICE_NOT_EXIST = 301;</code>
    */
   TRC_NOTICE_NOT_EXIST(301),
+  /**
+   * <pre>
+   * 此公告无需确认
+   * </pre>
+   *
+   * <code>TRC_NOTICE_CAN_NOT_ACCEPT = 302;</code>
+   */
+  TRC_NOTICE_CAN_NOT_ACCEPT(302),
+  /**
+   * <pre>
+   * 此公告已取人
+   * </pre>
+   *
+   * <code>TRC_NOTICE_IS_ACCEPT = 303;</code>
+   */
+  TRC_NOTICE_IS_ACCEPT(303),
   UNRECOGNIZED(-1),
   ;
 
@@ -211,6 +231,10 @@ public enum RespCode
    * <code>TRC_PARAM_NULL = 6;</code>
    */
   public static final int TRC_PARAM_NULL_VALUE = 6;
+  /**
+   * <code>TRC_UPDATE_SERVICE_NOT_FOUND = 7;</code>
+   */
+  public static final int TRC_UPDATE_SERVICE_NOT_FOUND_VALUE = 7;
   /**
    * <pre>
    * 数据没找到
@@ -283,6 +307,22 @@ public enum RespCode
    * <code>TRC_NOTICE_NOT_EXIST = 301;</code>
    */
   public static final int TRC_NOTICE_NOT_EXIST_VALUE = 301;
+  /**
+   * <pre>
+   * 此公告无需确认
+   * </pre>
+   *
+   * <code>TRC_NOTICE_CAN_NOT_ACCEPT = 302;</code>
+   */
+  public static final int TRC_NOTICE_CAN_NOT_ACCEPT_VALUE = 302;
+  /**
+   * <pre>
+   * 此公告已取人
+   * </pre>
+   *
+   * <code>TRC_NOTICE_IS_ACCEPT = 303;</code>
+   */
+  public static final int TRC_NOTICE_IS_ACCEPT_VALUE = 303;
 
 
   public final int getNumber() {
@@ -316,6 +356,7 @@ public enum RespCode
       case 4: return TRC_PARSE_PROTOCOL_ERR;
       case 5: return TRC_REQUEST_BODY_NULL;
       case 6: return TRC_PARAM_NULL;
+      case 7: return TRC_UPDATE_SERVICE_NOT_FOUND;
       case 100: return TRC_DB_DATA_NOT_FOUND;
       case 101: return TRC_DB_ERROR;
       case 102: return TRC_REDIS_ERROR;
@@ -325,6 +366,8 @@ public enum RespCode
       case 204: return TRC_USER_POWER_NOT_ENOUGH;
       case 205: return TRC_USER_IS_BAN;
       case 301: return TRC_NOTICE_NOT_EXIST;
+      case 302: return TRC_NOTICE_CAN_NOT_ACCEPT;
+      case 303: return TRC_NOTICE_IS_ACCEPT;
       default: return null;
     }
   }

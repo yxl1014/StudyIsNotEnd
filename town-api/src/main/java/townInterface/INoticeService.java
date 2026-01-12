@@ -10,4 +10,6 @@ public interface INoticeService {
     ResponseMsg listNotice(ListNoticeReq msg);
 
     ResponseMsg setNoticeRead(String token, SetNoticeReadReq msg);
+
+    ResponseMsg listNoticeRead(String token, ListNoticeReadReq msg);
 }

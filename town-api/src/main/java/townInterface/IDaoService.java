@@ -3,6 +3,7 @@ package townInterface;
 import entity.NoticeInfoDO;
 import entity.UpdateInfoDO;
 import entity.UserInfoDO;
+import entity.UserReadNoticeInfoDO;
 
 import java.util.List;
 
@@ -44,7 +45,7 @@ public interface IDaoService {
 
     /// notice
     NoticeInfoDO notice_selectById(Integer id);
-    List<NoticeInfoDO> notice_selectAll();
+    List<NoticeInfoDO> notice_selectAll(int page, int size);
     NoticeInfoDO notice_selectByWriterAndCreateTime(Integer writerTel, Long createTime);
     int notice_insert(NoticeInfoDO entity);
     int notice_update(NoticeInfoDO entity);
@@ -54,9 +55,15 @@ public interface IDaoService {
 
     /// update
     int update_insert(UpdateInfoDO entity);
+    UpdateInfoDO update_selectById(Integer updateId);
+    List<UpdateInfoDO> update_selectAll(int page, int size);
     UpdateInfoDO toDO(po.UpdateInfo proto);
     po.UpdateInfo toProto(UpdateInfoDO entity);
 
     /// serReadNoticeInfo
+    UserReadNoticeInfoDO read_selectById(Integer id);
+    List<UserReadNoticeInfoDO> read_selectByUserTel(Integer userTel);
+    int read_insert(UserReadNoticeInfoDO entity);
+    List<UserReadNoticeInfoDO> read_selectByUserTelAndNoticeId(Integer userTel, Integer noticeId);
 
 }

@@ -28,4 +28,42 @@ public interface ListUpdateInfoReqOrBuilder extends
    * @return The updateId.
    */
   int getUpdateId();
+
+  /**
+   * <pre>
+   * 第几页
+   * </pre>
+   *
+   * <code>optional int32 page = 2;</code>
+   * @return Whether the page field is set.
+   */
+  boolean hasPage();
+  /**
+   * <pre>
+   * 第几页
+   * </pre>
+   *
+   * <code>optional int32 page = 2;</code>
+   * @return The page.
+   */
+  int getPage();
+
+  /**
+   * <pre>
+   * 几条
+   * </pre>
+   *
+   * <code>optional int32 size = 3;</code>
+   * @return Whether the size field is set.
+   */
+  boolean hasSize();
+  /**
+   * <pre>
+   * 几条
+   * </pre>
+   *
+   * <code>optional int32 size = 3;</code>
+   * @return The size.
+   */
+  int getSize();
 }

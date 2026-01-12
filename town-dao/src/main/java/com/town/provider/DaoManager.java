@@ -1,12 +1,14 @@
 package com.town.provider;
 
 
+import com.github.pagehelper.PageHelper;
 import com.town.convert.*;
 import com.town.mapper.*;
 import com.town.redis.RedisManager;
 import entity.NoticeInfoDO;
 import entity.UpdateInfoDO;
 import entity.UserInfoDO;
+import entity.UserReadNoticeInfoDO;
 import exception.BizException;
 import jakarta.annotation.Resource;
 import org.apache.dubbo.config.annotation.DubboService;
@@ -126,7 +128,8 @@ public class DaoManager implements IDaoService {
     }
 
     @Override
-    public List<NoticeInfoDO> notice_selectAll() {
+    public List<NoticeInfoDO> notice_selectAll(int page, int size) {
+        PageHelper.startPage(page, size);
         return noticeInfoMapper.selectAll();
     }
 
@@ -171,6 +174,17 @@ public class DaoManager implements IDaoService {
     }
 
     @Override
+    public UpdateInfoDO update_selectById(Integer updateId) {
+        return updateInfoMapper.selectById(updateId);
+    }
+
+    @Override
+    public List<UpdateInfoDO> update_selectAll(int page, int size) {
+        PageHelper.startPage(page, size);
+        return updateInfoMapper.selectAll();
+    }
+
+    @Override
     public UpdateInfoDO toDO(UpdateInfo proto) {
         return updateInfoConvert.toDO(proto);
     }
@@ -184,7 +198,25 @@ public class DaoManager implements IDaoService {
 
     /* ======================= UserReadNotice ======================= */
 
+    @Override
+    public UserReadNoticeInfoDO read_selectById(Integer id) {
+        return userReadNoticeInfoMapper.selectById(id);
+    }
 
+    @Override
+    public List<UserReadNoticeInfoDO> read_selectByUserTel(Integer userTel) {
+        return userReadNoticeInfoMapper.selectByUserTel(userTel);
+    }
+
+    @Override
+    public List<UserReadNoticeInfoDO> read_selectByUserTelAndNoticeId(Integer userTel, Integer noticeId) {
+        return userReadNoticeInfoMapper.selectByUserTelAndNoticeId(userTel, noticeId);
+    }
+
+    @Override
+    public int read_insert(UserReadNoticeInfoDO entity) {
+        return userReadNoticeInfoMapper.insert(entity);
+    }
 
     /* ======================= UserReadNotice ======================= */
 

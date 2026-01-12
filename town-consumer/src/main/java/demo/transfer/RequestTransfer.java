@@ -39,4 +39,12 @@ public class RequestTransfer {
     public ResponseMsg setNoticeRead(String token, SetNoticeReadReq msg) {
         return serviceManager.noticeService.setNoticeRead(token, msg);
     }
+
+    public ResponseMsg listNoticeRead(String token, ListNoticeReadReq msg) {
+        return serviceManager.noticeService.listNoticeRead(token, msg);
+    }
+
+    public ResponseMsg listUpdateInfo(String token, ListUpdateInfoReq msg) {
+        return serviceManager.updateService.listUpdateInfo(token, msg);
+    }
 }

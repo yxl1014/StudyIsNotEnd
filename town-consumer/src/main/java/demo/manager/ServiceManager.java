@@ -4,6 +4,7 @@ import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.stereotype.Component;
 import townInterface.IDaoService;
 import townInterface.INoticeService;
+import townInterface.IUpdateService;
 import townInterface.IUserService;
 
 
@@ -18,4 +19,7 @@ public class ServiceManager {
 
     @DubboReference
     public INoticeService noticeService;
+
+    @DubboReference
+    public IUpdateService updateService;
 }

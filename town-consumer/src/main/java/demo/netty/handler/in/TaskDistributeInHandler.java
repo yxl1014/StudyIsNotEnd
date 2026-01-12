@@ -92,6 +92,22 @@ public class TaskDistributeInHandler extends SimpleChannelInboundHandler<Request
                         requestTransfer::setNoticeRead,
                         ctx
                 ));
+        handlerMap.put(MsgType.TMT_ListNoticeReadReq,
+                (msg, ctx) -> handle(
+                        msg.getToken(),
+                        msg.getMsg().toByteArray(),
+                        ListNoticeReadReq.parser(),
+                        requestTransfer::listNoticeRead,
+                        ctx
+                ));
+        handlerMap.put(MsgType.TMT_ListUpdateInfoReq,
+                (msg, ctx) -> handle(
+                        msg.getToken(),
+                        msg.getMsg().toByteArray(),
+                        ListUpdateInfoReq.parser(),
+                        requestTransfer::listUpdateInfo,
+                        ctx
+                ));
     }
 
     private <T extends com.google.protobuf.Message> ResponseMsg noTokenHandle(

@@ -1,9 +1,9 @@
 package provider.impl;
 
 
-import com.github.pagehelper.PageHelper;
 import entity.NoticeInfoDO;
 import entity.UpdateInfoDO;
+import entity.UserReadNoticeInfoDO;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.slf4j.Logger;
@@ -153,8 +153,7 @@ public class NoticeServiceImpl extends AbstractRpcService implements INoticeServ
                 if (msg.getPage() <= 0 || msg.getSize() <= 0) {
                     return BizResult.error(RespCode.TRC_PARAM_NULL);
                 }
-                PageHelper.startPage(msg.getPage(), msg.getSize());
-                for (NoticeInfoDO noticeInfoDO : daoService.notice_selectAll()) {
+                for (NoticeInfoDO noticeInfoDO : daoService.notice_selectAll(msg.getPage(), msg.getSize())) {
                     builder.addInfos(daoService.toProto(noticeInfoDO));
                 }
             } else {
@@ -184,11 +183,40 @@ public class NoticeServiceImpl extends AbstractRpcService implements INoticeServ
                 return BizResult.error(RespCode.TRC_NOTICE_NOT_EXIST);
             }
 
-            // TODO
+            if (!noticeInfoDO.getIsAcceptRead()) {
+                return BizResult.error(RespCode.TRC_NOTICE_CAN_NOT_ACCEPT);
+            }
 
+            int userTel = UserContext.getUserTel();
+            List<UserReadNoticeInfoDO> readList = daoService.read_selectByUserTelAndNoticeId(userTel, noticeId);
+            if (!readList.isEmpty()) {
+                return BizResult.error(RespCode.TRC_NOTICE_IS_ACCEPT);
+            }
+
+            UserReadNoticeInfoDO readDO = new UserReadNoticeInfoDO(userTel, noticeId, TimeUtil.nowMillis());
+            int insert = daoService.read_insert(readDO);
+            if (insert <= 0){
+                return BizResult.error(RespCode.TRC_DB_ERROR);
+            }
 
             SetNoticeReadRsp rsp = SetNoticeReadRsp.newBuilder().build();
             return BizResult.ok(rsp);
+        });
+    }
+
+    @Override
+    public ResponseMsg listNoticeRead(String token, ListNoticeReadReq msg) {
+        return execute(MsgType.TMT_ListNoticeReadRsp, token, () ->{
+            ListNoticeReadRsp.Builder builder = ListNoticeReadRsp.newBuilder();
+
+            int userTel = UserContext.getUserTel();
+            List<UserReadNoticeInfoDO> readList = daoService.read_selectByUserTel(userTel);
+            for (UserReadNoticeInfoDO infoDO : readList)
+            {
+                builder.addNoticeList(infoDO.getNoticeId());
+            }
+
+            return BizResult.ok(builder.build());
         });
     }
 }

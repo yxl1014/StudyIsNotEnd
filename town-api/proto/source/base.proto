@@ -79,4 +79,7 @@ enum MsgType
   TMT_DelPeopleUpdateApplyRsp = 46; // 删除修改申请（管理员） - 回执
 
   TMT_NoBodyRsp = 47; // 无内容返回
+
+  TMT_ListNoticeReadReq = 48; // 获取已读
+  TMT_ListNoticeReadRsp = 49; // 获取已读 - 回执
 }
