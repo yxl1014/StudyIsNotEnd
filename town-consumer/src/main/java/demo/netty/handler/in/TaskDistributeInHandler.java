@@ -34,7 +34,7 @@ public class TaskDistributeInHandler extends SimpleChannelInboundHandler<Request
 
     /// 这里初始化调度器
     public void init() {
-        // User
+        /// User
         handlerMap.put(MsgType.TMT_LoginReq,
                 (msg, ctx) -> noTokenHandle(
                         msg.getMsg().toByteArray(),
@@ -59,8 +59,16 @@ public class TaskDistributeInHandler extends SimpleChannelInboundHandler<Request
                         requestTransfer::updateUserInfo,
                         ctx
                 ));
+        handlerMap.put(MsgType.TMT_ListNotifyUserInfoReq,
+                (msg, ctx) -> handle(
+                        msg.getToken(),
+                        msg.getMsg().toByteArray(),
+                        ListNotifyUserInfoReq.parser(),
+                        requestTransfer::listNotifyUserInfo,
+                        ctx
+                ));
 
-        // Notice
+        /// Notice
         handlerMap.put(MsgType.TMT_CreateNoticeReq,
                 (msg, ctx) -> handle(
                         msg.getToken(),
@@ -100,6 +108,8 @@ public class TaskDistributeInHandler extends SimpleChannelInboundHandler<Request
                         requestTransfer::listNoticeRead,
                         ctx
                 ));
+
+        /// Update
         handlerMap.put(MsgType.TMT_ListUpdateInfoReq,
                 (msg, ctx) -> handle(
                         msg.getToken(),
@@ -108,6 +118,8 @@ public class TaskDistributeInHandler extends SimpleChannelInboundHandler<Request
                         requestTransfer::listUpdateInfo,
                         ctx
                 ));
+
+        /// Question
         handlerMap.put(MsgType.TMT_CreateQuestionReq,
                 (msg, ctx) -> handle(
                         msg.getToken(),

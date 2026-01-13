@@ -24,6 +24,10 @@ public class RequestTransfer {
         return serviceManager.userService.updateUserInfo(token, msg);
     }
 
+    public ResponseMsg listNotifyUserInfo(String token, ListNotifyUserInfoReq msg) {
+        return serviceManager.userService.listNotifyUserInfo(token, msg);
+    }
+
     public ResponseMsg createNotice(String token, CreateNoticeReq msg) {
         return serviceManager.noticeService.createNotice(token, msg);
     }

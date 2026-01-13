@@ -10,4 +10,6 @@ public interface IUserService {
     ResponseMsg register(RegisterReq msg);
 
     ResponseMsg updateUserInfo(String token, UpdateUserInfoReq msg);
+
+    ResponseMsg listNotifyUserInfo(String token, ListNotifyUserInfoReq msg);
 }

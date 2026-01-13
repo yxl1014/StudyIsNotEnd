@@ -1,6 +1,5 @@
 package provider.impl;
 
-import entity.NoticeInfoDO;
 import entity.TokenInfoDO;
 import entity.UpdateInfoDO;
 import entity.UserInfoDO;
@@ -15,7 +14,10 @@ import serviceEntity.UserContext;
 import townInterface.IDaoService;
 import townInterface.IUpdateService;
 import townInterface.IUserService;
-import util.*;
+import util.ConstValue;
+import util.JwtUtil;
+import util.RandomUtil;
+import util.TimeUtil;
 
 import java.util.Random;
 
@@ -177,5 +179,10 @@ public class UserServiceImpl extends AbstractRpcService implements IUserService 
             UpdateUserInfoRsp resp = UpdateUserInfoRsp.newBuilder().build();
             return BizResult.ok(resp, update);
         });
+    }
+
+    @Override
+    public ResponseMsg listNotifyUserInfo(String token, ListNotifyUserInfoReq msg) {
+        return null;
     }
 }
