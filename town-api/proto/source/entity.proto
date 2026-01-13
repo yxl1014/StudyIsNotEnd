@@ -82,6 +82,7 @@ enum TUpdateInfoType
   TUIT_NOTICE = 0; // 公告
   TUIT_USER = 1; // 用户信息
   TUIT_PEOPLE = 2; // 人员信息
+  TUIT_QUESTION = 3; // 问题信息
 }
 
 // 问题信息

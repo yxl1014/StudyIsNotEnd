@@ -18,7 +18,6 @@ import po.*;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class NettyTest {
 
@@ -100,7 +99,7 @@ public class NettyTest {
             new Thread(() -> {
                 while (true) {
                     try {
-                        ctx.writeAndFlush(buildListUpdateMsg());
+                        ctx.writeAndFlush(buildLoginRequestMsg());
                         Thread.sleep(300000);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
@@ -140,6 +139,55 @@ public class NettyTest {
         public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
             cause.printStackTrace();
             ctx.close();
+        }
+
+        private RequestMsg buildCreateQuestMsg() {
+            RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
+            msgBuilder.setMsgType(MsgType.TMT_CreateQuestionReq);
+            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxLFwicmFuZG9tQ29kZVwiOlwiMDE1MTMwXCIsXCJjcmVhdGVUaW1lXCI6MTc2ODI4OTc3NjI3NCxcInVzZXJQb3dlclwiOlwiVFVQX0NHTVwiLFwidXNlckZsYWdUeXBlXCI6XCJUVUZUX0RFRkFVTFRcIixcInVzZXJOYW1lXCI6XCJhZG1pblwifSIsImlhdCI6MTc2ODI4OTc3NiwiZXhwIjoxNzY4Mzc2MTc2fQ.s7BVfTfBH3ryTG3scIUZD7EGNxu2QsAWhuoApPdkcNs");
+            msgBuilder.setMsg(
+                    CreateQuestionReq.newBuilder()
+                            .setQuestion(
+                                    QuestionInfo.newBuilder()
+                                            .setQuestType(QuestionType.TQT_WSHJ)
+                                            .setQuestContext("xxxxxxxxx")
+                            )
+                            .build().toByteString());
+            RequestMsg requestMsg = msgBuilder.build();
+            System.out.println("发送消息：" + requestMsg.toString());
+            return requestMsg;
+        }
+
+        private RequestMsg buildUpdateQuestMsg(){
+            RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
+            msgBuilder.setMsgType(MsgType.TMT_UpdateQuestionReq);
+            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxMDAwMSxcInJhbmRvbUNvZGVcIjpcIjQzNDMwMVwiLFwiY3JlYXRlVGltZVwiOjE3NjgyODk4MjczOTgsXCJ1c2VyUG93ZXJcIjpcIlRVUF9DTVwiLFwidXNlckZsYWdUeXBlXCI6XCJUVUZUX0RFRkFVTFRcIixcInVzZXJOYW1lXCI6XCJ4eHhcIn0iLCJpYXQiOjE3NjgyODk4MjcsImV4cCI6MTc2ODM3NjIyN30.imPw7Jq9eFrJikDKsOyEAu4xEnaRc48EzUsaaUgC6qw");
+            msgBuilder.setMsg(
+                    UpdateQuestionReq.newBuilder()
+                            .setQuestion(
+                                    QuestionInfo.newBuilder()
+                                            .setQuestId(1)
+                                            .setQuestType(QuestionType.TQT_JCSS)
+                                            .setQuestContext("yyyyyyyyy")
+                            )
+                            .build().toByteString());
+            RequestMsg requestMsg = msgBuilder.build();
+            System.out.println("发送消息：" + requestMsg.toString());
+            return requestMsg;
+        }
+
+        private RequestMsg buildListQuestMsg(){
+            RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
+            msgBuilder.setMsgType(MsgType.TMT_ListQuestionReq);
+            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxMDAwMSxcInJhbmRvbUNvZGVcIjpcIjQzNDMwMVwiLFwiY3JlYXRlVGltZVwiOjE3NjgyODk4MjczOTgsXCJ1c2VyUG93ZXJcIjpcIlRVUF9DTVwiLFwidXNlckZsYWdUeXBlXCI6XCJUVUZUX0RFRkFVTFRcIixcInVzZXJOYW1lXCI6XCJ4eHhcIn0iLCJpYXQiOjE3NjgyODk4MjcsImV4cCI6MTc2ODM3NjIyN30.imPw7Jq9eFrJikDKsOyEAu4xEnaRc48EzUsaaUgC6qw");
+            msgBuilder.setMsg(
+                    ListQuestionReq.newBuilder()
+                            .setPage(1)
+                            .setSize(10)
+                            .build().toByteString());
+            RequestMsg requestMsg = msgBuilder.build();
+            System.out.println("发送消息：" + requestMsg.toString());
+            return requestMsg;
         }
 
         private RequestMsg buildListUpdateMsg() {
@@ -211,8 +259,10 @@ public class NettyTest {
         private RequestMsg buildLoginRequestMsg() {
 
             LoginReq.Builder builder = LoginReq.newBuilder();
-            builder.setUserTel(1);
-            builder.setUserPwd("admin");
+//            builder.setUserTel(1);
+//            builder.setUserPwd("admin");
+            builder.setUserTel(10001);
+            builder.setUserPwd("123456");
 
             RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
             msgBuilder.setMsgType(MsgType.TMT_LoginReq);

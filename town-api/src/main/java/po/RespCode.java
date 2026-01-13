@@ -175,6 +175,30 @@ public enum RespCode
    * <code>TRC_NOTICE_IS_ACCEPT = 303;</code>
    */
   TRC_NOTICE_IS_ACCEPT(303),
+  /**
+   * <pre>
+   * 问题不存在
+   * </pre>
+   *
+   * <code>TRC_QUESTION_NOT_EXIST = 401;</code>
+   */
+  TRC_QUESTION_NOT_EXIST(401),
+  /**
+   * <pre>
+   * 问题已经在处理了
+   * </pre>
+   *
+   * <code>TRC_QUESTION_IS_IN_OPT = 402;</code>
+   */
+  TRC_QUESTION_IS_IN_OPT(402),
+  /**
+   * <pre>
+   * 问题无修改
+   * </pre>
+   *
+   * <code>TRC_QUESTION_NOT_UPDATE = 403;</code>
+   */
+  TRC_QUESTION_NOT_UPDATE(403),
   UNRECOGNIZED(-1),
   ;
 
@@ -347,6 +371,30 @@ public enum RespCode
    * <code>TRC_NOTICE_IS_ACCEPT = 303;</code>
    */
   public static final int TRC_NOTICE_IS_ACCEPT_VALUE = 303;
+  /**
+   * <pre>
+   * 问题不存在
+   * </pre>
+   *
+   * <code>TRC_QUESTION_NOT_EXIST = 401;</code>
+   */
+  public static final int TRC_QUESTION_NOT_EXIST_VALUE = 401;
+  /**
+   * <pre>
+   * 问题已经在处理了
+   * </pre>
+   *
+   * <code>TRC_QUESTION_IS_IN_OPT = 402;</code>
+   */
+  public static final int TRC_QUESTION_IS_IN_OPT_VALUE = 402;
+  /**
+   * <pre>
+   * 问题无修改
+   * </pre>
+   *
+   * <code>TRC_QUESTION_NOT_UPDATE = 403;</code>
+   */
+  public static final int TRC_QUESTION_NOT_UPDATE_VALUE = 403;
 
 
   public final int getNumber() {
@@ -393,6 +441,9 @@ public enum RespCode
       case 301: return TRC_NOTICE_NOT_EXIST;
       case 302: return TRC_NOTICE_CAN_NOT_ACCEPT;
       case 303: return TRC_NOTICE_IS_ACCEPT;
+      case 401: return TRC_QUESTION_NOT_EXIST;
+      case 402: return TRC_QUESTION_IS_IN_OPT;
+      case 403: return TRC_QUESTION_NOT_UPDATE;
       default: return null;
     }
   }

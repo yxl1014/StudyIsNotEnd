@@ -1,9 +1,6 @@
 package townInterface;
 
-import entity.NoticeInfoDO;
-import entity.UpdateInfoDO;
-import entity.UserInfoDO;
-import entity.UserReadNoticeInfoDO;
+import entity.*;
 
 import java.util.List;
 
@@ -66,4 +63,12 @@ public interface IDaoService {
     int read_insert(UserReadNoticeInfoDO entity);
     List<UserReadNoticeInfoDO> read_selectByUserTelAndNoticeId(Integer userTel, Integer noticeId);
 
+    /// question
+    QuestionInfoDO toDO(po.QuestionInfo proto);
+    po.QuestionInfo toProto(QuestionInfoDO entity);
+    QuestionInfoDO quest_selectById(Integer id);
+    List<QuestionInfoDO> quest_selectByWriterTel(int page, int size, Integer userTel);
+    List<QuestionInfoDO> quest_selectByChoiceUser(int page, int size, Integer choiceUser);
+    int quest_insert(QuestionInfoDO entity);
+    int quest_update(QuestionInfoDO entity);
 }

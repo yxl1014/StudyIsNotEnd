@@ -1,18 +1,21 @@
 package provider.impl;
 
+import entity.QuestionInfoDO;
+import entity.UpdateInfoDO;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import po.CreateQuestionReq;
-import po.CreateQuestionRsp;
-import po.MsgType;
-import po.ResponseMsg;
+import po.*;
 import serviceEntity.AbstractRpcService;
 import serviceEntity.BizResult;
+import serviceEntity.UserContext;
 import townInterface.IDaoService;
 import townInterface.IQuestionService;
 import townInterface.IUpdateService;
+import util.TimeUtil;
+
+import java.util.List;
 
 /**
  * @author Administrator
@@ -42,9 +45,129 @@ public class QuestionServiceImpl extends AbstractRpcService implements IQuestion
     @Override
     public ResponseMsg createQuestion(String token, CreateQuestionReq msg) {
         return execute(MsgType.TMT_CreateQuestionRsp, token, () -> {
-            // TODO
+            if (!msg.hasQuestion()){
+                return BizResult.error(RespCode.TRC_PARAM_NULL);
+            }
+
+            QuestionInfoDO questInfo = daoService.toDO(msg.getQuestion());
+            questInfo.setQuestId(null);
+            questInfo.setQuestWriterTel(UserContext.getUserTel());
+            questInfo.setNodeType(QuestionNodeType.TQNT_PRE_VALUE);
+            questInfo.setChoiceUser(null);
+            questInfo.setQuestTime(TimeUtil.nowMillis());
+
+            int insert = daoService.quest_insert(questInfo);
+            if (insert <= 0){
+                return BizResult.error(RespCode.TRC_DB_ERROR);
+            }
+
             CreateQuestionRsp rsp = CreateQuestionRsp.newBuilder().build();
             return BizResult.ok(rsp);
+        });
+    }
+
+    @Override
+    public ResponseMsg updateQuestion(String token, UpdateQuestionReq msg) {
+        return execute(MsgType.TMT_UpdateQuestionRsp, token, () -> {
+            QuestionInfo question = msg.getQuestion();
+            int questId = question.getQuestId();
+            if (questId <= 0){
+                return BizResult.error(RespCode.TRC_PARAM_NULL);
+            }
+
+            QuestionInfoDO oldQuestion = daoService.quest_selectById(questId);
+            if (oldQuestion == null){
+                return BizResult.error(RespCode.TRC_QUESTION_NOT_EXIST);
+            }
+
+            RespCode respCode;
+            UpdateInfoDO updateInfoDO = null;
+            if (TUserPower.TUP_CM.equals(UserContext.getUserPower())) {
+                respCode = updateByCm(question, oldQuestion);
+            }
+            else {
+                respCode = updateByCgb(question, oldQuestion);
+                if (respCode == RespCode.TRC_OK){
+                    QuestionInfoDO newQuestion = daoService.quest_selectById(questId);
+                    updateInfoDO = new UpdateInfoDO();
+                    updateInfoDO.setInfoId(questId);
+                    updateInfoDO.setInfoType(TUpdateInfoType.TUIT_QUESTION_VALUE);
+                    updateInfoDO.setBeforeMsg(daoService.toProto(oldQuestion).toByteArray());
+                    updateInfoDO.setAfterMsg(daoService.toProto(newQuestion).toByteArray());
+                    updateInfoDO.setUpdateTime(TimeUtil.nowMillis());
+                    updateInfoDO.setUpdateUserTel(UserContext.getUserTel());
+                    updateInfoDO.setUpdateName(UserContext.getUserName());
+                }
+            }
+            if (respCode != RespCode.TRC_OK){
+                return BizResult.error(respCode);
+            }
+            UpdateQuestionRsp rsp = UpdateQuestionRsp.newBuilder().build();
+            if (updateInfoDO != null){
+                return BizResult.ok(rsp, updateInfoDO);
+            }
+            return BizResult.ok(rsp);
+        });
+    }
+
+    /// 村民修改
+    private RespCode updateByCm(QuestionInfo question, QuestionInfoDO oldQuestion) {
+        if (oldQuestion.getNodeType() != QuestionNodeType.TQNT_PRE_VALUE){
+            return RespCode.TRC_QUESTION_IS_IN_OPT;
+        }
+        if (!question.hasQuestType() && !question.hasQuestContext() && !question.hasQuestPhoto()){
+            return RespCode.TRC_PARAM_NULL;
+        }
+
+        QuestionInfoDO updateDO = daoService.toDO(question);
+        updateDO.setQuestWriterTel(null);
+        updateDO.setNodeType(null);
+        updateDO.setChoiceUser(null);
+        updateDO.setQuestTime(null);
+
+        int update = daoService.quest_update(updateDO);
+        if (update <= 0){
+            return RespCode.TRC_DB_ERROR;
+        }
+
+        return RespCode.TRC_OK;
+    }
+
+    /// 村官干部修改
+    private RespCode updateByCgb(QuestionInfo question, QuestionInfoDO oldQuestion){
+        QuestionInfoDO updateDO = daoService.toDO(question);
+        if (oldQuestion.equals(updateDO)){
+            return RespCode.TRC_QUESTION_NOT_UPDATE;
+        }
+        int update = daoService.quest_update(updateDO);
+        if (update <= 0){
+            return RespCode.TRC_DB_ERROR;
+        }
+        return RespCode.TRC_OK;
+    }
+
+    @Override
+    public ResponseMsg listQuestion(String token, ListQuestionReq msg) {
+        return execute(MsgType.TMT_ListQuestionRsp, token, () -> {
+            if (msg.getPage() <= 0 || msg.getSize() <= 0) {
+                return BizResult.error(RespCode.TRC_PARAM_NULL);
+            }
+
+            ListQuestionRsp.Builder builder = ListQuestionRsp.newBuilder();
+            List<QuestionInfoDO> questList;
+
+            if (UserContext.getUserPower() == TUserPower.TUP_CM) {
+                questList = daoService.quest_selectByWriterTel(msg.getPage(), msg.getSize(), UserContext.getUserTel());
+            }
+            else {
+                questList = daoService.quest_selectByChoiceUser(msg.getPage(), msg.getSize(), UserContext.getUserTel());
+            }
+
+            for (QuestionInfoDO questionInfoDO : questList) {
+                builder.addInfos(daoService.toProto(questionInfoDO));
+            }
+
+            return BizResult.ok(builder.build());
         });
     }
 }

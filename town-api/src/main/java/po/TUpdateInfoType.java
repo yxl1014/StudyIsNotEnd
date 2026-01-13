@@ -39,6 +39,14 @@ public enum TUpdateInfoType
    * <code>TUIT_PEOPLE = 2;</code>
    */
   TUIT_PEOPLE(2),
+  /**
+   * <pre>
+   * 问题信息
+   * </pre>
+   *
+   * <code>TUIT_QUESTION = 3;</code>
+   */
+  TUIT_QUESTION(3),
   UNRECOGNIZED(-1),
   ;
 
@@ -75,6 +83,14 @@ public enum TUpdateInfoType
    * <code>TUIT_PEOPLE = 2;</code>
    */
   public static final int TUIT_PEOPLE_VALUE = 2;
+  /**
+   * <pre>
+   * 问题信息
+   * </pre>
+   *
+   * <code>TUIT_QUESTION = 3;</code>
+   */
+  public static final int TUIT_QUESTION_VALUE = 3;
 
 
   public final int getNumber() {
@@ -104,6 +120,7 @@ public enum TUpdateInfoType
       case 0: return TUIT_NOTICE;
       case 1: return TUIT_USER;
       case 2: return TUIT_PEOPLE;
+      case 3: return TUIT_QUESTION;
       default: return null;
     }
   }

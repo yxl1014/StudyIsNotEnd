@@ -53,6 +53,9 @@ enum RespCode
   TRC_NOTICE_CAN_NOT_ACCEPT = 302; // 此公告无需确认
   TRC_NOTICE_IS_ACCEPT = 303; // 此公告已取人
 
+  TRC_QUESTION_NOT_EXIST = 401; // 问题不存在
+  TRC_QUESTION_IS_IN_OPT = 402; // 问题已经在处理了
+  TRC_QUESTION_NOT_UPDATE = 403; // 问题无修改
 }
 
 
@@ -180,7 +183,7 @@ message CreateQuestionReq
 message CreateQuestionRsp
 {}
 
-// 修改问题（管理员）
+// 修改问题 村民只能修改自己发布的待处理的问题，只能修改问题类型、问题描述、问题附件
 message UpdateQuestionReq
 {
   optional QuestionInfo question = 1; // 问题信息
@@ -207,6 +210,8 @@ message ListQuestionHandlingRsp
 // 获取问题列表 村民：获取自己提出的问题，村干部：获取所有未分配处理人和处理人是自己的。
 message ListQuestionReq
 {
+  optional int32 page = 1;
+  optional int32 size = 2;
 }
 
 // 获取问题列表 - 回执

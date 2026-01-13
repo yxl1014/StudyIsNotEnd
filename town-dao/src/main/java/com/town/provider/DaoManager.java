@@ -5,26 +5,19 @@ import com.github.pagehelper.PageHelper;
 import com.town.convert.*;
 import com.town.mapper.*;
 import com.town.redis.RedisManager;
-import entity.NoticeInfoDO;
-import entity.UpdateInfoDO;
-import entity.UserInfoDO;
-import entity.UserReadNoticeInfoDO;
-import exception.BizException;
+import entity.*;
 import jakarta.annotation.Resource;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import po.NoticeInfo;
-import po.RespCode;
+import po.QuestionInfo;
 import po.UpdateInfo;
 import po.UserInfo;
 import townInterface.IDaoService;
-import townInterface.IRedisService;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 @DubboService(timeout = 10000, retries = 0)
 public class DaoManager implements IDaoService {
@@ -219,6 +212,48 @@ public class DaoManager implements IDaoService {
     }
 
     /* ======================= UserReadNotice ======================= */
+
+
+    /* ======================= Question ======================= */
+
+    @Override
+    public QuestionInfoDO toDO(QuestionInfo proto) {
+        return questionInfoConvert.toDO(proto);
+    }
+
+    @Override
+    public QuestionInfo toProto(QuestionInfoDO entity) {
+        return questionInfoConvert.toProto(entity);
+    }
+
+    @Override
+    public QuestionInfoDO quest_selectById(Integer id) {
+        return questionInfoMapper.selectById(id);
+    }
+
+    @Override
+    public List<QuestionInfoDO> quest_selectByWriterTel(int page, int size, Integer userTel) {
+        PageHelper.startPage(page, size);
+        return questionInfoMapper.selectByWriterTel(userTel);
+    }
+
+    @Override
+    public List<QuestionInfoDO> quest_selectByChoiceUser(int page, int size, Integer choiceUser) {
+        PageHelper.startPage(page, size);
+        return questionInfoMapper.selectByChoiceUser(choiceUser);
+    }
+
+    @Override
+    public int quest_insert(QuestionInfoDO entity) {
+        return questionInfoMapper.insert(entity);
+    }
+
+    @Override
+    public int quest_update(QuestionInfoDO entity) {
+        return questionInfoMapper.update(entity);
+    }
+
+    /* ======================= Question ======================= */
 
     @Resource
     private RedisManager redisManager;

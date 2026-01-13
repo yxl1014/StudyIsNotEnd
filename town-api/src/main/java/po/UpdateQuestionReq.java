@@ -7,7 +7,7 @@ package po;
 
 /**
  * <pre>
- * 修改问题（管理员）
+ * 修改问题 村民只能修改自己发布的待处理的问题，只能修改问题类型、问题描述、问题附件
  * </pre>
  *
  * Protobuf type {@code po.UpdateQuestionReq}
@@ -304,7 +304,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * 修改问题（管理员）
+   * 修改问题 村民只能修改自己发布的待处理的问题，只能修改问题类型、问题描述、问题附件
    * </pre>
    *
    * Protobuf type {@code po.UpdateQuestionReq}
