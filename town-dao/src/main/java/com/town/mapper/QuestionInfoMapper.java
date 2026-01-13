@@ -14,7 +14,7 @@ public interface QuestionInfoMapper {
     @Select("SELECT * FROM question_info WHERE question_write_tel = #{userTel}")
     List<QuestionInfoDO> selectByWriterTel(Integer userTel);
 
-    @Select("SELECT * FROM question_info WHERE choice_user = #{choiceUser} OR choice_user = null OR choice_user = 0")
+    @Select("SELECT * FROM question_info WHERE choice_user = #{choiceUser} OR choice_user IS null OR choice_user = 0")
     List<QuestionInfoDO> selectByChoiceUser(Integer choiceUser);
 
     @Insert("""
@@ -22,8 +22,8 @@ public interface QuestionInfoMapper {
         (question_type, question_ctx, quest_photo,
          question_write_tel, node_type, choice_user, question_time)
         VALUES
-        (#{questType}, #{questContext}, #{questPhoto},
-         #{questWriterTel}, #{nodeType}, #{choiceUser}, #{questTime})
+        (#{questionType}, #{questionCtx}, #{questPhoto},
+         #{questionWriterTel}, #{nodeType}, #{choiceUser}, #{questionTime})
         """)
     @Options(useGeneratedKeys = true, keyProperty = "questionId")
     int insert(QuestionInfoDO entity);
@@ -33,17 +33,17 @@ public interface QuestionInfoMapper {
     <script>
     UPDATE question_info
     <set>
-        <if test="questType != null">
-            question_type = #{questType},
+        <if test="questionType != null">
+            question_type = #{questionType},
         </if>
-        <if test="questContext != null">
-            question_ctx = #{questContext},
+        <if test="questionCtx != null">
+            question_ctx = #{questionCtx},
         </if>
         <if test="questPhoto != null">
             quest_photo = #{questPhoto},
         </if>
-        <if test="questWriterTel != null">
-            question_write_tel = #{questWriterTel},
+        <if test="questionWriterTel != null">
+            question_write_tel = #{questionWriterTel},
         </if>
         <if test="nodeType != null">
             node_type = #{nodeType},
@@ -51,11 +51,11 @@ public interface QuestionInfoMapper {
         <if test="choiceUser != null">
             choice_user = #{choiceUser},
         </if>
-        <if test="questTime != null">
-            question_time = #{questTime},
+        <if test="questionTime != null">
+            question_time = #{questionTime},
         </if>
     </set>
-    WHERE question_id = #{questId}
+    WHERE question_id = #{questionId}
     </script>
     """)
     int update(QuestionInfoDO entity);

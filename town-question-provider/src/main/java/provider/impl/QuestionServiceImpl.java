@@ -50,11 +50,11 @@ public class QuestionServiceImpl extends AbstractRpcService implements IQuestion
             }
 
             QuestionInfoDO questInfo = daoService.toDO(msg.getQuestion());
-            questInfo.setQuestId(null);
-            questInfo.setQuestWriterTel(UserContext.getUserTel());
+            questInfo.setQuestionId(null);
+            questInfo.setQuestionWriterTel(UserContext.getUserTel());
             questInfo.setNodeType(QuestionNodeType.TQNT_PRE_VALUE);
             questInfo.setChoiceUser(null);
-            questInfo.setQuestTime(TimeUtil.nowMillis());
+            questInfo.setQuestionTime(TimeUtil.nowMillis());
 
             int insert = daoService.quest_insert(questInfo);
             if (insert <= 0){
@@ -70,7 +70,7 @@ public class QuestionServiceImpl extends AbstractRpcService implements IQuestion
     public ResponseMsg updateQuestion(String token, UpdateQuestionReq msg) {
         return execute(MsgType.TMT_UpdateQuestionRsp, token, () -> {
             QuestionInfo question = msg.getQuestion();
-            int questId = question.getQuestId();
+            int questId = question.getQuestionId();
             if (questId <= 0){
                 return BizResult.error(RespCode.TRC_PARAM_NULL);
             }
@@ -115,15 +115,15 @@ public class QuestionServiceImpl extends AbstractRpcService implements IQuestion
         if (oldQuestion.getNodeType() != QuestionNodeType.TQNT_PRE_VALUE){
             return RespCode.TRC_QUESTION_IS_IN_OPT;
         }
-        if (!question.hasQuestType() && !question.hasQuestContext() && !question.hasQuestPhoto()){
+        if (!question.hasQuestionType() && !question.hasQuestionCtx() && !question.hasQuestPhoto()){
             return RespCode.TRC_PARAM_NULL;
         }
 
         QuestionInfoDO updateDO = daoService.toDO(question);
-        updateDO.setQuestWriterTel(null);
+        updateDO.setQuestionWriterTel(null);
         updateDO.setNodeType(null);
         updateDO.setChoiceUser(null);
-        updateDO.setQuestTime(null);
+        updateDO.setQuestionTime(null);
 
         int update = daoService.quest_update(updateDO);
         if (update <= 0){

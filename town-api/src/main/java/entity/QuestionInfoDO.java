@@ -6,13 +6,13 @@ import java.io.Serializable;
 
 @Data
 public class QuestionInfoDO implements Serializable {
-    private Integer questId;
-    private Integer questType;
-    private String questContext;
+    private Integer questionId;
+    private Integer questionType;
+    private String questionCtx;
     private byte[] questPhoto;
-    private Integer questWriterTel;
+    private Integer questionWriterTel;
     private Integer nodeType;
     private Integer choiceUser;
-    private Long questTime;
+    private Long questionTime;
 }
 

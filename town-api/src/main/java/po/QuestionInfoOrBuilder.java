@@ -15,76 +15,76 @@ public interface QuestionInfoOrBuilder extends
    * 自增唯一id
    * </pre>
    *
-   * <code>optional int32 questId = 1;</code>
-   * @return Whether the questId field is set.
+   * <code>optional int32 questionId = 1;</code>
+   * @return Whether the questionId field is set.
    */
-  boolean hasQuestId();
+  boolean hasQuestionId();
   /**
    * <pre>
    * 自增唯一id
    * </pre>
    *
-   * <code>optional int32 questId = 1;</code>
-   * @return The questId.
+   * <code>optional int32 questionId = 1;</code>
+   * @return The questionId.
    */
-  int getQuestId();
+  int getQuestionId();
 
   /**
    * <pre>
    * 问题类型
    * </pre>
    *
-   * <code>optional .po.QuestionType questType = 2;</code>
-   * @return Whether the questType field is set.
+   * <code>optional .po.QuestionType questionType = 2;</code>
+   * @return Whether the questionType field is set.
    */
-  boolean hasQuestType();
+  boolean hasQuestionType();
   /**
    * <pre>
    * 问题类型
    * </pre>
    *
-   * <code>optional .po.QuestionType questType = 2;</code>
-   * @return The enum numeric value on the wire for questType.
+   * <code>optional .po.QuestionType questionType = 2;</code>
+   * @return The enum numeric value on the wire for questionType.
    */
-  int getQuestTypeValue();
+  int getQuestionTypeValue();
   /**
    * <pre>
    * 问题类型
    * </pre>
    *
-   * <code>optional .po.QuestionType questType = 2;</code>
-   * @return The questType.
+   * <code>optional .po.QuestionType questionType = 2;</code>
+   * @return The questionType.
    */
-  po.QuestionType getQuestType();
+  po.QuestionType getQuestionType();
 
   /**
    * <pre>
    * 问题详细描述
    * </pre>
    *
-   * <code>optional string questContext = 3;</code>
-   * @return Whether the questContext field is set.
+   * <code>optional string questionCtx = 3;</code>
+   * @return Whether the questionCtx field is set.
    */
-  boolean hasQuestContext();
+  boolean hasQuestionCtx();
   /**
    * <pre>
    * 问题详细描述
    * </pre>
    *
-   * <code>optional string questContext = 3;</code>
-   * @return The questContext.
+   * <code>optional string questionCtx = 3;</code>
+   * @return The questionCtx.
    */
-  java.lang.String getQuestContext();
+  java.lang.String getQuestionCtx();
   /**
    * <pre>
    * 问题详细描述
    * </pre>
    *
-   * <code>optional string questContext = 3;</code>
-   * @return The bytes for questContext.
+   * <code>optional string questionCtx = 3;</code>
+   * @return The bytes for questionCtx.
    */
   com.google.protobuf.ByteString
-      getQuestContextBytes();
+      getQuestionCtxBytes();
 
   /**
    * <pre>
@@ -110,19 +110,19 @@ public interface QuestionInfoOrBuilder extends
    * 问题提出者电话
    * </pre>
    *
-   * <code>optional int32 questWriterTel = 5;</code>
-   * @return Whether the questWriterTel field is set.
+   * <code>optional int32 questionWriterTel = 5;</code>
+   * @return Whether the questionWriterTel field is set.
    */
-  boolean hasQuestWriterTel();
+  boolean hasQuestionWriterTel();
   /**
    * <pre>
    * 问题提出者电话
    * </pre>
    *
-   * <code>optional int32 questWriterTel = 5;</code>
-   * @return The questWriterTel.
+   * <code>optional int32 questionWriterTel = 5;</code>
+   * @return The questionWriterTel.
    */
-  int getQuestWriterTel();
+  int getQuestionWriterTel();
 
   /**
    * <pre>
@@ -176,17 +176,17 @@ public interface QuestionInfoOrBuilder extends
    * 问题时间
    * </pre>
    *
-   * <code>optional int64 questTime = 8;</code>
-   * @return Whether the questTime field is set.
+   * <code>optional int64 questionTime = 8;</code>
+   * @return Whether the questionTime field is set.
    */
-  boolean hasQuestTime();
+  boolean hasQuestionTime();
   /**
    * <pre>
    * 问题时间
    * </pre>
    *
-   * <code>optional int64 questTime = 8;</code>
-   * @return The questTime.
+   * <code>optional int64 questionTime = 8;</code>
+   * @return The questionTime.
    */
-  long getQuestTime();
+  long getQuestionTime();
 }

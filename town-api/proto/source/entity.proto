@@ -87,14 +87,14 @@ enum TUpdateInfoType
 
 // 问题信息
 message QuestionInfo{
-  optional int32 questId = 1; // 自增唯一id
-  optional QuestionType questType = 2; // 问题类型
-  optional string questContext = 3; // 问题详细描述
+  optional int32 questionId = 1; // 自增唯一id
+  optional QuestionType questionType = 2; // 问题类型
+  optional string questionCtx = 3; // 问题详细描述
   optional bytes questPhoto = 4; // 问题上传附件
-  optional int32 questWriterTel = 5; // 问题提出者电话
+  optional int32 questionWriterTel = 5; // 问题提出者电话
   optional QuestionNodeType nodeType = 6; // 问题节点
   optional int32 choiceUser = 7; // 指定处理人电话
-  optional int64 questTime = 8; // 问题时间
+  optional int64 questionTime = 8; // 问题时间
 }
 
 // 问题处理节点
