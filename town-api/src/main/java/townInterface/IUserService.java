@@ -1,5 +1,6 @@
 package townInterface;
 
+import entity.NotifyUserInfoDO;
 import po.*;
 
 public interface IUserService {
@@ -10,6 +11,8 @@ public interface IUserService {
     ResponseMsg register(RegisterReq msg);
 
     ResponseMsg updateUserInfo(String token, UpdateUserInfoReq msg);
+
+    RespCode AddNotifyUserInfo(NotifyUserInfoDO notifyUserInfoDO);
 
     ResponseMsg listNotifyUserInfo(String token, ListNotifyUserInfoReq msg);
 }

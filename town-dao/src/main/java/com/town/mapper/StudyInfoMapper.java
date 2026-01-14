@@ -3,11 +3,19 @@ package com.town.mapper;
 import entity.StudyInfoDO;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface StudyInfoMapper {
 
     @Select("SELECT * FROM study_info WHERE study_id = #{id}")
     StudyInfoDO selectById(Integer id);
+
+    @Select("SELECT * FROM study_info WHERE study_create_time = #{createTime}")
+    StudyInfoDO selectByCreateTime(Long createTime);
+
+    @Select("SELECT * FROM study_info WHERE is_open = true ORDER BY is_top DESC")
+    List<StudyInfoDO> selectAll();
 
     @Insert("""
         INSERT INTO study_info

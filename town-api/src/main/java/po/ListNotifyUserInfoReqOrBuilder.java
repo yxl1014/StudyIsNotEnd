@@ -9,4 +9,26 @@ package po;
 public interface ListNotifyUserInfoReqOrBuilder extends
     // @@protoc_insertion_point(interface_extends:po.ListNotifyUserInfoReq)
     com.google.protobuf.MessageOrBuilder {
+
+  /**
+   * <code>optional int32 page = 1;</code>
+   * @return Whether the page field is set.
+   */
+  boolean hasPage();
+  /**
+   * <code>optional int32 page = 1;</code>
+   * @return The page.
+   */
+  int getPage();
+
+  /**
+   * <code>optional int32 size = 2;</code>
+   * @return Whether the size field is set.
+   */
+  boolean hasSize();
+  /**
+   * <code>optional int32 size = 2;</code>
+   * @return The size.
+   */
+  int getSize();
 }

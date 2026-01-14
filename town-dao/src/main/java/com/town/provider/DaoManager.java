@@ -11,10 +11,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import po.NoticeInfo;
-import po.QuestionInfo;
-import po.UpdateInfo;
-import po.UserInfo;
+import po.*;
 import townInterface.IDaoService;
 
 import java.util.List;
@@ -254,6 +251,97 @@ public class DaoManager implements IDaoService {
     }
 
     /* ======================= Question ======================= */
+
+
+
+    /* ======================= Notify ======================= */
+
+    @Override
+    public NotifyUserInfoDO toDO(NotifyUserInfo proto) {
+        return notifyUserInfoConvert.toDO(proto);
+    }
+
+    @Override
+    public NotifyUserInfo toProto(NotifyUserInfoDO entity) {
+        return notifyUserInfoConvert.toProto(entity);
+    }
+
+    @Override
+    public NotifyUserInfoDO notify_selectById(Integer id) {
+        return notifyUserInfoMapper.selectById(id);
+    }
+
+    @Override
+    public List<NotifyUserInfoDO> notify_selectByUserId(Integer userTel) {
+        return notifyUserInfoMapper.selectByUserId(userTel);
+    }
+
+    @Override
+    public int notify_insert(NotifyUserInfoDO entity) {
+        return notifyUserInfoMapper.insert(entity);
+    }
+
+    @Override
+    public int notify_update(NotifyUserInfoDO entity) {
+        return notifyUserInfoMapper.update(entity);
+    }
+
+    @Override
+    public int notify_delete(Integer id) {
+        return notifyUserInfoMapper.delete(id);
+    }
+
+    @Override
+    public int notify_deleteAll() {
+        return notifyUserInfoMapper.deleteAll();
+    }
+
+    /* ======================= Notify ======================= */
+
+    /* ======================= Study ======================= */
+
+    @Override
+    public StudyInfoDO toDO(StudyInfo proto) {
+        return studyInfoConvert.toDO(proto);
+    }
+
+    @Override
+    public StudyInfo toProto(StudyInfoDO entity) {
+        return studyInfoConvert.toProto(entity);
+    }
+
+    @Override
+    public StudyInfoDO study_selectById(Integer id) {
+        return studyInfoMapper.selectById(id);
+    }
+
+    @Override
+    public StudyInfoDO study_selectByCreateTime(Long createTime) {
+        return studyInfoMapper.selectByCreateTime(createTime);
+    }
+
+    @Override
+    public List<StudyInfoDO> study_selectAll(int page, int size) {
+        PageHelper.startPage(page, size);
+        return studyInfoMapper.selectAll();
+    }
+
+    @Override
+    public int study_insert(StudyInfoDO entity) {
+        return studyInfoMapper.insert(entity);
+    }
+
+    @Override
+    public int study_update(StudyInfoDO entity) {
+        return studyInfoMapper.update(entity);
+    }
+
+    @Override
+    public int study_delete(Integer id) {
+        return studyInfoMapper.delete(id);
+    }
+
+    /* ======================= Study ======================= */
 
     @Resource
     private RedisManager redisManager;

@@ -83,6 +83,7 @@ enum TUpdateInfoType
   TUIT_USER = 1; // 用户信息
   TUIT_PEOPLE = 2; // 人员信息
   TUIT_QUESTION = 3; // 问题信息
+  TUIT_STUDY = 4; // 学习信息
 }
 
 // 问题信息
@@ -136,8 +137,10 @@ enum QuestionHandlingType
 // 主动通知用户信息,因推送时不确定用户在不在线，所以使用上线客户端主动拉取的方式
 message NotifyUserInfo
 {
-  optional MsgType msgType = 1; // 消息类型
-  optional bytes msgCtx = 2; // 消息内容
+  optional int32 id = 1; // 唯一ID
+  optional int32 userTel = 2; // 电话
+  optional MsgType msgType = 3; // 消息类型
+  optional bytes msgCtx = 4; // 消息内容
 }
 
 // 学习模块

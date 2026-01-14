@@ -222,7 +222,10 @@ message ListQuestionRsp
 
 // 获取所有用户待收取的信息，发送成功后就删除
 message ListNotifyUserInfoReq
-{}
+{
+  optional int32 page = 1;
+  optional int32 size = 2;
+}
 
 // 获取所有用户待收取的信息 - 回执
 message ListNotifyUserInfoRsp{

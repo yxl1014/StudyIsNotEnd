@@ -50,63 +50,122 @@ private static final long serialVersionUID = 0L;
   }
 
   private int bitField0_;
-  public static final int MSGTYPE_FIELD_NUMBER = 1;
+  public static final int ID_FIELD_NUMBER = 1;
+  public static final int USERTEL_FIELD_NUMBER = 2;
+  public static final int MSGTYPE_FIELD_NUMBER = 3;
+  public static final int MSGCTX_FIELD_NUMBER = 4;
+  private int id_ = 0;
+  private int userTel_ = 0;
+
+  /**
+   * <pre>
+   * 唯一ID
+   * </pre>
+   *
+   * <code>optional int32 id = 1;</code>
+   * @return Whether the id field is set.
+   */
+  @java.lang.Override
+  public boolean hasId() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+
+  /**
+   * <pre>
+   * 唯一ID
+   * </pre>
+   *
+   * <code>optional int32 id = 1;</code>
+   * @return The id.
+   */
+  @java.lang.Override
+  public int getId() {
+    return id_;
+  }
+
+  /**
+   * <pre>
+   * 电话
+   * </pre>
+   *
+   * <code>optional int32 userTel = 2;</code>
+   * @return Whether the userTel field is set.
+   */
+  @java.lang.Override
+  public boolean hasUserTel() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
   private int msgType_ = 0;
+
+  /**
+   * <pre>
+   * 电话
+   * </pre>
+   *
+   * <code>optional int32 userTel = 2;</code>
+   * @return The userTel.
+   */
+  @java.lang.Override
+  public int getUserTel() {
+    return userTel_;
+  }
+
   /**
    * <pre>
    * 消息类型
    * </pre>
    *
-   * <code>optional .po.MsgType msgType = 1;</code>
+   * <code>optional .po.MsgType msgType = 3;</code>
    * @return Whether the msgType field is set.
    */
   @java.lang.Override public boolean hasMsgType() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return ((bitField0_ & 0x00000004) != 0);
   }
+
   /**
    * <pre>
    * 消息类型
    * </pre>
    *
-   * <code>optional .po.MsgType msgType = 1;</code>
+   * <code>optional .po.MsgType msgType = 3;</code>
    * @return The enum numeric value on the wire for msgType.
    */
   @java.lang.Override public int getMsgTypeValue() {
     return msgType_;
   }
+
   /**
    * <pre>
    * 消息类型
    * </pre>
    *
-   * <code>optional .po.MsgType msgType = 1;</code>
+   * <code>optional .po.MsgType msgType = 3;</code>
    * @return The msgType.
    */
   @java.lang.Override public po.MsgType getMsgType() {
     po.MsgType result = po.MsgType.forNumber(msgType_);
     return result == null ? po.MsgType.UNRECOGNIZED : result;
   }
-
-  public static final int MSGCTX_FIELD_NUMBER = 2;
   private com.google.protobuf.ByteString msgCtx_ = com.google.protobuf.ByteString.EMPTY;
+
   /**
    * <pre>
    * 消息内容
    * </pre>
    *
-   * <code>optional bytes msgCtx = 2;</code>
+   * <code>optional bytes msgCtx = 4;</code>
    * @return Whether the msgCtx field is set.
    */
   @java.lang.Override
   public boolean hasMsgCtx() {
-    return ((bitField0_ & 0x00000002) != 0);
+    return ((bitField0_ & 0x00000008) != 0);
   }
   /**
    * <pre>
    * 消息内容
    * </pre>
    *
-   * <code>optional bytes msgCtx = 2;</code>
+   * <code>optional bytes msgCtx = 4;</code>
    * @return The msgCtx.
    */
   @java.lang.Override
@@ -129,10 +188,16 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeEnum(1, msgType_);
+      output.writeInt32(1, id_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      output.writeBytes(2, msgCtx_);
+      output.writeInt32(2, userTel_);
+    }
+    if (((bitField0_ & 0x00000004) != 0)) {
+      output.writeEnum(3, msgType_);
+    }
+    if (((bitField0_ & 0x00000008) != 0)) {
+      output.writeBytes(4, msgCtx_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -145,11 +210,19 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(1, msgType_);
+        .computeInt32Size(1, id_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(2, msgCtx_);
+        .computeInt32Size(2, userTel_);
+    }
+    if (((bitField0_ & 0x00000004) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(3, msgType_);
+    }
+    if (((bitField0_ & 0x00000008) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBytesSize(4, msgCtx_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -166,6 +239,16 @@ private static final long serialVersionUID = 0L;
     }
     po.NotifyUserInfo other = (po.NotifyUserInfo) obj;
 
+    if (hasId() != other.hasId()) return false;
+    if (hasId()) {
+      if (getId()
+          != other.getId()) return false;
+    }
+    if (hasUserTel() != other.hasUserTel()) return false;
+    if (hasUserTel()) {
+      if (getUserTel()
+          != other.getUserTel()) return false;
+    }
     if (hasMsgType() != other.hasMsgType()) return false;
     if (hasMsgType()) {
       if (msgType_ != other.msgType_) return false;
@@ -186,6 +269,14 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    if (hasId()) {
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId();
+    }
+    if (hasUserTel()) {
+      hash = (37 * hash) + USERTEL_FIELD_NUMBER;
+      hash = (53 * hash) + getUserTel();
+    }
     if (hasMsgType()) {
       hash = (37 * hash) + MSGTYPE_FIELD_NUMBER;
       hash = (53 * hash) + msgType_;
@@ -325,14 +416,7 @@ private static final long serialVersionUID = 0L;
       super(parent);
 
     }
-    @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      bitField0_ = 0;
-      msgType_ = 0;
-      msgCtx_ = com.google.protobuf.ByteString.EMPTY;
-      return this;
-    }
+    private int id_ ;
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
@@ -361,20 +445,7 @@ private static final long serialVersionUID = 0L;
       onBuilt();
       return result;
     }
-
-    private void buildPartial0(po.NotifyUserInfo result) {
-      int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.msgType_ = msgType_;
-        to_bitField0_ |= 0x00000001;
-      }
-      if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.msgCtx_ = msgCtx_;
-        to_bitField0_ |= 0x00000002;
-      }
-      result.bitField0_ |= to_bitField0_;
-    }
+    private int userTel_ ;
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -386,8 +457,53 @@ private static final long serialVersionUID = 0L;
       }
     }
 
+    @java.lang.Override
+    public Builder clear() {
+      super.clear();
+      bitField0_ = 0;
+      id_ = 0;
+      userTel_ = 0;
+      msgType_ = 0;
+      msgCtx_ = com.google.protobuf.ByteString.EMPTY;
+      return this;
+    }
+
+    @java.lang.Override
+    public final boolean isInitialized() {
+      return true;
+    }
+
+    private void buildPartial0(po.NotifyUserInfo result) {
+      int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
+      if (((from_bitField0_ & 0x00000001) != 0)) {
+        result.id_ = id_;
+        to_bitField0_ |= 0x00000001;
+      }
+      if (((from_bitField0_ & 0x00000002) != 0)) {
+        result.userTel_ = userTel_;
+        to_bitField0_ |= 0x00000002;
+      }
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        result.msgType_ = msgType_;
+        to_bitField0_ |= 0x00000004;
+      }
+      if (((from_bitField0_ & 0x00000008) != 0)) {
+        result.msgCtx_ = msgCtx_;
+        to_bitField0_ |= 0x00000008;
+      }
+      result.bitField0_ |= to_bitField0_;
+    }
+    private int bitField0_;
+
     public Builder mergeFrom(po.NotifyUserInfo other) {
       if (other == po.NotifyUserInfo.getDefaultInstance()) return this;
+      if (other.hasId()) {
+        setId(other.getId());
+      }
+      if (other.hasUserTel()) {
+        setUserTel(other.getUserTel());
+      }
       if (other.hasMsgType()) {
         setMsgTypeValue(other.getMsgTypeValue());
       }
@@ -397,11 +513,6 @@ private static final long serialVersionUID = 0L;
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
-    }
-
-    @java.lang.Override
-    public final boolean isInitialized() {
-      return true;
     }
 
     @java.lang.Override
@@ -421,15 +532,25 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              msgType_ = input.readEnum();
+              id_ = input.readInt32();
               bitField0_ |= 0x00000001;
               break;
             } // case 8
-            case 18: {
-              msgCtx_ = input.readBytes();
+            case 16: {
+              userTel_ = input.readInt32();
               bitField0_ |= 0x00000002;
               break;
-            } // case 18
+            } // case 16
+            case 24: {
+              msgType_ = input.readEnum();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 24
+            case 34: {
+              msgCtx_ = input.readBytes();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 34
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -445,7 +566,119 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
-    private int bitField0_;
+
+    /**
+     * <pre>
+     * 唯一ID
+     * </pre>
+     *
+     * <code>optional int32 id = 1;</code>
+     * @return Whether the id field is set.
+     */
+    @java.lang.Override
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+
+    /**
+     * <pre>
+     * 唯一ID
+     * </pre>
+     *
+     * <code>optional int32 id = 1;</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public int getId() {
+      return id_;
+    }
+
+    /**
+     * <pre>
+     * 唯一ID
+     * </pre>
+     *
+     * <code>optional int32 id = 1;</code>
+     * @param value The id to set.
+     * @return This builder for chaining.
+     */
+    public Builder setId(int value) {
+
+      id_ = value;
+      bitField0_ |= 0x00000001;
+      onChanged();
+      return this;
+    }
+
+    /**
+     * <pre>
+     * 唯一ID
+     * </pre>
+     *
+     * <code>optional int32 id = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearId() {
+      bitField0_ = (bitField0_ & ~0x00000001);
+      id_ = 0;
+      onChanged();
+      return this;
+    }
+
+    /**
+     * <pre>
+     * 电话
+     * </pre>
+     *
+     * <code>optional int32 userTel = 2;</code>
+     * @return Whether the userTel field is set.
+     */
+    @java.lang.Override
+    public boolean hasUserTel() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * 电话
+     * </pre>
+     *
+     * <code>optional int32 userTel = 2;</code>
+     * @return The userTel.
+     */
+    @java.lang.Override
+    public int getUserTel() {
+      return userTel_;
+    }
+    /**
+     * <pre>
+     * 电话
+     * </pre>
+     *
+     * <code>optional int32 userTel = 2;</code>
+     * @param value The userTel to set.
+     * @return This builder for chaining.
+     */
+    public Builder setUserTel(int value) {
+
+      userTel_ = value;
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 电话
+     * </pre>
+     *
+     * <code>optional int32 userTel = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearUserTel() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      userTel_ = 0;
+      onChanged();
+      return this;
+    }
 
     private int msgType_ = 0;
     /**
@@ -453,18 +686,18 @@ private static final long serialVersionUID = 0L;
      * 消息类型
      * </pre>
      *
-     * <code>optional .po.MsgType msgType = 1;</code>
+     * <code>optional .po.MsgType msgType = 3;</code>
      * @return Whether the msgType field is set.
      */
     @java.lang.Override public boolean hasMsgType() {
-      return ((bitField0_ & 0x00000001) != 0);
+      return ((bitField0_ & 0x00000004) != 0);
     }
     /**
      * <pre>
      * 消息类型
      * </pre>
      *
-     * <code>optional .po.MsgType msgType = 1;</code>
+     * <code>optional .po.MsgType msgType = 3;</code>
      * @return The enum numeric value on the wire for msgType.
      */
     @java.lang.Override public int getMsgTypeValue() {
@@ -475,13 +708,13 @@ private static final long serialVersionUID = 0L;
      * 消息类型
      * </pre>
      *
-     * <code>optional .po.MsgType msgType = 1;</code>
+     * <code>optional .po.MsgType msgType = 3;</code>
      * @param value The enum numeric value on the wire for msgType to set.
      * @return This builder for chaining.
      */
     public Builder setMsgTypeValue(int value) {
       msgType_ = value;
-      bitField0_ |= 0x00000001;
+      bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
@@ -490,7 +723,7 @@ private static final long serialVersionUID = 0L;
      * 消息类型
      * </pre>
      *
-     * <code>optional .po.MsgType msgType = 1;</code>
+     * <code>optional .po.MsgType msgType = 3;</code>
      * @return The msgType.
      */
     @java.lang.Override
@@ -503,13 +736,13 @@ private static final long serialVersionUID = 0L;
      * 消息类型
      * </pre>
      *
-     * <code>optional .po.MsgType msgType = 1;</code>
+     * <code>optional .po.MsgType msgType = 3;</code>
      * @param value The msgType to set.
      * @return This builder for chaining.
      */
     public Builder setMsgType(po.MsgType value) {
       if (value == null) { throw new NullPointerException(); }
-      bitField0_ |= 0x00000001;
+      bitField0_ |= 0x00000004;
       msgType_ = value.getNumber();
       onChanged();
       return this;
@@ -519,11 +752,11 @@ private static final long serialVersionUID = 0L;
      * 消息类型
      * </pre>
      *
-     * <code>optional .po.MsgType msgType = 1;</code>
+     * <code>optional .po.MsgType msgType = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearMsgType() {
-      bitField0_ = (bitField0_ & ~0x00000001);
+      bitField0_ = (bitField0_ & ~0x00000004);
       msgType_ = 0;
       onChanged();
       return this;
@@ -535,19 +768,19 @@ private static final long serialVersionUID = 0L;
      * 消息内容
      * </pre>
      *
-     * <code>optional bytes msgCtx = 2;</code>
+     * <code>optional bytes msgCtx = 4;</code>
      * @return Whether the msgCtx field is set.
      */
     @java.lang.Override
     public boolean hasMsgCtx() {
-      return ((bitField0_ & 0x00000002) != 0);
+      return ((bitField0_ & 0x00000008) != 0);
     }
     /**
      * <pre>
      * 消息内容
      * </pre>
      *
-     * <code>optional bytes msgCtx = 2;</code>
+     * <code>optional bytes msgCtx = 4;</code>
      * @return The msgCtx.
      */
     @java.lang.Override
@@ -559,14 +792,14 @@ private static final long serialVersionUID = 0L;
      * 消息内容
      * </pre>
      *
-     * <code>optional bytes msgCtx = 2;</code>
+     * <code>optional bytes msgCtx = 4;</code>
      * @param value The msgCtx to set.
      * @return This builder for chaining.
      */
     public Builder setMsgCtx(com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
       msgCtx_ = value;
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000008;
       onChanged();
       return this;
     }
@@ -575,11 +808,11 @@ private static final long serialVersionUID = 0L;
      * 消息内容
      * </pre>
      *
-     * <code>optional bytes msgCtx = 2;</code>
+     * <code>optional bytes msgCtx = 4;</code>
      * @return This builder for chaining.
      */
     public Builder clearMsgCtx() {
-      bitField0_ = (bitField0_ & ~0x00000002);
+      bitField0_ = (bitField0_ & ~0x00000008);
       msgCtx_ = getDefaultInstance().getMsgCtx();
       onChanged();
       return this;

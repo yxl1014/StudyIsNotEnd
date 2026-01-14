@@ -22,4 +22,7 @@ public class ServiceManager {
 
     @DubboReference
     public IQuestionService questionService;
+
+    @DubboReference
+    public IStudyService studyService;
 }

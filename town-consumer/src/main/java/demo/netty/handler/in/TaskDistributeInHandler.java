@@ -144,6 +144,16 @@ public class TaskDistributeInHandler extends SimpleChannelInboundHandler<Request
                         requestTransfer::listQuestion,
                         ctx
                 ));
+
+        /// study
+        handlerMap.put(MsgType.TMT_CreateStudyReq,
+                (msg, ctx) -> handle(
+                        msg.getToken(),
+                        msg.getMsg().toByteArray(),
+                        CreateStudyReq.parser(),
+                        requestTransfer::createStudyReq,
+                        ctx
+                ));
     }
 
     private <T extends com.google.protobuf.Message> ResponseMsg noTokenHandle(

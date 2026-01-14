@@ -63,4 +63,8 @@ public class RequestTransfer {
     public ResponseMsg listQuestion(String token, ListQuestionReq msg) {
         return serviceManager.questionService.listQuestion(token, msg);
     }
+
+    public ResponseMsg createStudyReq(String token, CreateStudyReq msg) {
+        return serviceManager.studyService.createStudy(token, msg);
+    }
 }

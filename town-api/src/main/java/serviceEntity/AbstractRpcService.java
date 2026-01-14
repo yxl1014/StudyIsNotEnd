@@ -1,12 +1,14 @@
 package serviceEntity;
 
 
-import com.google.protobuf.ByteString;
 import entity.TokenInfoDO;
 import entity.UpdateInfoDO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import po.*;
+import po.MsgType;
+import po.RespCode;
+import po.ResponseMsg;
+import po.TUserPower;
 import townInterface.IUpdateService;
 import util.CommonEntityBuilder;
 import util.TokenResolver;
@@ -37,6 +39,7 @@ public abstract class AbstractRpcService {
         checkTokenMsg.add(MsgType.TMT_CreateNoticeRsp);
         checkTokenMsg.add(MsgType.TMT_UpdateNoticeRsp);
         checkTokenMsg.add(MsgType.TMT_ListUpdateInfoRsp);
+        checkTokenMsg.add(MsgType.TMT_CreateStudyRsp);
     }
 
 

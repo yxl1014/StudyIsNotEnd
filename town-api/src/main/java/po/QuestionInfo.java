@@ -48,23 +48,7 @@ private static final long serialVersionUID = 0L;
 
   private int bitField0_;
   public static final int QUESTIONTYPE_FIELD_NUMBER = 2;
-  public static final int QUESTIONCTX_FIELD_NUMBER = 3;
-  public static final int QUESTIONWRITERTEL_FIELD_NUMBER = 5;
-  public static final int QUESTIONTIME_FIELD_NUMBER = 8;
   private int questionId_ = 0;
-  private int questionType_ = 0;
-  @SuppressWarnings("serial")
-  private volatile java.lang.Object questionCtx_ = "";
-  private int questionWriterTel_ = 0;
-  private long questionTime_ = 0L;
-
-  private QuestionInfo() {
-    questionType_ = 0;
-    questionCtx_ = "";
-    questPhoto_ = com.google.protobuf.ByteString.EMPTY;
-    nodeType_ = 0;
-  }
-
   /**
    * <pre>
    * 自增唯一id
@@ -77,7 +61,6 @@ private static final long serialVersionUID = 0L;
   public boolean hasQuestionId() {
     return ((bitField0_ & 0x00000001) != 0);
   }
-
   /**
    * <pre>
    * 自增唯一id
@@ -90,7 +73,8 @@ private static final long serialVersionUID = 0L;
   public int getQuestionId() {
     return questionId_;
   }
-
+  public static final int QUESTIONCTX_FIELD_NUMBER = 3;
+  public static final int QUESTPHOTO_FIELD_NUMBER = 4;
   /**
    * <pre>
    * 问题类型
@@ -102,7 +86,6 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override public boolean hasQuestionType() {
     return ((bitField0_ & 0x00000002) != 0);
   }
-
   /**
    * <pre>
    * 问题类型
@@ -114,34 +97,6 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override public int getQuestionTypeValue() {
     return questionType_;
   }
-
-  public static final int QUESTPHOTO_FIELD_NUMBER = 4;
-  private com.google.protobuf.ByteString questPhoto_ = com.google.protobuf.ByteString.EMPTY;
-  /**
-   * <pre>
-   * 问题上传附件
-   * </pre>
-   *
-   * <code>optional bytes questPhoto = 4;</code>
-   * @return Whether the questPhoto field is set.
-   */
-  @java.lang.Override
-  public boolean hasQuestPhoto() {
-    return ((bitField0_ & 0x00000008) != 0);
-  }
-  /**
-   * <pre>
-   * 问题上传附件
-   * </pre>
-   *
-   * <code>optional bytes questPhoto = 4;</code>
-   * @return The questPhoto.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getQuestPhoto() {
-    return questPhoto_;
-  }
-
   /**
    * <pre>
    * 问题类型
@@ -154,7 +109,8 @@ private static final long serialVersionUID = 0L;
     po.QuestionType result = po.QuestionType.forNumber(questionType_);
     return result == null ? po.QuestionType.UNRECOGNIZED : result;
   }
-
+  public static final int QUESTIONWRITERTEL_FIELD_NUMBER = 5;
+  public static final int QUESTIONTIME_FIELD_NUMBER = 8;
   /**
    * <pre>
    * 问题详细描述
@@ -166,6 +122,18 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean hasQuestionCtx() {
     return ((bitField0_ & 0x00000004) != 0);
+  }
+  private int questionType_ = 0;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object questionCtx_ = "";
+  private com.google.protobuf.ByteString questPhoto_ = com.google.protobuf.ByteString.EMPTY;
+  private int questionWriterTel_ = 0;
+  private long questionTime_ = 0L;
+  private QuestionInfo() {
+    questionType_ = 0;
+    questionCtx_ = "";
+    questPhoto_ = com.google.protobuf.ByteString.EMPTY;
+    nodeType_ = 0;
   }
 
   /**
@@ -211,6 +179,32 @@ private static final long serialVersionUID = 0L;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
+  }
+
+  /**
+   * <pre>
+   * 问题上传附件
+   * </pre>
+   *
+   * <code>optional bytes questPhoto = 4;</code>
+   * @return Whether the questPhoto field is set.
+   */
+  @java.lang.Override
+  public boolean hasQuestPhoto() {
+    return ((bitField0_ & 0x00000008) != 0);
+  }
+
+  /**
+   * <pre>
+   * 问题上传附件
+   * </pre>
+   *
+   * <code>optional bytes questPhoto = 4;</code>
+   * @return The questPhoto.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getQuestPhoto() {
+    return questPhoto_;
   }
 
   public static final int NODETYPE_FIELD_NUMBER = 6;
@@ -302,7 +296,6 @@ private static final long serialVersionUID = 0L;
   public int getQuestionWriterTel() {
     return questionWriterTel_;
   }
-
   /**
    * <pre>
    * 问题时间
@@ -600,6 +593,7 @@ private static final long serialVersionUID = 0L;
     Builder builder = new Builder(parent);
     return builder;
   }
+
   /**
    * <pre>
    * 问题信息
@@ -634,7 +628,7 @@ private static final long serialVersionUID = 0L;
       super(parent);
 
     }
-    private int questionId_ ;
+    private int bitField0_;
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
@@ -662,41 +656,6 @@ private static final long serialVersionUID = 0L;
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
-    }
-    private int questionType_ = 0;
-
-    @java.lang.Override
-    public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof po.QuestionInfo) {
-        return mergeFrom((po.QuestionInfo)other);
-      } else {
-        super.mergeFrom(other);
-        return this;
-      }
-    }
-    private java.lang.Object questionCtx_ = "";
-
-    @java.lang.Override
-    public final boolean isInitialized() {
-      return true;
-    }
-    private int questionWriterTel_ ;
-    private int bitField0_;
-    private long questionTime_ ;
-
-    @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      bitField0_ = 0;
-      questionId_ = 0;
-      questionType_ = 0;
-      questionCtx_ = "";
-      questPhoto_ = com.google.protobuf.ByteString.EMPTY;
-      questionWriterTel_ = 0;
-      nodeType_ = 0;
-      choiceUser_ = 0;
-      questionTime_ = 0L;
-      return this;
     }
 
     private void buildPartial0(po.QuestionInfo result) {
@@ -736,6 +695,7 @@ private static final long serialVersionUID = 0L;
       }
       result.bitField0_ |= to_bitField0_;
     }
+    private int questionId_ ;
 
     public Builder mergeFrom(po.QuestionInfo other) {
       if (other == po.QuestionInfo.getDefaultInstance()) return this;
@@ -769,6 +729,7 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+    private int questionType_ = 0;
 
     @java.lang.Override
     public Builder mergeFrom(
@@ -841,7 +802,8 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
-
+    private java.lang.Object questionCtx_ = "";
+    private int questionWriterTel_ ;
     /**
      * <pre>
      * 自增唯一id
@@ -854,7 +816,6 @@ private static final long serialVersionUID = 0L;
     public boolean hasQuestionId() {
       return ((bitField0_ & 0x00000001) != 0);
     }
-
     /**
      * <pre>
      * 自增唯一id
@@ -867,7 +828,6 @@ private static final long serialVersionUID = 0L;
     public int getQuestionId() {
       return questionId_;
     }
-
     /**
      * <pre>
      * 自增唯一id
@@ -884,7 +844,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
     /**
      * <pre>
      * 自增唯一id
@@ -899,7 +858,7 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
+    private long questionTime_ ;
     /**
      * <pre>
      * 问题类型
@@ -911,7 +870,6 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override public boolean hasQuestionType() {
       return ((bitField0_ & 0x00000002) != 0);
     }
-
     /**
      * <pre>
      * 问题类型
@@ -923,7 +881,6 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override public int getQuestionTypeValue() {
       return questionType_;
     }
-
     /**
      * <pre>
      * 问题类型
@@ -939,7 +896,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
     /**
      * <pre>
      * 问题类型
@@ -953,7 +909,6 @@ private static final long serialVersionUID = 0L;
       po.QuestionType result = po.QuestionType.forNumber(questionType_);
       return result == null ? po.QuestionType.UNRECOGNIZED : result;
     }
-
     /**
      * <pre>
      * 问题类型
@@ -970,7 +925,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
     /**
      * <pre>
      * 问题类型
@@ -986,6 +940,20 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    @java.lang.Override
+    public Builder clear() {
+      super.clear();
+      bitField0_ = 0;
+      questionId_ = 0;
+      questionType_ = 0;
+      questionCtx_ = "";
+      questPhoto_ = com.google.protobuf.ByteString.EMPTY;
+      questionWriterTel_ = 0;
+      nodeType_ = 0;
+      choiceUser_ = 0;
+      questionTime_ = 0L;
+      return this;
+    }
     /**
      * <pre>
      * 问题详细描述
@@ -997,7 +965,6 @@ private static final long serialVersionUID = 0L;
     public boolean hasQuestionCtx() {
       return ((bitField0_ & 0x00000004) != 0);
     }
-
     /**
      * <pre>
      * 问题详细描述
@@ -1019,6 +986,15 @@ private static final long serialVersionUID = 0L;
       }
     }
 
+    @java.lang.Override
+    public Builder mergeFrom(com.google.protobuf.Message other) {
+      if (other instanceof po.QuestionInfo) {
+        return mergeFrom((po.QuestionInfo)other);
+      } else {
+        super.mergeFrom(other);
+        return this;
+      }
+    }
     /**
      * <pre>
      * 问题详细描述
@@ -1035,6 +1011,11 @@ private static final long serialVersionUID = 0L;
       bitField0_ |= 0x00000004;
       onChanged();
       return this;
+    }
+
+    @java.lang.Override
+    public final boolean isInitialized() {
+      return true;
     }
 
     /**
@@ -1133,22 +1114,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
-    /**
-     * <pre>
-     * 问题详细描述
-     * </pre>
-     *
-     * <code>optional string questionCtx = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearQuestionCtx() {
-      questionCtx_ = getDefaultInstance().getQuestionCtx();
-      bitField0_ = (bitField0_ & ~0x00000004);
-      onChanged();
-      return this;
-    }
-
     /**
      * <pre>
      * 问题提出者电话
@@ -1161,7 +1126,6 @@ private static final long serialVersionUID = 0L;
     public boolean hasQuestionWriterTel() {
       return ((bitField0_ & 0x00000010) != 0);
     }
-
     /**
      * <pre>
      * 问题提出者电话
@@ -1174,7 +1138,6 @@ private static final long serialVersionUID = 0L;
     public int getQuestionWriterTel() {
       return questionWriterTel_;
     }
-
     /**
      * <pre>
      * 问题提出者电话
@@ -1188,6 +1151,21 @@ private static final long serialVersionUID = 0L;
 
       questionWriterTel_ = value;
       bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+
+    /**
+     * <pre>
+     * 问题详细描述
+     * </pre>
+     *
+     * <code>optional string questionCtx = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearQuestionCtx() {
+      questionCtx_ = getDefaultInstance().getQuestionCtx();
+      bitField0_ = (bitField0_ & ~0x00000004);
       onChanged();
       return this;
     }
@@ -1344,7 +1322,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
     /**
      * <pre>
      * 问题时间

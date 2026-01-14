@@ -81,7 +81,8 @@ CREATE TABLE question_handling_info
 CREATE TABLE notify_user_info
 (
     id       INT PRIMARY KEY AUTO_INCREMENT,
-    msg_mype INT  NULL,
+    user_tel INT  NULL,
+    msg_type INT  NULL,
     msg_ctx  BLOB NULL
 ) ENGINE = InnoDB;
 

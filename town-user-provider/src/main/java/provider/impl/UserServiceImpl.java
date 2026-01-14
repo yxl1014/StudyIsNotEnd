@@ -1,5 +1,6 @@
 package provider.impl;
 
+import entity.NotifyUserInfoDO;
 import entity.TokenInfoDO;
 import entity.UpdateInfoDO;
 import entity.UserInfoDO;
@@ -182,7 +183,28 @@ public class UserServiceImpl extends AbstractRpcService implements IUserService 
     }
 
     @Override
+    public RespCode AddNotifyUserInfo(NotifyUserInfoDO notifyUserInfoDO) {
+        int insert = daoService.notify_insert(notifyUserInfoDO);
+        if (insert <= 0){
+            return RespCode.TRC_DB_ERROR;
+        }
+        return RespCode.TRC_OK;
+    }
+
+    @Override
     public ResponseMsg listNotifyUserInfo(String token, ListNotifyUserInfoReq msg) {
-        return null;
+        return execute(MsgType.TMT_ListNotifyUserInfoRsp, token, () ->{
+            ListNotifyUserInfoRsp.Builder builder = ListNotifyUserInfoRsp.newBuilder();
+            for (NotifyUserInfoDO notifyUserInfoDO : daoService.notify_selectByUserId(UserContext.getUserTel())) {
+                builder.addInfos(daoService.toProto(notifyUserInfoDO));
+            }
+
+            int deleteAll = daoService.notify_deleteAll();
+            if (deleteAll <= 0){
+                log.error("delete notify info all");
+            }
+
+            return BizResult.ok(builder.build());
+        });
     }
 }

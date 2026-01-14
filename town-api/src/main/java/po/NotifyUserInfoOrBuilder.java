@@ -12,10 +12,48 @@ public interface NotifyUserInfoOrBuilder extends
 
   /**
    * <pre>
+   * 唯一ID
+   * </pre>
+   *
+   * <code>optional int32 id = 1;</code>
+   * @return Whether the id field is set.
+   */
+  boolean hasId();
+  /**
+   * <pre>
+   * 唯一ID
+   * </pre>
+   *
+   * <code>optional int32 id = 1;</code>
+   * @return The id.
+   */
+  int getId();
+
+  /**
+   * <pre>
+   * 电话
+   * </pre>
+   *
+   * <code>optional int32 userTel = 2;</code>
+   * @return Whether the userTel field is set.
+   */
+  boolean hasUserTel();
+  /**
+   * <pre>
+   * 电话
+   * </pre>
+   *
+   * <code>optional int32 userTel = 2;</code>
+   * @return The userTel.
+   */
+  int getUserTel();
+
+  /**
+   * <pre>
    * 消息类型
    * </pre>
    *
-   * <code>optional .po.MsgType msgType = 1;</code>
+   * <code>optional .po.MsgType msgType = 3;</code>
    * @return Whether the msgType field is set.
    */
   boolean hasMsgType();
@@ -24,7 +62,7 @@ public interface NotifyUserInfoOrBuilder extends
    * 消息类型
    * </pre>
    *
-   * <code>optional .po.MsgType msgType = 1;</code>
+   * <code>optional .po.MsgType msgType = 3;</code>
    * @return The enum numeric value on the wire for msgType.
    */
   int getMsgTypeValue();
@@ -33,7 +71,7 @@ public interface NotifyUserInfoOrBuilder extends
    * 消息类型
    * </pre>
    *
-   * <code>optional .po.MsgType msgType = 1;</code>
+   * <code>optional .po.MsgType msgType = 3;</code>
    * @return The msgType.
    */
   po.MsgType getMsgType();
@@ -43,7 +81,7 @@ public interface NotifyUserInfoOrBuilder extends
    * 消息内容
    * </pre>
    *
-   * <code>optional bytes msgCtx = 2;</code>
+   * <code>optional bytes msgCtx = 4;</code>
    * @return Whether the msgCtx field is set.
    */
   boolean hasMsgCtx();
@@ -52,7 +90,7 @@ public interface NotifyUserInfoOrBuilder extends
    * 消息内容
    * </pre>
    *
-   * <code>optional bytes msgCtx = 2;</code>
+   * <code>optional bytes msgCtx = 4;</code>
    * @return The msgCtx.
    */
   com.google.protobuf.ByteString getMsgCtx();

@@ -71,4 +71,24 @@ public interface IDaoService {
     List<QuestionInfoDO> quest_selectByChoiceUser(int page, int size, Integer choiceUser);
     int quest_insert(QuestionInfoDO entity);
     int quest_update(QuestionInfoDO entity);
+
+    /// notify
+    NotifyUserInfoDO toDO(po.NotifyUserInfo proto);
+    po.NotifyUserInfo toProto(NotifyUserInfoDO entity);
+    NotifyUserInfoDO notify_selectById(Integer id);
+    List<NotifyUserInfoDO> notify_selectByUserId(Integer userTel);
+    int notify_insert(NotifyUserInfoDO entity);
+    int notify_update(NotifyUserInfoDO entity);
+    int notify_delete(Integer id);
+    int notify_deleteAll();
+
+    /// study
+    StudyInfoDO toDO(po.StudyInfo proto);
+    po.StudyInfo toProto(StudyInfoDO entity);
+    StudyInfoDO study_selectById(Integer id);
+    StudyInfoDO study_selectByCreateTime(Long createTime);
+    List<StudyInfoDO> study_selectAll(int page, int size);
+    int study_insert(StudyInfoDO entity);
+    int study_update(StudyInfoDO entity);
+    int study_delete(Integer id);
 }
