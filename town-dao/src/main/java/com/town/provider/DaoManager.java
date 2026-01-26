@@ -343,6 +343,54 @@ public class DaoManager implements IDaoService {
 
     /* ======================= Study ======================= */
 
+
+
+    /* ======================= Star ======================= */
+
+    @Override
+    public UserStarStudyInfoDO toDO(UserStarStudyInfo proto) {
+        return userStarStudyInfoConvert.toDO(proto);
+    }
+
+    @Override
+    public UserStarStudyInfo toProto(UserStarStudyInfoDO entity) {
+        return userStarStudyInfoConvert.toProto(entity);
+    }
+
+    @Override
+    public UserStarStudyInfoDO star_selectById(Integer id) {
+        return userStarStudyInfoMapper.selectById(id);
+    }
+
+    @Override
+    public UserStarStudyInfoDO star_selectByIdAndTel(Integer id, Integer userTel) {
+        return userStarStudyInfoMapper.selectByIdAndTel(id, userTel);
+    }
+
+
+    @Override
+    public List<UserStarStudyInfoDO> star_selectByUserTel(Integer userTel, int page, int size) {
+        PageHelper.startPage(page, size);
+        return userStarStudyInfoMapper.selectByUserTel(userTel);
+    }
+
+    @Override
+    public int star_insert(UserStarStudyInfoDO entity) {
+        return userStarStudyInfoMapper.insert(entity);
+    }
+
+    @Override
+    public int star_update(UserStarStudyInfoDO entity) {
+        return userStarStudyInfoMapper.update(entity);
+    }
+
+    @Override
+    public int star_delete(Integer id) {
+        return userStarStudyInfoMapper.delete(id);
+    }
+
+    /* ======================= Star ======================= */
+
     @Resource
     private RedisManager redisManager;
 

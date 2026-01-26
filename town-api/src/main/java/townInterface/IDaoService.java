@@ -91,4 +91,14 @@ public interface IDaoService {
     int study_insert(StudyInfoDO entity);
     int study_update(StudyInfoDO entity);
     int study_delete(Integer id);
+
+    /// star
+    UserStarStudyInfoDO toDO(po.UserStarStudyInfo proto);
+    po.UserStarStudyInfo toProto(UserStarStudyInfoDO entity);
+    UserStarStudyInfoDO star_selectById(Integer id);
+    UserStarStudyInfoDO star_selectByIdAndTel(Integer id, Integer userTel);
+    List<UserStarStudyInfoDO> star_selectByUserTel(Integer userTel, int page, int size);
+    int star_insert(UserStarStudyInfoDO entity);
+    int star_update(UserStarStudyInfoDO entity);
+    int star_delete(Integer id);
 }

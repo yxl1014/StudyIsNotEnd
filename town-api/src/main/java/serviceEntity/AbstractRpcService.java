@@ -40,6 +40,7 @@ public abstract class AbstractRpcService {
         checkTokenMsg.add(MsgType.TMT_UpdateNoticeRsp);
         checkTokenMsg.add(MsgType.TMT_ListUpdateInfoRsp);
         checkTokenMsg.add(MsgType.TMT_CreateStudyRsp);
+        checkTokenMsg.add(MsgType.TMT_UpdateStudyRsp);
     }
 
 

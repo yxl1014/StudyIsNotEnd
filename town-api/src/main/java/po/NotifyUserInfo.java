@@ -51,12 +51,7 @@ private static final long serialVersionUID = 0L;
 
   private int bitField0_;
   public static final int ID_FIELD_NUMBER = 1;
-  public static final int USERTEL_FIELD_NUMBER = 2;
-  public static final int MSGTYPE_FIELD_NUMBER = 3;
-  public static final int MSGCTX_FIELD_NUMBER = 4;
   private int id_ = 0;
-  private int userTel_ = 0;
-
   /**
    * <pre>
    * 唯一ID
@@ -69,7 +64,6 @@ private static final long serialVersionUID = 0L;
   public boolean hasId() {
     return ((bitField0_ & 0x00000001) != 0);
   }
-
   /**
    * <pre>
    * 唯一ID
@@ -83,6 +77,8 @@ private static final long serialVersionUID = 0L;
     return id_;
   }
 
+  public static final int USERTEL_FIELD_NUMBER = 2;
+  public static final int MSGTYPE_FIELD_NUMBER = 3;
   /**
    * <pre>
    * 电话
@@ -95,8 +91,6 @@ private static final long serialVersionUID = 0L;
   public boolean hasUserTel() {
     return ((bitField0_ & 0x00000002) != 0);
   }
-  private int msgType_ = 0;
-
   /**
    * <pre>
    * 电话
@@ -109,7 +103,8 @@ private static final long serialVersionUID = 0L;
   public int getUserTel() {
     return userTel_;
   }
-
+  public static final int MSGCTX_FIELD_NUMBER = 4;
+  private int userTel_ = 0;
   /**
    * <pre>
    * 消息类型
@@ -121,7 +116,6 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override public boolean hasMsgType() {
     return ((bitField0_ & 0x00000004) != 0);
   }
-
   /**
    * <pre>
    * 消息类型
@@ -133,7 +127,6 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override public int getMsgTypeValue() {
     return msgType_;
   }
-
   /**
    * <pre>
    * 消息类型
@@ -146,8 +139,8 @@ private static final long serialVersionUID = 0L;
     po.MsgType result = po.MsgType.forNumber(msgType_);
     return result == null ? po.MsgType.UNRECOGNIZED : result;
   }
+  private int msgType_ = 0;
   private com.google.protobuf.ByteString msgCtx_ = com.google.protobuf.ByteString.EMPTY;
-
   /**
    * <pre>
    * 消息内容
@@ -382,6 +375,7 @@ private static final long serialVersionUID = 0L;
     Builder builder = new Builder(parent);
     return builder;
   }
+
   /**
    * <pre>
    * 主动通知用户信息,因推送时不确定用户在不在线，所以使用上线客户端主动拉取的方式
@@ -416,7 +410,7 @@ private static final long serialVersionUID = 0L;
       super(parent);
 
     }
-    private int id_ ;
+    private int bitField0_;
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
@@ -445,33 +439,6 @@ private static final long serialVersionUID = 0L;
       onBuilt();
       return result;
     }
-    private int userTel_ ;
-
-    @java.lang.Override
-    public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof po.NotifyUserInfo) {
-        return mergeFrom((po.NotifyUserInfo)other);
-      } else {
-        super.mergeFrom(other);
-        return this;
-      }
-    }
-
-    @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      bitField0_ = 0;
-      id_ = 0;
-      userTel_ = 0;
-      msgType_ = 0;
-      msgCtx_ = com.google.protobuf.ByteString.EMPTY;
-      return this;
-    }
-
-    @java.lang.Override
-    public final boolean isInitialized() {
-      return true;
-    }
 
     private void buildPartial0(po.NotifyUserInfo result) {
       int from_bitField0_ = bitField0_;
@@ -494,7 +461,7 @@ private static final long serialVersionUID = 0L;
       }
       result.bitField0_ |= to_bitField0_;
     }
-    private int bitField0_;
+    private int id_ ;
 
     public Builder mergeFrom(po.NotifyUserInfo other) {
       if (other == po.NotifyUserInfo.getDefaultInstance()) return this;
@@ -514,6 +481,7 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+    private int userTel_ ;
 
     @java.lang.Override
     public Builder mergeFrom(
@@ -567,6 +535,26 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    @java.lang.Override
+    public Builder clear() {
+      super.clear();
+      bitField0_ = 0;
+      id_ = 0;
+      userTel_ = 0;
+      msgType_ = 0;
+      msgCtx_ = com.google.protobuf.ByteString.EMPTY;
+      return this;
+    }
+
+    @java.lang.Override
+    public Builder mergeFrom(com.google.protobuf.Message other) {
+      if (other instanceof po.NotifyUserInfo) {
+        return mergeFrom((po.NotifyUserInfo)other);
+      } else {
+        super.mergeFrom(other);
+        return this;
+      }
+    }
     /**
      * <pre>
      * 唯一ID
@@ -579,7 +567,6 @@ private static final long serialVersionUID = 0L;
     public boolean hasId() {
       return ((bitField0_ & 0x00000001) != 0);
     }
-
     /**
      * <pre>
      * 唯一ID
@@ -592,7 +579,6 @@ private static final long serialVersionUID = 0L;
     public int getId() {
       return id_;
     }
-
     /**
      * <pre>
      * 唯一ID
@@ -609,7 +595,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
     /**
      * <pre>
      * 唯一ID
@@ -625,6 +610,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    @java.lang.Override
+    public final boolean isInitialized() {
+      return true;
+    }
     /**
      * <pre>
      * 电话

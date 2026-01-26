@@ -1,7 +1,6 @@
 package townInterface;
 
-import po.CreateStudyReq;
-import po.ResponseMsg;
+import po.*;
 
 /**
  * @author Administrator
@@ -12,4 +11,12 @@ import po.ResponseMsg;
 
 public interface IStudyService {
     ResponseMsg createStudy(String token, CreateStudyReq msg);
+
+    ResponseMsg updateStudy(String token, UpdateStudyReq msg);
+
+    ResponseMsg listStudy(String token, ListStudyReq msg);
+
+    ResponseMsg starStudy(String token, StarStudyReq msg);
+
+    ResponseMsg listUserStarStudy(String token, ListUserStarStudyReq msg);
 }

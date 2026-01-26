@@ -67,4 +67,20 @@ public class RequestTransfer {
     public ResponseMsg createStudyReq(String token, CreateStudyReq msg) {
         return serviceManager.studyService.createStudy(token, msg);
     }
+
+    public ResponseMsg updateStudy(String token, UpdateStudyReq msg) {
+        return serviceManager.studyService.updateStudy(token, msg);
+    }
+
+    public ResponseMsg listStudy(String token, ListStudyReq msg) {
+        return serviceManager.studyService.listStudy(token, msg);
+    }
+
+    public ResponseMsg starStudy(String token, StarStudyReq msg) {
+        return serviceManager.studyService.starStudy(token, msg);
+    }
+
+    public ResponseMsg listUserStarStudy(String token, ListUserStarStudyReq msg) {
+        return serviceManager.studyService.listUserStarStudy(token, msg);
+    }
 }

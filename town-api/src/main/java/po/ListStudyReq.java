@@ -75,6 +75,46 @@ private static final long serialVersionUID = 0L;
     return studyId_;
   }
 
+  public static final int PAGE_FIELD_NUMBER = 2;
+  public static final int SIZE_FIELD_NUMBER = 3;
+  private int page_ = 0;
+  private int size_ = 0;
+
+  /**
+   * <code>optional int32 page = 2;</code>
+   * @return Whether the page field is set.
+   */
+  @java.lang.Override
+  public boolean hasPage() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
+
+  /**
+   * <code>optional int32 page = 2;</code>
+   * @return The page.
+   */
+  @java.lang.Override
+  public int getPage() {
+    return page_;
+  }
+
+  /**
+   * <code>optional int32 size = 3;</code>
+   * @return Whether the size field is set.
+   */
+  @java.lang.Override
+  public boolean hasSize() {
+    return ((bitField0_ & 0x00000004) != 0);
+  }
+  /**
+   * <code>optional int32 size = 3;</code>
+   * @return The size.
+   */
+  @java.lang.Override
+  public int getSize() {
+    return size_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -92,6 +132,12 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeInt32(1, studyId_);
     }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      output.writeInt32(2, page_);
+    }
+    if (((bitField0_ & 0x00000004) != 0)) {
+      output.writeInt32(3, size_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -104,6 +150,14 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, studyId_);
+    }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, page_);
+    }
+    if (((bitField0_ & 0x00000004) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(3, size_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -125,6 +179,16 @@ private static final long serialVersionUID = 0L;
       if (getStudyId()
           != other.getStudyId()) return false;
     }
+    if (hasPage() != other.hasPage()) return false;
+    if (hasPage()) {
+      if (getPage()
+          != other.getPage()) return false;
+    }
+    if (hasSize() != other.hasSize()) return false;
+    if (hasSize()) {
+      if (getSize()
+          != other.getSize()) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -139,6 +203,14 @@ private static final long serialVersionUID = 0L;
     if (hasStudyId()) {
       hash = (37 * hash) + STUDYID_FIELD_NUMBER;
       hash = (53 * hash) + getStudyId();
+    }
+    if (hasPage()) {
+      hash = (37 * hash) + PAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getPage();
+    }
+    if (hasSize()) {
+      hash = (37 * hash) + SIZE_FIELD_NUMBER;
+      hash = (53 * hash) + getSize();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -271,13 +343,7 @@ private static final long serialVersionUID = 0L;
       super(parent);
 
     }
-    @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      bitField0_ = 0;
-      studyId_ = 0;
-      return this;
-    }
+    private int page_ ;
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
@@ -306,16 +372,7 @@ private static final long serialVersionUID = 0L;
       onBuilt();
       return result;
     }
-
-    private void buildPartial0(po.ListStudyReq result) {
-      int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.studyId_ = studyId_;
-        to_bitField0_ |= 0x00000001;
-      }
-      result.bitField0_ |= to_bitField0_;
-    }
+    private int size_ ;
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -327,13 +384,13 @@ private static final long serialVersionUID = 0L;
       }
     }
 
-    public Builder mergeFrom(po.ListStudyReq other) {
-      if (other == po.ListStudyReq.getDefaultInstance()) return this;
-      if (other.hasStudyId()) {
-        setStudyId(other.getStudyId());
-      }
-      this.mergeUnknownFields(other.getUnknownFields());
-      onChanged();
+    @java.lang.Override
+    public Builder clear() {
+      super.clear();
+      bitField0_ = 0;
+      studyId_ = 0;
+      page_ = 0;
+      size_ = 0;
       return this;
     }
 
@@ -342,41 +399,22 @@ private static final long serialVersionUID = 0L;
       return true;
     }
 
-    @java.lang.Override
-    public Builder mergeFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
+    private void buildPartial0(po.ListStudyReq result) {
+      int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
+      if (((from_bitField0_ & 0x00000001) != 0)) {
+        result.studyId_ = studyId_;
+        to_bitField0_ |= 0x00000001;
       }
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              studyId_ = input.readInt32();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 8
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
-          } // switch (tag)
-        } // while (!done)
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.unwrapIOException();
-      } finally {
-        onChanged();
-      } // finally
-      return this;
+      if (((from_bitField0_ & 0x00000002) != 0)) {
+        result.page_ = page_;
+        to_bitField0_ |= 0x00000002;
+      }
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        result.size_ = size_;
+        to_bitField0_ |= 0x00000004;
+      }
+      result.bitField0_ |= to_bitField0_;
     }
     private int bitField0_;
 
@@ -432,6 +470,150 @@ private static final long serialVersionUID = 0L;
     public Builder clearStudyId() {
       bitField0_ = (bitField0_ & ~0x00000001);
       studyId_ = 0;
+      onChanged();
+      return this;
+    }
+
+    public Builder mergeFrom(po.ListStudyReq other) {
+      if (other == po.ListStudyReq.getDefaultInstance()) return this;
+      if (other.hasStudyId()) {
+        setStudyId(other.getStudyId());
+      }
+      if (other.hasPage()) {
+        setPage(other.getPage());
+      }
+      if (other.hasSize()) {
+        setSize(other.getSize());
+      }
+      this.mergeUnknownFields(other.getUnknownFields());
+      onChanged();
+      return this;
+    }
+
+    @java.lang.Override
+    public Builder mergeFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              studyId_ = input.readInt32();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 8
+            case 16: {
+              page_ = input.readInt32();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 16
+            case 24: {
+              size_ = input.readInt32();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 24
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
+          } // switch (tag)
+        } // while (!done)
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.unwrapIOException();
+      } finally {
+        onChanged();
+      } // finally
+      return this;
+    }
+
+    /**
+     * <code>optional int32 page = 2;</code>
+     * @return Whether the page field is set.
+     */
+    @java.lang.Override
+    public boolean hasPage() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+
+    /**
+     * <code>optional int32 page = 2;</code>
+     * @return The page.
+     */
+    @java.lang.Override
+    public int getPage() {
+      return page_;
+    }
+
+    /**
+     * <code>optional int32 page = 2;</code>
+     * @param value The page to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPage(int value) {
+
+      page_ = value;
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+
+    /**
+     * <code>optional int32 page = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearPage() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      page_ = 0;
+      onChanged();
+      return this;
+    }
+
+    /**
+     * <code>optional int32 size = 3;</code>
+     * @return Whether the size field is set.
+     */
+    @java.lang.Override
+    public boolean hasSize() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional int32 size = 3;</code>
+     * @return The size.
+     */
+    @java.lang.Override
+    public int getSize() {
+      return size_;
+    }
+    /**
+     * <code>optional int32 size = 3;</code>
+     * @param value The size to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSize(int value) {
+
+      size_ = value;
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional int32 size = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearSize() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      size_ = 0;
       onChanged();
       return this;
     }

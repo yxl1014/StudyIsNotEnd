@@ -56,6 +56,9 @@ enum RespCode
   TRC_QUESTION_NOT_EXIST = 401; // 问题不存在
   TRC_QUESTION_IS_IN_OPT = 402; // 问题已经在处理了
   TRC_QUESTION_NOT_UPDATE = 403; // 问题无修改
+
+  TRC_STUDY_NOT_EXIST = 501; // 学习信息不存在
+  TRC_STUDY_IS_STAR = 502; // 学习信息已关注
 }
 
 
@@ -253,6 +256,8 @@ message UpdateStudyRsp{}
 // 获取学习信息
 message ListStudyReq{
   optional int32 studyId = 1; //0则全部，一般进详情页掉这个，我会加阅读次数
+  optional int32 page = 2;
+  optional int32 size = 3;
 }
 
 // 获取学习信息 - 回执
@@ -267,11 +272,12 @@ message StarStudyReq{
 
 // 收藏学习内容 - 回执
 message StarStudyRsp{
-  optional int32 studyId = 1; // id
 }
 
 // 获取收藏列表
 message ListUserStarStudyReq{
+  optional int32 page = 1;
+  optional int32 size = 2;
 }
 
 // 获取收藏列表 - 回执

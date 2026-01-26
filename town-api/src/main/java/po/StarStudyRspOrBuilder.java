@@ -9,23 +9,4 @@ package po;
 public interface StarStudyRspOrBuilder extends
     // @@protoc_insertion_point(interface_extends:po.StarStudyRsp)
     com.google.protobuf.MessageOrBuilder {
-
-  /**
-   * <pre>
-   * id
-   * </pre>
-   *
-   * <code>optional int32 studyId = 1;</code>
-   * @return Whether the studyId field is set.
-   */
-  boolean hasStudyId();
-  /**
-   * <pre>
-   * id
-   * </pre>
-   *
-   * <code>optional int32 studyId = 1;</code>
-   * @return The studyId.
-   */
-  int getStudyId();
 }

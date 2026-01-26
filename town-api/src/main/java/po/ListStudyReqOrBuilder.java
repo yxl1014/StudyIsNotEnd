@@ -28,4 +28,26 @@ public interface ListStudyReqOrBuilder extends
    * @return The studyId.
    */
   int getStudyId();
+
+  /**
+   * <code>optional int32 page = 2;</code>
+   * @return Whether the page field is set.
+   */
+  boolean hasPage();
+  /**
+   * <code>optional int32 page = 2;</code>
+   * @return The page.
+   */
+  int getPage();
+
+  /**
+   * <code>optional int32 size = 3;</code>
+   * @return Whether the size field is set.
+   */
+  boolean hasSize();
+  /**
+   * <code>optional int32 size = 3;</code>
+   * @return The size.
+   */
+  int getSize();
 }

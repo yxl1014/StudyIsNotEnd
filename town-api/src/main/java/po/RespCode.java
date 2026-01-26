@@ -199,6 +199,22 @@ public enum RespCode
    * <code>TRC_QUESTION_NOT_UPDATE = 403;</code>
    */
   TRC_QUESTION_NOT_UPDATE(403),
+  /**
+   * <pre>
+   * 学习信息不存在
+   * </pre>
+   *
+   * <code>TRC_STUDY_NOT_EXIST = 501;</code>
+   */
+  TRC_STUDY_NOT_EXIST(501),
+  /**
+   * <pre>
+   * 学习信息已关注
+   * </pre>
+   *
+   * <code>TRC_STUDY_IS_STAR = 502;</code>
+   */
+  TRC_STUDY_IS_STAR(502),
   UNRECOGNIZED(-1),
   ;
 
@@ -395,6 +411,22 @@ public enum RespCode
    * <code>TRC_QUESTION_NOT_UPDATE = 403;</code>
    */
   public static final int TRC_QUESTION_NOT_UPDATE_VALUE = 403;
+  /**
+   * <pre>
+   * 学习信息不存在
+   * </pre>
+   *
+   * <code>TRC_STUDY_NOT_EXIST = 501;</code>
+   */
+  public static final int TRC_STUDY_NOT_EXIST_VALUE = 501;
+  /**
+   * <pre>
+   * 学习信息已关注
+   * </pre>
+   *
+   * <code>TRC_STUDY_IS_STAR = 502;</code>
+   */
+  public static final int TRC_STUDY_IS_STAR_VALUE = 502;
 
 
   public final int getNumber() {
@@ -444,6 +476,8 @@ public enum RespCode
       case 401: return TRC_QUESTION_NOT_EXIST;
       case 402: return TRC_QUESTION_IS_IN_OPT;
       case 403: return TRC_QUESTION_NOT_UPDATE;
+      case 501: return TRC_STUDY_NOT_EXIST;
+      case 502: return TRC_STUDY_IS_STAR;
       default: return null;
     }
   }

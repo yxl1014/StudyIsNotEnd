@@ -159,7 +159,7 @@ message StudyInfo{
 // 用户收藏信息
 message UserStarStudyInfo
 {
-  optional int32 starId = 1; // 自增唯一id
+  optional int32 id = 1; // 自增唯一id
   optional int32 userTel = 2; // 用户电话
   optional int32 studyId = 3; // 学习内容id
 }

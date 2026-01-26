@@ -48,18 +48,18 @@ private static final long serialVersionUID = 0L;
   }
 
   private int bitField0_;
-  public static final int STARID_FIELD_NUMBER = 1;
-  private int starId_ = 0;
+  public static final int ID_FIELD_NUMBER = 1;
+  private int id_ = 0;
   /**
    * <pre>
    * 自增唯一id
    * </pre>
    *
-   * <code>optional int32 starId = 1;</code>
-   * @return Whether the starId field is set.
+   * <code>optional int32 id = 1;</code>
+   * @return Whether the id field is set.
    */
   @java.lang.Override
-  public boolean hasStarId() {
+  public boolean hasId() {
     return ((bitField0_ & 0x00000001) != 0);
   }
   /**
@@ -67,12 +67,12 @@ private static final long serialVersionUID = 0L;
    * 自增唯一id
    * </pre>
    *
-   * <code>optional int32 starId = 1;</code>
-   * @return The starId.
+   * <code>optional int32 id = 1;</code>
+   * @return The id.
    */
   @java.lang.Override
-  public int getStarId() {
-    return starId_;
+  public int getId() {
+    return id_;
   }
 
   public static final int USERTEL_FIELD_NUMBER = 2;
@@ -144,7 +144,7 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeInt32(1, starId_);
+      output.writeInt32(1, id_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       output.writeInt32(2, userTel_);
@@ -163,7 +163,7 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, starId_);
+        .computeInt32Size(1, id_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.CodedOutputStream
@@ -188,10 +188,10 @@ private static final long serialVersionUID = 0L;
     }
     po.UserStarStudyInfo other = (po.UserStarStudyInfo) obj;
 
-    if (hasStarId() != other.hasStarId()) return false;
-    if (hasStarId()) {
-      if (getStarId()
-          != other.getStarId()) return false;
+    if (hasId() != other.hasId()) return false;
+    if (hasId()) {
+      if (getId()
+          != other.getId()) return false;
     }
     if (hasUserTel() != other.hasUserTel()) return false;
     if (hasUserTel()) {
@@ -214,9 +214,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasStarId()) {
-      hash = (37 * hash) + STARID_FIELD_NUMBER;
-      hash = (53 * hash) + getStarId();
+    if (hasId()) {
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId();
     }
     if (hasUserTel()) {
       hash = (37 * hash) + USERTEL_FIELD_NUMBER;
@@ -357,15 +357,7 @@ private static final long serialVersionUID = 0L;
       super(parent);
 
     }
-    @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      bitField0_ = 0;
-      starId_ = 0;
-      userTel_ = 0;
-      studyId_ = 0;
-      return this;
-    }
+    private int id_ ;
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
@@ -395,11 +387,31 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
+    @java.lang.Override
+    public Builder clear() {
+      super.clear();
+      bitField0_ = 0;
+      id_ = 0;
+      userTel_ = 0;
+      studyId_ = 0;
+      return this;
+    }
+
+    @java.lang.Override
+    public Builder mergeFrom(com.google.protobuf.Message other) {
+      if (other instanceof po.UserStarStudyInfo) {
+        return mergeFrom((po.UserStarStudyInfo)other);
+      } else {
+        super.mergeFrom(other);
+        return this;
+      }
+    }
+
     private void buildPartial0(po.UserStarStudyInfo result) {
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.starId_ = starId_;
+        result.id_ = id_;
         to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
@@ -414,19 +426,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof po.UserStarStudyInfo) {
-        return mergeFrom((po.UserStarStudyInfo)other);
-      } else {
-        super.mergeFrom(other);
-        return this;
-      }
+    public final boolean isInitialized() {
+      return true;
     }
 
     public Builder mergeFrom(po.UserStarStudyInfo other) {
       if (other == po.UserStarStudyInfo.getDefaultInstance()) return this;
-      if (other.hasStarId()) {
-        setStarId(other.getStarId());
+      if (other.hasId()) {
+        setId(other.getId());
       }
       if (other.hasUserTel()) {
         setUserTel(other.getUserTel());
@@ -438,11 +445,7 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
-    @java.lang.Override
-    public final boolean isInitialized() {
-      return true;
-    }
+    private int bitField0_;
 
     @java.lang.Override
     public Builder mergeFrom(
@@ -461,7 +464,7 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              starId_ = input.readInt32();
+              id_ = input.readInt32();
               bitField0_ |= 0x00000001;
               break;
             } // case 8
@@ -490,19 +493,17 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
-    private int bitField0_;
 
-    private int starId_ ;
     /**
      * <pre>
      * 自增唯一id
      * </pre>
      *
-     * <code>optional int32 starId = 1;</code>
-     * @return Whether the starId field is set.
+     * <code>optional int32 id = 1;</code>
+     * @return Whether the id field is set.
      */
     @java.lang.Override
-    public boolean hasStarId() {
+    public boolean hasId() {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
@@ -510,25 +511,25 @@ private static final long serialVersionUID = 0L;
      * 自增唯一id
      * </pre>
      *
-     * <code>optional int32 starId = 1;</code>
-     * @return The starId.
+     * <code>optional int32 id = 1;</code>
+     * @return The id.
      */
     @java.lang.Override
-    public int getStarId() {
-      return starId_;
+    public int getId() {
+      return id_;
     }
     /**
      * <pre>
      * 自增唯一id
      * </pre>
      *
-     * <code>optional int32 starId = 1;</code>
-     * @param value The starId to set.
+     * <code>optional int32 id = 1;</code>
+     * @param value The id to set.
      * @return This builder for chaining.
      */
-    public Builder setStarId(int value) {
+    public Builder setId(int value) {
 
-      starId_ = value;
+      id_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
@@ -538,12 +539,12 @@ private static final long serialVersionUID = 0L;
      * 自增唯一id
      * </pre>
      *
-     * <code>optional int32 starId = 1;</code>
+     * <code>optional int32 id = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearStarId() {
+    public Builder clearId() {
       bitField0_ = (bitField0_ & ~0x00000001);
-      starId_ = 0;
+      id_ = 0;
       onChanged();
       return this;
     }

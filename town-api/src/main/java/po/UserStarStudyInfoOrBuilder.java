@@ -15,19 +15,19 @@ public interface UserStarStudyInfoOrBuilder extends
    * 自增唯一id
    * </pre>
    *
-   * <code>optional int32 starId = 1;</code>
-   * @return Whether the starId field is set.
+   * <code>optional int32 id = 1;</code>
+   * @return Whether the id field is set.
    */
-  boolean hasStarId();
+  boolean hasId();
   /**
    * <pre>
    * 自增唯一id
    * </pre>
    *
-   * <code>optional int32 starId = 1;</code>
-   * @return The starId.
+   * <code>optional int32 id = 1;</code>
+   * @return The id.
    */
-  int getStarId();
+  int getId();
 
   /**
    * <pre>
