@@ -169,13 +169,27 @@ public class StudyServiceImpl extends AbstractRpcService implements IStudyServic
         return execute(MsgType.TMT_StarStudyRsp, token, ()->{
             int studyId = msg.getStudyId();
 
+            int userTel = UserContext.getUserTel();
+
+            UserStarStudyInfoDO userStarStudyInfoDO = daoService.star_selectByIdAndTel(studyId, userTel);
+
+            StarStudyRsp rsp = StarStudyRsp.newBuilder().build();
+            if (msg.getIsCancel())
+            {
+                if (userStarStudyInfoDO != null) {
+                    int del = daoService.star_delete(userStarStudyInfoDO.getId());
+                    if (del <= 0){
+                        return BizResult.error(RespCode.TRC_DB_ERROR);
+                    }
+                }
+                return BizResult.ok(rsp);
+            }
+
             StudyInfoDO studyInfoDO = daoService.study_selectById(studyId);
             if (studyInfoDO == null) {
                 return BizResult.error(RespCode.TRC_STUDY_NOT_EXIST);
             }
-            int userTel = UserContext.getUserTel();
 
-            UserStarStudyInfoDO userStarStudyInfoDO = daoService.star_selectByIdAndTel(studyId, userTel);
             if (userStarStudyInfoDO != null){
                 return BizResult.error(RespCode.TRC_STUDY_IS_STAR);
             }
@@ -188,7 +202,6 @@ public class StudyServiceImpl extends AbstractRpcService implements IStudyServic
                 return BizResult.error(RespCode.TRC_DB_ERROR);
             }
 
-            StarStudyRsp rsp = StarStudyRsp.newBuilder().build();
             return BizResult.ok(rsp);
         });
     }

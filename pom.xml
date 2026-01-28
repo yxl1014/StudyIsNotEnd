@@ -18,6 +18,7 @@
         <module>town-update-provider</module>
         <module>town-question-provider</module>
         <module>town-study-provider</module>
+        <module>town-people-provider</module>
     </modules>
 
     <properties>

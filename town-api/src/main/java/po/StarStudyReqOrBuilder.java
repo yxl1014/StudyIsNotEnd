@@ -28,4 +28,23 @@ public interface StarStudyReqOrBuilder extends
    * @return The studyId.
    */
   int getStudyId();
+
+  /**
+   * <pre>
+   * 是否取消收藏
+   * </pre>
+   *
+   * <code>optional bool isCancel = 2;</code>
+   * @return Whether the isCancel field is set.
+   */
+  boolean hasIsCancel();
+  /**
+   * <pre>
+   * 是否取消收藏
+   * </pre>
+   *
+   * <code>optional bool isCancel = 2;</code>
+   * @return The isCancel.
+   */
+  boolean getIsCancel();
 }

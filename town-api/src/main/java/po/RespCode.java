@@ -215,6 +215,30 @@ public enum RespCode
    * <code>TRC_STUDY_IS_STAR = 502;</code>
    */
   TRC_STUDY_IS_STAR(502),
+  /**
+   * <pre>
+   * 成员ID为空
+   * </pre>
+   *
+   * <code>TRC_PEOPLE_CARD_IS_NULL = 601;</code>
+   */
+  TRC_PEOPLE_CARD_IS_NULL(601),
+  /**
+   * <pre>
+   * 成员ID存在
+   * </pre>
+   *
+   * <code>TRC_PEOPLE_CARD_IS_EXIST = 602;</code>
+   */
+  TRC_PEOPLE_CARD_IS_EXIST(602),
+  /**
+   * <pre>
+   * 成员ID不存在
+   * </pre>
+   *
+   * <code>TRC_PEOPLE_CARD_IS_NOT_EXIST = 603;</code>
+   */
+  TRC_PEOPLE_CARD_IS_NOT_EXIST(603),
   UNRECOGNIZED(-1),
   ;
 
@@ -427,6 +451,30 @@ public enum RespCode
    * <code>TRC_STUDY_IS_STAR = 502;</code>
    */
   public static final int TRC_STUDY_IS_STAR_VALUE = 502;
+  /**
+   * <pre>
+   * 成员ID为空
+   * </pre>
+   *
+   * <code>TRC_PEOPLE_CARD_IS_NULL = 601;</code>
+   */
+  public static final int TRC_PEOPLE_CARD_IS_NULL_VALUE = 601;
+  /**
+   * <pre>
+   * 成员ID存在
+   * </pre>
+   *
+   * <code>TRC_PEOPLE_CARD_IS_EXIST = 602;</code>
+   */
+  public static final int TRC_PEOPLE_CARD_IS_EXIST_VALUE = 602;
+  /**
+   * <pre>
+   * 成员ID不存在
+   * </pre>
+   *
+   * <code>TRC_PEOPLE_CARD_IS_NOT_EXIST = 603;</code>
+   */
+  public static final int TRC_PEOPLE_CARD_IS_NOT_EXIST_VALUE = 603;
 
 
   public final int getNumber() {
@@ -478,6 +526,9 @@ public enum RespCode
       case 403: return TRC_QUESTION_NOT_UPDATE;
       case 501: return TRC_STUDY_NOT_EXIST;
       case 502: return TRC_STUDY_IS_STAR;
+      case 601: return TRC_PEOPLE_CARD_IS_NULL;
+      case 602: return TRC_PEOPLE_CARD_IS_EXIST;
+      case 603: return TRC_PEOPLE_CARD_IS_NOT_EXIST;
       default: return null;
     }
   }

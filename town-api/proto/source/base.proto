@@ -82,4 +82,10 @@ enum MsgType
 
   TMT_ListNoticeReadReq = 48; // 获取已读
   TMT_ListNoticeReadRsp = 49; // 获取已读 - 回执
+
+  TMT_ListPeopleInfoReq = 50; // 获取家庭信息
+  TMT_ListPeopleInfoRsp = 51; // 获取家庭信息 - 回执
+
+  TMT_ListPeopleUpdateApplyReq = 52; // 获取申请
+  TMT_ListPeopleUpdateApplyRsp = 53; // 获取申请 - 回执
 }

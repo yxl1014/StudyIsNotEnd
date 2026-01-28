@@ -186,6 +186,32 @@ public class TaskDistributeInHandler extends SimpleChannelInboundHandler<Request
                         requestTransfer::listUserStarStudy,
                         ctx
                 ));
+
+        /// people
+        handlerMap.put(MsgType.TMT_CreatePeopleReq,
+                (msg, ctx) -> handle(
+                        msg.getToken(),
+                        msg.getMsg().toByteArray(),
+                        CreatePeopleReq.parser(),
+                        requestTransfer::createPeople,
+                        ctx
+                ));
+        handlerMap.put(MsgType.TMT_UpdatePeopleReq,
+                (msg, ctx) -> handle(
+                        msg.getToken(),
+                        msg.getMsg().toByteArray(),
+                        UpdatePeopleReq.parser(),
+                        requestTransfer::updatePeople,
+                        ctx
+                ));
+        handlerMap.put(MsgType.TMT_ListPeopleInfoReq,
+                (msg, ctx) -> handle(
+                        msg.getToken(),
+                        msg.getMsg().toByteArray(),
+                        ListPeopleInfoReq.parser(),
+                        requestTransfer::listPeopleInfo,
+                        ctx
+                ));
     }
 
     private <T extends com.google.protobuf.Message> ResponseMsg noTokenHandle(

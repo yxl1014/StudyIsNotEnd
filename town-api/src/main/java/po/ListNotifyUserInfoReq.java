@@ -263,6 +263,7 @@ private static final long serialVersionUID = 0L;
     Builder builder = new Builder(parent);
     return builder;
   }
+
   /**
    * <pre>
    * 获取所有用户待收取的信息，发送成功后就删除

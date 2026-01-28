@@ -83,4 +83,16 @@ public class RequestTransfer {
     public ResponseMsg listUserStarStudy(String token, ListUserStarStudyReq msg) {
         return serviceManager.studyService.listUserStarStudy(token, msg);
     }
+
+    public ResponseMsg createPeople(String token, CreatePeopleReq msg) {
+        return serviceManager.peopleService.createPeople(token, msg);
+    }
+
+    public ResponseMsg updatePeople(String token, UpdatePeopleReq msg) {
+        return serviceManager.peopleService.updatePeople(token, msg);
+    }
+
+    public ResponseMsg listPeopleInfo(String token, ListPeopleInfoReq msg) {
+        return serviceManager.peopleService.listPeopleInfo(token, msg);
+    }
 }

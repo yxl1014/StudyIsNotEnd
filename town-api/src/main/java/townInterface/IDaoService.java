@@ -101,4 +101,13 @@ public interface IDaoService {
     int star_insert(UserStarStudyInfoDO entity);
     int star_update(UserStarStudyInfoDO entity);
     int star_delete(Integer id);
+
+    /// people
+    PeopleInfoDO toDO(po.PeopleInfo proto);
+    po.PeopleInfo toProto(PeopleInfoDO entity);
+    PeopleInfoDO people_selectById(String id);
+    List<PeopleInfoDO> selectAll(int page, int size);
+    int people_insert(PeopleInfoDO entity);
+    int people_update(PeopleInfoDO entity);
+    int people_delete(String id);
 }

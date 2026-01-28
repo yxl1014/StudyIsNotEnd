@@ -59,6 +59,10 @@ enum RespCode
 
   TRC_STUDY_NOT_EXIST = 501; // 学习信息不存在
   TRC_STUDY_IS_STAR = 502; // 学习信息已关注
+
+  TRC_PEOPLE_CARD_IS_NULL = 601; // 成员ID为空
+  TRC_PEOPLE_CARD_IS_EXIST = 602; // 成员ID存在
+  TRC_PEOPLE_CARD_IS_NOT_EXIST = 603; // 成员ID不存在
 }
 
 
@@ -268,6 +272,7 @@ message ListStudyRsp{
 // 收藏学习内容
 message StarStudyReq{
   optional int32 studyId = 1; // id
+  optional bool isCancel = 2; // 是否取消收藏
 }
 
 // 收藏学习内容 - 回执
@@ -292,7 +297,12 @@ message CreatePeopleReq{
 
 // 创建家庭信息（管理员） - 回执
 message CreatePeopleRsp{
-  repeated string errCardIds = 1; // 创建失败的人员信息
+  repeated ErrInfo err = 1; // 创建失败的人员信息
+}
+
+message ErrInfo{
+  optional int32 index = 1; // 下标
+  optional RespCode eCode = 2; // 错误信息
 }
 
 // 修改家庭信息（管理员）
@@ -304,6 +314,18 @@ message UpdatePeopleReq{
 // 修改家庭信息（管理员） - 回执
 message UpdatePeopleRsp{}
 
+// 获取家庭信息 村民只能获取自己的， 村干部如果不填cardID则获取全部
+message ListPeopleInfoReq{
+  optional string cardId = 1; // 身份证ID
+  optional int32 page = 2;
+  optional int32 size = 3;
+}
+
+// 获取家庭信息 - 回执
+message ListPeopleInfoRsp{
+  repeated PeopleInfo infos = 1; // 家庭信息
+}
+
 // 提交修改申请
 message CreatePeopleUpdateApplyReq{
   optional PeopleUpdateApply apply = 1; // 修改内容
@@ -311,6 +333,17 @@ message CreatePeopleUpdateApplyReq{
 
 // 提交修改申请 - 回执
 message CreatePeopleUpdateApplyRsp{}
+
+// 获取申请 用户获取自己的申请
+message ListPeopleUpdateApplyReq{
+  optional int32 page = 1;
+  optional int32 size = 2;
+}
+
+// 获取申请 - 回执
+message ListPeopleUpdateApplyRsp{
+  repeated PeopleUpdateApply apply = 1; // 申请内容
+}
 
 // 删除修改申请（管理员）
 message DelPeopleUpdateApplyReq{

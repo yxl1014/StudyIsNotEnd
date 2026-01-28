@@ -31,10 +31,7 @@ private static final long serialVersionUID = 0L;
   private CreatePeopleRsp(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
-  private CreatePeopleRsp() {
-    errCardIds_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
-  }
+  public static final int ERR_FIELD_NUMBER = 1;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
@@ -48,58 +45,68 @@ private static final long serialVersionUID = 0L;
         .ensureFieldAccessorsInitialized(
             po.CreatePeopleRsp.class, po.CreatePeopleRsp.Builder.class);
   }
-
-  public static final int ERRCARDIDS_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
-  private com.google.protobuf.LazyStringArrayList errCardIds_ =
-      com.google.protobuf.LazyStringArrayList.emptyList();
+  private java.util.List<po.ErrInfo> err_;
+  private CreatePeopleRsp() {
+    err_ = java.util.Collections.emptyList();
+  }
+
   /**
    * <pre>
    * 创建失败的人员信息
    * </pre>
    *
-   * <code>repeated string errCardIds = 1;</code>
-   * @return A list containing the errCardIds.
+   * <code>repeated .po.ErrInfo err = 1;</code>
    */
-  public com.google.protobuf.ProtocolStringList
-      getErrCardIdsList() {
-    return errCardIds_;
+  @java.lang.Override
+  public java.util.List<po.ErrInfo> getErrList() {
+    return err_;
   }
   /**
    * <pre>
    * 创建失败的人员信息
    * </pre>
    *
-   * <code>repeated string errCardIds = 1;</code>
-   * @return The count of errCardIds.
+   * <code>repeated .po.ErrInfo err = 1;</code>
    */
-  public int getErrCardIdsCount() {
-    return errCardIds_.size();
+  @java.lang.Override
+  public java.util.List<? extends po.ErrInfoOrBuilder> 
+      getErrOrBuilderList() {
+    return err_;
   }
   /**
    * <pre>
    * 创建失败的人员信息
    * </pre>
    *
-   * <code>repeated string errCardIds = 1;</code>
-   * @param index The index of the element to return.
-   * @return The errCardIds at the given index.
+   * <code>repeated .po.ErrInfo err = 1;</code>
    */
-  public java.lang.String getErrCardIds(int index) {
-    return errCardIds_.get(index);
+  @java.lang.Override
+  public int getErrCount() {
+    return err_.size();
   }
   /**
    * <pre>
    * 创建失败的人员信息
    * </pre>
    *
-   * <code>repeated string errCardIds = 1;</code>
-   * @param index The index of the value to return.
-   * @return The bytes of the errCardIds at the given index.
+   * <code>repeated .po.ErrInfo err = 1;</code>
    */
-  public com.google.protobuf.ByteString
-      getErrCardIdsBytes(int index) {
-    return errCardIds_.getByteString(index);
+  @java.lang.Override
+  public po.ErrInfo getErr(int index) {
+    return err_.get(index);
+  }
+  /**
+   * <pre>
+   * 创建失败的人员信息
+   * </pre>
+   *
+   * <code>repeated .po.ErrInfo err = 1;</code>
+   */
+  @java.lang.Override
+  public po.ErrInfoOrBuilder getErrOrBuilder(
+      int index) {
+    return err_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -116,8 +123,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    for (int i = 0; i < errCardIds_.size(); i++) {
-      com.google.protobuf.GeneratedMessage.writeString(output, 1, errCardIds_.getRaw(i));
+    for (int i = 0; i < err_.size(); i++) {
+      output.writeMessage(1, err_.get(i));
     }
     getUnknownFields().writeTo(output);
   }
@@ -128,13 +135,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    {
-      int dataSize = 0;
-      for (int i = 0; i < errCardIds_.size(); i++) {
-        dataSize += computeStringSizeNoTag(errCardIds_.getRaw(i));
-      }
-      size += dataSize;
-      size += 1 * getErrCardIdsList().size();
+    for (int i = 0; i < err_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(1, err_.get(i));
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -151,8 +154,8 @@ private static final long serialVersionUID = 0L;
     }
     po.CreatePeopleRsp other = (po.CreatePeopleRsp) obj;
 
-    if (!getErrCardIdsList()
-        .equals(other.getErrCardIdsList())) return false;
+    if (!getErrList()
+        .equals(other.getErrList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -164,9 +167,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (getErrCardIdsCount() > 0) {
-      hash = (37 * hash) + ERRCARDIDS_FIELD_NUMBER;
-      hash = (53 * hash) + getErrCardIdsList().hashCode();
+    if (getErrCount() > 0) {
+      hash = (37 * hash) + ERR_FIELD_NUMBER;
+      hash = (53 * hash) + getErrList().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -299,14 +302,8 @@ private static final long serialVersionUID = 0L;
       super(parent);
 
     }
-    @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      bitField0_ = 0;
-      errCardIds_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
-      return this;
-    }
+    private java.util.List<po.ErrInfo> err_ =
+      java.util.Collections.emptyList();
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
@@ -327,21 +324,25 @@ private static final long serialVersionUID = 0L;
       }
       return result;
     }
+    private com.google.protobuf.RepeatedFieldBuilder<
+        po.ErrInfo, po.ErrInfo.Builder, po.ErrInfoOrBuilder> errBuilder_;
 
     @java.lang.Override
-    public po.CreatePeopleRsp buildPartial() {
-      po.CreatePeopleRsp result = new po.CreatePeopleRsp(this);
-      if (bitField0_ != 0) { buildPartial0(result); }
-      onBuilt();
-      return result;
+    public Builder clear() {
+      super.clear();
+      bitField0_ = 0;
+      if (errBuilder_ == null) {
+        err_ = java.util.Collections.emptyList();
+      } else {
+        err_ = null;
+        errBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000001);
+      return this;
     }
 
     private void buildPartial0(po.CreatePeopleRsp result) {
       int from_bitField0_ = bitField0_;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        errCardIds_.makeImmutable();
-        result.errCardIds_ = errCardIds_;
-      }
     }
 
     @java.lang.Override
@@ -354,26 +355,64 @@ private static final long serialVersionUID = 0L;
       }
     }
 
-    public Builder mergeFrom(po.CreatePeopleRsp other) {
-      if (other == po.CreatePeopleRsp.getDefaultInstance()) return this;
-      if (!other.errCardIds_.isEmpty()) {
-        if (errCardIds_.isEmpty()) {
-          errCardIds_ = other.errCardIds_;
-          bitField0_ |= 0x00000001;
-        } else {
-          ensureErrCardIdsIsMutable();
-          errCardIds_.addAll(other.errCardIds_);
-        }
-        onChanged();
-      }
-      this.mergeUnknownFields(other.getUnknownFields());
-      onChanged();
-      return this;
+    @java.lang.Override
+    public po.CreatePeopleRsp buildPartial() {
+      po.CreatePeopleRsp result = new po.CreatePeopleRsp(this);
+      buildPartialRepeatedFields(result);
+      if (bitField0_ != 0) { buildPartial0(result); }
+      onBuilt();
+      return result;
     }
 
     @java.lang.Override
     public final boolean isInitialized() {
       return true;
+    }
+
+    private void buildPartialRepeatedFields(po.CreatePeopleRsp result) {
+      if (errBuilder_ == null) {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          err_ = java.util.Collections.unmodifiableList(err_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.err_ = err_;
+      } else {
+        result.err_ = errBuilder_.build();
+      }
+    }
+    private int bitField0_;
+
+    public Builder mergeFrom(po.CreatePeopleRsp other) {
+      if (other == po.CreatePeopleRsp.getDefaultInstance()) return this;
+      if (errBuilder_ == null) {
+        if (!other.err_.isEmpty()) {
+          if (err_.isEmpty()) {
+            err_ = other.err_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureErrIsMutable();
+            err_.addAll(other.err_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.err_.isEmpty()) {
+          if (errBuilder_.isEmpty()) {
+            errBuilder_.dispose();
+            errBuilder_ = null;
+            err_ = other.err_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+            errBuilder_ =
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                 internalGetErrFieldBuilder() : null;
+          } else {
+            errBuilder_.addAllMessages(other.err_);
+          }
+        }
+      }
+      this.mergeUnknownFields(other.getUnknownFields());
+      onChanged();
+      return this;
     }
 
     @java.lang.Override
@@ -393,9 +432,16 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-              ensureErrCardIdsIsMutable();
-              errCardIds_.add(s);
+              po.ErrInfo m =
+                  input.readMessage(
+                      po.ErrInfo.parser(),
+                      extensionRegistry);
+              if (errBuilder_ == null) {
+                ensureErrIsMutable();
+                err_.add(m);
+              } else {
+                errBuilder_.addMessage(m);
+              }
               break;
             } // case 10
             default: {
@@ -413,82 +459,75 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
-    private int bitField0_;
 
-    private com.google.protobuf.LazyStringArrayList errCardIds_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
-    private void ensureErrCardIdsIsMutable() {
-      if (!errCardIds_.isModifiable()) {
-        errCardIds_ = new com.google.protobuf.LazyStringArrayList(errCardIds_);
+    private void ensureErrIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        err_ = new java.util.ArrayList<po.ErrInfo>(err_);
+        bitField0_ |= 0x00000001;
+       }
+    }
+
+    /**
+     * <pre>
+     * 创建失败的人员信息
+     * </pre>
+     *
+     * <code>repeated .po.ErrInfo err = 1;</code>
+     */
+    public java.util.List<po.ErrInfo> getErrList() {
+      if (errBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(err_);
+      } else {
+        return errBuilder_.getMessageList();
       }
-      bitField0_ |= 0x00000001;
     }
     /**
      * <pre>
      * 创建失败的人员信息
      * </pre>
      *
-     * <code>repeated string errCardIds = 1;</code>
-     * @return A list containing the errCardIds.
+     * <code>repeated .po.ErrInfo err = 1;</code>
      */
-    public com.google.protobuf.ProtocolStringList
-        getErrCardIdsList() {
-      errCardIds_.makeImmutable();
-      return errCardIds_;
+    public int getErrCount() {
+      if (errBuilder_ == null) {
+        return err_.size();
+      } else {
+        return errBuilder_.getCount();
+      }
     }
     /**
      * <pre>
      * 创建失败的人员信息
      * </pre>
      *
-     * <code>repeated string errCardIds = 1;</code>
-     * @return The count of errCardIds.
+     * <code>repeated .po.ErrInfo err = 1;</code>
      */
-    public int getErrCardIdsCount() {
-      return errCardIds_.size();
+    public po.ErrInfo getErr(int index) {
+      if (errBuilder_ == null) {
+        return err_.get(index);
+      } else {
+        return errBuilder_.getMessage(index);
+      }
     }
     /**
      * <pre>
      * 创建失败的人员信息
      * </pre>
      *
-     * <code>repeated string errCardIds = 1;</code>
-     * @param index The index of the element to return.
-     * @return The errCardIds at the given index.
+     * <code>repeated .po.ErrInfo err = 1;</code>
      */
-    public java.lang.String getErrCardIds(int index) {
-      return errCardIds_.get(index);
-    }
-    /**
-     * <pre>
-     * 创建失败的人员信息
-     * </pre>
-     *
-     * <code>repeated string errCardIds = 1;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the errCardIds at the given index.
-     */
-    public com.google.protobuf.ByteString
-        getErrCardIdsBytes(int index) {
-      return errCardIds_.getByteString(index);
-    }
-    /**
-     * <pre>
-     * 创建失败的人员信息
-     * </pre>
-     *
-     * <code>repeated string errCardIds = 1;</code>
-     * @param index The index to set the value at.
-     * @param value The errCardIds to set.
-     * @return This builder for chaining.
-     */
-    public Builder setErrCardIds(
-        int index, java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
-      ensureErrCardIdsIsMutable();
-      errCardIds_.set(index, value);
-      bitField0_ |= 0x00000001;
-      onChanged();
+    public Builder setErr(
+        int index, po.ErrInfo value) {
+      if (errBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureErrIsMutable();
+        err_.set(index, value);
+        onChanged();
+      } else {
+        errBuilder_.setMessage(index, value);
+      }
       return this;
     }
     /**
@@ -496,17 +535,17 @@ private static final long serialVersionUID = 0L;
      * 创建失败的人员信息
      * </pre>
      *
-     * <code>repeated string errCardIds = 1;</code>
-     * @param value The errCardIds to add.
-     * @return This builder for chaining.
+     * <code>repeated .po.ErrInfo err = 1;</code>
      */
-    public Builder addErrCardIds(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
-      ensureErrCardIdsIsMutable();
-      errCardIds_.add(value);
-      bitField0_ |= 0x00000001;
-      onChanged();
+    public Builder setErr(
+        int index, po.ErrInfo.Builder builderForValue) {
+      if (errBuilder_ == null) {
+        ensureErrIsMutable();
+        err_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        errBuilder_.setMessage(index, builderForValue.build());
+      }
       return this;
     }
     /**
@@ -514,17 +553,19 @@ private static final long serialVersionUID = 0L;
      * 创建失败的人员信息
      * </pre>
      *
-     * <code>repeated string errCardIds = 1;</code>
-     * @param values The errCardIds to add.
-     * @return This builder for chaining.
+     * <code>repeated .po.ErrInfo err = 1;</code>
      */
-    public Builder addAllErrCardIds(
-        java.lang.Iterable<java.lang.String> values) {
-      ensureErrCardIdsIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, errCardIds_);
-      bitField0_ |= 0x00000001;
-      onChanged();
+    public Builder addErr(po.ErrInfo value) {
+      if (errBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureErrIsMutable();
+        err_.add(value);
+        onChanged();
+      } else {
+        errBuilder_.addMessage(value);
+      }
       return this;
     }
     /**
@@ -532,14 +573,20 @@ private static final long serialVersionUID = 0L;
      * 创建失败的人员信息
      * </pre>
      *
-     * <code>repeated string errCardIds = 1;</code>
-     * @return This builder for chaining.
+     * <code>repeated .po.ErrInfo err = 1;</code>
      */
-    public Builder clearErrCardIds() {
-      errCardIds_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
-      bitField0_ = (bitField0_ & ~0x00000001);;
-      onChanged();
+    public Builder addErr(
+        int index, po.ErrInfo value) {
+      if (errBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureErrIsMutable();
+        err_.add(index, value);
+        onChanged();
+      } else {
+        errBuilder_.addMessage(index, value);
+      }
       return this;
     }
     /**
@@ -547,19 +594,177 @@ private static final long serialVersionUID = 0L;
      * 创建失败的人员信息
      * </pre>
      *
-     * <code>repeated string errCardIds = 1;</code>
-     * @param value The bytes of the errCardIds to add.
-     * @return This builder for chaining.
+     * <code>repeated .po.ErrInfo err = 1;</code>
      */
-    public Builder addErrCardIdsBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
-      ensureErrCardIdsIsMutable();
-      errCardIds_.add(value);
-      bitField0_ |= 0x00000001;
-      onChanged();
+    public Builder addErr(
+        po.ErrInfo.Builder builderForValue) {
+      if (errBuilder_ == null) {
+        ensureErrIsMutable();
+        err_.add(builderForValue.build());
+        onChanged();
+      } else {
+        errBuilder_.addMessage(builderForValue.build());
+      }
       return this;
+    }
+    /**
+     * <pre>
+     * 创建失败的人员信息
+     * </pre>
+     *
+     * <code>repeated .po.ErrInfo err = 1;</code>
+     */
+    public Builder addErr(
+        int index, po.ErrInfo.Builder builderForValue) {
+      if (errBuilder_ == null) {
+        ensureErrIsMutable();
+        err_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        errBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 创建失败的人员信息
+     * </pre>
+     *
+     * <code>repeated .po.ErrInfo err = 1;</code>
+     */
+    public Builder addAllErr(
+        java.lang.Iterable<? extends po.ErrInfo> values) {
+      if (errBuilder_ == null) {
+        ensureErrIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, err_);
+        onChanged();
+      } else {
+        errBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 创建失败的人员信息
+     * </pre>
+     *
+     * <code>repeated .po.ErrInfo err = 1;</code>
+     */
+    public Builder clearErr() {
+      if (errBuilder_ == null) {
+        err_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+      } else {
+        errBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 创建失败的人员信息
+     * </pre>
+     *
+     * <code>repeated .po.ErrInfo err = 1;</code>
+     */
+    public Builder removeErr(int index) {
+      if (errBuilder_ == null) {
+        ensureErrIsMutable();
+        err_.remove(index);
+        onChanged();
+      } else {
+        errBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 创建失败的人员信息
+     * </pre>
+     *
+     * <code>repeated .po.ErrInfo err = 1;</code>
+     */
+    public po.ErrInfo.Builder getErrBuilder(
+        int index) {
+      return internalGetErrFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <pre>
+     * 创建失败的人员信息
+     * </pre>
+     *
+     * <code>repeated .po.ErrInfo err = 1;</code>
+     */
+    public po.ErrInfoOrBuilder getErrOrBuilder(
+        int index) {
+      if (errBuilder_ == null) {
+        return err_.get(index);  } else {
+        return errBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <pre>
+     * 创建失败的人员信息
+     * </pre>
+     *
+     * <code>repeated .po.ErrInfo err = 1;</code>
+     */
+    public java.util.List<? extends po.ErrInfoOrBuilder> 
+         getErrOrBuilderList() {
+      if (errBuilder_ != null) {
+        return errBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(err_);
+      }
+    }
+    /**
+     * <pre>
+     * 创建失败的人员信息
+     * </pre>
+     *
+     * <code>repeated .po.ErrInfo err = 1;</code>
+     */
+    public po.ErrInfo.Builder addErrBuilder() {
+      return internalGetErrFieldBuilder().addBuilder(
+          po.ErrInfo.getDefaultInstance());
+    }
+    /**
+     * <pre>
+     * 创建失败的人员信息
+     * </pre>
+     *
+     * <code>repeated .po.ErrInfo err = 1;</code>
+     */
+    public po.ErrInfo.Builder addErrBuilder(
+        int index) {
+      return internalGetErrFieldBuilder().addBuilder(
+          index, po.ErrInfo.getDefaultInstance());
+    }
+    /**
+     * <pre>
+     * 创建失败的人员信息
+     * </pre>
+     *
+     * <code>repeated .po.ErrInfo err = 1;</code>
+     */
+    public java.util.List<po.ErrInfo.Builder> 
+         getErrBuilderList() {
+      return internalGetErrFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilder<
+        po.ErrInfo, po.ErrInfo.Builder, po.ErrInfoOrBuilder> 
+        internalGetErrFieldBuilder() {
+      if (errBuilder_ == null) {
+        errBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+            po.ErrInfo, po.ErrInfo.Builder, po.ErrInfoOrBuilder>(
+                err_,
+                ((bitField0_ & 0x00000001) != 0),
+                getParentForChildren(),
+                isClean());
+        err_ = null;
+      }
+      return errBuilder_;
     }
 
     // @@protoc_insertion_point(builder_scope:po.CreatePeopleRsp)

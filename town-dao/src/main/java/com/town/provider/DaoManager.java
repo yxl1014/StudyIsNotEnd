@@ -391,6 +391,50 @@ public class DaoManager implements IDaoService {
 
     /* ======================= Star ======================= */
 
+
+
+
+    /* ======================= People ======================= */
+
+    @Override
+    public PeopleInfoDO toDO(PeopleInfo proto) {
+        return peopleInfoConvert.toDO(proto);
+    }
+
+    @Override
+    public PeopleInfo toProto(PeopleInfoDO entity) {
+        return peopleInfoConvert.toProto(entity);
+    }
+
+    @Override
+    public PeopleInfoDO people_selectById(String id) {
+        return peopleInfoMapper.selectById(id);
+    }
+
+    @Override
+    public List<PeopleInfoDO> selectAll(int page, int size) {
+        PageHelper.startPage(page, size);
+        return peopleInfoMapper.selectAll();
+    }
+
+    @Override
+    public int people_insert(PeopleInfoDO entity) {
+        return peopleInfoMapper.insert(entity);
+    }
+
+    @Override
+    public int people_update(PeopleInfoDO entity) {
+        return peopleInfoMapper.update(entity);
+    }
+
+    @Override
+    public int people_delete(String id) {
+        return peopleInfoMapper.delete(id);
+    }
+
+    /* ======================= People ======================= */
+
+
     @Resource
     private RedisManager redisManager;
 

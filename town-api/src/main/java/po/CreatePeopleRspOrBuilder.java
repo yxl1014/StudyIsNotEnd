@@ -15,39 +15,42 @@ public interface CreatePeopleRspOrBuilder extends
    * 创建失败的人员信息
    * </pre>
    *
-   * <code>repeated string errCardIds = 1;</code>
-   * @return A list containing the errCardIds.
+   * <code>repeated .po.ErrInfo err = 1;</code>
    */
-  java.util.List<java.lang.String>
-      getErrCardIdsList();
+  java.util.List<po.ErrInfo> 
+      getErrList();
   /**
    * <pre>
    * 创建失败的人员信息
    * </pre>
    *
-   * <code>repeated string errCardIds = 1;</code>
-   * @return The count of errCardIds.
+   * <code>repeated .po.ErrInfo err = 1;</code>
    */
-  int getErrCardIdsCount();
+  po.ErrInfo getErr(int index);
   /**
    * <pre>
    * 创建失败的人员信息
    * </pre>
    *
-   * <code>repeated string errCardIds = 1;</code>
-   * @param index The index of the element to return.
-   * @return The errCardIds at the given index.
+   * <code>repeated .po.ErrInfo err = 1;</code>
    */
-  java.lang.String getErrCardIds(int index);
+  int getErrCount();
   /**
    * <pre>
    * 创建失败的人员信息
    * </pre>
    *
-   * <code>repeated string errCardIds = 1;</code>
-   * @param index The index of the value to return.
-   * @return The bytes of the errCardIds at the given index.
+   * <code>repeated .po.ErrInfo err = 1;</code>
    */
-  com.google.protobuf.ByteString
-      getErrCardIdsBytes(int index);
+  java.util.List<? extends po.ErrInfoOrBuilder> 
+      getErrOrBuilderList();
+  /**
+   * <pre>
+   * 创建失败的人员信息
+   * </pre>
+   *
+   * <code>repeated .po.ErrInfo err = 1;</code>
+   */
+  po.ErrInfoOrBuilder getErrOrBuilder(
+      int index);
 }

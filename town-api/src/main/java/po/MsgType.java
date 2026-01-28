@@ -415,6 +415,38 @@ public enum MsgType
    * <code>TMT_ListNoticeReadRsp = 49;</code>
    */
   TMT_ListNoticeReadRsp(49),
+  /**
+   * <pre>
+   * 获取家庭信息
+   * </pre>
+   *
+   * <code>TMT_ListPeopleInfoReq = 50;</code>
+   */
+  TMT_ListPeopleInfoReq(50),
+  /**
+   * <pre>
+   * 获取家庭信息 - 回执
+   * </pre>
+   *
+   * <code>TMT_ListPeopleInfoRsp = 51;</code>
+   */
+  TMT_ListPeopleInfoRsp(51),
+  /**
+   * <pre>
+   * 获取申请
+   * </pre>
+   *
+   * <code>TMT_ListPeopleUpdateApplyReq = 52;</code>
+   */
+  TMT_ListPeopleUpdateApplyReq(52),
+  /**
+   * <pre>
+   * 获取申请 - 回执
+   * </pre>
+   *
+   * <code>TMT_ListPeopleUpdateApplyRsp = 53;</code>
+   */
+  TMT_ListPeopleUpdateApplyRsp(53),
   UNRECOGNIZED(-1),
   ;
 
@@ -827,6 +859,38 @@ public enum MsgType
    * <code>TMT_ListNoticeReadRsp = 49;</code>
    */
   public static final int TMT_ListNoticeReadRsp_VALUE = 49;
+  /**
+   * <pre>
+   * 获取家庭信息
+   * </pre>
+   *
+   * <code>TMT_ListPeopleInfoReq = 50;</code>
+   */
+  public static final int TMT_ListPeopleInfoReq_VALUE = 50;
+  /**
+   * <pre>
+   * 获取家庭信息 - 回执
+   * </pre>
+   *
+   * <code>TMT_ListPeopleInfoRsp = 51;</code>
+   */
+  public static final int TMT_ListPeopleInfoRsp_VALUE = 51;
+  /**
+   * <pre>
+   * 获取申请
+   * </pre>
+   *
+   * <code>TMT_ListPeopleUpdateApplyReq = 52;</code>
+   */
+  public static final int TMT_ListPeopleUpdateApplyReq_VALUE = 52;
+  /**
+   * <pre>
+   * 获取申请 - 回执
+   * </pre>
+   *
+   * <code>TMT_ListPeopleUpdateApplyRsp = 53;</code>
+   */
+  public static final int TMT_ListPeopleUpdateApplyRsp_VALUE = 53;
 
 
   public final int getNumber() {
@@ -903,6 +967,10 @@ public enum MsgType
       case 47: return TMT_NoBodyRsp;
       case 48: return TMT_ListNoticeReadReq;
       case 49: return TMT_ListNoticeReadRsp;
+      case 50: return TMT_ListPeopleInfoReq;
+      case 51: return TMT_ListPeopleInfoRsp;
+      case 52: return TMT_ListPeopleUpdateApplyReq;
+      case 53: return TMT_ListPeopleUpdateApplyRsp;
       default: return null;
     }
   }

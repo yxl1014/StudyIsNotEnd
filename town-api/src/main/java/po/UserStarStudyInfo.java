@@ -357,7 +357,7 @@ private static final long serialVersionUID = 0L;
       super(parent);
 
     }
-    private int id_ ;
+    private int bitField0_;
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
@@ -387,26 +387,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      bitField0_ = 0;
-      id_ = 0;
-      userTel_ = 0;
-      studyId_ = 0;
-      return this;
-    }
-
-    @java.lang.Override
-    public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof po.UserStarStudyInfo) {
-        return mergeFrom((po.UserStarStudyInfo)other);
-      } else {
-        super.mergeFrom(other);
-        return this;
-      }
-    }
-
     private void buildPartial0(po.UserStarStudyInfo result) {
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
@@ -424,11 +404,7 @@ private static final long serialVersionUID = 0L;
       }
       result.bitField0_ |= to_bitField0_;
     }
-
-    @java.lang.Override
-    public final boolean isInitialized() {
-      return true;
-    }
+    private int id_ ;
 
     public Builder mergeFrom(po.UserStarStudyInfo other) {
       if (other == po.UserStarStudyInfo.getDefaultInstance()) return this;
@@ -445,7 +421,16 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-    private int bitField0_;
+
+    @java.lang.Override
+    public Builder clear() {
+      super.clear();
+      bitField0_ = 0;
+      id_ = 0;
+      userTel_ = 0;
+      studyId_ = 0;
+      return this;
+    }
 
     @java.lang.Override
     public Builder mergeFrom(
@@ -494,6 +479,20 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    @java.lang.Override
+    public Builder mergeFrom(com.google.protobuf.Message other) {
+      if (other instanceof po.UserStarStudyInfo) {
+        return mergeFrom((po.UserStarStudyInfo)other);
+      } else {
+        super.mergeFrom(other);
+        return this;
+      }
+    }
+
+    @java.lang.Override
+    public final boolean isInitialized() {
+      return true;
+    }
     /**
      * <pre>
      * 自增唯一id

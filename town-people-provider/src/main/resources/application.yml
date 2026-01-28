@@ -1,0 +1,12 @@
+dubbo:
+  application:
+    name: town-people-provider
+    logger: slf4j
+    check-serializable: false
+    serialize-check-status: WARN
+  protocol:
+    name: dubbo
+    port: 40007
+  registry:
+    address: nacos://${nacos.address:127.0.0.1}:8848?username=nacos&password=123456
+    group: town-test

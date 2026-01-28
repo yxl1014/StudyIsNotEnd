@@ -75,6 +75,33 @@ private static final long serialVersionUID = 0L;
     return studyId_;
   }
 
+  public static final int ISCANCEL_FIELD_NUMBER = 2;
+  private boolean isCancel_ = false;
+  /**
+   * <pre>
+   * 是否取消收藏
+   * </pre>
+   *
+   * <code>optional bool isCancel = 2;</code>
+   * @return Whether the isCancel field is set.
+   */
+  @java.lang.Override
+  public boolean hasIsCancel() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
+  /**
+   * <pre>
+   * 是否取消收藏
+   * </pre>
+   *
+   * <code>optional bool isCancel = 2;</code>
+   * @return The isCancel.
+   */
+  @java.lang.Override
+  public boolean getIsCancel() {
+    return isCancel_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -92,6 +119,9 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeInt32(1, studyId_);
     }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      output.writeBool(2, isCancel_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -104,6 +134,10 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, studyId_);
+    }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(2, isCancel_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -125,6 +159,11 @@ private static final long serialVersionUID = 0L;
       if (getStudyId()
           != other.getStudyId()) return false;
     }
+    if (hasIsCancel() != other.hasIsCancel()) return false;
+    if (hasIsCancel()) {
+      if (getIsCancel()
+          != other.getIsCancel()) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -139,6 +178,11 @@ private static final long serialVersionUID = 0L;
     if (hasStudyId()) {
       hash = (37 * hash) + STUDYID_FIELD_NUMBER;
       hash = (53 * hash) + getStudyId();
+    }
+    if (hasIsCancel()) {
+      hash = (37 * hash) + ISCANCEL_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsCancel());
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -271,13 +315,7 @@ private static final long serialVersionUID = 0L;
       super(parent);
 
     }
-    @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      bitField0_ = 0;
-      studyId_ = 0;
-      return this;
-    }
+    private boolean isCancel_ ;
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
@@ -307,14 +345,13 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    private void buildPartial0(po.StarStudyReq result) {
-      int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.studyId_ = studyId_;
-        to_bitField0_ |= 0x00000001;
-      }
-      result.bitField0_ |= to_bitField0_;
+    @java.lang.Override
+    public Builder clear() {
+      super.clear();
+      bitField0_ = 0;
+      studyId_ = 0;
+      isCancel_ = false;
+      return this;
     }
 
     @java.lang.Override
@@ -327,14 +364,18 @@ private static final long serialVersionUID = 0L;
       }
     }
 
-    public Builder mergeFrom(po.StarStudyReq other) {
-      if (other == po.StarStudyReq.getDefaultInstance()) return this;
-      if (other.hasStudyId()) {
-        setStudyId(other.getStudyId());
+    private void buildPartial0(po.StarStudyReq result) {
+      int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
+      if (((from_bitField0_ & 0x00000001) != 0)) {
+        result.studyId_ = studyId_;
+        to_bitField0_ |= 0x00000001;
       }
-      this.mergeUnknownFields(other.getUnknownFields());
-      onChanged();
-      return this;
+      if (((from_bitField0_ & 0x00000002) != 0)) {
+        result.isCancel_ = isCancel_;
+        to_bitField0_ |= 0x00000002;
+      }
+      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -342,40 +383,16 @@ private static final long serialVersionUID = 0L;
       return true;
     }
 
-    @java.lang.Override
-    public Builder mergeFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
+    public Builder mergeFrom(po.StarStudyReq other) {
+      if (other == po.StarStudyReq.getDefaultInstance()) return this;
+      if (other.hasStudyId()) {
+        setStudyId(other.getStudyId());
       }
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              studyId_ = input.readInt32();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 8
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
-          } // switch (tag)
-        } // while (!done)
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.unwrapIOException();
-      } finally {
-        onChanged();
-      } // finally
+      if (other.hasIsCancel()) {
+        setIsCancel(other.getIsCancel());
+      }
+      this.mergeUnknownFields(other.getUnknownFields());
+      onChanged();
       return this;
     }
     private int bitField0_;
@@ -432,6 +449,103 @@ private static final long serialVersionUID = 0L;
     public Builder clearStudyId() {
       bitField0_ = (bitField0_ & ~0x00000001);
       studyId_ = 0;
+      onChanged();
+      return this;
+    }
+
+    @java.lang.Override
+    public Builder mergeFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              studyId_ = input.readInt32();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 8
+            case 16: {
+              isCancel_ = input.readBool();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 16
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
+          } // switch (tag)
+        } // while (!done)
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.unwrapIOException();
+      } finally {
+        onChanged();
+      } // finally
+      return this;
+    }
+
+    /**
+     * <pre>
+     * 是否取消收藏
+     * </pre>
+     *
+     * <code>optional bool isCancel = 2;</code>
+     * @return Whether the isCancel field is set.
+     */
+    @java.lang.Override
+    public boolean hasIsCancel() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * 是否取消收藏
+     * </pre>
+     *
+     * <code>optional bool isCancel = 2;</code>
+     * @return The isCancel.
+     */
+    @java.lang.Override
+    public boolean getIsCancel() {
+      return isCancel_;
+    }
+    /**
+     * <pre>
+     * 是否取消收藏
+     * </pre>
+     *
+     * <code>optional bool isCancel = 2;</code>
+     * @param value The isCancel to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIsCancel(boolean value) {
+
+      isCancel_ = value;
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 是否取消收藏
+     * </pre>
+     *
+     * <code>optional bool isCancel = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearIsCancel() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      isCancel_ = false;
       onChanged();
       return this;
     }
