@@ -1,0 +1,91 @@
+syntax = "proto3";
+package po;
+
+option java_outer_classname = "BaseProto";
+option java_package = "po";
+option java_multiple_files = true;
+
+// 消息类型
+enum MsgType
+{
+  TMT_DEFAULT = 0;  // 默认
+  TMT_TEST = 1;     // 测试请求体
+  TMT_TEST_RESP = 2; // 测试返回体
+
+  TMT_LoginReq = 3;    // 登录请求
+  TMT_LoginRsp = 4; // 登录返回
+
+  TMT_RegisterReq = 5; // 注册请求
+  TMT_RegisterRsp = 6; // 注册返回
+
+  TMT_UpdateUserInfoReq = 7; // 修改用户信息（管理员）
+  TMT_UpdateUserInfoRsp = 8; // 修改用户信息（管理员） - 回执
+
+  TMT_CreateNoticeReq = 9; // 发布公告（管理员）
+  TMT_CreateNoticeRsp = 10; // 发布公告（管理员） - 回执
+
+  TMT_UpdateNoticeReq = 11; // 修改公告（管理员）
+  TMT_UpdateNoticeRsp = 12; // 修改公告（管理员） - 回执
+
+  TMT_ListNoticeReq = 13; // 获取公告
+  TMT_ListNoticeRsp = 14; // 获取公告 - 回执
+
+  TMT_SetNoticeReadReq = 15; // 标记已读
+  TMT_SetNoticeReadRsp = 16; // 标记已读 - 回执
+
+  TMT_ListUpdateInfoReq = 17; // 查看修改记录（管理员）
+  TMT_ListUpdateInfoRsp = 18; // 查看修改记录（管理员） - 回执
+
+  TMT_CreateQuestionReq = 19; // 村民发布问题
+  TMT_CreateQuestionRsp = 20; // 村民发布问题 - 回执
+
+  TMT_UpdateQuestionReq = 21; // 修改问题（管理员）
+  TMT_UpdateQuestionRsp = 22; // 修改问题（管理员） - 回执
+
+  TMT_ListQuestionHandlingReq = 23; // 获取所有问题处理结果（管理员）
+  TMT_ListQuestionHandlingRsp = 24; // 获取所有问题处理结果（管理员） - 回执
+
+  TMT_ListQuestionReq = 25; // 获取问题列表 村民：获取自己提出的问题，村干部：获取所有未分配处理人和处理人是自己的。
+  TMT_ListQuestionRsp = 26; // 获取问题列表 - 回执
+
+  TMT_ListNotifyUserInfoReq = 27; // 获取所有用户待收取的信息，发送成功后就删除
+  TMT_ListNotifyUserInfoRsp = 28; // 获取所有用户待收取的信息 - 回执回执
+
+  TMT_CreateStudyReq = 29; // 创建学习资料（管理员）
+  TMT_CreateStudyRsp = 30; // 创建学习资料（管理员） - 回执
+
+  TMT_UpdateStudyReq = 31; // 修改学习资料（管理员）
+  TMT_UpdateStudyRsp = 32; // 修改学习资料（管理员） - 回执
+
+  TMT_ListStudyReq = 33; // 获取学习信息
+  TMT_ListStudyRsp = 34; // 获取学习信息 - 回执
+
+  TMT_StarStudyReq = 35; // 收藏学习内容
+  TMT_StarStudyRsp = 36; // 收藏学习内容 - 回执
+
+  TMT_ListUserStarStudyReq = 37; // 获取收藏列表
+  TMT_ListUserStarStudyRsp = 38; // 获取收藏列表 - 回执
+
+  TMT_CreatePeopleReq = 39; // 创建家庭信息（管理员）
+  TMT_CreatePeopleRsp = 40; // 创建家庭信息（管理员） - 回执
+
+  TMT_UpdatePeopleReq = 41; // 修改家庭信息（管理员）
+  TMT_UpdatePeopleRsp = 42; // 修改家庭信息（管理员） - 回执
+
+  TMT_CreatePeopleUpdateApplyReq = 43; // 提交修改申请
+  TMT_CreatePeopleUpdateApplyRsp = 44; // 提交修改申请 - 回执
+
+  TMT_DelPeopleUpdateApplyReq = 45; // 删除修改申请（管理员）
+  TMT_DelPeopleUpdateApplyRsp = 46; // 删除修改申请（管理员） - 回执
+
+  TMT_NoBodyRsp = 47; // 无内容返回
+
+  TMT_ListNoticeReadReq = 48; // 获取已读
+  TMT_ListNoticeReadRsp = 49; // 获取已读 - 回执
+
+  TMT_ListPeopleInfoReq = 50; // 获取家庭信息
+  TMT_ListPeopleInfoRsp = 51; // 获取家庭信息 - 回执
+
+  TMT_ListPeopleUpdateApplyReq = 52; // 获取申请
+  TMT_ListPeopleUpdateApplyRsp = 53; // 获取申请 - 回执
+}
