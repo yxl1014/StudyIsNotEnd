@@ -4,6 +4,9 @@ dubbo:
     logger: slf4j
     check-serializable: false
     serialize-check-status: WARN
+    register-mode: instance
+  metadata-report:
+    address: nacos://${nacos.address:127.0.0.1}:8848
   protocol:
     name: dubbo
     port: 40003

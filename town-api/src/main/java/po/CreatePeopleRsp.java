@@ -45,12 +45,12 @@ private static final long serialVersionUID = 0L;
         .ensureFieldAccessorsInitialized(
             po.CreatePeopleRsp.class, po.CreatePeopleRsp.Builder.class);
   }
-  @SuppressWarnings("serial")
-  private java.util.List<po.ErrInfo> err_;
+
   private CreatePeopleRsp() {
     err_ = java.util.Collections.emptyList();
   }
-
+  @SuppressWarnings("serial")
+  private java.util.List<po.ErrInfo> err_;
   /**
    * <pre>
    * 创建失败的人员信息
@@ -268,6 +268,7 @@ private static final long serialVersionUID = 0L;
     Builder builder = new Builder(parent);
     return builder;
   }
+
   /**
    * <pre>
    * 创建家庭信息（管理员） - 回执
@@ -302,8 +303,7 @@ private static final long serialVersionUID = 0L;
       super(parent);
 
     }
-    private java.util.List<po.ErrInfo> err_ =
-      java.util.Collections.emptyList();
+    private int bitField0_;
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
@@ -324,6 +324,29 @@ private static final long serialVersionUID = 0L;
       }
       return result;
     }
+
+    @java.lang.Override
+    public po.CreatePeopleRsp buildPartial() {
+      po.CreatePeopleRsp result = new po.CreatePeopleRsp(this);
+      buildPartialRepeatedFields(result);
+      if (bitField0_ != 0) { buildPartial0(result); }
+      onBuilt();
+      return result;
+    }
+
+    private void buildPartialRepeatedFields(po.CreatePeopleRsp result) {
+      if (errBuilder_ == null) {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          err_ = java.util.Collections.unmodifiableList(err_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.err_ = err_;
+      } else {
+        result.err_ = errBuilder_.build();
+      }
+    }
+    private java.util.List<po.ErrInfo> err_ =
+      java.util.Collections.emptyList();
     private com.google.protobuf.RepeatedFieldBuilder<
         po.ErrInfo, po.ErrInfo.Builder, po.ErrInfoOrBuilder> errBuilder_;
 
@@ -343,76 +366,6 @@ private static final long serialVersionUID = 0L;
 
     private void buildPartial0(po.CreatePeopleRsp result) {
       int from_bitField0_ = bitField0_;
-    }
-
-    @java.lang.Override
-    public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof po.CreatePeopleRsp) {
-        return mergeFrom((po.CreatePeopleRsp)other);
-      } else {
-        super.mergeFrom(other);
-        return this;
-      }
-    }
-
-    @java.lang.Override
-    public po.CreatePeopleRsp buildPartial() {
-      po.CreatePeopleRsp result = new po.CreatePeopleRsp(this);
-      buildPartialRepeatedFields(result);
-      if (bitField0_ != 0) { buildPartial0(result); }
-      onBuilt();
-      return result;
-    }
-
-    @java.lang.Override
-    public final boolean isInitialized() {
-      return true;
-    }
-
-    private void buildPartialRepeatedFields(po.CreatePeopleRsp result) {
-      if (errBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          err_ = java.util.Collections.unmodifiableList(err_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.err_ = err_;
-      } else {
-        result.err_ = errBuilder_.build();
-      }
-    }
-    private int bitField0_;
-
-    public Builder mergeFrom(po.CreatePeopleRsp other) {
-      if (other == po.CreatePeopleRsp.getDefaultInstance()) return this;
-      if (errBuilder_ == null) {
-        if (!other.err_.isEmpty()) {
-          if (err_.isEmpty()) {
-            err_ = other.err_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureErrIsMutable();
-            err_.addAll(other.err_);
-          }
-          onChanged();
-        }
-      } else {
-        if (!other.err_.isEmpty()) {
-          if (errBuilder_.isEmpty()) {
-            errBuilder_.dispose();
-            errBuilder_ = null;
-            err_ = other.err_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-            errBuilder_ =
-              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                 internalGetErrFieldBuilder() : null;
-          } else {
-            errBuilder_.addAllMessages(other.err_);
-          }
-        }
-      }
-      this.mergeUnknownFields(other.getUnknownFields());
-      onChanged();
-      return this;
     }
 
     @java.lang.Override
@@ -460,11 +413,58 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    @java.lang.Override
+    public Builder mergeFrom(com.google.protobuf.Message other) {
+      if (other instanceof po.CreatePeopleRsp) {
+        return mergeFrom((po.CreatePeopleRsp)other);
+      } else {
+        super.mergeFrom(other);
+        return this;
+      }
+    }
+
+    public Builder mergeFrom(po.CreatePeopleRsp other) {
+      if (other == po.CreatePeopleRsp.getDefaultInstance()) return this;
+      if (errBuilder_ == null) {
+        if (!other.err_.isEmpty()) {
+          if (err_.isEmpty()) {
+            err_ = other.err_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureErrIsMutable();
+            err_.addAll(other.err_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.err_.isEmpty()) {
+          if (errBuilder_.isEmpty()) {
+            errBuilder_.dispose();
+            errBuilder_ = null;
+            err_ = other.err_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+            errBuilder_ =
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                 internalGetErrFieldBuilder() : null;
+          } else {
+            errBuilder_.addAllMessages(other.err_);
+          }
+        }
+      }
+      this.mergeUnknownFields(other.getUnknownFields());
+      onChanged();
+      return this;
+    }
     private void ensureErrIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
         err_ = new java.util.ArrayList<po.ErrInfo>(err_);
         bitField0_ |= 0x00000001;
        }
+    }
+
+    @java.lang.Override
+    public final boolean isInitialized() {
+      return true;
     }
 
     /**

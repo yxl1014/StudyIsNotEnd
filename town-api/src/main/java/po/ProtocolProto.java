@@ -390,32 +390,34 @@ public final class ProtocolProto extends com.google.protobuf.GeneratedFile {
       "leInfoRsp\022\035\n\005infos\030\001 \003(\0132\016.po.PeopleInfo" +
       "\"Q\n\032CreatePeopleUpdateApplyReq\022)\n\005apply\030" +
       "\001 \001(\0132\025.po.PeopleUpdateApplyH\000\210\001\001B\010\n\006_ap" +
-      "ply\"\034\n\032CreatePeopleUpdateApplyRsp\"R\n\030Lis" +
+      "ply\"\034\n\032CreatePeopleUpdateApplyRsp\"t\n\030Lis" +
       "tPeopleUpdateApplyReq\022\021\n\004page\030\001 \001(\005H\000\210\001\001" +
-      "\022\021\n\004size\030\002 \001(\005H\001\210\001\001B\007\n\005_pageB\007\n\005_size\"@\n" +
-      "\030ListPeopleUpdateApplyRsp\022$\n\005apply\030\001 \003(\013" +
-      "2\025.po.PeopleUpdateApply\";\n\027DelPeopleUpda" +
-      "teApplyReq\022\024\n\007applyId\030\001 \001(\005H\000\210\001\001B\n\n\010_app" +
-      "lyId\"\031\n\027DelPeopleUpdateApplyRsp*\332\005\n\010Resp" +
-      "Code\022\n\n\006TRC_OK\020\000\022\013\n\007TRC_ERR\020\001\022\027\n\023TRC_TOK" +
-      "EN_NOT_EXIST\020\002\022\025\n\021TRC_TOKEN_INVALID\020\003\022\032\n" +
-      "\026TRC_PARSE_PROTOCOL_ERR\020\004\022\031\n\025TRC_REQUEST" +
-      "_BODY_NULL\020\005\022\022\n\016TRC_PARAM_NULL\020\006\022 \n\034TRC_" +
-      "UPDATE_SERVICE_NOT_FOUND\020\007\022\033\n\027TRC_SERVIC" +
-      "E_UNAVAILABLE\020\010\022\031\n\025TRC_DB_DATA_NOT_FOUND" +
-      "\020d\022\020\n\014TRC_DB_ERROR\020e\022\023\n\017TRC_REDIS_ERROR\020" +
-      "f\022\027\n\022TRC_USER_NOT_EXIST\020\311\001\022\023\n\016TRC_USER_E" +
-      "XIST\020\312\001\022\025\n\020TRC_PASSWORD_ERR\020\313\001\022\036\n\031TRC_US" +
-      "ER_POWER_NOT_ENOUGH\020\314\001\022\024\n\017TRC_USER_IS_BA" +
-      "N\020\315\001\022\031\n\024TRC_NOTICE_NOT_EXIST\020\255\002\022\036\n\031TRC_N" +
-      "OTICE_CAN_NOT_ACCEPT\020\256\002\022\031\n\024TRC_NOTICE_IS" +
-      "_ACCEPT\020\257\002\022\033\n\026TRC_QUESTION_NOT_EXIST\020\221\003\022" +
-      "\033\n\026TRC_QUESTION_IS_IN_OPT\020\222\003\022\034\n\027TRC_QUES" +
-      "TION_NOT_UPDATE\020\223\003\022\030\n\023TRC_STUDY_NOT_EXIS" +
-      "T\020\365\003\022\026\n\021TRC_STUDY_IS_STAR\020\366\003\022\034\n\027TRC_PEOP" +
-      "LE_CARD_IS_NULL\020\331\004\022\035\n\030TRC_PEOPLE_CARD_IS" +
-      "_EXIST\020\332\004\022!\n\034TRC_PEOPLE_CARD_IS_NOT_EXIS" +
-      "T\020\333\004B\025\n\002poB\rProtocolProtoP\001b\006proto3"
+      "\022\021\n\004size\030\002 \001(\005H\001\210\001\001\022\024\n\007applyId\030\003 \001(\005H\002\210\001" +
+      "\001B\007\n\005_pageB\007\n\005_sizeB\n\n\010_applyId\"@\n\030ListP" +
+      "eopleUpdateApplyRsp\022$\n\005apply\030\001 \003(\0132\025.po." +
+      "PeopleUpdateApply\";\n\027DelPeopleUpdateAppl" +
+      "yReq\022\024\n\007applyId\030\001 \001(\005H\000\210\001\001B\n\n\010_applyId\"\031" +
+      "\n\027DelPeopleUpdateApplyRsp*\364\005\n\010RespCode\022\n" +
+      "\n\006TRC_OK\020\000\022\013\n\007TRC_ERR\020\001\022\027\n\023TRC_TOKEN_NOT" +
+      "_EXIST\020\002\022\025\n\021TRC_TOKEN_INVALID\020\003\022\032\n\026TRC_P" +
+      "ARSE_PROTOCOL_ERR\020\004\022\031\n\025TRC_REQUEST_BODY_" +
+      "NULL\020\005\022\022\n\016TRC_PARAM_NULL\020\006\022 \n\034TRC_UPDATE" +
+      "_SERVICE_NOT_FOUND\020\007\022\033\n\027TRC_SERVICE_UNAV" +
+      "AILABLE\020\010\022\031\n\025TRC_DB_DATA_NOT_FOUND\020d\022\020\n\014" +
+      "TRC_DB_ERROR\020e\022\023\n\017TRC_REDIS_ERROR\020f\022\027\n\022T" +
+      "RC_USER_NOT_EXIST\020\311\001\022\023\n\016TRC_USER_EXIST\020\312" +
+      "\001\022\025\n\020TRC_PASSWORD_ERR\020\313\001\022\036\n\031TRC_USER_POW" +
+      "ER_NOT_ENOUGH\020\314\001\022\024\n\017TRC_USER_IS_BAN\020\315\001\022\031" +
+      "\n\024TRC_NOTICE_NOT_EXIST\020\255\002\022\036\n\031TRC_NOTICE_" +
+      "CAN_NOT_ACCEPT\020\256\002\022\031\n\024TRC_NOTICE_IS_ACCEP" +
+      "T\020\257\002\022\033\n\026TRC_QUESTION_NOT_EXIST\020\221\003\022\033\n\026TRC" +
+      "_QUESTION_IS_IN_OPT\020\222\003\022\034\n\027TRC_QUESTION_N" +
+      "OT_UPDATE\020\223\003\022\030\n\023TRC_STUDY_NOT_EXIST\020\365\003\022\026" +
+      "\n\021TRC_STUDY_IS_STAR\020\366\003\022\034\n\027TRC_PEOPLE_CAR" +
+      "D_IS_NULL\020\331\004\022\035\n\030TRC_PEOPLE_CARD_IS_EXIST" +
+      "\020\332\004\022!\n\034TRC_PEOPLE_CARD_IS_NOT_EXIST\020\333\004\022\030" +
+      "\n\023TRC_APPLY_NOT_FOUND\020\275\005B\025\n\002poB\rProtocol" +
+      "ProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -734,7 +736,7 @@ public final class ProtocolProto extends com.google.protobuf.GeneratedFile {
     internal_static_po_ListPeopleUpdateApplyReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_ListPeopleUpdateApplyReq_descriptor,
-        new java.lang.String[] { "Page", "Size", });
+        new java.lang.String[] { "Page", "Size", "ApplyId", });
     internal_static_po_ListPeopleUpdateApplyRsp_descriptor =
       getDescriptor().getMessageType(52);
     internal_static_po_ListPeopleUpdateApplyRsp_fieldAccessorTable = new

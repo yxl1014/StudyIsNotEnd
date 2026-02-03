@@ -1,13 +1,17 @@
 dubbo:
+  metadata-report:
+    address: nacos://${nacos.address:127.0.0.1}:8848
   application:
     name: town-center-consumer
     logger: slf4j
     qos-port: 44444
     check-serializable: false
     serialize-check-status: WARN
+    register-mode: interface
   registry:
-    address: nacos://${nacos.address:127.0.0.1}:8848?username=nacos&password=123456&register-consumer-url=true
+    address: nacos://${nacos.address:127.0.0.1}:8848?username=nacos&password=123456&register-consumer-url=false
     group: town-test
+    register-mode: interface
 
 # netty 配置
 netty:

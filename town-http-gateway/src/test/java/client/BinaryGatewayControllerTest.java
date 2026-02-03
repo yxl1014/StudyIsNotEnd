@@ -1,0 +1,72 @@
+package client;
+
+/**
+ * @author Administrator
+ * @Package : client
+ * @Create on : 2026/2/3 15:44
+ **/
+
+import gateway.GatewayApplication;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import po.LoginReq;
+import po.LoginRsp;
+import po.MsgType;
+import po.RequestMsg;
+
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+@SpringBootTest(classes = GatewayApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class BinaryGatewayControllerTest {
+
+    @Autowired
+    private TestRestTemplate restTemplate;
+
+    @Test
+    void testBinaryForward() throws Exception {
+
+        // ===== 构造二进制请求 =====
+        byte[] requestBytes = buildLoginRequestMsg().toByteArray();
+
+        // ===== 发送 HTTP 二进制请求 =====
+        HttpURLConnection conn =
+                (HttpURLConnection) new URL("http://localhost:48080/gateway/forward")
+                        .openConnection();
+
+        conn.setDoOutput(true);
+        conn.setRequestMethod("POST");
+        conn.setRequestProperty("Content-Type", "application/octet-stream");
+
+        try (OutputStream os = conn.getOutputStream()) {
+            os.write(requestBytes);
+        }
+
+        byte[] resp = conn.getInputStream().readAllBytes();
+
+        LoginRsp loginRsp = LoginRsp.parseFrom(resp);
+        // ===== 打印返回结果 =====
+        System.out.println("loginRsp:" + loginRsp.toString());
+        System.out.println();
+    }
+
+    private RequestMsg buildLoginRequestMsg() {
+
+        LoginReq.Builder builder = LoginReq.newBuilder();
+//            builder.setUserTel(1);
+//            builder.setUserPwd("admin");
+        builder.setUserTel(10001);
+        builder.setUserPwd("123456");
+
+        RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
+        msgBuilder.setMsgType(MsgType.TMT_LoginReq);
+        msgBuilder.setMsg(builder.build().toByteString());
+        RequestMsg requestMsg = msgBuilder.build();
+        System.out.println("发送消息：" + requestMsg.toString());
+        return requestMsg;
+    }
+}
+

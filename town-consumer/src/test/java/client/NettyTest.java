@@ -21,6 +21,10 @@ import java.util.concurrent.TimeUnit;
 
 public class NettyTest {
 
+    public static void main(String[] args) throws InterruptedException {
+        new NettyTest().connect(18023, "127.0.0.1");
+    }
+
     EventLoopGroup group = new NioEventLoopGroup();
 
     public void connect(int port, String host) throws InterruptedException {
@@ -48,10 +52,6 @@ public class NettyTest {
             connect(port, host);
             System.out.println("【" + DateUtil.now() + "】重连成功...");
         }
-    }
-
-    public static void main(String[] args) throws InterruptedException {
-        new NettyTest().connect(18023, "127.0.0.1");
     }
 
     public class ClientChannelInitializer extends ChannelInitializer<SocketChannel> {

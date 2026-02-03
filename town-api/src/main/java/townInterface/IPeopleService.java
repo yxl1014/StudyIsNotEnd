@@ -1,9 +1,6 @@
 package townInterface;
 
-import po.CreatePeopleReq;
-import po.ListPeopleInfoReq;
-import po.ResponseMsg;
-import po.UpdatePeopleReq;
+import po.*;
 
 /**
  * @author Administrator
@@ -18,4 +15,10 @@ public interface IPeopleService {
     ResponseMsg updatePeople(String token, UpdatePeopleReq msg);
 
     ResponseMsg listPeopleInfo(String token, ListPeopleInfoReq msg);
+
+    ResponseMsg createPeopleUpdateApply(String token, CreatePeopleUpdateApplyReq msg);
+
+    ResponseMsg listPeopleUpdateApply(String token, ListPeopleUpdateApplyReq msg);
+
+    ResponseMsg delPeopleUpdateApply(String token, DelPeopleUpdateApplyReq msg);
 }

@@ -239,6 +239,14 @@ public enum RespCode
    * <code>TRC_PEOPLE_CARD_IS_NOT_EXIST = 603;</code>
    */
   TRC_PEOPLE_CARD_IS_NOT_EXIST(603),
+  /**
+   * <pre>
+   * 申请未找到
+   * </pre>
+   *
+   * <code>TRC_APPLY_NOT_FOUND = 701;</code>
+   */
+  TRC_APPLY_NOT_FOUND(701),
   UNRECOGNIZED(-1),
   ;
 
@@ -475,6 +483,14 @@ public enum RespCode
    * <code>TRC_PEOPLE_CARD_IS_NOT_EXIST = 603;</code>
    */
   public static final int TRC_PEOPLE_CARD_IS_NOT_EXIST_VALUE = 603;
+  /**
+   * <pre>
+   * 申请未找到
+   * </pre>
+   *
+   * <code>TRC_APPLY_NOT_FOUND = 701;</code>
+   */
+  public static final int TRC_APPLY_NOT_FOUND_VALUE = 701;
 
 
   public final int getNumber() {
@@ -529,6 +545,7 @@ public enum RespCode
       case 601: return TRC_PEOPLE_CARD_IS_NULL;
       case 602: return TRC_PEOPLE_CARD_IS_EXIST;
       case 603: return TRC_PEOPLE_CARD_IS_NOT_EXIST;
+      case 701: return TRC_APPLY_NOT_FOUND;
       default: return null;
     }
   }

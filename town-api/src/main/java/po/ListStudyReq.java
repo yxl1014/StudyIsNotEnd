@@ -464,22 +464,6 @@ private static final long serialVersionUID = 0L;
       size_ = 0;
       return this;
     }
-
-    @java.lang.Override
-    public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof po.ListStudyReq) {
-        return mergeFrom((po.ListStudyReq)other);
-      } else {
-        super.mergeFrom(other);
-        return this;
-      }
-    }
-
-    @java.lang.Override
-    public final boolean isInitialized() {
-      return true;
-    }
-
     /**
      * <pre>
      * 0则全部，一般进详情页掉这个，我会加阅读次数
@@ -492,7 +476,6 @@ private static final long serialVersionUID = 0L;
     public boolean hasStudyId() {
       return ((bitField0_ & 0x00000001) != 0);
     }
-
     /**
      * <pre>
      * 0则全部，一般进详情页掉这个，我会加阅读次数
@@ -505,7 +488,6 @@ private static final long serialVersionUID = 0L;
     public int getStudyId() {
       return studyId_;
     }
-
     /**
      * <pre>
      * 0则全部，一般进详情页掉这个，我会加阅读次数
@@ -521,6 +503,21 @@ private static final long serialVersionUID = 0L;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
+    }
+
+    @java.lang.Override
+    public Builder mergeFrom(com.google.protobuf.Message other) {
+      if (other instanceof po.ListStudyReq) {
+        return mergeFrom((po.ListStudyReq)other);
+      } else {
+        super.mergeFrom(other);
+        return this;
+      }
+    }
+
+    @java.lang.Override
+    public final boolean isInitialized() {
+      return true;
     }
     /**
      * <code>optional int32 page = 2;</code>

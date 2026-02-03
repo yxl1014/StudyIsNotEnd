@@ -3,11 +3,19 @@ package com.town.mapper;
 import entity.PeopleUpdateApplyDO;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface PeopleUpdateApplyMapper {
 
     @Select("SELECT * FROM people_update_apply WHERE apply_id = #{id}")
     PeopleUpdateApplyDO selectById(Integer id);
+
+    @Select("SELECT * FROM people_update_apply")
+    List<PeopleUpdateApplyDO> selectAll();
+
+    @Select("SELECT * FROM people_update_apply WHERE apply_user_id = #{userTel}")
+    List<PeopleUpdateApplyDO> selectAllByUserTel(Integer userTel);
 
     @Insert("""
             INSERT INTO people_update_apply

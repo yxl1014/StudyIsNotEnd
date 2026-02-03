@@ -1,6 +1,8 @@
 package provider.impl;
 
 import entity.PeopleInfoDO;
+import entity.PeopleUpdateApplyDO;
+import entity.UpdateInfoDO;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.slf4j.Logger;
@@ -12,6 +14,7 @@ import serviceEntity.UserContext;
 import townInterface.IDaoService;
 import townInterface.IPeopleService;
 import townInterface.IUpdateService;
+import util.TimeUtil;
 
 /**
  * @author Administrator
@@ -149,6 +152,99 @@ public class PeopleServiceImpl extends AbstractRpcService implements IPeopleServ
             }
 
             return BizResult.ok(builder.build());
+        });
+    }
+
+    @Override
+    public ResponseMsg createPeopleUpdateApply(String token, CreatePeopleUpdateApplyReq msg) {
+        return execute(MsgType.TMT_CreatePeopleUpdateApplyRsp, token, ()->{
+            if (!msg.hasApply()){
+                return BizResult.error(RespCode.TRC_PARAM_NULL);
+            }
+            PeopleUpdateApplyDO applyDO = daoService.toDO(msg.getApply());
+            if (applyDO.getNewPeople() == null){
+                return BizResult.error(RespCode.TRC_PARAM_NULL);
+            }
+
+            int userTel = UserContext.getUserTel();
+            long nowTime = TimeUtil.nowMillis();
+            applyDO.setApplyUserId(userTel);
+            applyDO.setApplyCreateTime(nowTime);
+
+            int insert = daoService.apply_insert(applyDO);
+            if (insert <= 0){
+                return BizResult.error(RespCode.TRC_DB_ERROR);
+            }
+
+            CreatePeopleUpdateApplyRsp rsp = CreatePeopleUpdateApplyRsp.newBuilder().build();
+            return BizResult.ok(rsp);
+        });
+    }
+
+    @Override
+    public ResponseMsg listPeopleUpdateApply(String token, ListPeopleUpdateApplyReq msg) {
+        return execute(MsgType.TMT_ListPeopleUpdateApplyRsp, token, ()->{
+            ListPeopleUpdateApplyRsp.Builder builder = ListPeopleUpdateApplyRsp.newBuilder();
+            TUserPower userPower = UserContext.getUserPower();
+            if (msg.hasApplyId()){
+                PeopleUpdateApplyDO updateApplyDO = daoService.apply_selectById(msg.getApplyId());
+                if (updateApplyDO == null){
+                    return BizResult.error(RespCode.TRC_APPLY_NOT_FOUND);
+                }
+                if (userPower.equals(TUserPower.TUP_CM)){
+                    if (updateApplyDO.getApplyUserId() != UserContext.getUserTel()){
+                        return BizResult.error(RespCode.TRC_USER_POWER_NOT_ENOUGH);
+                    }
+                }
+                builder.addApply(daoService.toProto(updateApplyDO));
+            }
+            else {
+                if (!msg.hasPage() || !msg.hasSize() || msg.getPage() == 0 || msg.getSize() == 0){
+                    return BizResult.error(RespCode.TRC_PARAM_NULL);
+                }
+                if (userPower.equals(TUserPower.TUP_CM)) {
+                    for (PeopleUpdateApplyDO applyDO : daoService.apply_selectAllByUserTel(msg.getPage(), msg.getSize(), UserContext.getUserTel())) {
+                        builder.addApply(daoService.toProto(applyDO));
+                    }
+                }
+                else {
+                    for (PeopleUpdateApplyDO applyDO : daoService.apply_selectAll(msg.getPage(), msg.getSize())) {
+                        builder.addApply(daoService.toProto(applyDO));
+                    }
+                }
+            }
+
+            return BizResult.ok(builder.build());
+        });
+    }
+
+    @Override
+    public ResponseMsg delPeopleUpdateApply(String token, DelPeopleUpdateApplyReq msg) {
+        return execute(MsgType.TMT_DelPeopleUpdateApplyRsp, token, ()->{
+            if (!msg.hasApplyId()){
+                return BizResult.error(RespCode.TRC_PARAM_NULL);
+            }
+            PeopleUpdateApplyDO updateApplyDO = daoService.apply_selectById(msg.getApplyId());
+            if (updateApplyDO == null){
+                return BizResult.error(RespCode.TRC_APPLY_NOT_FOUND);
+            }
+            int del = daoService.apply_delete(msg.getApplyId());
+            if (del <= 0){
+                return BizResult.error(RespCode.TRC_DB_ERROR);
+            }
+
+            int userTel = UserContext.getUserTel();
+            long time = TimeUtil.nowMillis();
+            String userName = UserContext.getUserName();
+            UpdateInfoDO updateInfoDO = new UpdateInfoDO();
+            updateInfoDO.setInfoId(msg.getApplyId());
+            updateInfoDO.setBeforeMsg(daoService.toProto(updateInfoDO).toByteArray());
+            updateInfoDO.setUpdateTime(time);
+            updateInfoDO.setUpdateUserTel(userTel);
+            updateInfoDO.setUpdateName(userName);
+
+            DelPeopleUpdateApplyRsp rsp = DelPeopleUpdateApplyRsp.newBuilder().build();
+            return BizResult.ok(rsp, updateInfoDO);
         });
     }
 }

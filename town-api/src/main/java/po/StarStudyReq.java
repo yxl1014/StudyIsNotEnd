@@ -315,7 +315,7 @@ private static final long serialVersionUID = 0L;
       super(parent);
 
     }
-    private boolean isCancel_ ;
+    private int bitField0_;
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
@@ -345,25 +345,6 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
-    @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      bitField0_ = 0;
-      studyId_ = 0;
-      isCancel_ = false;
-      return this;
-    }
-
-    @java.lang.Override
-    public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof po.StarStudyReq) {
-        return mergeFrom((po.StarStudyReq)other);
-      } else {
-        super.mergeFrom(other);
-        return this;
-      }
-    }
-
     private void buildPartial0(po.StarStudyReq result) {
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
@@ -377,11 +358,7 @@ private static final long serialVersionUID = 0L;
       }
       result.bitField0_ |= to_bitField0_;
     }
-
-    @java.lang.Override
-    public final boolean isInitialized() {
-      return true;
-    }
+    private int studyId_ ;
 
     public Builder mergeFrom(po.StarStudyReq other) {
       if (other == po.StarStudyReq.getDefaultInstance()) return this;
@@ -395,63 +372,7 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-    private int bitField0_;
-
-    private int studyId_ ;
-    /**
-     * <pre>
-     * id
-     * </pre>
-     *
-     * <code>optional int32 studyId = 1;</code>
-     * @return Whether the studyId field is set.
-     */
-    @java.lang.Override
-    public boolean hasStudyId() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <pre>
-     * id
-     * </pre>
-     *
-     * <code>optional int32 studyId = 1;</code>
-     * @return The studyId.
-     */
-    @java.lang.Override
-    public int getStudyId() {
-      return studyId_;
-    }
-    /**
-     * <pre>
-     * id
-     * </pre>
-     *
-     * <code>optional int32 studyId = 1;</code>
-     * @param value The studyId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setStudyId(int value) {
-
-      studyId_ = value;
-      bitField0_ |= 0x00000001;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * id
-     * </pre>
-     *
-     * <code>optional int32 studyId = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearStudyId() {
-      bitField0_ = (bitField0_ & ~0x00000001);
-      studyId_ = 0;
-      onChanged();
-      return this;
-    }
+    private boolean isCancel_ ;
 
     @java.lang.Override
     public Builder mergeFrom(
@@ -495,6 +416,87 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    @java.lang.Override
+    public Builder clear() {
+      super.clear();
+      bitField0_ = 0;
+      studyId_ = 0;
+      isCancel_ = false;
+      return this;
+    }
+
+    @java.lang.Override
+    public Builder mergeFrom(com.google.protobuf.Message other) {
+      if (other instanceof po.StarStudyReq) {
+        return mergeFrom((po.StarStudyReq)other);
+      } else {
+        super.mergeFrom(other);
+        return this;
+      }
+    }
+
+    @java.lang.Override
+    public final boolean isInitialized() {
+      return true;
+    }
+
+    /**
+     * <pre>
+     * id
+     * </pre>
+     *
+     * <code>optional int32 studyId = 1;</code>
+     * @return Whether the studyId field is set.
+     */
+    @java.lang.Override
+    public boolean hasStudyId() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+
+    /**
+     * <pre>
+     * id
+     * </pre>
+     *
+     * <code>optional int32 studyId = 1;</code>
+     * @return The studyId.
+     */
+    @java.lang.Override
+    public int getStudyId() {
+      return studyId_;
+    }
+
+    /**
+     * <pre>
+     * id
+     * </pre>
+     *
+     * <code>optional int32 studyId = 1;</code>
+     * @param value The studyId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStudyId(int value) {
+
+      studyId_ = value;
+      bitField0_ |= 0x00000001;
+      onChanged();
+      return this;
+    }
+
+    /**
+     * <pre>
+     * id
+     * </pre>
+     *
+     * <code>optional int32 studyId = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearStudyId() {
+      bitField0_ = (bitField0_ & ~0x00000001);
+      studyId_ = 0;
+      onChanged();
+      return this;
+    }
     /**
      * <pre>
      * 是否取消收藏

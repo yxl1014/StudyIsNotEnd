@@ -19,6 +19,7 @@
         <module>town-question-provider</module>
         <module>town-study-provider</module>
         <module>town-people-provider</module>
+        <module>town-http-gateway</module>
     </modules>
 
     <properties>

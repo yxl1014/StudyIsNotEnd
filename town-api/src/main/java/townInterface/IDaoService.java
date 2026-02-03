@@ -110,4 +110,14 @@ public interface IDaoService {
     int people_insert(PeopleInfoDO entity);
     int people_update(PeopleInfoDO entity);
     int people_delete(String id);
+
+    /// apply
+    PeopleUpdateApplyDO toDO(po.PeopleUpdateApply proto);
+    po.PeopleUpdateApply toProto(PeopleUpdateApplyDO entity);
+    PeopleUpdateApplyDO apply_selectById(Integer id);
+    List<PeopleUpdateApplyDO> apply_selectAll(int page, int size);
+    List<PeopleUpdateApplyDO> apply_selectAllByUserTel(int page, int size, Integer userTel);
+    int apply_insert(PeopleUpdateApplyDO entity);
+    int apply_update(PeopleUpdateApplyDO entity);
+    int apply_delete(Integer id);
 }

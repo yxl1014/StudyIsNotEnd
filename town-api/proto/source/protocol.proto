@@ -63,6 +63,8 @@ enum RespCode
   TRC_PEOPLE_CARD_IS_NULL = 601; // 成员ID为空
   TRC_PEOPLE_CARD_IS_EXIST = 602; // 成员ID存在
   TRC_PEOPLE_CARD_IS_NOT_EXIST = 603; // 成员ID不存在
+
+  TRC_APPLY_NOT_FOUND = 701; // 申请未找到
 }
 
 
@@ -338,6 +340,7 @@ message CreatePeopleUpdateApplyRsp{}
 message ListPeopleUpdateApplyReq{
   optional int32 page = 1;
   optional int32 size = 2;
+  optional int32 applyId = 3;
 }
 
 // 获取申请 - 回执

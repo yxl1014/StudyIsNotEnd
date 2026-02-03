@@ -95,4 +95,16 @@ public class RequestTransfer {
     public ResponseMsg listPeopleInfo(String token, ListPeopleInfoReq msg) {
         return serviceManager.peopleService.listPeopleInfo(token, msg);
     }
+
+    public ResponseMsg createPeopleUpdateApply(String token, CreatePeopleUpdateApplyReq msg) {
+        return serviceManager.peopleService.createPeopleUpdateApply(token, msg);
+    }
+
+    public ResponseMsg listPeopleUpdateApply(String token, ListPeopleUpdateApplyReq msg) {
+        return serviceManager.peopleService.listPeopleUpdateApply(token, msg);
+    }
+
+    public ResponseMsg delPeopleUpdateApply(String token, DelPeopleUpdateApplyReq msg) {
+        return serviceManager.peopleService.delPeopleUpdateApply(token, msg);
+    }
 }
