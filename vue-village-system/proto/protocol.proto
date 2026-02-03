@@ -1,0 +1,353 @@
+syntax = "proto3";
+package po;
+
+
+option java_outer_classname = "ProtocolProto";
+option java_package = "po";
+option java_multiple_files = true;
+
+import "base.proto";
+import "entity.proto";
+
+// 请求消息体
+message RequestMsg
+{
+  optional MsgType msgType = 1;   // 消息类型
+  optional string token = 2;      // token
+  optional bytes msg = 3;         // 消息体 就是下方各个Req结尾的protobuf序列化
+}
+
+message ResponseMsg
+{
+  optional RespCode errCode = 1;  // 返回编码
+  optional MsgType msgType = 2;   // 消息类型
+  optional bytes msg = 3;         // 返回体就是下方各个Rsp结尾的protobuf序列化
+}
+
+// 返回编码
+enum RespCode
+{
+  TRC_OK = 0;   // 成功
+  TRC_ERR = 1;  // 错误
+  TRC_TOKEN_NOT_EXIST = 2; // TOKEN不存在
+  TRC_TOKEN_INVALID = 3; // TOKEN失效
+
+  TRC_PARSE_PROTOCOL_ERR = 4; // 解析协议失败
+  TRC_REQUEST_BODY_NULL = 5; // 请求体为空
+  TRC_PARAM_NULL = 6; // 参数为空
+  TRC_UPDATE_SERVICE_NOT_FOUND = 7; // 更新服务未启动
+  TRC_SERVICE_UNAVAILABLE = 8; // 服务未启动
+
+
+  TRC_DB_DATA_NOT_FOUND = 100; // 数据没找到
+  TRC_DB_ERROR = 101; // 数据操作异常
+  TRC_REDIS_ERROR = 102; // 操作Redis异常
+
+  TRC_USER_NOT_EXIST = 201; // 用户不存在
+  TRC_USER_EXIST = 202; // 用户已存在
+  TRC_PASSWORD_ERR = 203; // 密码错误
+  TRC_USER_POWER_NOT_ENOUGH = 204; // 用户权限不足
+  TRC_USER_IS_BAN = 205; // 用户被冻结
+
+  TRC_NOTICE_NOT_EXIST = 301; // 公告不存在
+  TRC_NOTICE_CAN_NOT_ACCEPT = 302; // 此公告无需确认
+  TRC_NOTICE_IS_ACCEPT = 303; // 此公告已取人
+
+  TRC_QUESTION_NOT_EXIST = 401; // 问题不存在
+  TRC_QUESTION_IS_IN_OPT = 402; // 问题已经在处理了
+  TRC_QUESTION_NOT_UPDATE = 403; // 问题无修改
+
+  TRC_STUDY_NOT_EXIST = 501; // 学习信息不存在
+  TRC_STUDY_IS_STAR = 502; // 学习信息已关注
+
+  TRC_PEOPLE_CARD_IS_NULL = 601; // 成员ID为空
+  TRC_PEOPLE_CARD_IS_EXIST = 602; // 成员ID存在
+  TRC_PEOPLE_CARD_IS_NOT_EXIST = 603; // 成员ID不存在
+}
+
+
+message RequestTest
+{
+  optional string hello = 1;
+}
+
+message ResponseTest
+{
+  optional string world = 1;
+}
+
+// 登录
+message LoginReq
+{
+  optional int32 userTel = 1;
+  optional string userPwd = 2; // 用户密码
+}
+
+// 登录 - 回执
+message LoginRsp
+{
+  optional string token = 1; // 登录成功返回的token
+  optional UserInfo userInfo = 2; // 用户信息
+}
+
+// 注册
+message RegisterReq
+{
+  optional UserInfo userInfo = 1; // 用户信息
+}
+
+// 注册 - 回执
+message RegisterRsp
+{}
+
+// 修改用户信息（管理员）
+message UpdateUserInfoReq
+{
+  optional bool isDel = 1; // 是否删除
+  optional UserInfo userInfo = 2; // 用户信息
+}
+
+// 修改用户信息（管理员） - 回执
+message UpdateUserInfoRsp
+{}
+
+// 发布公告（管理员）
+message CreateNoticeReq
+{
+  optional NoticeInfo noticeInfo = 1;
+}
+
+// 发布公告（管理员） - 回执
+message CreateNoticeRsp
+{}
+
+// 修改公告（管理员）
+message UpdateNoticeReq
+{
+  optional bool isDel = 1; // 是否删除
+  optional NoticeInfo noticeInfo = 2;
+}
+
+// 修改公告（管理员） - 回执
+message UpdateNoticeRsp
+{}
+
+// 获取公告
+message ListNoticeReq
+{
+  optional int32 noticeId = 1; // 公告ID，不填或填0代表拉去所有
+  optional int32 page = 2; // 第几页
+  optional int32 size = 3; // 几条
+}
+
+// 获取公告 - 回执
+message ListNoticeRsp
+{
+  repeated NoticeInfo infos = 1;
+}
+
+// 标记已读
+message SetNoticeReadReq
+{
+  optional int32 noticeId = 1; // 公告ID
+}
+
+// 标记已读 - 回执
+message SetNoticeReadRsp
+{}
+
+// 获取已读
+message ListNoticeReadReq
+{}
+
+// 获取已读 - 回执
+message ListNoticeReadRsp
+{
+  repeated int32 noticeList = 1; // 已读公告列表
+}
+
+// 查看修改记录（管理员）
+message ListUpdateInfoReq
+{
+  optional int32 updateId = 1; // 修改ID，不填或填0代表拉去所有
+  optional int32 page = 2; // 第几页
+  optional int32 size = 3; // 几条
+}
+
+// 查看修改记录（管理员） - 回执
+message ListUpdateInfoRsp
+{
+  repeated UpdateInfo infos = 1; // 修改ID，不填或填0代表拉去所有
+}
+
+// 村民发布问题
+message CreateQuestionReq
+{
+  optional QuestionInfo question = 1; // 问题信息
+}
+
+// 村民发布问题 - 回执
+message CreateQuestionRsp
+{}
+
+// 修改问题 村民只能修改自己发布的待处理的问题，只能修改问题类型、问题描述、问题附件
+message UpdateQuestionReq
+{
+  optional QuestionInfo question = 1; // 问题信息
+  optional QuestionHandlingInfo handlingInfo = 2; // 处理结果记录，如果状态变为已处理需要上传
+}
+
+// 修改问题（管理员） - 回执
+message UpdateQuestionRsp
+{
+}
+
+// 获取所有问题处理结果（管理员）
+message ListQuestionHandlingReq
+{
+
+}
+
+// 获取所有问题处理结果（管理员） - 回执
+message ListQuestionHandlingRsp
+{
+  repeated QuestionHandlingInfo infos = 1; // 处理结果列表
+}
+
+// 获取问题列表 村民：获取自己提出的问题，村干部：获取所有未分配处理人和处理人是自己的。
+message ListQuestionReq
+{
+  optional int32 page = 1;
+  optional int32 size = 2;
+}
+
+// 获取问题列表 - 回执
+message ListQuestionRsp
+{
+  repeated QuestionInfo infos = 1; // 问题列表
+}
+
+// 获取所有用户待收取的信息，发送成功后就删除
+message ListNotifyUserInfoReq
+{
+  optional int32 page = 1;
+  optional int32 size = 2;
+}
+
+// 获取所有用户待收取的信息 - 回执
+message ListNotifyUserInfoRsp{
+  repeated NotifyUserInfo infos = 1; // 所有通知用户的信息
+}
+
+// 创建学习资料（管理员）
+message CreateStudyReq{
+  optional StudyInfo studyInfo = 1; // 学习信息
+}
+
+// 创建学习资料（管理员） - 回执
+message CreateStudyRsp
+{}
+
+// 修改学习资料（管理员）
+message UpdateStudyReq{
+  optional bool isDel = 1; // 是否删除
+  optional StudyInfo studyInfo = 2; // 学习信息
+}
+
+// 修改学习资料（管理员） - 回执
+message UpdateStudyRsp{}
+
+// 获取学习信息
+message ListStudyReq{
+  optional int32 studyId = 1; //0则全部，一般进详情页掉这个，我会加阅读次数
+  optional int32 page = 2;
+  optional int32 size = 3;
+}
+
+// 获取学习信息 - 回执
+message ListStudyRsp{
+  repeated StudyInfo infos = 1; // 学习信息列表
+}
+
+// 收藏学习内容
+message StarStudyReq{
+  optional int32 studyId = 1; // id
+  optional bool isCancel = 2; // 是否取消收藏
+}
+
+// 收藏学习内容 - 回执
+message StarStudyRsp{
+}
+
+// 获取收藏列表
+message ListUserStarStudyReq{
+  optional int32 page = 1;
+  optional int32 size = 2;
+}
+
+// 获取收藏列表 - 回执
+message ListUserStarStudyRsp{
+  repeated StudyInfo infos = 1; // 学习信息列表
+}
+
+// 创建家庭信息（管理员）
+message CreatePeopleReq{
+  repeated PeopleInfo infos = 1; // 家庭信息
+}
+
+// 创建家庭信息（管理员） - 回执
+message CreatePeopleRsp{
+  repeated ErrInfo err = 1; // 创建失败的人员信息
+}
+
+message ErrInfo{
+  optional int32 index = 1; // 下标
+  optional RespCode eCode = 2; // 错误信息
+}
+
+// 修改家庭信息（管理员）
+message UpdatePeopleReq{
+  optional bool isDel = 1; // 是否删除
+  optional PeopleInfo infos = 2; // 家庭信息
+}
+
+// 修改家庭信息（管理员） - 回执
+message UpdatePeopleRsp{}
+
+// 获取家庭信息 村民只能获取自己的， 村干部如果不填cardID则获取全部
+message ListPeopleInfoReq{
+  optional string cardId = 1; // 身份证ID
+  optional int32 page = 2;
+  optional int32 size = 3;
+}
+
+// 获取家庭信息 - 回执
+message ListPeopleInfoRsp{
+  repeated PeopleInfo infos = 1; // 家庭信息
+}
+
+// 提交修改申请
+message CreatePeopleUpdateApplyReq{
+  optional PeopleUpdateApply apply = 1; // 修改内容
+}
+
+// 提交修改申请 - 回执
+message CreatePeopleUpdateApplyRsp{}
+
+// 获取申请 用户获取自己的申请
+message ListPeopleUpdateApplyReq{
+  optional int32 page = 1;
+  optional int32 size = 2;
+}
+
+// 获取申请 - 回执
+message ListPeopleUpdateApplyRsp{
+  repeated PeopleUpdateApply apply = 1; // 申请内容
+}
+
+// 删除修改申请（管理员）
+message DelPeopleUpdateApplyReq{
+  optional int32 applyId = 1;
+}
+// 删除修改申请（管理员） - 回执
+message DelPeopleUpdateApplyRsp{}
