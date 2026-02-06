@@ -434,12 +434,6 @@ private static final long serialVersionUID = 0L;
         return this;
       }
     }
-
-    @java.lang.Override
-    public final boolean isInitialized() {
-      return true;
-    }
-
     /**
      * <pre>
      * id
@@ -452,7 +446,6 @@ private static final long serialVersionUID = 0L;
     public boolean hasStudyId() {
       return ((bitField0_ & 0x00000001) != 0);
     }
-
     /**
      * <pre>
      * id
@@ -465,7 +458,6 @@ private static final long serialVersionUID = 0L;
     public int getStudyId() {
       return studyId_;
     }
-
     /**
      * <pre>
      * id
@@ -482,7 +474,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
     /**
      * <pre>
      * id
@@ -496,6 +487,11 @@ private static final long serialVersionUID = 0L;
       studyId_ = 0;
       onChanged();
       return this;
+    }
+
+    @java.lang.Override
+    public final boolean isInitialized() {
+      return true;
     }
     /**
      * <pre>

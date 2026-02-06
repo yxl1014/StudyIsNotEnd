@@ -77,7 +77,7 @@ public class NettyTest {
             pipeline.addLast("protobufDecoder",
                     new ProtobufDecoder(ResponseMsg.getDefaultInstance()));
 
-            // 5. 业务处理器
+            // 5. 业务
             pipeline.addLast("chatHandler", new ChatReqHandler());
 
             // 6. 心跳（可选）
