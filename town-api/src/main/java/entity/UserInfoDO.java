@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @Data
 public class UserInfoDO implements Serializable {
-    private Integer userTel;
+    private Long userTel;
     private String userName;
     private String userPwd;
     private String userTown;

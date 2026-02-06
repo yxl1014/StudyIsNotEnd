@@ -79,7 +79,7 @@ public class DaoManager implements IDaoService {
 
     /* ======================= User ======================= */
     @Override
-    public UserInfoDO user_selectById(Integer userTel) {
+    public UserInfoDO user_selectById(Long userTel) {
         return userInfoMapper.selectById(userTel);
     }
 
@@ -94,7 +94,7 @@ public class DaoManager implements IDaoService {
     }
 
     @Override
-    public int user_delete(Integer userTel) {
+    public int user_delete(Long userTel) {
         return userInfoMapper.delete(userTel);
     }
 
@@ -124,7 +124,7 @@ public class DaoManager implements IDaoService {
     }
 
     @Override
-    public NoticeInfoDO notice_selectByWriterAndCreateTime(Integer writerTel, Long createTime) {
+    public NoticeInfoDO notice_selectByWriterAndCreateTime(Long writerTel, Long createTime) {
         return noticeInfoMapper.selectByWriterAndCreateTime(writerTel, createTime);
     }
 
@@ -194,12 +194,12 @@ public class DaoManager implements IDaoService {
     }
 
     @Override
-    public List<UserReadNoticeInfoDO> read_selectByUserTel(Integer userTel) {
+    public List<UserReadNoticeInfoDO> read_selectByUserTel(Long userTel) {
         return userReadNoticeInfoMapper.selectByUserTel(userTel);
     }
 
     @Override
-    public List<UserReadNoticeInfoDO> read_selectByUserTelAndNoticeId(Integer userTel, Integer noticeId) {
+    public List<UserReadNoticeInfoDO> read_selectByUserTelAndNoticeId(Long userTel, Integer noticeId) {
         return userReadNoticeInfoMapper.selectByUserTelAndNoticeId(userTel, noticeId);
     }
 
@@ -229,13 +229,13 @@ public class DaoManager implements IDaoService {
     }
 
     @Override
-    public List<QuestionInfoDO> quest_selectByWriterTel(int page, int size, Integer userTel) {
+    public List<QuestionInfoDO> quest_selectByWriterTel(int page, int size, Long userTel) {
         PageHelper.startPage(page, size);
         return questionInfoMapper.selectByWriterTel(userTel);
     }
 
     @Override
-    public List<QuestionInfoDO> quest_selectByChoiceUser(int page, int size, Integer choiceUser) {
+    public List<QuestionInfoDO> quest_selectByChoiceUser(int page, int size, Long choiceUser) {
         PageHelper.startPage(page, size);
         return questionInfoMapper.selectByChoiceUser(choiceUser);
     }
@@ -272,7 +272,7 @@ public class DaoManager implements IDaoService {
     }
 
     @Override
-    public List<NotifyUserInfoDO> notify_selectByUserId(Integer userTel) {
+    public List<NotifyUserInfoDO> notify_selectByUserId(Long userTel) {
         return notifyUserInfoMapper.selectByUserId(userTel);
     }
 
@@ -363,13 +363,13 @@ public class DaoManager implements IDaoService {
     }
 
     @Override
-    public UserStarStudyInfoDO star_selectByIdAndTel(Integer id, Integer userTel) {
+    public UserStarStudyInfoDO star_selectByIdAndTel(Integer id, Long userTel) {
         return userStarStudyInfoMapper.selectByIdAndTel(id, userTel);
     }
 
 
     @Override
-    public List<UserStarStudyInfoDO> star_selectByUserTel(Integer userTel, int page, int size) {
+    public List<UserStarStudyInfoDO> star_selectByUserTel(Long userTel, int page, int size) {
         PageHelper.startPage(page, size);
         return userStarStudyInfoMapper.selectByUserTel(userTel);
     }
@@ -460,7 +460,7 @@ public class DaoManager implements IDaoService {
     }
 
     @Override
-    public List<PeopleUpdateApplyDO> apply_selectAllByUserTel(int page, int size, Integer userTel) {
+    public List<PeopleUpdateApplyDO> apply_selectAllByUserTel(int page, int size, Long userTel) {
         PageHelper.startPage(page, size);
         return peopleUpdateApplyMapper.selectAllByUserTel(userTel);
     }

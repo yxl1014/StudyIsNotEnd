@@ -17,10 +17,55 @@ public final class ListPeopleUpdateApplyReq extends
     com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:po.ListPeopleUpdateApplyReq)
     ListPeopleUpdateApplyReqOrBuilder {
+private static final long serialVersionUID = 0L;
+  static {
+    com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+      com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+      /* major= */ 4,
+      /* minor= */ 33,
+      /* patch= */ 2,
+      /* suffix= */ "",
+      "ListPeopleUpdateApplyReq");
+  }
+  // Use ListPeopleUpdateApplyReq.newBuilder() to construct.
+  private ListPeopleUpdateApplyReq(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    super(builder);
+  }
+  private ListPeopleUpdateApplyReq() {
+  }
+
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return po.ProtocolProto.internal_static_po_ListPeopleUpdateApplyReq_descriptor;
+  }
+
+  @java.lang.Override
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+    return po.ProtocolProto.internal_static_po_ListPeopleUpdateApplyReq_fieldAccessorTable
+        .ensureFieldAccessorsInitialized(
+            po.ListPeopleUpdateApplyReq.class, po.ListPeopleUpdateApplyReq.Builder.class);
+  }
+
   public static final int PAGE_FIELD_NUMBER = 1;
   public static final int SIZE_FIELD_NUMBER = 2;
   public static final int APPLYID_FIELD_NUMBER = 3;
-private static final long serialVersionUID = 0L;
+  /**
+   * <code>optional int32 page = 1;</code>
+   * @return Whether the page field is set.
+   */
+  @java.lang.Override
+  public boolean hasPage() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+  /**
+   * <code>optional int32 page = 1;</code>
+   * @return The page.
+   */
+  @java.lang.Override
+  public int getPage() {
+    return page_;
+  }
   // @@protoc_insertion_point(class_scope:po.ListPeopleUpdateApplyReq)
   private static final po.ListPeopleUpdateApplyReq DEFAULT_INSTANCE;
   private static final com.google.protobuf.Parser<ListPeopleUpdateApplyReq>
@@ -44,161 +89,6 @@ private static final long serialVersionUID = 0L;
       return builder.buildPartial();
     }
   };
-
-  static {
-    com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
-      com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
-      /* major= */ 4,
-      /* minor= */ 33,
-      /* patch= */ 2,
-      /* suffix= */ "",
-      "ListPeopleUpdateApplyReq");
-  }
-
-  static {
-    DEFAULT_INSTANCE = new po.ListPeopleUpdateApplyReq();
-  }
-
-  private int bitField0_;
-  private int page_ = 0;
-  private int size_ = 0;
-  private int applyId_ = 0;
-  private byte memoizedIsInitialized = -1;
-  // Use ListPeopleUpdateApplyReq.newBuilder() to construct.
-  private ListPeopleUpdateApplyReq(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-    super(builder);
-  }
-  private ListPeopleUpdateApplyReq() {
-  }
-
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return po.ProtocolProto.internal_static_po_ListPeopleUpdateApplyReq_descriptor;
-  }
-
-  public static po.ListPeopleUpdateApplyReq parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-
-  public static po.ListPeopleUpdateApplyReq parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-
-  public static po.ListPeopleUpdateApplyReq parseFrom(
-      com.google.protobuf.ByteString data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-
-  public static po.ListPeopleUpdateApplyReq parseFrom(
-      com.google.protobuf.ByteString data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-
-  public static po.ListPeopleUpdateApplyReq parseFrom(byte[] data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-
-  public static po.ListPeopleUpdateApplyReq parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-
-  public static po.ListPeopleUpdateApplyReq parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input);
-  }
-
-  public static po.ListPeopleUpdateApplyReq parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input, extensionRegistry);
-  }
-
-  public static po.ListPeopleUpdateApplyReq parseDelimitedFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static po.ListPeopleUpdateApplyReq parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-  }
-
-  public static po.ListPeopleUpdateApplyReq parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input);
-  }
-
-  public static po.ListPeopleUpdateApplyReq parseFrom(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input, extensionRegistry);
-  }
-
-  public static Builder newBuilder() {
-    return DEFAULT_INSTANCE.toBuilder();
-  }
-
-  public static Builder newBuilder(po.ListPeopleUpdateApplyReq prototype) {
-    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-
-  public static po.ListPeopleUpdateApplyReq getDefaultInstance() {
-    return DEFAULT_INSTANCE;
-  }
-
-  public static com.google.protobuf.Parser<ListPeopleUpdateApplyReq> parser() {
-    return PARSER;
-  }
-
-  @java.lang.Override
-  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internalGetFieldAccessorTable() {
-    return po.ProtocolProto.internal_static_po_ListPeopleUpdateApplyReq_fieldAccessorTable
-        .ensureFieldAccessorsInitialized(
-            po.ListPeopleUpdateApplyReq.class, po.ListPeopleUpdateApplyReq.Builder.class);
-  }
-
-  /**
-   * <code>optional int32 page = 1;</code>
-   * @return Whether the page field is set.
-   */
-  @java.lang.Override
-  public boolean hasPage() {
-    return ((bitField0_ & 0x00000001) != 0);
-  }
-
-  /**
-   * <code>optional int32 page = 1;</code>
-   * @return The page.
-   */
-  @java.lang.Override
-  public int getPage() {
-    return page_;
-  }
-
   /**
    * <code>optional int32 size = 2;</code>
    * @return Whether the size field is set.
@@ -207,7 +97,6 @@ private static final long serialVersionUID = 0L;
   public boolean hasSize() {
     return ((bitField0_ & 0x00000002) != 0);
   }
-
   /**
    * <code>optional int32 size = 2;</code>
    * @return The size.
@@ -217,6 +106,11 @@ private static final long serialVersionUID = 0L;
     return size_;
   }
 
+  static {
+    DEFAULT_INSTANCE = new po.ListPeopleUpdateApplyReq();
+  }
+
+  private int bitField0_;
   /**
    * <code>optional int32 applyId = 3;</code>
    * @return Whether the applyId field is set.
@@ -225,7 +119,6 @@ private static final long serialVersionUID = 0L;
   public boolean hasApplyId() {
     return ((bitField0_ & 0x00000004) != 0);
   }
-
   /**
    * <code>optional int32 applyId = 3;</code>
    * @return The applyId.
@@ -234,7 +127,7 @@ private static final long serialVersionUID = 0L;
   public int getApplyId() {
     return applyId_;
   }
-
+  private int page_ = 0;
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -335,10 +228,85 @@ private static final long serialVersionUID = 0L;
     memoizedHashCode = hash;
     return hash;
   }
+  private int size_ = 0;
+  private int applyId_ = 0;
+  private byte memoizedIsInitialized = -1;
+
+  public static po.ListPeopleUpdateApplyReq parseFrom(
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+
+  public static po.ListPeopleUpdateApplyReq parseFrom(
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+
+  public static po.ListPeopleUpdateApplyReq parseFrom(
+      com.google.protobuf.ByteString data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+
+  public static po.ListPeopleUpdateApplyReq parseFrom(
+      com.google.protobuf.ByteString data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+
+  public static po.ListPeopleUpdateApplyReq parseFrom(byte[] data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+
+  public static po.ListPeopleUpdateApplyReq parseFrom(
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+
+  public static po.ListPeopleUpdateApplyReq parseFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input);
+  }
+
+  public static po.ListPeopleUpdateApplyReq parseFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input, extensionRegistry);
+  }
+
+  public static po.ListPeopleUpdateApplyReq parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseDelimitedWithIOException(PARSER, input);
+  }
 
   @java.lang.Override
   public Builder newBuilderForType() { return newBuilder(); }
 
+  public static po.ListPeopleUpdateApplyReq parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+
+  public static po.ListPeopleUpdateApplyReq parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input);
+  }
   @java.lang.Override
   public Builder toBuilder() {
     return this == DEFAULT_INSTANCE
@@ -350,6 +318,30 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
+  }
+
+  public static po.ListPeopleUpdateApplyReq parseFrom(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input, extensionRegistry);
+  }
+
+  public static Builder newBuilder() {
+    return DEFAULT_INSTANCE.toBuilder();
+  }
+
+  public static Builder newBuilder(po.ListPeopleUpdateApplyReq prototype) {
+    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+  }
+
+  public static po.ListPeopleUpdateApplyReq getDefaultInstance() {
+    return DEFAULT_INSTANCE;
+  }
+
+  public static com.google.protobuf.Parser<ListPeopleUpdateApplyReq> parser() {
+    return PARSER;
   }
 
   @java.lang.Override
@@ -373,21 +365,6 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:po.ListPeopleUpdateApplyReq)
       po.ListPeopleUpdateApplyReqOrBuilder {
-    private int bitField0_;
-    private int page_ ;
-    private int size_ ;
-    private int applyId_ ;
-    // Construct using po.ListPeopleUpdateApplyReq.newBuilder()
-    private Builder() {
-
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      super(parent);
-
-    }
-
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return po.ProtocolProto.internal_static_po_ListPeopleUpdateApplyReq_descriptor;
@@ -401,6 +378,8 @@ private static final long serialVersionUID = 0L;
               po.ListPeopleUpdateApplyReq.class, po.ListPeopleUpdateApplyReq.Builder.class);
     }
 
+    private int bitField0_;
+    private int page_ ;
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -534,7 +513,8 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
-
+    private int size_ ;
+    private int applyId_ ;
     /**
      * <code>optional int32 page = 1;</code>
      * @return Whether the page field is set.
@@ -543,7 +523,6 @@ private static final long serialVersionUID = 0L;
     public boolean hasPage() {
       return ((bitField0_ & 0x00000001) != 0);
     }
-
     /**
      * <code>optional int32 page = 1;</code>
      * @return The page.
@@ -552,7 +531,6 @@ private static final long serialVersionUID = 0L;
     public int getPage() {
       return page_;
     }
-
     /**
      * <code>optional int32 page = 1;</code>
      * @param value The page to set.
@@ -565,7 +543,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
     /**
      * <code>optional int32 page = 1;</code>
      * @return This builder for chaining.
@@ -577,6 +554,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    // Construct using po.ListPeopleUpdateApplyReq.newBuilder()
+    private Builder() {
+
+    }
     /**
      * <code>optional int32 size = 2;</code>
      * @return Whether the size field is set.
@@ -585,7 +566,6 @@ private static final long serialVersionUID = 0L;
     public boolean hasSize() {
       return ((bitField0_ & 0x00000002) != 0);
     }
-
     /**
      * <code>optional int32 size = 2;</code>
      * @return The size.
@@ -594,7 +574,6 @@ private static final long serialVersionUID = 0L;
     public int getSize() {
       return size_;
     }
-
     /**
      * <code>optional int32 size = 2;</code>
      * @param value The size to set.
@@ -607,7 +586,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
     /**
      * <code>optional int32 size = 2;</code>
      * @return This builder for chaining.
@@ -619,6 +597,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      super(parent);
+
+    }
     /**
      * <code>optional int32 applyId = 3;</code>
      * @return Whether the applyId field is set.

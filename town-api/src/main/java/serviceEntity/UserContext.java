@@ -45,7 +45,7 @@ public final class UserContext {
 
     /* ===== 便捷方法 ===== */
 
-    public static int getUserTel() {
+    public static long getUserTel() {
         return getRequired().getUserTel();
     }
 

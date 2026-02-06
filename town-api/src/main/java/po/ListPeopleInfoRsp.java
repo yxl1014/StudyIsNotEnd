@@ -17,10 +17,51 @@ public final class ListPeopleInfoRsp extends
     com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:po.ListPeopleInfoRsp)
     ListPeopleInfoRspOrBuilder {
-  public static final int INFOS_FIELD_NUMBER = 1;
 private static final long serialVersionUID = 0L;
+  static {
+    com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+      com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+      /* major= */ 4,
+      /* minor= */ 33,
+      /* patch= */ 2,
+      /* suffix= */ "",
+      "ListPeopleInfoRsp");
+  }
+  // Use ListPeopleInfoRsp.newBuilder() to construct.
+  private ListPeopleInfoRsp(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    super(builder);
+  }
+  private ListPeopleInfoRsp() {
+    infos_ = java.util.Collections.emptyList();
+  }
+
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return po.ProtocolProto.internal_static_po_ListPeopleInfoRsp_descriptor;
+  }
+
+  @java.lang.Override
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+    return po.ProtocolProto.internal_static_po_ListPeopleInfoRsp_fieldAccessorTable
+        .ensureFieldAccessorsInitialized(
+            po.ListPeopleInfoRsp.class, po.ListPeopleInfoRsp.Builder.class);
+  }
+
+  public static final int INFOS_FIELD_NUMBER = 1;
   // @@protoc_insertion_point(class_scope:po.ListPeopleInfoRsp)
   private static final po.ListPeopleInfoRsp DEFAULT_INSTANCE;
+  /**
+   * <pre>
+   * 家庭信息
+   * </pre>
+   *
+   * <code>repeated .po.PeopleInfo infos = 1;</code>
+   */
+  @java.lang.Override
+  public java.util.List<po.PeopleInfo> getInfosList() {
+    return infos_;
+  }
   private static final com.google.protobuf.Parser<ListPeopleInfoRsp>
       PARSER = new com.google.protobuf.AbstractParser<ListPeopleInfoRsp>() {
     @java.lang.Override
@@ -42,36 +83,113 @@ private static final long serialVersionUID = 0L;
       return builder.buildPartial();
     }
   };
-
-  static {
-    com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
-      com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
-      /* major= */ 4,
-      /* minor= */ 33,
-      /* patch= */ 2,
-      /* suffix= */ "",
-      "ListPeopleInfoRsp");
+  /**
+   * <pre>
+   * 家庭信息
+   * </pre>
+   *
+   * <code>repeated .po.PeopleInfo infos = 1;</code>
+   */
+  @java.lang.Override
+  public int getInfosCount() {
+    return infos_.size();
+  }
+  /**
+   * <pre>
+   * 家庭信息
+   * </pre>
+   *
+   * <code>repeated .po.PeopleInfo infos = 1;</code>
+   */
+  @java.lang.Override
+  public po.PeopleInfo getInfos(int index) {
+    return infos_.get(index);
+  }
+  /**
+   * <pre>
+   * 家庭信息
+   * </pre>
+   *
+   * <code>repeated .po.PeopleInfo infos = 1;</code>
+   */
+  @java.lang.Override
+  public po.PeopleInfoOrBuilder getInfosOrBuilder(
+      int index) {
+    return infos_.get(index);
   }
 
   static {
     DEFAULT_INSTANCE = new po.ListPeopleInfoRsp();
   }
+  @java.lang.Override
+  public final boolean isInitialized() {
+    byte isInitialized = memoizedIsInitialized;
+    if (isInitialized == 1) return true;
+    if (isInitialized == 0) return false;
+
+    memoizedIsInitialized = 1;
+    return true;
+  }
+
+  @java.lang.Override
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
+    for (int i = 0; i < infos_.size(); i++) {
+      output.writeMessage(1, infos_.get(i));
+    }
+    getUnknownFields().writeTo(output);
+  }
+
+  @java.lang.Override
+  public int getSerializedSize() {
+    int size = memoizedSize;
+    if (size != -1) return size;
+
+    size = 0;
+    for (int i = 0; i < infos_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(1, infos_.get(i));
+    }
+    size += getUnknownFields().getSerializedSize();
+    memoizedSize = size;
+    return size;
+  }
+
+  @java.lang.Override
+  public boolean equals(final java.lang.Object obj) {
+    if (obj == this) {
+     return true;
+    }
+    if (!(obj instanceof po.ListPeopleInfoRsp)) {
+      return super.equals(obj);
+    }
+    po.ListPeopleInfoRsp other = (po.ListPeopleInfoRsp) obj;
+
+    if (!getInfosList()
+        .equals(other.getInfosList())) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+    return true;
+  }
+
+  @java.lang.Override
+  public int hashCode() {
+    if (memoizedHashCode != 0) {
+      return memoizedHashCode;
+    }
+    int hash = 41;
+    hash = (19 * hash) + getDescriptor().hashCode();
+    if (getInfosCount() > 0) {
+      hash = (37 * hash) + INFOS_FIELD_NUMBER;
+      hash = (53 * hash) + getInfosList().hashCode();
+    }
+    hash = (29 * hash) + getUnknownFields().hashCode();
+    memoizedHashCode = hash;
+    return hash;
+  }
 
   @SuppressWarnings("serial")
   private java.util.List<po.PeopleInfo> infos_;
   private byte memoizedIsInitialized = -1;
-  // Use ListPeopleInfoRsp.newBuilder() to construct.
-  private ListPeopleInfoRsp(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-    super(builder);
-  }
-  private ListPeopleInfoRsp() {
-    infos_ = java.util.Collections.emptyList();
-  }
-
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return po.ProtocolProto.internal_static_po_ListPeopleInfoRsp_descriptor;
-  }
 
   public static po.ListPeopleInfoRsp parseFrom(
       java.nio.ByteBuffer data)
@@ -139,6 +257,9 @@ private static final long serialVersionUID = 0L;
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
 
+  @java.lang.Override
+  public Builder newBuilderForType() { return newBuilder(); }
+
   public static po.ListPeopleInfoRsp parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
@@ -152,6 +273,18 @@ private static final long serialVersionUID = 0L;
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input, extensionRegistry);
+  }
+  @java.lang.Override
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
+  }
+
+  @java.lang.Override
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+    Builder builder = new Builder(parent);
+    return builder;
   }
 
   public static Builder newBuilder() {
@@ -170,26 +303,6 @@ private static final long serialVersionUID = 0L;
     return PARSER;
   }
 
-  @java.lang.Override
-  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internalGetFieldAccessorTable() {
-    return po.ProtocolProto.internal_static_po_ListPeopleInfoRsp_fieldAccessorTable
-        .ensureFieldAccessorsInitialized(
-            po.ListPeopleInfoRsp.class, po.ListPeopleInfoRsp.Builder.class);
-  }
-
-  /**
-   * <pre>
-   * 家庭信息
-   * </pre>
-   *
-   * <code>repeated .po.PeopleInfo infos = 1;</code>
-   */
-  @java.lang.Override
-  public java.util.List<po.PeopleInfo> getInfosList() {
-    return infos_;
-  }
-
   /**
    * <pre>
    * 家庭信息
@@ -201,125 +314,6 @@ private static final long serialVersionUID = 0L;
   public java.util.List<? extends po.PeopleInfoOrBuilder>
       getInfosOrBuilderList() {
     return infos_;
-  }
-
-  /**
-   * <pre>
-   * 家庭信息
-   * </pre>
-   *
-   * <code>repeated .po.PeopleInfo infos = 1;</code>
-   */
-  @java.lang.Override
-  public int getInfosCount() {
-    return infos_.size();
-  }
-
-  /**
-   * <pre>
-   * 家庭信息
-   * </pre>
-   *
-   * <code>repeated .po.PeopleInfo infos = 1;</code>
-   */
-  @java.lang.Override
-  public po.PeopleInfo getInfos(int index) {
-    return infos_.get(index);
-  }
-
-  /**
-   * <pre>
-   * 家庭信息
-   * </pre>
-   *
-   * <code>repeated .po.PeopleInfo infos = 1;</code>
-   */
-  @java.lang.Override
-  public po.PeopleInfoOrBuilder getInfosOrBuilder(
-      int index) {
-    return infos_.get(index);
-  }
-
-  @java.lang.Override
-  public final boolean isInitialized() {
-    byte isInitialized = memoizedIsInitialized;
-    if (isInitialized == 1) return true;
-    if (isInitialized == 0) return false;
-
-    memoizedIsInitialized = 1;
-    return true;
-  }
-
-  @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
-    for (int i = 0; i < infos_.size(); i++) {
-      output.writeMessage(1, infos_.get(i));
-    }
-    getUnknownFields().writeTo(output);
-  }
-
-  @java.lang.Override
-  public int getSerializedSize() {
-    int size = memoizedSize;
-    if (size != -1) return size;
-
-    size = 0;
-    for (int i = 0; i < infos_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, infos_.get(i));
-    }
-    size += getUnknownFields().getSerializedSize();
-    memoizedSize = size;
-    return size;
-  }
-
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof po.ListPeopleInfoRsp)) {
-      return super.equals(obj);
-    }
-    po.ListPeopleInfoRsp other = (po.ListPeopleInfoRsp) obj;
-
-    if (!getInfosList()
-        .equals(other.getInfosList())) return false;
-    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-    return true;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    if (getInfosCount() > 0) {
-      hash = (37 * hash) + INFOS_FIELD_NUMBER;
-      hash = (53 * hash) + getInfosList().hashCode();
-    }
-    hash = (29 * hash) + getUnknownFields().hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
-
-  @java.lang.Override
-  public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
-  }
-
-  @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-    Builder builder = new Builder(parent);
-    return builder;
   }
 
   @java.lang.Override
@@ -343,22 +337,6 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:po.ListPeopleInfoRsp)
       po.ListPeopleInfoRspOrBuilder {
-    private int bitField0_;
-    private java.util.List<po.PeopleInfo> infos_ =
-      java.util.Collections.emptyList();
-    private com.google.protobuf.RepeatedFieldBuilder<
-        po.PeopleInfo, po.PeopleInfo.Builder, po.PeopleInfoOrBuilder> infosBuilder_;
-
-    // Construct using po.ListPeopleInfoRsp.newBuilder()
-    private Builder() {
-
-    }
-    private Builder(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      super(parent);
-
-    }
-
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return po.ProtocolProto.internal_static_po_ListPeopleInfoRsp_descriptor;
@@ -372,6 +350,9 @@ private static final long serialVersionUID = 0L;
               po.ListPeopleInfoRsp.class, po.ListPeopleInfoRsp.Builder.class);
     }
 
+    private int bitField0_;
+    private java.util.List<po.PeopleInfo> infos_ =
+      java.util.Collections.emptyList();
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -440,39 +421,8 @@ private static final long serialVersionUID = 0L;
         return this;
       }
     }
-
-    public Builder mergeFrom(po.ListPeopleInfoRsp other) {
-      if (other == po.ListPeopleInfoRsp.getDefaultInstance()) return this;
-      if (infosBuilder_ == null) {
-        if (!other.infos_.isEmpty()) {
-          if (infos_.isEmpty()) {
-            infos_ = other.infos_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureInfosIsMutable();
-            infos_.addAll(other.infos_);
-          }
-          onChanged();
-        }
-      } else {
-        if (!other.infos_.isEmpty()) {
-          if (infosBuilder_.isEmpty()) {
-            infosBuilder_.dispose();
-            infosBuilder_ = null;
-            infos_ = other.infos_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-            infosBuilder_ =
-              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                 internalGetInfosFieldBuilder() : null;
-          } else {
-            infosBuilder_.addAllMessages(other.infos_);
-          }
-        }
-      }
-      this.mergeUnknownFields(other.getUnknownFields());
-      onChanged();
-      return this;
-    }
+    private com.google.protobuf.RepeatedFieldBuilder<
+        po.PeopleInfo, po.PeopleInfo.Builder, po.PeopleInfoOrBuilder> infosBuilder_;
 
     @java.lang.Override
     public final boolean isInitialized() {
@@ -523,12 +473,54 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+    // Construct using po.ListPeopleInfoRsp.newBuilder()
+    private Builder() {
 
+    }
+
+    private Builder(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      super(parent);
+
+    }
     private void ensureInfosIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
         infos_ = new java.util.ArrayList<po.PeopleInfo>(infos_);
         bitField0_ |= 0x00000001;
        }
+    }
+
+    public Builder mergeFrom(po.ListPeopleInfoRsp other) {
+      if (other == po.ListPeopleInfoRsp.getDefaultInstance()) return this;
+      if (infosBuilder_ == null) {
+        if (!other.infos_.isEmpty()) {
+          if (infos_.isEmpty()) {
+            infos_ = other.infos_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureInfosIsMutable();
+            infos_.addAll(other.infos_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.infos_.isEmpty()) {
+          if (infosBuilder_.isEmpty()) {
+            infosBuilder_.dispose();
+            infosBuilder_ = null;
+            infos_ = other.infos_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+            infosBuilder_ =
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                 internalGetInfosFieldBuilder() : null;
+          } else {
+            infosBuilder_.addAllMessages(other.infos_);
+          }
+        }
+      }
+      this.mergeUnknownFields(other.getUnknownFields());
+      onChanged();
+      return this;
     }
 
     /**
@@ -767,6 +759,7 @@ private static final long serialVersionUID = 0L;
         return infosBuilder_.getMessageOrBuilder(index);
       }
     }
+
     /**
      * <pre>
      * 家庭信息

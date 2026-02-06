@@ -90,7 +90,7 @@ public class QuestionServiceImpl extends AbstractRpcService implements IQuestion
                 if (respCode == RespCode.TRC_OK){
                     QuestionInfoDO newQuestion = daoService.quest_selectById(questId);
                     updateInfoDO = new UpdateInfoDO();
-                    updateInfoDO.setInfoId(questId);
+                    updateInfoDO.setInfoId((long)questId);
                     updateInfoDO.setInfoType(TUpdateInfoType.TUIT_QUESTION_VALUE);
                     updateInfoDO.setBeforeMsg(daoService.toProto(oldQuestion).toByteArray());
                     updateInfoDO.setAfterMsg(daoService.toProto(newQuestion).toByteArray());

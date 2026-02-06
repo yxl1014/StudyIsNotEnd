@@ -7,7 +7,7 @@ USE town;
 -- 用户信息
 CREATE TABLE user_info
 (
-    user_tel         INT PRIMARY KEY,
+    user_tel         BIGINT PRIMARY KEY,
     user_name        VARCHAR(255) NULL,
     user_pwd         VARCHAR(255) NULL,
     user_town        VARCHAR(255) NULL,
@@ -24,7 +24,7 @@ CREATE TABLE notice_info
     notice_create_time BIGINT       NULL,
     notice_title       VARCHAR(255) NULL,
     notice_context     TEXT         NULL,
-    writer_tel         INT          NULL,
+    writer_tel         BIGINT       NULL,
     writer_name        VARCHAR(32)  NULL,
     is_top             BOOLEAN      NULL,
     is_accept_read     BOOLEAN      NULL,
@@ -35,7 +35,7 @@ CREATE TABLE notice_info
 CREATE TABLE user_read_notice_info
 (
     id        INT PRIMARY KEY AUTO_INCREMENT,
-    user_tel  INT    NULL,
+    user_tel  BIGINT NULL,
     notice_id INT    NULL,
     read_time BIGINT NULL
 ) ENGINE = InnoDB;
@@ -44,12 +44,12 @@ CREATE TABLE user_read_notice_info
 CREATE TABLE update_info
 (
     update_id       INT PRIMARY KEY AUTO_INCREMENT,
-    info_id         INT         NULL,
+    info_id         BIGINT      NULL,
     info_type       INT         NULL,
     before_msg      BLOB        NULL,
     after_msg       BLOB        NULL,
     update_time     BIGINT      NULL,
-    update_user_tel INT         NULL,
+    update_user_tel BIGINT      NULL,
     update_name     VARCHAR(32) NULL
 ) ENGINE = InnoDB;
 
@@ -60,9 +60,9 @@ CREATE TABLE question_info
     question_type      INT        NULL,
     question_ctx       TEXT       NULL,
     quest_photo        MEDIUMBLOB NULL,
-    question_write_tel INT        NULL,
+    question_write_tel BIGINT     NULL,
     node_type          INT        NULL,
-    choice_user        INT        NULL,
+    choice_user        BIGINT     NULL,
     question_time      BIGINT     NULL
 ) ENGINE = InnoDB;
 
@@ -72,7 +72,7 @@ CREATE TABLE question_handling_info
     handle_id       INT PRIMARY KEY AUTO_INCREMENT,
     question_id     INT    NULL,
     handling_type   INT    NULL,
-    handle_user_tel INT    NULL,
+    handle_user_tel BIGINT NULL,
     handle_ctx      TEXT   NULL,
     handle_time     BIGINT NULL
 ) ENGINE = InnoDB;
@@ -81,15 +81,15 @@ CREATE TABLE question_handling_info
 CREATE TABLE notify_user_info
 (
     id       INT PRIMARY KEY AUTO_INCREMENT,
-    user_tel INT  NULL,
-    msg_type INT  NULL,
-    msg_ctx  BLOB NULL
+    user_tel BIGINT NULL,
+    msg_type INT    NULL,
+    msg_ctx  BLOB   NULL
 ) ENGINE = InnoDB;
 
 -- 学习内容
 CREATE TABLE study_info
 (
-    study_id                INT PRIMARY KEY AUTO_INCREMENT,
+    study_id          INT PRIMARY KEY AUTO_INCREMENT,
     study_type        INT     NULL,
     study_create_time BIGINT  NULL,
     study_title       TEXT    NULL,
@@ -104,8 +104,8 @@ CREATE TABLE study_info
 CREATE TABLE user_star_study_info
 (
     id       INT PRIMARY KEY AUTO_INCREMENT,
-    user_tel INT NULL,
-    study_id INT NULL
+    user_tel BIGINT NULL,
+    study_id INT    NULL
 ) ENGINE = InnoDB;
 
 -- 家庭人员信
@@ -121,7 +121,7 @@ CREATE TABLE people_info
 CREATE TABLE people_update_apply
 (
     apply_id          INT PRIMARY KEY AUTO_INCREMENT,
-    apply_user_id     INT    NULL,
+    apply_user_id     BIGINT NULL,
     apply_create_time BIGINT NULL,
     new_people        BLOB   NULL
 ) ENGINE = InnoDB;

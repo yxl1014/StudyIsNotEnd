@@ -11,10 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import po.LoginReq;
-import po.LoginRsp;
-import po.MsgType;
-import po.RequestMsg;
+import po.*;
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -30,7 +27,7 @@ class BinaryGatewayControllerTest {
     void testBinaryForward() throws Exception {
 
         // ===== 构造二进制请求 =====
-        byte[] requestBytes = buildLoginRequestMsg().toByteArray();
+        byte[] requestBytes = buildRegisterRequestMsg().toByteArray();
 
         // ===== 发送 HTTP 二进制请求 =====
         HttpURLConnection conn =
@@ -47,9 +44,10 @@ class BinaryGatewayControllerTest {
 
         byte[] resp = conn.getInputStream().readAllBytes();
 
-        LoginRsp loginRsp = LoginRsp.parseFrom(resp);
+        ResponseMsg registerRsp = ResponseMsg.parseFrom(resp);
+//        LoginRsp loginRsp = LoginRsp.parseFrom(resp);
         // ===== 打印返回结果 =====
-        System.out.println("loginRsp:" + loginRsp.toString());
+        System.out.println("loginRsp:" + registerRsp.toString());
         System.out.println();
     }
 
@@ -64,6 +62,27 @@ class BinaryGatewayControllerTest {
         RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
         msgBuilder.setMsgType(MsgType.TMT_LoginReq);
         msgBuilder.setMsg(builder.build().toByteString());
+        RequestMsg requestMsg = msgBuilder.build();
+        System.out.println("发送消息：" + requestMsg.toString());
+        return requestMsg;
+    }
+
+    private RequestMsg buildRegisterRequestMsg() {
+
+        RegisterReq.Builder register = RegisterReq.newBuilder();
+        UserInfo.Builder userInfo = UserInfo.newBuilder();
+        userInfo.setUserTel(123456);
+        userInfo.setUserPwd("123456");
+        userInfo.setUserName("xxx");
+        userInfo.setUserPower(TUserPower.TUP_CGM);
+        userInfo.setUserTown("yyy");
+        userInfo.setFlagType(TUserFlagType.TUFT_DEFAULT);
+
+        register.setUserInfo(userInfo);
+
+        RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
+        msgBuilder.setMsgType(MsgType.TMT_RegisterReq);
+        msgBuilder.setMsg(register.build().toByteString());
         RequestMsg requestMsg = msgBuilder.build();
         System.out.println("发送消息：" + requestMsg.toString());
         return requestMsg;

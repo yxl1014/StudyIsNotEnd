@@ -11,11 +11,11 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class UserReadNoticeInfoDO implements Serializable {
     private Integer id;
-    private Integer userTel;
+    private Long userTel;
     private Integer noticeId;
     private Long readTime;
 
-    public UserReadNoticeInfoDO(Integer userTel, Integer noticeId, Long readTime) {
+    public UserReadNoticeInfoDO(Long userTel, Integer noticeId, Long readTime) {
         this.userTel = userTel;
         this.noticeId = noticeId;
         this.readTime = readTime;

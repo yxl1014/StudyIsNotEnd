@@ -81,7 +81,7 @@ message ResponseTest
 // 登录
 message LoginReq
 {
-  optional int32 userTel = 1;
+  optional int64 userTel = 1;
   optional string userPwd = 2; // 用户密码
 }
 

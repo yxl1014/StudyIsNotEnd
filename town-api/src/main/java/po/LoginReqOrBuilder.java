@@ -11,15 +11,15 @@ public interface LoginReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional int32 userTel = 1;</code>
+   * <code>optional int64 userTel = 1;</code>
    * @return Whether the userTel field is set.
    */
   boolean hasUserTel();
   /**
-   * <code>optional int32 userTel = 1;</code>
+   * <code>optional int64 userTel = 1;</code>
    * @return The userTel.
    */
-  int getUserTel();
+  long getUserTel();
 
   /**
    * <pre>

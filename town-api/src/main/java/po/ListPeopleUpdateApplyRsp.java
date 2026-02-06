@@ -17,10 +17,51 @@ public final class ListPeopleUpdateApplyRsp extends
     com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:po.ListPeopleUpdateApplyRsp)
     ListPeopleUpdateApplyRspOrBuilder {
-  public static final int APPLY_FIELD_NUMBER = 1;
 private static final long serialVersionUID = 0L;
+  static {
+    com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+      com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+      /* major= */ 4,
+      /* minor= */ 33,
+      /* patch= */ 2,
+      /* suffix= */ "",
+      "ListPeopleUpdateApplyRsp");
+  }
+  // Use ListPeopleUpdateApplyRsp.newBuilder() to construct.
+  private ListPeopleUpdateApplyRsp(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    super(builder);
+  }
+  private ListPeopleUpdateApplyRsp() {
+    apply_ = java.util.Collections.emptyList();
+  }
+
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return po.ProtocolProto.internal_static_po_ListPeopleUpdateApplyRsp_descriptor;
+  }
+
+  @java.lang.Override
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+    return po.ProtocolProto.internal_static_po_ListPeopleUpdateApplyRsp_fieldAccessorTable
+        .ensureFieldAccessorsInitialized(
+            po.ListPeopleUpdateApplyRsp.class, po.ListPeopleUpdateApplyRsp.Builder.class);
+  }
+
+  public static final int APPLY_FIELD_NUMBER = 1;
   // @@protoc_insertion_point(class_scope:po.ListPeopleUpdateApplyRsp)
   private static final po.ListPeopleUpdateApplyRsp DEFAULT_INSTANCE;
+  /**
+   * <pre>
+   * 申请内容
+   * </pre>
+   *
+   * <code>repeated .po.PeopleUpdateApply apply = 1;</code>
+   */
+  @java.lang.Override
+  public java.util.List<po.PeopleUpdateApply> getApplyList() {
+    return apply_;
+  }
   private static final com.google.protobuf.Parser<ListPeopleUpdateApplyRsp>
       PARSER = new com.google.protobuf.AbstractParser<ListPeopleUpdateApplyRsp>() {
     @java.lang.Override
@@ -42,36 +83,113 @@ private static final long serialVersionUID = 0L;
       return builder.buildPartial();
     }
   };
-
-  static {
-    com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
-      com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
-      /* major= */ 4,
-      /* minor= */ 33,
-      /* patch= */ 2,
-      /* suffix= */ "",
-      "ListPeopleUpdateApplyRsp");
+  /**
+   * <pre>
+   * 申请内容
+   * </pre>
+   *
+   * <code>repeated .po.PeopleUpdateApply apply = 1;</code>
+   */
+  @java.lang.Override
+  public int getApplyCount() {
+    return apply_.size();
+  }
+  /**
+   * <pre>
+   * 申请内容
+   * </pre>
+   *
+   * <code>repeated .po.PeopleUpdateApply apply = 1;</code>
+   */
+  @java.lang.Override
+  public po.PeopleUpdateApply getApply(int index) {
+    return apply_.get(index);
+  }
+  /**
+   * <pre>
+   * 申请内容
+   * </pre>
+   *
+   * <code>repeated .po.PeopleUpdateApply apply = 1;</code>
+   */
+  @java.lang.Override
+  public po.PeopleUpdateApplyOrBuilder getApplyOrBuilder(
+      int index) {
+    return apply_.get(index);
   }
 
   static {
     DEFAULT_INSTANCE = new po.ListPeopleUpdateApplyRsp();
   }
+  @java.lang.Override
+  public final boolean isInitialized() {
+    byte isInitialized = memoizedIsInitialized;
+    if (isInitialized == 1) return true;
+    if (isInitialized == 0) return false;
+
+    memoizedIsInitialized = 1;
+    return true;
+  }
+
+  @java.lang.Override
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
+    for (int i = 0; i < apply_.size(); i++) {
+      output.writeMessage(1, apply_.get(i));
+    }
+    getUnknownFields().writeTo(output);
+  }
+
+  @java.lang.Override
+  public int getSerializedSize() {
+    int size = memoizedSize;
+    if (size != -1) return size;
+
+    size = 0;
+    for (int i = 0; i < apply_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(1, apply_.get(i));
+    }
+    size += getUnknownFields().getSerializedSize();
+    memoizedSize = size;
+    return size;
+  }
+
+  @java.lang.Override
+  public boolean equals(final java.lang.Object obj) {
+    if (obj == this) {
+     return true;
+    }
+    if (!(obj instanceof po.ListPeopleUpdateApplyRsp)) {
+      return super.equals(obj);
+    }
+    po.ListPeopleUpdateApplyRsp other = (po.ListPeopleUpdateApplyRsp) obj;
+
+    if (!getApplyList()
+        .equals(other.getApplyList())) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+    return true;
+  }
+
+  @java.lang.Override
+  public int hashCode() {
+    if (memoizedHashCode != 0) {
+      return memoizedHashCode;
+    }
+    int hash = 41;
+    hash = (19 * hash) + getDescriptor().hashCode();
+    if (getApplyCount() > 0) {
+      hash = (37 * hash) + APPLY_FIELD_NUMBER;
+      hash = (53 * hash) + getApplyList().hashCode();
+    }
+    hash = (29 * hash) + getUnknownFields().hashCode();
+    memoizedHashCode = hash;
+    return hash;
+  }
 
   @SuppressWarnings("serial")
   private java.util.List<po.PeopleUpdateApply> apply_;
   private byte memoizedIsInitialized = -1;
-  // Use ListPeopleUpdateApplyRsp.newBuilder() to construct.
-  private ListPeopleUpdateApplyRsp(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-    super(builder);
-  }
-  private ListPeopleUpdateApplyRsp() {
-    apply_ = java.util.Collections.emptyList();
-  }
-
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return po.ProtocolProto.internal_static_po_ListPeopleUpdateApplyRsp_descriptor;
-  }
 
   public static po.ListPeopleUpdateApplyRsp parseFrom(
       java.nio.ByteBuffer data)
@@ -139,6 +257,9 @@ private static final long serialVersionUID = 0L;
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
 
+  @java.lang.Override
+  public Builder newBuilderForType() { return newBuilder(); }
+
   public static po.ListPeopleUpdateApplyRsp parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
@@ -152,6 +273,18 @@ private static final long serialVersionUID = 0L;
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input, extensionRegistry);
+  }
+  @java.lang.Override
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
+  }
+
+  @java.lang.Override
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+    Builder builder = new Builder(parent);
+    return builder;
   }
 
   public static Builder newBuilder() {
@@ -170,26 +303,6 @@ private static final long serialVersionUID = 0L;
     return PARSER;
   }
 
-  @java.lang.Override
-  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internalGetFieldAccessorTable() {
-    return po.ProtocolProto.internal_static_po_ListPeopleUpdateApplyRsp_fieldAccessorTable
-        .ensureFieldAccessorsInitialized(
-            po.ListPeopleUpdateApplyRsp.class, po.ListPeopleUpdateApplyRsp.Builder.class);
-  }
-
-  /**
-   * <pre>
-   * 申请内容
-   * </pre>
-   *
-   * <code>repeated .po.PeopleUpdateApply apply = 1;</code>
-   */
-  @java.lang.Override
-  public java.util.List<po.PeopleUpdateApply> getApplyList() {
-    return apply_;
-  }
-
   /**
    * <pre>
    * 申请内容
@@ -201,125 +314,6 @@ private static final long serialVersionUID = 0L;
   public java.util.List<? extends po.PeopleUpdateApplyOrBuilder>
       getApplyOrBuilderList() {
     return apply_;
-  }
-
-  /**
-   * <pre>
-   * 申请内容
-   * </pre>
-   *
-   * <code>repeated .po.PeopleUpdateApply apply = 1;</code>
-   */
-  @java.lang.Override
-  public int getApplyCount() {
-    return apply_.size();
-  }
-
-  /**
-   * <pre>
-   * 申请内容
-   * </pre>
-   *
-   * <code>repeated .po.PeopleUpdateApply apply = 1;</code>
-   */
-  @java.lang.Override
-  public po.PeopleUpdateApply getApply(int index) {
-    return apply_.get(index);
-  }
-
-  /**
-   * <pre>
-   * 申请内容
-   * </pre>
-   *
-   * <code>repeated .po.PeopleUpdateApply apply = 1;</code>
-   */
-  @java.lang.Override
-  public po.PeopleUpdateApplyOrBuilder getApplyOrBuilder(
-      int index) {
-    return apply_.get(index);
-  }
-
-  @java.lang.Override
-  public final boolean isInitialized() {
-    byte isInitialized = memoizedIsInitialized;
-    if (isInitialized == 1) return true;
-    if (isInitialized == 0) return false;
-
-    memoizedIsInitialized = 1;
-    return true;
-  }
-
-  @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
-    for (int i = 0; i < apply_.size(); i++) {
-      output.writeMessage(1, apply_.get(i));
-    }
-    getUnknownFields().writeTo(output);
-  }
-
-  @java.lang.Override
-  public int getSerializedSize() {
-    int size = memoizedSize;
-    if (size != -1) return size;
-
-    size = 0;
-    for (int i = 0; i < apply_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, apply_.get(i));
-    }
-    size += getUnknownFields().getSerializedSize();
-    memoizedSize = size;
-    return size;
-  }
-
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof po.ListPeopleUpdateApplyRsp)) {
-      return super.equals(obj);
-    }
-    po.ListPeopleUpdateApplyRsp other = (po.ListPeopleUpdateApplyRsp) obj;
-
-    if (!getApplyList()
-        .equals(other.getApplyList())) return false;
-    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-    return true;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    if (getApplyCount() > 0) {
-      hash = (37 * hash) + APPLY_FIELD_NUMBER;
-      hash = (53 * hash) + getApplyList().hashCode();
-    }
-    hash = (29 * hash) + getUnknownFields().hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
-
-  @java.lang.Override
-  public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
-  }
-
-  @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-    Builder builder = new Builder(parent);
-    return builder;
   }
 
   @java.lang.Override
@@ -343,22 +337,6 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:po.ListPeopleUpdateApplyRsp)
       po.ListPeopleUpdateApplyRspOrBuilder {
-    private int bitField0_;
-    private java.util.List<po.PeopleUpdateApply> apply_ =
-      java.util.Collections.emptyList();
-    private com.google.protobuf.RepeatedFieldBuilder<
-        po.PeopleUpdateApply, po.PeopleUpdateApply.Builder, po.PeopleUpdateApplyOrBuilder> applyBuilder_;
-
-    // Construct using po.ListPeopleUpdateApplyRsp.newBuilder()
-    private Builder() {
-
-    }
-    private Builder(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      super(parent);
-
-    }
-
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return po.ProtocolProto.internal_static_po_ListPeopleUpdateApplyRsp_descriptor;
@@ -372,6 +350,9 @@ private static final long serialVersionUID = 0L;
               po.ListPeopleUpdateApplyRsp.class, po.ListPeopleUpdateApplyRsp.Builder.class);
     }
 
+    private int bitField0_;
+    private java.util.List<po.PeopleUpdateApply> apply_ =
+      java.util.Collections.emptyList();
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -440,39 +421,8 @@ private static final long serialVersionUID = 0L;
         return this;
       }
     }
-
-    public Builder mergeFrom(po.ListPeopleUpdateApplyRsp other) {
-      if (other == po.ListPeopleUpdateApplyRsp.getDefaultInstance()) return this;
-      if (applyBuilder_ == null) {
-        if (!other.apply_.isEmpty()) {
-          if (apply_.isEmpty()) {
-            apply_ = other.apply_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureApplyIsMutable();
-            apply_.addAll(other.apply_);
-          }
-          onChanged();
-        }
-      } else {
-        if (!other.apply_.isEmpty()) {
-          if (applyBuilder_.isEmpty()) {
-            applyBuilder_.dispose();
-            applyBuilder_ = null;
-            apply_ = other.apply_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-            applyBuilder_ =
-              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                 internalGetApplyFieldBuilder() : null;
-          } else {
-            applyBuilder_.addAllMessages(other.apply_);
-          }
-        }
-      }
-      this.mergeUnknownFields(other.getUnknownFields());
-      onChanged();
-      return this;
-    }
+    private com.google.protobuf.RepeatedFieldBuilder<
+        po.PeopleUpdateApply, po.PeopleUpdateApply.Builder, po.PeopleUpdateApplyOrBuilder> applyBuilder_;
 
     @java.lang.Override
     public final boolean isInitialized() {
@@ -523,12 +473,54 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+    // Construct using po.ListPeopleUpdateApplyRsp.newBuilder()
+    private Builder() {
 
+    }
+
+    private Builder(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      super(parent);
+
+    }
     private void ensureApplyIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
         apply_ = new java.util.ArrayList<po.PeopleUpdateApply>(apply_);
         bitField0_ |= 0x00000001;
        }
+    }
+
+    public Builder mergeFrom(po.ListPeopleUpdateApplyRsp other) {
+      if (other == po.ListPeopleUpdateApplyRsp.getDefaultInstance()) return this;
+      if (applyBuilder_ == null) {
+        if (!other.apply_.isEmpty()) {
+          if (apply_.isEmpty()) {
+            apply_ = other.apply_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureApplyIsMutable();
+            apply_.addAll(other.apply_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.apply_.isEmpty()) {
+          if (applyBuilder_.isEmpty()) {
+            applyBuilder_.dispose();
+            applyBuilder_ = null;
+            apply_ = other.apply_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+            applyBuilder_ =
+              com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                 internalGetApplyFieldBuilder() : null;
+          } else {
+            applyBuilder_.addAllMessages(other.apply_);
+          }
+        }
+      }
+      this.mergeUnknownFields(other.getUnknownFields());
+      onChanged();
+      return this;
     }
 
     /**
@@ -767,6 +759,7 @@ private static final long serialVersionUID = 0L;
         return applyBuilder_.getMessageOrBuilder(index);
       }
     }
+
     /**
      * <pre>
      * 申请内容

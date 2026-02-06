@@ -12,10 +12,10 @@ public interface UserStarStudyInfoMapper {
     UserStarStudyInfoDO selectById(Integer id);
 
     @Select("SELECT * FROM user_star_study_info WHERE id = #{id} AND user_tel = #{userTel}")
-    UserStarStudyInfoDO selectByIdAndTel(Integer id, Integer userTel);
+    UserStarStudyInfoDO selectByIdAndTel(Integer id, Long userTel);
 
     @Select("SELECT * FROM user_star_study_info WHERE user_tel = #{userTel}")
-    List<UserStarStudyInfoDO> selectByUserTel(Integer userTel);
+    List<UserStarStudyInfoDO> selectByUserTel(Long userTel);
 
     @Insert("""
             INSERT INTO user_star_study_info

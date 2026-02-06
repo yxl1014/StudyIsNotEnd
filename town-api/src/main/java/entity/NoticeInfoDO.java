@@ -11,7 +11,7 @@ public class NoticeInfoDO implements Serializable {
     private Long noticeCreateTime;
     private String noticeTitle;
     private String noticeContext;
-    private Integer writerTel;
+    private Long writerTel;
     private String writerName;
     private Boolean isTop;
     private Boolean isAcceptRead;

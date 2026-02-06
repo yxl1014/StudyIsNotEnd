@@ -91,7 +91,7 @@ public final class EntityProto extends com.google.protobuf.GeneratedFile {
   static {
     java.lang.String[] descriptorData = {
       "\n\014entity.proto\022\002po\032\nbase.proto\"\263\002\n\010UserI" +
-      "nfo\022\024\n\007userTel\030\001 \001(\005H\000\210\001\001\022\025\n\010userName\030\002 " +
+      "nfo\022\024\n\007userTel\030\001 \001(\003H\000\210\001\001\022\025\n\010userName\030\002 " +
       "\001(\tH\001\210\001\001\022\024\n\007userPwd\030\003 \001(\tH\002\210\001\001\022\025\n\010userTo" +
       "wn\030\004 \001(\tH\003\210\001\001\022&\n\tuserPower\030\005 \001(\0162\016.po.TU" +
       "serPowerH\004\210\001\001\022\033\n\016userCreateTime\030\006 \001(\003H\005\210" +

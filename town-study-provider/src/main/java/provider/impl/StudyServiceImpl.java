@@ -69,7 +69,7 @@ public class StudyServiceImpl extends AbstractRpcService implements IStudyServic
             StudyInfoDO insertStudy = daoService.study_selectByCreateTime(nowMillis);
 
             UpdateInfoDO update = new UpdateInfoDO();
-            update.setInfoId(insertStudy.getStudyId());
+            update.setInfoId((long)insertStudy.getStudyId());
             update.setInfoType(TUpdateInfoType.TUIT_STUDY_VALUE);
             update.setAfterMsg(daoService.toProto(insertStudy).toByteArray());
             update.setUpdateTime(nowMillis);
@@ -114,11 +114,11 @@ public class StudyServiceImpl extends AbstractRpcService implements IStudyServic
 
 
             long nowMillis = TimeUtil.nowMillis();
-            int writerTel = UserContext.getUserTel();
+            long writerTel = UserContext.getUserTel();
             String writerName = UserContext.getUserName();
 
             UpdateInfoDO update = new UpdateInfoDO();
-            update.setInfoId(studyInfoDO.getStudyId());
+            update.setInfoId((long)studyInfoDO.getStudyId());
             update.setInfoType(TUpdateInfoType.TUIT_STUDY_VALUE);
             update.setBeforeMsg(daoService.toProto(oldStudyInfo).toByteArray());
             update.setAfterMsg(daoService.toProto(newStudy).toByteArray());
@@ -169,7 +169,7 @@ public class StudyServiceImpl extends AbstractRpcService implements IStudyServic
         return execute(MsgType.TMT_StarStudyRsp, token, ()->{
             int studyId = msg.getStudyId();
 
-            int userTel = UserContext.getUserTel();
+            long userTel = UserContext.getUserTel();
 
             UserStarStudyInfoDO userStarStudyInfoDO = daoService.star_selectByIdAndTel(studyId, userTel);
 

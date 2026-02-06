@@ -320,7 +320,7 @@ public final class ProtocolProto extends com.google.protobuf.GeneratedFile {
       "B\n\n\010_msgTypeB\006\n\004_msg\"+\n\013RequestTest\022\022\n\005h" +
       "ello\030\001 \001(\tH\000\210\001\001B\010\n\006_hello\",\n\014ResponseTes" +
       "t\022\022\n\005world\030\001 \001(\tH\000\210\001\001B\010\n\006_world\"N\n\010Login" +
-      "Req\022\024\n\007userTel\030\001 \001(\005H\000\210\001\001\022\024\n\007userPwd\030\002 \001" +
+      "Req\022\024\n\007userTel\030\001 \001(\003H\000\210\001\001\022\024\n\007userPwd\030\002 \001" +
       "(\tH\001\210\001\001B\n\n\010_userTelB\n\n\010_userPwd\"Z\n\010Login" +
       "Rsp\022\022\n\005token\030\001 \001(\tH\000\210\001\001\022#\n\010userInfo\030\002 \001(" +
       "\0132\014.po.UserInfoH\001\210\001\001B\010\n\006_tokenB\013\n\t_userI" +

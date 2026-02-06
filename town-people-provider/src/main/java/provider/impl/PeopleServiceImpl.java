@@ -166,7 +166,7 @@ public class PeopleServiceImpl extends AbstractRpcService implements IPeopleServ
                 return BizResult.error(RespCode.TRC_PARAM_NULL);
             }
 
-            int userTel = UserContext.getUserTel();
+            long userTel = UserContext.getUserTel();
             long nowTime = TimeUtil.nowMillis();
             applyDO.setApplyUserId(userTel);
             applyDO.setApplyCreateTime(nowTime);
@@ -233,11 +233,11 @@ public class PeopleServiceImpl extends AbstractRpcService implements IPeopleServ
                 return BizResult.error(RespCode.TRC_DB_ERROR);
             }
 
-            int userTel = UserContext.getUserTel();
+            long userTel = UserContext.getUserTel();
             long time = TimeUtil.nowMillis();
             String userName = UserContext.getUserName();
             UpdateInfoDO updateInfoDO = new UpdateInfoDO();
-            updateInfoDO.setInfoId(msg.getApplyId());
+            updateInfoDO.setInfoId((long)msg.getApplyId());
             updateInfoDO.setBeforeMsg(daoService.toProto(updateInfoDO).toByteArray());
             updateInfoDO.setUpdateTime(time);
             updateInfoDO.setUpdateUserTel(userTel);

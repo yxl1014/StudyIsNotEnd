@@ -13,7 +13,7 @@ public interface NotifyUserInfoMapper {
 
 
     @Select("SELECT * FROM notify_user_info WHERE user_tel = #{userTel}")
-    List<NotifyUserInfoDO> selectByUserId(Integer userTel);
+    List<NotifyUserInfoDO> selectByUserId(Long userTel);
 
     @Insert("""
             INSERT INTO notify_user_info

@@ -17,7 +17,6 @@ import townInterface.INoticeService;
 import townInterface.IUpdateService;
 import util.TimeUtil;
 
-import java.util.Date;
 import java.util.List;
 
 @DubboService(timeout = 10000, retries = 0)
@@ -56,7 +55,7 @@ public class NoticeServiceImpl extends AbstractRpcService implements INoticeServ
             NoticeInfoDO noticeInfoDO = daoService.toDO(proto);
 
             long nowMillis = TimeUtil.nowMillis();
-            int writerTel = UserContext.getUserTel();
+            long writerTel = UserContext.getUserTel();
             String writerName = UserContext.getUserName();
 
             // 自增ID，把自己输入的ID置0
@@ -74,7 +73,7 @@ public class NoticeServiceImpl extends AbstractRpcService implements INoticeServ
             NoticeInfoDO insertNotice = daoService.notice_selectByWriterAndCreateTime(writerTel, nowMillis);
 
             UpdateInfoDO update = new UpdateInfoDO();
-            update.setInfoId(insertNotice.getNoticeId());
+            update.setInfoId((long)insertNotice.getNoticeId());
             update.setInfoType(TUpdateInfoType.TUIT_NOTICE_VALUE);
             update.setAfterMsg(daoService.toProto(insertNotice).toByteArray());
             update.setUpdateTime(nowMillis);
@@ -125,10 +124,10 @@ public class NoticeServiceImpl extends AbstractRpcService implements INoticeServ
 
 
             long nowMillis = TimeUtil.nowMillis();
-            int writerTel = UserContext.getUserTel();
+            long writerTel = UserContext.getUserTel();
             String writerName = UserContext.getUserName();
             UpdateInfoDO update = new UpdateInfoDO();
-            update.setInfoId(msg.getNoticeInfo().getNoticeId());
+            update.setInfoId((long)msg.getNoticeInfo().getNoticeId());
             update.setInfoType(TUpdateInfoType.TUIT_NOTICE_VALUE);
             update.setBeforeMsg(msg.getNoticeInfo().toByteArray());
             update.setAfterMsg(newNotice != null ? daoService.toProto(newNotice).toByteArray() : null);
@@ -187,7 +186,7 @@ public class NoticeServiceImpl extends AbstractRpcService implements INoticeServ
                 return BizResult.error(RespCode.TRC_NOTICE_CAN_NOT_ACCEPT);
             }
 
-            int userTel = UserContext.getUserTel();
+            long userTel = UserContext.getUserTel();
             List<UserReadNoticeInfoDO> readList = daoService.read_selectByUserTelAndNoticeId(userTel, noticeId);
             if (!readList.isEmpty()) {
                 return BizResult.error(RespCode.TRC_NOTICE_IS_ACCEPT);
@@ -209,7 +208,7 @@ public class NoticeServiceImpl extends AbstractRpcService implements INoticeServ
         return execute(MsgType.TMT_ListNoticeReadRsp, token, () ->{
             ListNoticeReadRsp.Builder builder = ListNoticeReadRsp.newBuilder();
 
-            int userTel = UserContext.getUserTel();
+            long userTel = UserContext.getUserTel();
             List<UserReadNoticeInfoDO> readList = daoService.read_selectByUserTel(userTel);
             for (UserReadNoticeInfoDO infoDO : readList)
             {

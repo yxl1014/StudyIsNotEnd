@@ -17,10 +17,76 @@ public final class ListNoticeReadRsp extends
     com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:po.ListNoticeReadRsp)
     ListNoticeReadRspOrBuilder {
-  public static final int NOTICELIST_FIELD_NUMBER = 1;
 private static final long serialVersionUID = 0L;
+  static {
+    com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+      com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+      /* major= */ 4,
+      /* minor= */ 33,
+      /* patch= */ 2,
+      /* suffix= */ "",
+      "ListNoticeReadRsp");
+  }
+  // Use ListNoticeReadRsp.newBuilder() to construct.
+  private ListNoticeReadRsp(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    super(builder);
+  }
+  private ListNoticeReadRsp() {
+    noticeList_ = emptyIntList();
+  }
+
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return po.ProtocolProto.internal_static_po_ListNoticeReadRsp_descriptor;
+  }
+
+  @java.lang.Override
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+    return po.ProtocolProto.internal_static_po_ListNoticeReadRsp_fieldAccessorTable
+        .ensureFieldAccessorsInitialized(
+            po.ListNoticeReadRsp.class, po.ListNoticeReadRsp.Builder.class);
+  }
+
+  public static final int NOTICELIST_FIELD_NUMBER = 1;
   // @@protoc_insertion_point(class_scope:po.ListNoticeReadRsp)
   private static final po.ListNoticeReadRsp DEFAULT_INSTANCE;
+  /**
+   * <pre>
+   * 已读公告列表
+   * </pre>
+   *
+   * <code>repeated int32 noticeList = 1;</code>
+   * @return A list containing the noticeList.
+   */
+  @java.lang.Override
+  public java.util.List<java.lang.Integer>
+      getNoticeListList() {
+    return noticeList_;
+  }
+  /**
+   * <pre>
+   * 已读公告列表
+   * </pre>
+   *
+   * <code>repeated int32 noticeList = 1;</code>
+   * @return The count of noticeList.
+   */
+  public int getNoticeListCount() {
+    return noticeList_.size();
+  }
+  /**
+   * <pre>
+   * 已读公告列表
+   * </pre>
+   *
+   * <code>repeated int32 noticeList = 1;</code>
+   * @param index The index of the element to return.
+   * @return The noticeList at the given index.
+   */
+  public int getNoticeList(int index) {
+    return noticeList_.getInt(index);
+  }
   private static final com.google.protobuf.Parser<ListNoticeReadRsp>
       PARSER = new com.google.protobuf.AbstractParser<ListNoticeReadRsp>() {
     @java.lang.Override
@@ -44,181 +110,8 @@ private static final long serialVersionUID = 0L;
   };
 
   static {
-    com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
-      com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
-      /* major= */ 4,
-      /* minor= */ 33,
-      /* patch= */ 2,
-      /* suffix= */ "",
-      "ListNoticeReadRsp");
-  }
-
-  static {
     DEFAULT_INSTANCE = new po.ListNoticeReadRsp();
   }
-
-  @SuppressWarnings("serial")
-  private com.google.protobuf.Internal.IntList noticeList_ =
-      emptyIntList();
-  private int noticeListMemoizedSerializedSize = -1;
-  private byte memoizedIsInitialized = -1;
-  // Use ListNoticeReadRsp.newBuilder() to construct.
-  private ListNoticeReadRsp(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-    super(builder);
-  }
-  private ListNoticeReadRsp() {
-    noticeList_ = emptyIntList();
-  }
-
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return po.ProtocolProto.internal_static_po_ListNoticeReadRsp_descriptor;
-  }
-
-  public static po.ListNoticeReadRsp parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-
-  public static po.ListNoticeReadRsp parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-
-  public static po.ListNoticeReadRsp parseFrom(
-      com.google.protobuf.ByteString data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-
-  public static po.ListNoticeReadRsp parseFrom(
-      com.google.protobuf.ByteString data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-
-  public static po.ListNoticeReadRsp parseFrom(byte[] data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-
-  public static po.ListNoticeReadRsp parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-
-  public static po.ListNoticeReadRsp parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input);
-  }
-
-  public static po.ListNoticeReadRsp parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input, extensionRegistry);
-  }
-
-  public static po.ListNoticeReadRsp parseDelimitedFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static po.ListNoticeReadRsp parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-  }
-
-  public static po.ListNoticeReadRsp parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input);
-  }
-
-  public static po.ListNoticeReadRsp parseFrom(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input, extensionRegistry);
-  }
-
-  public static Builder newBuilder() {
-    return DEFAULT_INSTANCE.toBuilder();
-  }
-
-  public static Builder newBuilder(po.ListNoticeReadRsp prototype) {
-    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-
-  public static po.ListNoticeReadRsp getDefaultInstance() {
-    return DEFAULT_INSTANCE;
-  }
-
-  public static com.google.protobuf.Parser<ListNoticeReadRsp> parser() {
-    return PARSER;
-  }
-
-  @java.lang.Override
-  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internalGetFieldAccessorTable() {
-    return po.ProtocolProto.internal_static_po_ListNoticeReadRsp_fieldAccessorTable
-        .ensureFieldAccessorsInitialized(
-            po.ListNoticeReadRsp.class, po.ListNoticeReadRsp.Builder.class);
-  }
-
-  /**
-   * <pre>
-   * 已读公告列表
-   * </pre>
-   *
-   * <code>repeated int32 noticeList = 1;</code>
-   * @return A list containing the noticeList.
-   */
-  @java.lang.Override
-  public java.util.List<java.lang.Integer>
-      getNoticeListList() {
-    return noticeList_;
-  }
-
-  /**
-   * <pre>
-   * 已读公告列表
-   * </pre>
-   *
-   * <code>repeated int32 noticeList = 1;</code>
-   * @return The count of noticeList.
-   */
-  public int getNoticeListCount() {
-    return noticeList_.size();
-  }
-
-  /**
-   * <pre>
-   * 已读公告列表
-   * </pre>
-   *
-   * <code>repeated int32 noticeList = 1;</code>
-   * @param index The index of the element to return.
-   * @return The noticeList at the given index.
-   */
-  public int getNoticeList(int index) {
-    return noticeList_.getInt(index);
-  }
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -300,9 +193,87 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
+  @SuppressWarnings("serial")
+  private com.google.protobuf.Internal.IntList noticeList_ =
+      emptyIntList();
+  private int noticeListMemoizedSerializedSize = -1;
+  private byte memoizedIsInitialized = -1;
+
+  public static po.ListNoticeReadRsp parseFrom(
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+
+  public static po.ListNoticeReadRsp parseFrom(
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+
+  public static po.ListNoticeReadRsp parseFrom(
+      com.google.protobuf.ByteString data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+
+  public static po.ListNoticeReadRsp parseFrom(
+      com.google.protobuf.ByteString data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+
+  public static po.ListNoticeReadRsp parseFrom(byte[] data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+
+  public static po.ListNoticeReadRsp parseFrom(
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+
+  public static po.ListNoticeReadRsp parseFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input);
+  }
+
+  public static po.ListNoticeReadRsp parseFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input, extensionRegistry);
+  }
+
+  public static po.ListNoticeReadRsp parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseDelimitedWithIOException(PARSER, input);
+  }
+
   @java.lang.Override
   public Builder newBuilderForType() { return newBuilder(); }
 
+  public static po.ListNoticeReadRsp parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+
+  public static po.ListNoticeReadRsp parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input);
+  }
   @java.lang.Override
   public Builder toBuilder() {
     return this == DEFAULT_INSTANCE
@@ -314,6 +285,30 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
+  }
+
+  public static po.ListNoticeReadRsp parseFrom(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input, extensionRegistry);
+  }
+
+  public static Builder newBuilder() {
+    return DEFAULT_INSTANCE.toBuilder();
+  }
+
+  public static Builder newBuilder(po.ListNoticeReadRsp prototype) {
+    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+  }
+
+  public static po.ListNoticeReadRsp getDefaultInstance() {
+    return DEFAULT_INSTANCE;
+  }
+
+  public static com.google.protobuf.Parser<ListNoticeReadRsp> parser() {
+    return PARSER;
   }
 
   @java.lang.Override
@@ -337,20 +332,6 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:po.ListNoticeReadRsp)
       po.ListNoticeReadRspOrBuilder {
-    private int bitField0_;
-    private com.google.protobuf.Internal.IntList noticeList_ = emptyIntList();
-
-    // Construct using po.ListNoticeReadRsp.newBuilder()
-    private Builder() {
-
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      super(parent);
-
-    }
-
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return po.ProtocolProto.internal_static_po_ListNoticeReadRsp_descriptor;
@@ -364,6 +345,8 @@ private static final long serialVersionUID = 0L;
               po.ListNoticeReadRsp.class, po.ListNoticeReadRsp.Builder.class);
     }
 
+    private int bitField0_;
+    private com.google.protobuf.Internal.IntList noticeList_ = emptyIntList();
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -488,7 +471,16 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+    // Construct using po.ListNoticeReadRsp.newBuilder()
+    private Builder() {
 
+    }
+
+    private Builder(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      super(parent);
+
+    }
     private void ensureNoticeListIsMutable() {
       if (!noticeList_.isModifiable()) {
         noticeList_ = makeMutableCopy(noticeList_);

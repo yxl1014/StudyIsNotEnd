@@ -20,7 +20,7 @@ public interface NoticeInfoMapper {
 
 
     @Select("SELECT * FROM notice_info WHERE writer_tel = #{writerTel} and notice_create_time = #{createTime}")
-    NoticeInfoDO selectByWriterAndCreateTime(@Param("writerTel") Integer writerTel,@Param("createTime")  Long createTime);
+    NoticeInfoDO selectByWriterAndCreateTime(@Param("writerTel") Long writerTel,@Param("createTime")  Long createTime);
 
     @Insert("""
             INSERT INTO notice_info

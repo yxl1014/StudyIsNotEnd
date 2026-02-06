@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Data
 public class PeopleUpdateApplyDO implements Serializable {
     private Integer applyId;
-    private Integer applyUserId;
+    private Long applyUserId;
     private Long applyCreateTime;
     private byte[] newPeople;
 }

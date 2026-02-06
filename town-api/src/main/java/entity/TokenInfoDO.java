@@ -12,7 +12,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TokenInfoDO implements Serializable {
-    private Integer userTel; // 用户电话
+    private Long userTel; // 用户电话
     private String randomCode; // 随机编号
     private Long createTime; // token创建时间
     private TUserPower userPower; // 用户角色

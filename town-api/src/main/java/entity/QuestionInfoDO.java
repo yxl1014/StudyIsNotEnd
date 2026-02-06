@@ -10,9 +10,9 @@ public class QuestionInfoDO implements Serializable {
     private Integer questionType;
     private String questionCtx;
     private byte[] questPhoto;
-    private Integer questionWriterTel;
+    private Long questionWriterTel;
     private Integer nodeType;
-    private Integer choiceUser;
+    private Long choiceUser;
     private Long questionTime;
 }
 

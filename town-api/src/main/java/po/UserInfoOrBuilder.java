@@ -15,7 +15,7 @@ public interface UserInfoOrBuilder extends
    * 用户电话
    * </pre>
    *
-   * <code>optional int32 userTel = 1;</code>
+   * <code>optional int64 userTel = 1;</code>
    * @return Whether the userTel field is set.
    */
   boolean hasUserTel();
@@ -24,10 +24,10 @@ public interface UserInfoOrBuilder extends
    * 用户电话
    * </pre>
    *
-   * <code>optional int32 userTel = 1;</code>
+   * <code>optional int64 userTel = 1;</code>
    * @return The userTel.
    */
-  int getUserTel();
+  long getUserTel();
 
   /**
    * <pre>

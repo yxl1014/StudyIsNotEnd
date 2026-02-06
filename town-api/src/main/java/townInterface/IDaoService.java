@@ -25,13 +25,13 @@ public interface IDaoService {
     Object redis_get(String key);
 
     /// user
-    UserInfoDO user_selectById(Integer userTel);
+    UserInfoDO user_selectById(Long userTel);
 
     int user_insert(UserInfoDO entity);
 
     int user_update(UserInfoDO entity);
 
-    int user_delete(Integer userTel);
+    int user_delete(Long userTel);
 
     /* Proto → Entity */
     UserInfoDO toDO(po.UserInfo proto);
@@ -43,7 +43,7 @@ public interface IDaoService {
     /// notice
     NoticeInfoDO notice_selectById(Integer id);
     List<NoticeInfoDO> notice_selectAll(int page, int size);
-    NoticeInfoDO notice_selectByWriterAndCreateTime(Integer writerTel, Long createTime);
+    NoticeInfoDO notice_selectByWriterAndCreateTime(Long writerTel, Long createTime);
     int notice_insert(NoticeInfoDO entity);
     int notice_update(NoticeInfoDO entity);
     int notice_delete(Integer id);
@@ -59,16 +59,16 @@ public interface IDaoService {
 
     /// serReadNoticeInfo
     UserReadNoticeInfoDO read_selectById(Integer id);
-    List<UserReadNoticeInfoDO> read_selectByUserTel(Integer userTel);
+    List<UserReadNoticeInfoDO> read_selectByUserTel(Long userTel);
     int read_insert(UserReadNoticeInfoDO entity);
-    List<UserReadNoticeInfoDO> read_selectByUserTelAndNoticeId(Integer userTel, Integer noticeId);
+    List<UserReadNoticeInfoDO> read_selectByUserTelAndNoticeId(Long userTel, Integer noticeId);
 
     /// question
     QuestionInfoDO toDO(po.QuestionInfo proto);
     po.QuestionInfo toProto(QuestionInfoDO entity);
     QuestionInfoDO quest_selectById(Integer id);
-    List<QuestionInfoDO> quest_selectByWriterTel(int page, int size, Integer userTel);
-    List<QuestionInfoDO> quest_selectByChoiceUser(int page, int size, Integer choiceUser);
+    List<QuestionInfoDO> quest_selectByWriterTel(int page, int size, Long userTel);
+    List<QuestionInfoDO> quest_selectByChoiceUser(int page, int size, Long choiceUser);
     int quest_insert(QuestionInfoDO entity);
     int quest_update(QuestionInfoDO entity);
 
@@ -76,7 +76,7 @@ public interface IDaoService {
     NotifyUserInfoDO toDO(po.NotifyUserInfo proto);
     po.NotifyUserInfo toProto(NotifyUserInfoDO entity);
     NotifyUserInfoDO notify_selectById(Integer id);
-    List<NotifyUserInfoDO> notify_selectByUserId(Integer userTel);
+    List<NotifyUserInfoDO> notify_selectByUserId(Long userTel);
     int notify_insert(NotifyUserInfoDO entity);
     int notify_update(NotifyUserInfoDO entity);
     int notify_delete(Integer id);
@@ -96,8 +96,8 @@ public interface IDaoService {
     UserStarStudyInfoDO toDO(po.UserStarStudyInfo proto);
     po.UserStarStudyInfo toProto(UserStarStudyInfoDO entity);
     UserStarStudyInfoDO star_selectById(Integer id);
-    UserStarStudyInfoDO star_selectByIdAndTel(Integer id, Integer userTel);
-    List<UserStarStudyInfoDO> star_selectByUserTel(Integer userTel, int page, int size);
+    UserStarStudyInfoDO star_selectByIdAndTel(Integer id, Long userTel);
+    List<UserStarStudyInfoDO> star_selectByUserTel(Long userTel, int page, int size);
     int star_insert(UserStarStudyInfoDO entity);
     int star_update(UserStarStudyInfoDO entity);
     int star_delete(Integer id);
@@ -116,7 +116,7 @@ public interface IDaoService {
     po.PeopleUpdateApply toProto(PeopleUpdateApplyDO entity);
     PeopleUpdateApplyDO apply_selectById(Integer id);
     List<PeopleUpdateApplyDO> apply_selectAll(int page, int size);
-    List<PeopleUpdateApplyDO> apply_selectAllByUserTel(int page, int size, Integer userTel);
+    List<PeopleUpdateApplyDO> apply_selectAllByUserTel(int page, int size, Long userTel);
     int apply_insert(PeopleUpdateApplyDO entity);
     int apply_update(PeopleUpdateApplyDO entity);
     int apply_delete(Integer id);

@@ -9,7 +9,7 @@ import "base.proto";
 
 // 登录用户信息
 message UserInfo {
-  optional int32 userTel = 1;// 用户电话
+  optional int64 userTel = 1;// 用户电话
   optional string userName = 2; // 用户姓名
   optional string userPwd = 3; // 用户密码
   optional string userTown = 4; // 用户所属村庄

@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Data
 public class UserStarStudyInfoDO implements Serializable {
     private Integer id;
-    private Integer userTel;
+    private Long userTel;
     private Integer studyId;
 }
 

@@ -13,11 +13,65 @@ public final class ErrInfo extends
     com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:po.ErrInfo)
     ErrInfoOrBuilder {
+private static final long serialVersionUID = 0L;
+  static {
+    com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+      com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+      /* major= */ 4,
+      /* minor= */ 33,
+      /* patch= */ 2,
+      /* suffix= */ "",
+      "ErrInfo");
+  }
+  // Use ErrInfo.newBuilder() to construct.
+  private ErrInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    super(builder);
+  }
+  private ErrInfo() {
+    eCode_ = 0;
+  }
+
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return po.ProtocolProto.internal_static_po_ErrInfo_descriptor;
+  }
+
+  @java.lang.Override
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+    return po.ProtocolProto.internal_static_po_ErrInfo_fieldAccessorTable
+        .ensureFieldAccessorsInitialized(
+            po.ErrInfo.class, po.ErrInfo.Builder.class);
+  }
+
   public static final int INDEX_FIELD_NUMBER = 1;
   public static final int ECODE_FIELD_NUMBER = 2;
-private static final long serialVersionUID = 0L;
   // @@protoc_insertion_point(class_scope:po.ErrInfo)
   private static final po.ErrInfo DEFAULT_INSTANCE;
+  /**
+   * <pre>
+   * 下标
+   * </pre>
+   *
+   * <code>optional int32 index = 1;</code>
+   * @return Whether the index field is set.
+   */
+  @java.lang.Override
+  public boolean hasIndex() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+  /**
+   * <pre>
+   * 下标
+   * </pre>
+   *
+   * <code>optional int32 index = 1;</code>
+   * @return The index.
+   */
+  @java.lang.Override
+  public int getIndex() {
+    return index_;
+  }
   private static final com.google.protobuf.Parser<ErrInfo>
       PARSER = new com.google.protobuf.AbstractParser<ErrInfo>() {
     @java.lang.Override
@@ -41,168 +95,8 @@ private static final long serialVersionUID = 0L;
   };
 
   static {
-    com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
-      com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
-      /* major= */ 4,
-      /* minor= */ 33,
-      /* patch= */ 2,
-      /* suffix= */ "",
-      "ErrInfo");
-  }
-
-  static {
     DEFAULT_INSTANCE = new po.ErrInfo();
   }
-
-  private int bitField0_;
-  private int index_ = 0;
-  private int eCode_ = 0;
-  private byte memoizedIsInitialized = -1;
-
-  // Use ErrInfo.newBuilder() to construct.
-  private ErrInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-    super(builder);
-  }
-  private ErrInfo() {
-    eCode_ = 0;
-  }
-
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return po.ProtocolProto.internal_static_po_ErrInfo_descriptor;
-  }
-
-  public static po.ErrInfo parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-
-  public static po.ErrInfo parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-
-  public static po.ErrInfo parseFrom(
-      com.google.protobuf.ByteString data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-
-  public static po.ErrInfo parseFrom(
-      com.google.protobuf.ByteString data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-
-  public static po.ErrInfo parseFrom(byte[] data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-
-  public static po.ErrInfo parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-
-  public static po.ErrInfo parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input);
-  }
-
-  public static po.ErrInfo parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input, extensionRegistry);
-  }
-
-  public static po.ErrInfo parseDelimitedFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static po.ErrInfo parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-  }
-
-  public static po.ErrInfo parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input);
-  }
-
-  public static po.ErrInfo parseFrom(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input, extensionRegistry);
-  }
-
-  public static Builder newBuilder() {
-    return DEFAULT_INSTANCE.toBuilder();
-  }
-
-  public static Builder newBuilder(po.ErrInfo prototype) {
-    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-
-  public static po.ErrInfo getDefaultInstance() {
-    return DEFAULT_INSTANCE;
-  }
-
-  public static com.google.protobuf.Parser<ErrInfo> parser() {
-    return PARSER;
-  }
-
-  @java.lang.Override
-  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internalGetFieldAccessorTable() {
-    return po.ProtocolProto.internal_static_po_ErrInfo_fieldAccessorTable
-        .ensureFieldAccessorsInitialized(
-            po.ErrInfo.class, po.ErrInfo.Builder.class);
-  }
-
-  /**
-   * <pre>
-   * 下标
-   * </pre>
-   *
-   * <code>optional int32 index = 1;</code>
-   * @return Whether the index field is set.
-   */
-  @java.lang.Override
-  public boolean hasIndex() {
-    return ((bitField0_ & 0x00000001) != 0);
-  }
-
-  /**
-   * <pre>
-   * 下标
-   * </pre>
-   *
-   * <code>optional int32 index = 1;</code>
-   * @return The index.
-   */
-  @java.lang.Override
-  public int getIndex() {
-    return index_;
-  }
-
   /**
    * <pre>
    * 错误信息
@@ -214,7 +108,6 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override public boolean hasECode() {
     return ((bitField0_ & 0x00000002) != 0);
   }
-
   /**
    * <pre>
    * 错误信息
@@ -226,7 +119,6 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override public int getECodeValue() {
     return eCode_;
   }
-
   /**
    * <pre>
    * 错误信息
@@ -240,6 +132,7 @@ private static final long serialVersionUID = 0L;
     return result == null ? po.RespCode.UNRECOGNIZED : result;
   }
 
+  private int bitField0_;
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -323,10 +216,85 @@ private static final long serialVersionUID = 0L;
     memoizedHashCode = hash;
     return hash;
   }
+  private int index_ = 0;
+  private int eCode_ = 0;
+  private byte memoizedIsInitialized = -1;
+
+  public static po.ErrInfo parseFrom(
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+
+  public static po.ErrInfo parseFrom(
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+
+  public static po.ErrInfo parseFrom(
+      com.google.protobuf.ByteString data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+
+  public static po.ErrInfo parseFrom(
+      com.google.protobuf.ByteString data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+
+  public static po.ErrInfo parseFrom(byte[] data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+
+  public static po.ErrInfo parseFrom(
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+
+  public static po.ErrInfo parseFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input);
+  }
+
+  public static po.ErrInfo parseFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input, extensionRegistry);
+  }
+
+  public static po.ErrInfo parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseDelimitedWithIOException(PARSER, input);
+  }
 
   @java.lang.Override
   public Builder newBuilderForType() { return newBuilder(); }
 
+  public static po.ErrInfo parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+
+  public static po.ErrInfo parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input);
+  }
   @java.lang.Override
   public Builder toBuilder() {
     return this == DEFAULT_INSTANCE
@@ -338,6 +306,30 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
+  }
+
+  public static po.ErrInfo parseFrom(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input, extensionRegistry);
+  }
+
+  public static Builder newBuilder() {
+    return DEFAULT_INSTANCE.toBuilder();
+  }
+
+  public static Builder newBuilder(po.ErrInfo prototype) {
+    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+  }
+
+  public static po.ErrInfo getDefaultInstance() {
+    return DEFAULT_INSTANCE;
+  }
+
+  public static com.google.protobuf.Parser<ErrInfo> parser() {
+    return PARSER;
   }
 
   @java.lang.Override
@@ -357,20 +349,6 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:po.ErrInfo)
       po.ErrInfoOrBuilder {
-    private int bitField0_;
-    private int index_ ;
-    private int eCode_ = 0;
-
-    // Construct using po.ErrInfo.newBuilder()
-    private Builder() {
-
-    }
-    private Builder(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      super(parent);
-
-    }
-
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return po.ProtocolProto.internal_static_po_ErrInfo_descriptor;
@@ -384,6 +362,8 @@ private static final long serialVersionUID = 0L;
               po.ErrInfo.class, po.ErrInfo.Builder.class);
     }
 
+    private int bitField0_;
+    private int index_ ;
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -504,7 +484,12 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+    private int eCode_ = 0;
 
+    // Construct using po.ErrInfo.newBuilder()
+    private Builder() {
+
+    }
     /**
      * <pre>
      * 下标
@@ -517,7 +502,6 @@ private static final long serialVersionUID = 0L;
     public boolean hasIndex() {
       return ((bitField0_ & 0x00000001) != 0);
     }
-
     /**
      * <pre>
      * 下标
@@ -530,7 +514,6 @@ private static final long serialVersionUID = 0L;
     public int getIndex() {
       return index_;
     }
-
     /**
      * <pre>
      * 下标
@@ -547,7 +530,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
     /**
      * <pre>
      * 下标
@@ -563,6 +545,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      super(parent);
+
+    }
     /**
      * <pre>
      * 错误信息

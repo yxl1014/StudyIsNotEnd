@@ -50,9 +50,9 @@ private static final long serialVersionUID = 0L;
 
   private int bitField0_;
   public static final int USERTEL_FIELD_NUMBER = 1;
-  private int userTel_ = 0;
+  private long userTel_ = 0L;
   /**
-   * <code>optional int32 userTel = 1;</code>
+   * <code>optional int64 userTel = 1;</code>
    * @return Whether the userTel field is set.
    */
   @java.lang.Override
@@ -60,11 +60,11 @@ private static final long serialVersionUID = 0L;
     return ((bitField0_ & 0x00000001) != 0);
   }
   /**
-   * <code>optional int32 userTel = 1;</code>
+   * <code>optional int64 userTel = 1;</code>
    * @return The userTel.
    */
   @java.lang.Override
-  public int getUserTel() {
+  public long getUserTel() {
     return userTel_;
   }
 
@@ -142,7 +142,7 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeInt32(1, userTel_);
+      output.writeInt64(1, userTel_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       com.google.protobuf.GeneratedMessage.writeString(output, 2, userPwd_);
@@ -158,7 +158,7 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, userTel_);
+        .computeInt64Size(1, userTel_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.GeneratedMessage.computeStringSize(2, userPwd_);
@@ -201,7 +201,8 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     if (hasUserTel()) {
       hash = (37 * hash) + USERTEL_FIELD_NUMBER;
-      hash = (53 * hash) + getUserTel();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUserTel());
     }
     if (hasUserPwd()) {
       hash = (37 * hash) + USERPWD_FIELD_NUMBER;
@@ -338,14 +339,7 @@ private static final long serialVersionUID = 0L;
       super(parent);
 
     }
-    @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      bitField0_ = 0;
-      userTel_ = 0;
-      userPwd_ = "";
-      return this;
-    }
+    private long userTel_ ;
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
@@ -420,6 +414,16 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
+    public Builder clear() {
+      super.clear();
+      bitField0_ = 0;
+      userTel_ = 0L;
+      userPwd_ = "";
+      return this;
+    }
+    private int bitField0_;
+
+    @java.lang.Override
     public Builder mergeFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -436,7 +440,7 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              userTel_ = input.readInt32();
+              userTel_ = input.readInt64();
               bitField0_ |= 0x00000001;
               break;
             } // case 8
@@ -460,11 +464,9 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
-    private int bitField0_;
 
-    private int userTel_ ;
     /**
-     * <code>optional int32 userTel = 1;</code>
+     * <code>optional int64 userTel = 1;</code>
      * @return Whether the userTel field is set.
      */
     @java.lang.Override
@@ -472,19 +474,19 @@ private static final long serialVersionUID = 0L;
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>optional int32 userTel = 1;</code>
+     * <code>optional int64 userTel = 1;</code>
      * @return The userTel.
      */
     @java.lang.Override
-    public int getUserTel() {
+    public long getUserTel() {
       return userTel_;
     }
     /**
-     * <code>optional int32 userTel = 1;</code>
+     * <code>optional int64 userTel = 1;</code>
      * @param value The userTel to set.
      * @return This builder for chaining.
      */
-    public Builder setUserTel(int value) {
+    public Builder setUserTel(long value) {
 
       userTel_ = value;
       bitField0_ |= 0x00000001;
@@ -492,12 +494,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>optional int32 userTel = 1;</code>
+     * <code>optional int64 userTel = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearUserTel() {
       bitField0_ = (bitField0_ & ~0x00000001);
-      userTel_ = 0;
+      userTel_ = 0L;
       onChanged();
       return this;
     }

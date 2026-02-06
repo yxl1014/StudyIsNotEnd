@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.*;
 public interface UserInfoMapper {
 
     @Select("SELECT * FROM user_info WHERE user_tel = #{userTel}")
-    UserInfoDO selectById(Integer userTel);
+    UserInfoDO selectById(Long userTel);
 
     @Insert("""
         INSERT INTO user_info
@@ -34,5 +34,5 @@ public interface UserInfoMapper {
     int update(UserInfoDO entity);
 
     @Delete("DELETE FROM user_info WHERE user_tel=#{userTel}")
-    int delete(Integer userTel);
+    int delete(Long userTel);
 }

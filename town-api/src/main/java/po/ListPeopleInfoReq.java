@@ -17,10 +17,52 @@ public final class ListPeopleInfoReq extends
     com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:po.ListPeopleInfoReq)
     ListPeopleInfoReqOrBuilder {
+private static final long serialVersionUID = 0L;
+  static {
+    com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+      com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+      /* major= */ 4,
+      /* minor= */ 33,
+      /* patch= */ 2,
+      /* suffix= */ "",
+      "ListPeopleInfoReq");
+  }
+  // Use ListPeopleInfoReq.newBuilder() to construct.
+  private ListPeopleInfoReq(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    super(builder);
+  }
+  private ListPeopleInfoReq() {
+    cardId_ = "";
+  }
+
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return po.ProtocolProto.internal_static_po_ListPeopleInfoReq_descriptor;
+  }
+
+  @java.lang.Override
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+    return po.ProtocolProto.internal_static_po_ListPeopleInfoReq_fieldAccessorTable
+        .ensureFieldAccessorsInitialized(
+            po.ListPeopleInfoReq.class, po.ListPeopleInfoReq.Builder.class);
+  }
+
   public static final int CARDID_FIELD_NUMBER = 1;
   public static final int PAGE_FIELD_NUMBER = 2;
   public static final int SIZE_FIELD_NUMBER = 3;
-private static final long serialVersionUID = 0L;
+  /**
+   * <pre>
+   * 身份证ID
+   * </pre>
+   *
+   * <code>optional string cardId = 1;</code>
+   * @return Whether the cardId field is set.
+   */
+  @java.lang.Override
+  public boolean hasCardId() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
   // @@protoc_insertion_point(class_scope:po.ListPeopleInfoReq)
   private static final po.ListPeopleInfoReq DEFAULT_INSTANCE;
   private static final com.google.protobuf.Parser<ListPeopleInfoReq>
@@ -46,201 +88,10 @@ private static final long serialVersionUID = 0L;
   };
 
   static {
-    com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
-      com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
-      /* major= */ 4,
-      /* minor= */ 33,
-      /* patch= */ 2,
-      /* suffix= */ "",
-      "ListPeopleInfoReq");
-  }
-
-  static {
     DEFAULT_INSTANCE = new po.ListPeopleInfoReq();
   }
 
   private int bitField0_;
-  @SuppressWarnings("serial")
-  private volatile java.lang.Object cardId_ = "";
-  private int page_ = 0;
-  private int size_ = 0;
-  private byte memoizedIsInitialized = -1;
-  // Use ListPeopleInfoReq.newBuilder() to construct.
-  private ListPeopleInfoReq(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-    super(builder);
-  }
-  private ListPeopleInfoReq() {
-    cardId_ = "";
-  }
-
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return po.ProtocolProto.internal_static_po_ListPeopleInfoReq_descriptor;
-  }
-
-  public static po.ListPeopleInfoReq parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-
-  public static po.ListPeopleInfoReq parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-
-  public static po.ListPeopleInfoReq parseFrom(
-      com.google.protobuf.ByteString data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-
-  public static po.ListPeopleInfoReq parseFrom(
-      com.google.protobuf.ByteString data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-
-  public static po.ListPeopleInfoReq parseFrom(byte[] data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-
-  public static po.ListPeopleInfoReq parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-
-  public static po.ListPeopleInfoReq parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input);
-  }
-
-  public static po.ListPeopleInfoReq parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input, extensionRegistry);
-  }
-
-  public static po.ListPeopleInfoReq parseDelimitedFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static po.ListPeopleInfoReq parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-  }
-
-  public static po.ListPeopleInfoReq parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input);
-  }
-
-  public static po.ListPeopleInfoReq parseFrom(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input, extensionRegistry);
-  }
-
-  public static Builder newBuilder() {
-    return DEFAULT_INSTANCE.toBuilder();
-  }
-
-  public static Builder newBuilder(po.ListPeopleInfoReq prototype) {
-    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-
-  public static po.ListPeopleInfoReq getDefaultInstance() {
-    return DEFAULT_INSTANCE;
-  }
-
-  public static com.google.protobuf.Parser<ListPeopleInfoReq> parser() {
-    return PARSER;
-  }
-
-  @java.lang.Override
-  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internalGetFieldAccessorTable() {
-    return po.ProtocolProto.internal_static_po_ListPeopleInfoReq_fieldAccessorTable
-        .ensureFieldAccessorsInitialized(
-            po.ListPeopleInfoReq.class, po.ListPeopleInfoReq.Builder.class);
-  }
-
-  /**
-   * <pre>
-   * 身份证ID
-   * </pre>
-   *
-   * <code>optional string cardId = 1;</code>
-   * @return Whether the cardId field is set.
-   */
-  @java.lang.Override
-  public boolean hasCardId() {
-    return ((bitField0_ & 0x00000001) != 0);
-  }
-
-  /**
-   * <pre>
-   * 身份证ID
-   * </pre>
-   *
-   * <code>optional string cardId = 1;</code>
-   * @return The cardId.
-   */
-  @java.lang.Override
-  public java.lang.String getCardId() {
-    java.lang.Object ref = cardId_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs =
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      cardId_ = s;
-      return s;
-    }
-  }
-
-  /**
-   * <pre>
-   * 身份证ID
-   * </pre>
-   *
-   * <code>optional string cardId = 1;</code>
-   * @return The bytes for cardId.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getCardIdBytes() {
-    java.lang.Object ref = cardId_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      cardId_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   /**
    * <code>optional int32 page = 2;</code>
    * @return Whether the page field is set.
@@ -249,7 +100,6 @@ private static final long serialVersionUID = 0L;
   public boolean hasPage() {
     return ((bitField0_ & 0x00000002) != 0);
   }
-
   /**
    * <code>optional int32 page = 2;</code>
    * @return The page.
@@ -258,7 +108,9 @@ private static final long serialVersionUID = 0L;
   public int getPage() {
     return page_;
   }
-
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object cardId_ = "";
+  private int page_ = 0;
   /**
    * <code>optional int32 size = 3;</code>
    * @return Whether the size field is set.
@@ -267,7 +119,6 @@ private static final long serialVersionUID = 0L;
   public boolean hasSize() {
     return ((bitField0_ & 0x00000004) != 0);
   }
-
   /**
    * <code>optional int32 size = 3;</code>
    * @return The size.
@@ -276,7 +127,7 @@ private static final long serialVersionUID = 0L;
   public int getSize() {
     return size_;
   }
-
+  private int size_ = 0;
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -376,10 +227,95 @@ private static final long serialVersionUID = 0L;
     memoizedHashCode = hash;
     return hash;
   }
+  private byte memoizedIsInitialized = -1;
+
+  public static po.ListPeopleInfoReq parseFrom(
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+
+  public static po.ListPeopleInfoReq parseFrom(
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+
+  public static po.ListPeopleInfoReq parseFrom(
+      com.google.protobuf.ByteString data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+
+  public static po.ListPeopleInfoReq parseFrom(
+      com.google.protobuf.ByteString data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+
+  public static po.ListPeopleInfoReq parseFrom(byte[] data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+
+  public static po.ListPeopleInfoReq parseFrom(
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+
+  public static po.ListPeopleInfoReq parseFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input);
+  }
+
+  public static po.ListPeopleInfoReq parseFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input, extensionRegistry);
+  }
+
+  public static po.ListPeopleInfoReq parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseDelimitedWithIOException(PARSER, input);
+  }
+
+  public static po.ListPeopleInfoReq parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+
+  public static po.ListPeopleInfoReq parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input);
+  }
 
   @java.lang.Override
   public Builder newBuilderForType() { return newBuilder(); }
 
+  public static po.ListPeopleInfoReq parseFrom(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input, extensionRegistry);
+  }
+
+  public static Builder newBuilder() {
+    return DEFAULT_INSTANCE.toBuilder();
+  }
   @java.lang.Override
   public Builder toBuilder() {
     return this == DEFAULT_INSTANCE
@@ -391,6 +327,63 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
+  }
+
+  public static Builder newBuilder(po.ListPeopleInfoReq prototype) {
+    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+  }
+
+  public static po.ListPeopleInfoReq getDefaultInstance() {
+    return DEFAULT_INSTANCE;
+  }
+
+  public static com.google.protobuf.Parser<ListPeopleInfoReq> parser() {
+    return PARSER;
+  }
+
+  /**
+   * <pre>
+   * 身份证ID
+   * </pre>
+   *
+   * <code>optional string cardId = 1;</code>
+   * @return The cardId.
+   */
+  @java.lang.Override
+  public java.lang.String getCardId() {
+    java.lang.Object ref = cardId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs =
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      cardId_ = s;
+      return s;
+    }
+  }
+
+  /**
+   * <pre>
+   * 身份证ID
+   * </pre>
+   *
+   * <code>optional string cardId = 1;</code>
+   * @return The bytes for cardId.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getCardIdBytes() {
+    java.lang.Object ref = cardId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      cardId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   @java.lang.Override
@@ -414,21 +407,6 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:po.ListPeopleInfoReq)
       po.ListPeopleInfoReqOrBuilder {
-    private int bitField0_;
-    private java.lang.Object cardId_ = "";
-    private int page_ ;
-    private int size_ ;
-    // Construct using po.ListPeopleInfoReq.newBuilder()
-    private Builder() {
-
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      super(parent);
-
-    }
-
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return po.ProtocolProto.internal_static_po_ListPeopleInfoReq_descriptor;
@@ -442,6 +420,8 @@ private static final long serialVersionUID = 0L;
               po.ListPeopleInfoReq.class, po.ListPeopleInfoReq.Builder.class);
     }
 
+    private int bitField0_;
+    private java.lang.Object cardId_ = "";
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -577,7 +557,8 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
-
+    private int page_ ;
+    private int size_ ;
     /**
      * <pre>
      * 身份证ID
@@ -589,7 +570,6 @@ private static final long serialVersionUID = 0L;
     public boolean hasCardId() {
       return ((bitField0_ & 0x00000001) != 0);
     }
-
     /**
      * <pre>
      * 身份证ID
@@ -610,21 +590,26 @@ private static final long serialVersionUID = 0L;
         return (java.lang.String) ref;
       }
     }
+    // Construct using po.ListPeopleInfoReq.newBuilder()
+    private Builder() {
 
+    }
+    private Builder(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      super(parent);
+
+    }
     /**
      * <pre>
      * 身份证ID
      * </pre>
      *
      * <code>optional string cardId = 1;</code>
-     * @param value The cardId to set.
      * @return This builder for chaining.
      */
-    public Builder setCardId(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
-      cardId_ = value;
-      bitField0_ |= 0x00000001;
+    public Builder clearCardId() {
+      cardId_ = getDefaultInstance().getCardId();
+      bitField0_ = (bitField0_ & ~0x00000001);
       onChanged();
       return this;
     }
@@ -669,22 +654,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
-    /**
-     * <pre>
-     * 身份证ID
-     * </pre>
-     *
-     * <code>optional string cardId = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearCardId() {
-      cardId_ = getDefaultInstance().getCardId();
-      bitField0_ = (bitField0_ & ~0x00000001);
-      onChanged();
-      return this;
-    }
-
     /**
      * <code>optional int32 page = 2;</code>
      * @return Whether the page field is set.
@@ -693,7 +662,6 @@ private static final long serialVersionUID = 0L;
     public boolean hasPage() {
       return ((bitField0_ & 0x00000002) != 0);
     }
-
     /**
      * <code>optional int32 page = 2;</code>
      * @return The page.
@@ -702,7 +670,6 @@ private static final long serialVersionUID = 0L;
     public int getPage() {
       return page_;
     }
-
     /**
      * <code>optional int32 page = 2;</code>
      * @param value The page to set.
@@ -715,7 +682,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
     /**
      * <code>optional int32 page = 2;</code>
      * @return This builder for chaining.
@@ -727,6 +693,23 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    /**
+     * <pre>
+     * 身份证ID
+     * </pre>
+     *
+     * <code>optional string cardId = 1;</code>
+     * @param value The cardId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCardId(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      cardId_ = value;
+      bitField0_ |= 0x00000001;
+      onChanged();
+      return this;
+    }
     /**
      * <code>optional int32 size = 3;</code>
      * @return Whether the size field is set.

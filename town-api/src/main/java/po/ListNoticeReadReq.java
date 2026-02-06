@@ -18,6 +18,27 @@ public final class ListNoticeReadReq extends
     // @@protoc_insertion_point(message_implements:po.ListNoticeReadReq)
     ListNoticeReadReqOrBuilder {
 private static final long serialVersionUID = 0L;
+  static {
+    com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+      com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+      /* major= */ 4,
+      /* minor= */ 33,
+      /* patch= */ 2,
+      /* suffix= */ "",
+      "ListNoticeReadReq");
+  }
+  // Use ListNoticeReadReq.newBuilder() to construct.
+  private ListNoticeReadReq(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    super(builder);
+  }
+  private ListNoticeReadReq() {
+  }
+
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return po.ProtocolProto.internal_static_po_ListNoticeReadReq_descriptor;
+  }
+
   // @@protoc_insertion_point(class_scope:po.ListNoticeReadReq)
   private static final po.ListNoticeReadReq DEFAULT_INSTANCE;
   private static final com.google.protobuf.Parser<ListNoticeReadReq>
@@ -43,31 +64,25 @@ private static final long serialVersionUID = 0L;
   };
 
   static {
-    com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
-      com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
-      /* major= */ 4,
-      /* minor= */ 33,
-      /* patch= */ 2,
-      /* suffix= */ "",
-      "ListNoticeReadReq");
-  }
-
-  static {
     DEFAULT_INSTANCE = new po.ListNoticeReadReq();
   }
 
   private byte memoizedIsInitialized = -1;
 
-  // Use ListNoticeReadReq.newBuilder() to construct.
-  private ListNoticeReadReq(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-    super(builder);
-  }
-  private ListNoticeReadReq() {
+  public static po.ListNoticeReadReq getDefaultInstance() {
+    return DEFAULT_INSTANCE;
   }
 
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return po.ProtocolProto.internal_static_po_ListNoticeReadReq_descriptor;
+  public static com.google.protobuf.Parser<ListNoticeReadReq> parser() {
+    return PARSER;
+  }
+
+  @java.lang.Override
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+    return po.ProtocolProto.internal_static_po_ListNoticeReadReq_fieldAccessorTable
+        .ensureFieldAccessorsInitialized(
+            po.ListNoticeReadReq.class, po.ListNoticeReadReq.Builder.class);
   }
 
   public static po.ListNoticeReadReq parseFrom(
@@ -75,45 +90,38 @@ private static final long serialVersionUID = 0L;
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static po.ListNoticeReadReq parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static po.ListNoticeReadReq parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static po.ListNoticeReadReq parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static po.ListNoticeReadReq parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static po.ListNoticeReadReq parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static po.ListNoticeReadReq parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-
   public static po.ListNoticeReadReq parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -135,44 +143,18 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static po.ListNoticeReadReq parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-
   public static po.ListNoticeReadReq parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input, extensionRegistry);
-  }
-
-  public static Builder newBuilder() {
-    return DEFAULT_INSTANCE.toBuilder();
-  }
-
-  public static Builder newBuilder(po.ListNoticeReadReq prototype) {
-    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-
-  public static po.ListNoticeReadReq getDefaultInstance() {
-    return DEFAULT_INSTANCE;
-  }
-
-  public static com.google.protobuf.Parser<ListNoticeReadReq> parser() {
-    return PARSER;
-  }
-
-  @java.lang.Override
-  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internalGetFieldAccessorTable() {
-    return po.ProtocolProto.internal_static_po_ListNoticeReadReq_fieldAccessorTable
-        .ensureFieldAccessorsInitialized(
-            po.ListNoticeReadReq.class, po.ListNoticeReadReq.Builder.class);
   }
 
   @java.lang.Override
@@ -183,6 +165,24 @@ private static final long serialVersionUID = 0L;
 
     memoizedIsInitialized = 1;
     return true;
+  }
+  public static Builder newBuilder() {
+    return DEFAULT_INSTANCE.toBuilder();
+  }
+  public static Builder newBuilder(po.ListNoticeReadReq prototype) {
+    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+  }
+  @java.lang.Override
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
+  }
+
+  @java.lang.Override
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+    Builder builder = new Builder(parent);
+    return builder;
   }
 
   @java.lang.Override
@@ -232,19 +232,6 @@ private static final long serialVersionUID = 0L;
   public Builder newBuilderForType() { return newBuilder(); }
 
   @java.lang.Override
-  public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
-  }
-
-  @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-    Builder builder = new Builder(parent);
-    return builder;
-  }
-
-  @java.lang.Override
   public com.google.protobuf.Parser<ListNoticeReadReq> getParserForType() {
     return PARSER;
   }
@@ -265,17 +252,6 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:po.ListNoticeReadReq)
       po.ListNoticeReadReqOrBuilder {
-    // Construct using po.ListNoticeReadReq.newBuilder()
-    private Builder() {
-
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      super(parent);
-
-    }
-
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return po.ProtocolProto.internal_static_po_ListNoticeReadReq_descriptor;
@@ -289,6 +265,16 @@ private static final long serialVersionUID = 0L;
               po.ListNoticeReadReq.class, po.ListNoticeReadReq.Builder.class);
     }
 
+    // Construct using po.ListNoticeReadReq.newBuilder()
+    private Builder() {
+
+    }
+
+    private Builder(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      super(parent);
+
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
