@@ -447,6 +447,22 @@ public enum MsgType
    * <code>TMT_ListPeopleUpdateApplyRsp = 53;</code>
    */
   TMT_ListPeopleUpdateApplyRsp(53),
+  /**
+   * <pre>
+   * 获取用户信息
+   * </pre>
+   *
+   * <code>TMT_ListUserInfoReq = 54;</code>
+   */
+  TMT_ListUserInfoReq(54),
+  /**
+   * <pre>
+   * 获取用户信息 - 回执
+   * </pre>
+   *
+   * <code>TMT_ListUserInfoRsp = 55;</code>
+   */
+  TMT_ListUserInfoRsp(55),
   UNRECOGNIZED(-1),
   ;
 
@@ -891,6 +907,22 @@ public enum MsgType
    * <code>TMT_ListPeopleUpdateApplyRsp = 53;</code>
    */
   public static final int TMT_ListPeopleUpdateApplyRsp_VALUE = 53;
+  /**
+   * <pre>
+   * 获取用户信息
+   * </pre>
+   *
+   * <code>TMT_ListUserInfoReq = 54;</code>
+   */
+  public static final int TMT_ListUserInfoReq_VALUE = 54;
+  /**
+   * <pre>
+   * 获取用户信息 - 回执
+   * </pre>
+   *
+   * <code>TMT_ListUserInfoRsp = 55;</code>
+   */
+  public static final int TMT_ListUserInfoRsp_VALUE = 55;
 
 
   public final int getNumber() {
@@ -971,6 +1003,8 @@ public enum MsgType
       case 51: return TMT_ListPeopleInfoRsp;
       case 52: return TMT_ListPeopleUpdateApplyReq;
       case 53: return TMT_ListPeopleUpdateApplyRsp;
+      case 54: return TMT_ListUserInfoReq;
+      case 55: return TMT_ListUserInfoRsp;
       default: return null;
     }
   }

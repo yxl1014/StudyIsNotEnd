@@ -39,6 +39,14 @@ private static final long serialVersionUID = 0L;
     return po.ProtocolProto.internal_static_po_ListNoticeReadReq_descriptor;
   }
 
+  @java.lang.Override
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+    return po.ProtocolProto.internal_static_po_ListNoticeReadReq_fieldAccessorTable
+        .ensureFieldAccessorsInitialized(
+            po.ListNoticeReadReq.class, po.ListNoticeReadReq.Builder.class);
+  }
+
   // @@protoc_insertion_point(class_scope:po.ListNoticeReadReq)
   private static final po.ListNoticeReadReq DEFAULT_INSTANCE;
   private static final com.google.protobuf.Parser<ListNoticeReadReq>
@@ -75,14 +83,6 @@ private static final long serialVersionUID = 0L;
 
   public static com.google.protobuf.Parser<ListNoticeReadReq> parser() {
     return PARSER;
-  }
-
-  @java.lang.Override
-  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internalGetFieldAccessorTable() {
-    return po.ProtocolProto.internal_static_po_ListNoticeReadReq_fieldAccessorTable
-        .ensureFieldAccessorsInitialized(
-            po.ListNoticeReadReq.class, po.ListNoticeReadReq.Builder.class);
   }
 
   public static po.ListNoticeReadReq parseFrom(
@@ -184,63 +184,6 @@ private static final long serialVersionUID = 0L;
     Builder builder = new Builder(parent);
     return builder;
   }
-
-  @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
-    getUnknownFields().writeTo(output);
-  }
-
-  @java.lang.Override
-  public int getSerializedSize() {
-    int size = memoizedSize;
-    if (size != -1) return size;
-
-    size = 0;
-    size += getUnknownFields().getSerializedSize();
-    memoizedSize = size;
-    return size;
-  }
-
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof po.ListNoticeReadReq)) {
-      return super.equals(obj);
-    }
-    po.ListNoticeReadReq other = (po.ListNoticeReadReq) obj;
-
-    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-    return true;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (29 * hash) + getUnknownFields().hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
-
-  @java.lang.Override
-  public com.google.protobuf.Parser<ListNoticeReadReq> getParserForType() {
-    return PARSER;
-  }
-
-  @java.lang.Override
-  public po.ListNoticeReadReq getDefaultInstanceForType() {
-    return DEFAULT_INSTANCE;
-  }
-
   /**
    * <pre>
    * 获取已读
@@ -363,6 +306,62 @@ private static final long serialVersionUID = 0L;
     }
 
     // @@protoc_insertion_point(builder_scope:po.ListNoticeReadReq)
+  }
+
+  @java.lang.Override
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
+    getUnknownFields().writeTo(output);
+  }
+
+  @java.lang.Override
+  public int getSerializedSize() {
+    int size = memoizedSize;
+    if (size != -1) return size;
+
+    size = 0;
+    size += getUnknownFields().getSerializedSize();
+    memoizedSize = size;
+    return size;
+  }
+
+  @java.lang.Override
+  public boolean equals(final java.lang.Object obj) {
+    if (obj == this) {
+     return true;
+    }
+    if (!(obj instanceof po.ListNoticeReadReq)) {
+      return super.equals(obj);
+    }
+    po.ListNoticeReadReq other = (po.ListNoticeReadReq) obj;
+
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+    return true;
+  }
+
+  @java.lang.Override
+  public int hashCode() {
+    if (memoizedHashCode != 0) {
+      return memoizedHashCode;
+    }
+    int hash = 41;
+    hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
+    memoizedHashCode = hash;
+    return hash;
+  }
+
+  @java.lang.Override
+  public Builder newBuilderForType() { return newBuilder(); }
+
+  @java.lang.Override
+  public com.google.protobuf.Parser<ListNoticeReadReq> getParserForType() {
+    return PARSER;
+  }
+
+  @java.lang.Override
+  public po.ListNoticeReadReq getDefaultInstanceForType() {
+    return DEFAULT_INSTANCE;
   }
 
 }

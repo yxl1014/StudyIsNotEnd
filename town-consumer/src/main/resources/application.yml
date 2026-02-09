@@ -12,6 +12,8 @@ dubbo:
     address: nacos://${nacos.address:127.0.0.1}:8848?username=nacos&password=123456&register-consumer-url=false
     group: town-test
     register-mode: interface
+  consumer:
+    check: false
 
 # netty 配置
 netty:

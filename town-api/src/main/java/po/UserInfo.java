@@ -647,7 +647,7 @@ private static final long serialVersionUID = 0L;
       super(parent);
 
     }
-    private long userTel_ ;
+    private int bitField0_;
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
@@ -761,21 +761,6 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      bitField0_ = 0;
-      userTel_ = 0L;
-      userName_ = "";
-      userPwd_ = "";
-      userTown_ = "";
-      userPower_ = 0;
-      userCreateTime_ = 0L;
-      flagType_ = 0;
-      return this;
-    }
-    private int bitField0_;
-
-    @java.lang.Override
     public Builder mergeFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -841,7 +826,21 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+    private long userTel_ ;
 
+    @java.lang.Override
+    public Builder clear() {
+      super.clear();
+      bitField0_ = 0;
+      userTel_ = 0L;
+      userName_ = "";
+      userPwd_ = "";
+      userTown_ = "";
+      userPower_ = 0;
+      userCreateTime_ = 0L;
+      flagType_ = 0;
+      return this;
+    }
     /**
      * <pre>
      * 用户电话

@@ -88,4 +88,7 @@ enum MsgType
 
   TMT_ListPeopleUpdateApplyReq = 52; // 获取申请
   TMT_ListPeopleUpdateApplyRsp = 53; // 获取申请 - 回执
+
+  TMT_ListUserInfoReq = 54; // 获取用户信息
+  TMT_ListUserInfoRsp = 55; // 获取用户信息 - 回执
 }

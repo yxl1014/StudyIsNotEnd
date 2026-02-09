@@ -27,7 +27,7 @@ class BinaryGatewayControllerTest {
     void testBinaryForward() throws Exception {
 
         // ===== 构造二进制请求 =====
-        byte[] requestBytes = buildRegisterRequestMsg().toByteArray();
+        byte[] requestBytes = buildListUserMsg().toByteArray();
 
         // ===== 发送 HTTP 二进制请求 =====
         HttpURLConnection conn =
@@ -44,11 +44,28 @@ class BinaryGatewayControllerTest {
 
         byte[] resp = conn.getInputStream().readAllBytes();
 
-        ResponseMsg registerRsp = ResponseMsg.parseFrom(resp);
-//        LoginRsp loginRsp = LoginRsp.parseFrom(resp);
+        ResponseMsg msg = ResponseMsg.parseFrom(resp);
+        ListUserInfoRsp rsp = ListUserInfoRsp.parseFrom(msg.getMsg());
+        System.out.println(rsp.toString());
+//        LoginRsp loginRsp = LoginRsp.parseFrom(registerRsp.getMsg());
+//        System.out.println(loginRsp.getToken());
         // ===== 打印返回结果 =====
-        System.out.println("loginRsp:" + registerRsp.toString());
+//        System.out.println("loginRsp:" + registerRsp.toString());
         System.out.println();
+    }
+
+    private RequestMsg buildListUserMsg(){
+        ListUserInfoReq.Builder builder = ListUserInfoReq.newBuilder();
+        builder.setPage(1);
+        builder.setSize(10);
+
+        RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
+        msgBuilder.setMsgType(MsgType.TMT_ListUserInfoReq);
+        msgBuilder.setMsg(builder.build().toByteString());
+        msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxMjM0NTYsXCJyYW5kb21Db2RlXCI6XCIzMTQ0MTVcIixcImNyZWF0ZVRpbWVcIjoxNzcwNjE4MDkzOTM1LFwidXNlclBvd2VyXCI6XCJUVVBfQ0dNXCIsXCJ1c2VyRmxhZ1R5cGVcIjpcIlRVRlRfREVGQVVMVFwiLFwidXNlck5hbWVcIjpcInh4eFwifSIsImlhdCI6MTc3MDYxODA5MywiZXhwIjoxNzcwNzA0NDkzfQ.vr1dJERaX2BFsW0haHSURS8DKeK-CzDUSqmWkBFqbfc");
+        RequestMsg requestMsg = msgBuilder.build();
+        System.out.println("发送消息：" + requestMsg.toString());
+        return requestMsg;
     }
 
     private RequestMsg buildLoginRequestMsg() {
@@ -56,7 +73,7 @@ class BinaryGatewayControllerTest {
         LoginReq.Builder builder = LoginReq.newBuilder();
 //            builder.setUserTel(1);
 //            builder.setUserPwd("admin");
-        builder.setUserTel(10001);
+        builder.setUserTel(123456);
         builder.setUserPwd("123456");
 
         RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();

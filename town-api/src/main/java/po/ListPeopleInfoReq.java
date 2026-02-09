@@ -48,8 +48,8 @@ private static final long serialVersionUID = 0L;
             po.ListPeopleInfoReq.class, po.ListPeopleInfoReq.Builder.class);
   }
 
-  public static final int CARDID_FIELD_NUMBER = 1;
   public static final int PAGE_FIELD_NUMBER = 2;
+  public static final int CARDID_FIELD_NUMBER = 1;
   public static final int SIZE_FIELD_NUMBER = 3;
   /**
    * <pre>
@@ -227,52 +227,44 @@ private static final long serialVersionUID = 0L;
     memoizedHashCode = hash;
     return hash;
   }
-  private byte memoizedIsInitialized = -1;
 
   public static po.ListPeopleInfoReq parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static po.ListPeopleInfoReq parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static po.ListPeopleInfoReq parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static po.ListPeopleInfoReq parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static po.ListPeopleInfoReq parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static po.ListPeopleInfoReq parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static po.ListPeopleInfoReq parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-
   public static po.ListPeopleInfoReq parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -294,17 +286,12 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static po.ListPeopleInfoReq parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-
-  @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
-
   public static po.ListPeopleInfoReq parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -312,9 +299,13 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
+  private byte memoizedIsInitialized = -1;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
+  }
+
+  public static Builder newBuilder(po.ListPeopleInfoReq prototype) {
+    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
   public Builder toBuilder() {
@@ -327,10 +318,6 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
-  }
-
-  public static Builder newBuilder(po.ListPeopleInfoReq prototype) {
-    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
 
   public static po.ListPeopleInfoReq getDefaultInstance() {
@@ -385,6 +372,9 @@ private static final long serialVersionUID = 0L;
       return (com.google.protobuf.ByteString) ref;
     }
   }
+
+  @java.lang.Override
+  public Builder newBuilderForType() { return newBuilder(); }
 
   @java.lang.Override
   public com.google.protobuf.Parser<ListPeopleInfoReq> getParserForType() {
@@ -599,20 +589,6 @@ private static final long serialVersionUID = 0L;
       super(parent);
 
     }
-    /**
-     * <pre>
-     * 身份证ID
-     * </pre>
-     *
-     * <code>optional string cardId = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearCardId() {
-      cardId_ = getDefaultInstance().getCardId();
-      bitField0_ = (bitField0_ & ~0x00000001);
-      onChanged();
-      return this;
-    }
 
     /**
      * <pre>
@@ -635,7 +611,6 @@ private static final long serialVersionUID = 0L;
         return (com.google.protobuf.ByteString) ref;
       }
     }
-
     /**
      * <pre>
      * 身份证ID
@@ -649,6 +624,24 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
+      cardId_ = value;
+      bitField0_ |= 0x00000001;
+      onChanged();
+      return this;
+    }
+
+    /**
+     * <pre>
+     * 身份证ID
+     * </pre>
+     *
+     * <code>optional string cardId = 1;</code>
+     * @param value The cardId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCardId(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
       cardId_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
@@ -699,14 +692,11 @@ private static final long serialVersionUID = 0L;
      * </pre>
      *
      * <code>optional string cardId = 1;</code>
-     * @param value The cardId to set.
      * @return This builder for chaining.
      */
-    public Builder setCardId(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
-      cardId_ = value;
-      bitField0_ |= 0x00000001;
+    public Builder clearCardId() {
+      cardId_ = getDefaultInstance().getCardId();
+      bitField0_ = (bitField0_ & ~0x00000001);
       onChanged();
       return this;
     }

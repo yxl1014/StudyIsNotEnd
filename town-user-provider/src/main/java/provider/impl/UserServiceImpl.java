@@ -183,6 +183,34 @@ public class UserServiceImpl extends AbstractRpcService implements IUserService 
     }
 
     @Override
+    public ResponseMsg listUserInfo(String token, ListUserInfoReq msg) {
+        return execute(MsgType.TMT_ListUserInfoRsp, token, ()->{
+            ListUserInfoRsp.Builder builder = ListUserInfoRsp.newBuilder();
+
+            TUserPower userPower = UserContext.getUserPower();
+            if (userPower.equals(TUserPower.TUP_CM)){
+                UserInfoDO userInfoDO = daoService.user_selectById(UserContext.getUserTel());
+                builder.addUserInfos(daoService.toProto(userInfoDO));
+            }
+            else {
+                if (msg.hasUserTel()){
+                    UserInfoDO userInfoDO = daoService.user_selectById(UserContext.getUserTel());
+                    builder.addUserInfos(daoService.toProto(userInfoDO));
+                }
+                else if (msg.getPage() > 0 && msg.getSize() > 0) {
+                    for (UserInfoDO userInfoDO : daoService.user_selectAll(msg.getPage(), msg.getSize())) {
+                        builder.addUserInfos(daoService.toProto(userInfoDO));
+                    }
+                } else {
+                    return BizResult.error(RespCode.TRC_PARAM_NULL);
+                }
+            }
+
+            return BizResult.ok(builder.build());
+        });
+    }
+
+    @Override
     public RespCode AddNotifyUserInfo(NotifyUserInfoDO notifyUserInfoDO) {
         int insert = daoService.notify_insert(notifyUserInfoDO);
         if (insert <= 0){

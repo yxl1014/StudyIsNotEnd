@@ -339,7 +339,7 @@ private static final long serialVersionUID = 0L;
       super(parent);
 
     }
-    private long userTel_ ;
+    private int bitField0_;
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
@@ -414,16 +414,6 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      bitField0_ = 0;
-      userTel_ = 0L;
-      userPwd_ = "";
-      return this;
-    }
-    private int bitField0_;
-
-    @java.lang.Override
     public Builder mergeFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -464,7 +454,16 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+    private long userTel_ ;
 
+    @java.lang.Override
+    public Builder clear() {
+      super.clear();
+      bitField0_ = 0;
+      userTel_ = 0L;
+      userPwd_ = "";
+      return this;
+    }
     /**
      * <code>optional int64 userTel = 1;</code>
      * @return Whether the userTel field is set.

@@ -187,54 +187,43 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  @SuppressWarnings("serial")
-  private java.util.List<po.PeopleUpdateApply> apply_;
-  private byte memoizedIsInitialized = -1;
-
   public static po.ListPeopleUpdateApplyRsp parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static po.ListPeopleUpdateApplyRsp parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static po.ListPeopleUpdateApplyRsp parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static po.ListPeopleUpdateApplyRsp parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static po.ListPeopleUpdateApplyRsp parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static po.ListPeopleUpdateApplyRsp parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static po.ListPeopleUpdateApplyRsp parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-
   public static po.ListPeopleUpdateApplyRsp parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -256,23 +245,26 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
-  @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
-
   public static po.ListPeopleUpdateApplyRsp parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-
   public static po.ListPeopleUpdateApplyRsp parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input, extensionRegistry);
+  }
+
+  @SuppressWarnings("serial")
+  private java.util.List<po.PeopleUpdateApply> apply_;
+  private byte memoizedIsInitialized = -1;
+
+  public static Builder newBuilder() {
+    return DEFAULT_INSTANCE.toBuilder();
   }
   @java.lang.Override
   public Builder toBuilder() {
@@ -285,10 +277,6 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
-  }
-
-  public static Builder newBuilder() {
-    return DEFAULT_INSTANCE.toBuilder();
   }
 
   public static Builder newBuilder(po.ListPeopleUpdateApplyRsp prototype) {
@@ -315,6 +303,9 @@ private static final long serialVersionUID = 0L;
       getApplyOrBuilderList() {
     return apply_;
   }
+
+  @java.lang.Override
+  public Builder newBuilderForType() { return newBuilder(); }
 
   @java.lang.Override
   public com.google.protobuf.Parser<ListPeopleUpdateApplyRsp> getParserForType() {

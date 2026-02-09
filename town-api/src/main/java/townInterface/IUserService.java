@@ -15,4 +15,6 @@ public interface IUserService {
     RespCode AddNotifyUserInfo(NotifyUserInfoDO notifyUserInfoDO);
 
     ResponseMsg listNotifyUserInfo(String token, ListNotifyUserInfoReq msg);
+
+    ResponseMsg listUserInfo(String token, ListUserInfoReq msg);
 }

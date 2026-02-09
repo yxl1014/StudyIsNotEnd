@@ -113,6 +113,20 @@ message UpdateUserInfoReq
 message UpdateUserInfoRsp
 {}
 
+// 获取用户信息 村民只能获取自己的
+message ListUserInfoReq
+{
+  optional int64 userTel = 1; // 用户电话
+  optional int32 page = 2;
+  optional int32 size = 3;
+}
+
+// 获取用户信息 - 回执
+message ListUserInfoRsp
+{
+  repeated UserInfo userInfos = 1;
+}
+
 // 发布公告（管理员）
 message CreateNoticeReq
 {

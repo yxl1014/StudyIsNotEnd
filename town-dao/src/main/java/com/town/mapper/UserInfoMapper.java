@@ -3,11 +3,16 @@ package com.town.mapper;
 import entity.UserInfoDO;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface UserInfoMapper {
 
     @Select("SELECT * FROM user_info WHERE user_tel = #{userTel}")
     UserInfoDO selectById(Long userTel);
+
+    @Select("SELECT * FROM user_info")
+    List<UserInfoDO> selectAll();
 
     @Insert("""
         INSERT INTO user_info

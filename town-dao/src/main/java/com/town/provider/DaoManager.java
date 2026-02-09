@@ -84,6 +84,12 @@ public class DaoManager implements IDaoService {
     }
 
     @Override
+    public List<UserInfoDO> user_selectAll(int page, int size) {
+        PageHelper.startPage(page, size);
+        return userInfoMapper.selectAll();
+    }
+
+    @Override
     public int user_insert(UserInfoDO entity) {
         return userInfoMapper.insert(entity);
     }

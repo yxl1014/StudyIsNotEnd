@@ -1,9 +1,11 @@
 package demo.netty.handler.in;
 
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.Message;
 import com.google.protobuf.Parser;
 import demo.manager.ServiceManager;
 import demo.netty.handler.util.MsgHandler;
+import demo.netty.handler.util.RespBodyParsers;
 import demo.transfer.RequestTransfer;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -65,6 +67,14 @@ public class TaskDistributeInHandler extends SimpleChannelInboundHandler<Request
                         msg.getMsg().toByteArray(),
                         ListNotifyUserInfoReq.parser(),
                         requestTransfer::listNotifyUserInfo,
+                        ctx
+                ));
+        handlerMap.put(MsgType.TMT_ListUserInfoReq,
+                (msg, ctx) -> handle(
+                        msg.getToken(),
+                        msg.getMsg().toByteArray(),
+                        ListUserInfoReq.parser(),
+                        requestTransfer::listUserInfo,
                         ctx
                 ));
 
@@ -286,6 +296,12 @@ public class TaskDistributeInHandler extends SimpleChannelInboundHandler<Request
         try {
             ResponseMsg resp = handler.handle(msg, ctx);
             if (resp != null) {
+                Message parse = RespBodyParsers.parse(resp);
+                log.info("response code:{}, type:{}", resp.getErrCode(), resp.getMsgType());
+                if (parse != null) {
+                    // 返回消息体body
+                    log.info("response msg:{}", parse);
+                }
                 ctx.writeAndFlush(resp);
             }
         } catch (InvalidProtocolBufferException e) {

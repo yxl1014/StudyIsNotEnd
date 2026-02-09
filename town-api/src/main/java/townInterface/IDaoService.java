@@ -27,6 +27,8 @@ public interface IDaoService {
     /// user
     UserInfoDO user_selectById(Long userTel);
 
+    List<UserInfoDO> user_selectAll(int page, int size);
+
     int user_insert(UserInfoDO entity);
 
     int user_update(UserInfoDO entity);
