@@ -151,7 +151,8 @@ public class StudyServiceImpl extends AbstractRpcService implements IStudyServic
                 }
                 StudyInfoDO addCountInfo = new StudyInfoDO();
                 addCountInfo.setStudyId(studyId);
-                addCountInfo.setReadCount(studyInfoDO.getReadCount() + 1);
+                int oldCount = studyInfoDO.getReadCount() == null ? 0 : studyInfoDO.getReadCount();
+                addCountInfo.setReadCount(oldCount + 1);
                 int update = daoService.study_update(addCountInfo);
                 if (update <= 0){
                     return BizResult.error(RespCode.TRC_DB_ERROR);
