@@ -12,7 +12,10 @@ import { request } from './request'
  */
 export async function getStudyList(page = 1, size = 10) {
   const proto = await import('@/proto/proto.js')
-  const { MsgType, ListStudyReq, ListStudyRsp } = proto
+  const { MsgType, ListStudyReq, ListStudyRsp } = proto.po
+
+  console.log('=== 获取学习资料列表请求 ===')
+  console.log('页码:', page, '每页数量:', size)
 
   const listReq = ListStudyReq.create({
     page: page,
@@ -22,7 +25,22 @@ export async function getStudyList(page = 1, size = 10) {
   const response = await request(MsgType.TMT_ListStudyReq, listReq)
   const listRsp = ListStudyRsp.decode(response.msg)
 
-  return listRsp.studysList || []
+  console.log('========================================')
+  console.log('📚 学习资料列表响应 - 解码后的业务数据')
+  console.log('========================================')
+  console.log('资料数量:', listRsp.infos?.length || 0)
+  if (listRsp.infos && listRsp.infos.length > 0) {
+    console.log('资料列表:')
+    listRsp.infos.forEach((study, index) => {
+      console.log(`  [${index + 1}] ID:${study.studyId} 标题:${study.studyTitle} 类型:${study.studyType}`)
+    })
+  }
+  console.log('完整ListStudyRsp对象:', listRsp)
+  console.log('ListStudyRsp JSON:', JSON.stringify(listRsp.toJSON(), null, 2))
+  console.log('========================================')
+  console.log(' ')
+
+  return listRsp.infos || []
 }
 
 /**
@@ -32,7 +50,10 @@ export async function getStudyList(page = 1, size = 10) {
  */
 export async function createStudy(studyInfo) {
   const proto = await import('@/proto/proto.js')
-  const { MsgType, CreateStudyReq, StudyInfo } = proto
+  const { MsgType, CreateStudyReq, StudyInfo } = proto.po
+
+  console.log('=== 创建学习资料请求 ===')
+  console.log('资料信息:', studyInfo)
 
   const studyInfoProto = StudyInfo.create(studyInfo)
 
@@ -41,6 +62,11 @@ export async function createStudy(studyInfo) {
   })
 
   await request(MsgType.TMT_CreateStudyReq, createReq)
+
+  console.log('========================================')
+  console.log('✅ 学习资料创建成功')
+  console.log('========================================')
+  console.log(' ')
 }
 
 /**
@@ -51,7 +77,11 @@ export async function createStudy(studyInfo) {
  */
 export async function updateStudy(studyInfo, isDel = false) {
   const proto = await import('@/proto/proto.js')
-  const { MsgType, UpdateStudyReq, StudyInfo } = proto
+  const { MsgType, UpdateStudyReq, StudyInfo } = proto.po
+
+  console.log('=== 更新学习资料请求 ===')
+  console.log('资料信息:', studyInfo)
+  console.log('是否删除:', isDel)
 
   const studyInfoProto = StudyInfo.create(studyInfo)
 
@@ -61,6 +91,11 @@ export async function updateStudy(studyInfo, isDel = false) {
   })
 
   await request(MsgType.TMT_UpdateStudyReq, updateReq)
+
+  console.log('========================================')
+  console.log('✅ 学习资料更新成功')
+  console.log('========================================')
+  console.log(' ')
 }
 
 /**
@@ -71,7 +106,7 @@ export async function updateStudy(studyInfo, isDel = false) {
  */
 export async function toggleStarStudy(studyId, isStar) {
   const proto = await import('@/proto/proto.js')
-  const { MsgType, StarStudyReq } = proto
+  const { MsgType, StarStudyReq } = proto.po
 
   const starReq = StarStudyReq.create({
     studyId: studyId,
@@ -89,7 +124,7 @@ export async function toggleStarStudy(studyId, isStar) {
  */
 export async function getMyStarList(page = 1, size = 10) {
   const proto = await import('@/proto/proto.js')
-  const { MsgType, ListUserStarStudyReq, ListUserStarStudyRsp } = proto
+  const { MsgType, ListUserStarStudyReq, ListUserStarStudyRsp } = proto.po
 
   const listReq = ListUserStarStudyReq.create({
     page: page,
@@ -99,5 +134,13 @@ export async function getMyStarList(page = 1, size = 10) {
   const response = await request(MsgType.TMT_ListUserStarStudyReq, listReq)
   const listRsp = ListUserStarStudyRsp.decode(response.msg)
 
-  return listRsp.starsList || []
+  console.log('========================================')
+  console.log('⭐ 我的收藏列表响应 - 解码后的业务数据')
+  console.log('========================================')
+  console.log('收藏数量:', listRsp.infos?.length || 0)
+  console.log('完整ListUserStarStudyRsp对象:', listRsp)
+  console.log('========================================')
+  console.log(' ')
+
+  return listRsp.infos || []
 }

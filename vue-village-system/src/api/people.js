@@ -12,7 +12,10 @@ import { request } from './request'
  */
 export async function getPeopleList(page = 1, size = 10) {
   const proto = await import('@/proto/proto.js')
-  const { MsgType, ListPeopleInfoReq, ListPeopleInfoRsp } = proto
+  const { MsgType, ListPeopleInfoReq, ListPeopleInfoRsp } = proto.po
+
+  console.log('=== 获取家庭信息列表请求 ===')
+  console.log('页码:', page, '每页数量:', size)
 
   const listReq = ListPeopleInfoReq.create({
     page: page,
@@ -22,7 +25,22 @@ export async function getPeopleList(page = 1, size = 10) {
   const response = await request(MsgType.TMT_ListPeopleInfoReq, listReq)
   const listRsp = ListPeopleInfoRsp.decode(response.msg)
 
-  return listRsp.peoplesList || []
+  console.log('========================================')
+  console.log('👨‍👩‍👧‍👦 家庭信息列表响应 - 解码后的业务数据')
+  console.log('========================================')
+  console.log('信息数量:', listRsp.infos?.length || 0)
+  if (listRsp.infos && listRsp.infos.length > 0) {
+    console.log('信息列表:')
+    listRsp.infos.forEach((people, index) => {
+      console.log(`  [${index + 1}] 姓名:${people.peopleName} 身份证:${people.peopleCardId}`)
+    })
+  }
+  console.log('完整ListPeopleInfoRsp对象:', listRsp)
+  console.log('ListPeopleInfoRsp JSON:', JSON.stringify(listRsp.toJSON(), null, 2))
+  console.log('========================================')
+  console.log(' ')
+
+  return listRsp.infos || []
 }
 
 /**
@@ -32,7 +50,10 @@ export async function getPeopleList(page = 1, size = 10) {
  */
 export async function createPeople(peopleInfo) {
   const proto = await import('@/proto/proto.js')
-  const { MsgType, CreatePeopleReq, PeopleInfo } = proto
+  const { MsgType, CreatePeopleReq, PeopleInfo } = proto.po
+
+  console.log('=== 创建家庭信息请求 ===')
+  console.log('家庭信息:', peopleInfo)
 
   const peopleInfoProto = PeopleInfo.create(peopleInfo)
 
@@ -41,6 +62,11 @@ export async function createPeople(peopleInfo) {
   })
 
   await request(MsgType.TMT_CreatePeopleReq, createReq)
+
+  console.log('========================================')
+  console.log('✅ 家庭信息创建成功')
+  console.log('========================================')
+  console.log(' ')
 }
 
 /**
@@ -51,7 +77,11 @@ export async function createPeople(peopleInfo) {
  */
 export async function updatePeople(peopleInfo, isDel = false) {
   const proto = await import('@/proto/proto.js')
-  const { MsgType, UpdatePeopleReq, PeopleInfo } = proto
+  const { MsgType, UpdatePeopleReq, PeopleInfo } = proto.po
+
+  console.log('=== 更新家庭信息请求 ===')
+  console.log('家庭信息:', peopleInfo)
+  console.log('是否删除:', isDel)
 
   const peopleInfoProto = PeopleInfo.create(peopleInfo)
 
@@ -61,4 +91,9 @@ export async function updatePeople(peopleInfo, isDel = false) {
   })
 
   await request(MsgType.TMT_UpdatePeopleReq, updateReq)
+
+  console.log('========================================')
+  console.log('✅ 家庭信息更新成功')
+  console.log('========================================')
+  console.log(' ')
 }

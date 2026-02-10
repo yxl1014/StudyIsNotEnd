@@ -77,7 +77,7 @@
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import { register } from '@/api/user.mock.js'
+import { register } from '@/api/user.js'
 
 const router = useRouter()
 const formRef = ref()

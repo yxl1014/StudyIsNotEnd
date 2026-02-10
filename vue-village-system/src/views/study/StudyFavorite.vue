@@ -55,7 +55,7 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { ArrowLeft, Reading, Delete } from '@element-plus/icons-vue'
-import { getMyStarList, toggleStarStudy } from '@/api/study.mock.js'
+import { getMyStarList, toggleStarStudy } from '@/api/study.js'
 import { formatRelativeTime } from '@/utils/format'
 
 const router = useRouter()

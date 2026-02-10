@@ -78,7 +78,7 @@ import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { ArrowLeft } from '@element-plus/icons-vue'
 import { useUserStore } from '@/stores/user'
-import { updateUserInfo } from '@/api/user.mock.js'
+import { updateUserInfo } from '@/api/user.js'
 import { formatTime } from '@/utils/format'
 
 const router = useRouter()

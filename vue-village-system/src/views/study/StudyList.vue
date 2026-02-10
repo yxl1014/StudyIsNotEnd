@@ -24,11 +24,11 @@
         @change="handleFilterChange"
         style="width: 150px"
       >
-        <el-option label="全部" value="" />
-        <el-option label="政策解读" value="政策解读" />
-        <el-option label="农技推广" value="农技推广" />
-        <el-option label="健康养生" value="健康养生" />
-        <el-option label="法律常识" value="法律常识" />
+        <el-option label="全部" :value="null" />
+        <el-option label="政策解读" :value="0" />
+        <el-option label="农技推广" :value="1" />
+        <el-option label="健康养生" :value="2" />
+        <el-option label="法律常识" :value="3" />
       </el-select>
     </div>
 
@@ -50,14 +50,14 @@
               <div class="study-title">{{ study.studyTitle }}</div>
               <div class="study-desc">{{ study.studyContent?.substring(0, 60) }}...</div>
               <div class="study-meta">
-                <el-tag size="small">{{ study.studyType }}</el-tag>
+                <el-tag size="small">{{ getStudyTypeText(study.studyType) }}</el-tag>
                 <div class="meta-right">
                   <el-icon><View /></el-icon>
                   <span>{{ study.readCount || 0 }}</span>
                 </div>
               </div>
               <div class="study-footer">
-                <span class="study-time">{{ formatRelativeTime(study.createTime) }}</span>
+                <span class="study-time">{{ formatRelativeTime(study.studyCreateTime) }}</span>
                 <el-button
                   text
                   :icon="study.isStar ? StarFilled : Star"
@@ -102,7 +102,7 @@ import {
   Reading,
   View
 } from '@element-plus/icons-vue'
-import { getStudyList, toggleStarStudy } from '@/api/study.mock.js'
+import { getStudyList, toggleStarStudy } from '@/api/study.js'
 import { formatRelativeTime } from '@/utils/format'
 
 const router = useRouter()
@@ -112,7 +112,20 @@ const page = ref(1)
 const size = ref(12)
 const total = ref(0)
 const searchKeyword = ref('')
-const categoryFilter = ref('')
+const categoryFilter = ref(null) // null 表示全部
+
+// 学习资料类型映射
+const studyTypeMap = {
+  0: '政策解读',
+  1: '农技推广',
+  2: '健康养生',
+  3: '法律常识'
+}
+
+// 获取学习资料类型文本
+const getStudyTypeText = (type) => {
+  return studyTypeMap[type] || '未知类型'
+}
 
 const filteredStudies = computed(() => {
   let result = studies.value
@@ -124,7 +137,7 @@ const filteredStudies = computed(() => {
     )
   }
 
-  if (categoryFilter.value) {
+  if (categoryFilter.value !== null) {
     result = result.filter(s => s.studyType === categoryFilter.value)
   }
 

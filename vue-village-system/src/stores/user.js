@@ -10,7 +10,8 @@ export const useUserStore = defineStore('user', () => {
   const isLoggedIn = computed(() => !!token.value)
 
   const isAdmin = computed(() => {
-    return userInfo.value?.userPower === 'TUP_CGM' // 村干部
+    // userPower 是数字：0=村民(TUP_CM), 1=村干部(TUP_CGM)
+    return userInfo.value?.userPower === 1
   })
 
   const userName = computed(() => userInfo.value?.userName || '')

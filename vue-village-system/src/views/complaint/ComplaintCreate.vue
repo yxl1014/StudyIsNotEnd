@@ -18,11 +18,10 @@
         >
           <el-form-item label="投诉类别" prop="category">
             <el-select v-model="form.category" placeholder="请选择投诉类别">
-              <el-option label="环境卫生" value="环境卫生" />
-              <el-option label="邻里纠纷" value="邻里纠纷" />
-              <el-option label="基础设施损坏" value="基础设施损坏" />
-              <el-option label="干部作风" value="干部作风" />
-              <el-option label="其他" value="其他" />
+              <el-option label="环境卫生" :value="0" />
+              <el-option label="邻里纠纷" :value="1" />
+              <el-option label="基础设施损坏" :value="2" />
+              <el-option label="干部作风" :value="3" />
             </el-select>
           </el-form-item>
 
@@ -50,13 +49,13 @@
               action="#"
               list-type="picture-card"
               :auto-upload="false"
-              :limit="3"
+              :limit="1"
               accept="image/*"
             >
               <el-icon><Plus /></el-icon>
               <template #tip>
                 <div class="el-upload__tip">
-                  最多上传3张图片，每张不超过5MB
+                  上传1张图片，不超过5MB
                 </div>
               </template>
             </el-upload>
@@ -81,7 +80,7 @@
         </template>
         <ul class="tips-list">
           <li>请如实填写投诉内容，我们会在7个工作日内响应</li>
-          <li>您可以上传相关图片作为证据</li>
+          <li>您可以上传1张相关图片作为证据</li>
           <li>提交后会生成唯一投诉编号，可凭编号查询处理进度</li>
           <li>处理完成后会及时通知您</li>
         </ul>
@@ -95,7 +94,7 @@ import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { ArrowLeft, Plus, InfoFilled } from '@element-plus/icons-vue'
-import { createComplaint } from '@/api/complaint.mock.js'
+import { createComplaint } from '@/api/complaint.js'
 import { useUserStore } from '@/stores/user'
 
 const router = useRouter()
@@ -105,7 +104,7 @@ const submitting = ref(false)
 const fileList = ref([])
 
 const form = reactive({
-  category: '',
+  category: 0, // 默认为环境卫生 (TQT_WSHJ = 0)
   content: '',
   contact: ''
 })
@@ -131,16 +130,39 @@ const handleSubmit = async () => {
 
     // 构建投诉信息
     const complaintInfo = {
-      questionCtx: `【${form.category}】${form.content}`,
+      questionType: form.category, // 使用数字类型
+      questionCtx: form.content,
       questionWriterTel: userStore.userTel,
       questionWriterName: userStore.userName,
-      createTime: Date.now(),
-      nodeType: 0 // 待处理
+      questionTime: Date.now()
     }
 
     if (form.contact) {
       complaintInfo.contactInfo = form.contact
     }
+
+    // 处理图片附件：将图片转换为二进制数据
+    if (fileList.value.length > 0 && fileList.value[0].raw) {
+      try {
+        const file = fileList.value[0].raw
+        console.log('正在读取图片文件:', file.name, '大小:', file.size, 'bytes')
+
+        // 读取文件为 ArrayBuffer
+        const arrayBuffer = await file.arrayBuffer()
+        // 转换为 Uint8Array
+        const uint8Array = new Uint8Array(arrayBuffer)
+
+        complaintInfo.questPhoto = uint8Array
+        console.log('图片已转换为二进制数据，长度:', uint8Array.length, 'bytes')
+      } catch (error) {
+        console.error('读取图片失败:', error)
+        ElMessage.error('读取图片失败')
+        submitting.value = false
+        return
+      }
+    }
+
+    console.log('提交投诉信息:', complaintInfo)
 
     // 提交投诉
     await createComplaint(complaintInfo)
@@ -153,6 +175,7 @@ const handleSubmit = async () => {
     }, 1500)
   } catch (error) {
     if (error !== 'cancel') {
+      console.error('提交失败:', error)
       ElMessage.error(error.message || '提交失败')
     }
   } finally {

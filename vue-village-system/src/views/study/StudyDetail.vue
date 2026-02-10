@@ -30,7 +30,7 @@
             </div>
             <div class="meta-item">
               <el-icon><Clock /></el-icon>
-              <span>上传时间：{{ formatTime(study.createTime) }}</span>
+              <span>上传时间：{{ formatTime(study.studyCreateTime) }}</span>
             </div>
             <div class="meta-item">
               <el-icon><View /></el-icon>
@@ -79,7 +79,7 @@ import {
   View,
   Download
 } from '@element-plus/icons-vue'
-import { getStudyList, toggleStarStudy } from '@/api/study.mock.js'
+import { getStudyList, toggleStarStudy } from '@/api/study.js'
 import { formatTime, formatFileSize } from '@/utils/format'
 
 const route = useRoute()

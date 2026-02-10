@@ -71,7 +71,7 @@ import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { User, Lock } from '@element-plus/icons-vue'
-import { login } from '@/api/user.mock.js'
+import { login } from '@/api/user.js'
 import { useUserStore } from '@/stores/user'
 
 const router = useRouter()

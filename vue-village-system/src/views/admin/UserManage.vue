@@ -21,7 +21,7 @@
         <el-table-column prop="userName" label="用户名" width="120" />
         <el-table-column label="角色" width="100">
           <template #default="{ row }">
-            <el-tag v-if="row.userPower === 'TUP_CGM'" type="success">
+            <el-tag v-if="row.userPower === 1" type="success">
               村干部
             </el-tag>
             <el-tag v-else>村民</el-tag>
@@ -77,7 +77,7 @@
           {{ currentUser.userName }}
         </el-descriptions-item>
         <el-descriptions-item label="角色">
-          <el-tag v-if="currentUser.userPower === 'TUP_CGM'" type="success">
+          <el-tag v-if="currentUser.userPower === 1" type="success">
             村干部
           </el-tag>
           <el-tag v-else>村民</el-tag>
@@ -100,7 +100,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Search } from '@element-plus/icons-vue'
-import { updateUserInfo } from '@/api/user.mock.js'
+import { updateUserInfo, getUserList } from '@/api/user.js'
 import { formatTime } from '@/utils/format'
 
 const loading = ref(false)
@@ -157,32 +157,9 @@ const toggleUserStatus = async (user) => {
 const loadUsers = async () => {
   try {
     loading.value = true
-    // 实际应该调用获取用户列表的API
-    // 这里模拟数据
-    users.value = [
-      {
-        userTel: 13800138000,
-        userName: '张三',
-        userPower: 'TUP_CM',
-        flagType: 0,
-        userCreateTime: Date.now() - 86400000 * 30
-      },
-      {
-        userTel: 13800138001,
-        userName: '李四',
-        userPower: 'TUP_CM',
-        flagType: 0,
-        userCreateTime: Date.now() - 86400000 * 20
-      },
-      {
-        userTel: 13800138002,
-        userName: '王五',
-        userPower: 'TUP_CGM',
-        flagType: 0,
-        userCreateTime: Date.now() - 86400000 * 10
-      }
-    ]
-    total.value = users.value.length
+    const list = await getUserList(page.value, size.value)
+    users.value = list
+    total.value = list.length
   } catch (error) {
     ElMessage.error('加载用户列表失败')
   } finally {

@@ -31,7 +31,7 @@
         <el-table-column prop="questionWriterName" label="提交人" width="100" />
         <el-table-column label="提交时间" width="180">
           <template #default="{ row }">
-            {{ formatTime(row.createTime) }}
+            {{ formatTime(row.questionTime) }}
           </template>
         </el-table-column>
         <el-table-column label="处理人" width="100">
@@ -82,7 +82,7 @@
             {{ currentComplaint.questionWriterName }}
           </el-descriptions-item>
           <el-descriptions-item label="提交时间">
-            {{ formatTime(currentComplaint.createTime) }}
+            {{ formatTime(currentComplaint.questionTime) }}
           </el-descriptions-item>
         </el-descriptions>
 
@@ -134,7 +134,7 @@
             {{ currentComplaint.questionWriterName }}
           </el-descriptions-item>
           <el-descriptions-item label="提交时间">
-            {{ formatTime(currentComplaint.createTime) }}
+            {{ formatTime(currentComplaint.questionTime) }}
           </el-descriptions-item>
           <el-descriptions-item v-if="currentComplaint.choiceUser" label="处理人">
             {{ currentComplaint.choiceUserName }}
@@ -151,7 +151,7 @@
 <script setup>
 import { ref, reactive, computed, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
-import { getComplaintList, updateComplaint } from '@/api/complaint.mock.js'
+import { getComplaintList, updateComplaint } from '@/api/complaint.js'
 import { useUserStore } from '@/stores/user'
 import { formatTime } from '@/utils/format'
 

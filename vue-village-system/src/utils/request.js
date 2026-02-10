@@ -7,7 +7,7 @@ const http = axios.create({
   baseURL: '/api',
   timeout: 30000,
   headers: {
-    'Content-Type': 'application/x-protobuf'
+    'Content-Type': 'application/octet-stream'
   },
   responseType: 'arraybuffer'
 })

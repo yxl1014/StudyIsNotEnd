@@ -168,7 +168,7 @@ import {
   Search,
   UploadFilled
 } from '@element-plus/icons-vue'
-import { getPeopleList, createPeople, updatePeople } from '@/api/people.mock.js'
+import { getPeopleList, createPeople, updatePeople } from '@/api/people.js'
 import { formatTime } from '@/utils/format'
 
 const loading = ref(false)

@@ -10,11 +10,11 @@
     <!-- 筛选栏 -->
     <div class="filter-bar">
       <el-radio-group v-model="filterType" @change="handleFilterChange">
-        <el-radio-button label="">全部</el-radio-button>
-        <el-radio-button label="通知类">通知</el-radio-button>
-        <el-radio-button label="招聘类">招聘</el-radio-button>
-        <el-radio-button label="活动类">活动</el-radio-button>
-        <el-radio-button label="政策宣传类">政策</el-radio-button>
+        <el-radio-button :label="null">全部</el-radio-button>
+        <el-radio-button :label="0">通知</el-radio-button>
+        <el-radio-button :label="1">招聘</el-radio-button>
+        <el-radio-button :label="2">活动</el-radio-button>
+        <el-radio-button :label="3">政策</el-radio-button>
       </el-radio-group>
     </div>
 
@@ -50,7 +50,7 @@
               </div>
               <div class="meta-right">
                 <el-icon><Clock /></el-icon>
-                <span>{{ formatRelativeTime(notice.createTime) }}</span>
+                <span>{{ formatRelativeTime(notice.noticeCreateTime) }}</span>
               </div>
             </div>
           </div>
@@ -78,7 +78,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { ArrowLeft, ArrowRight, User, Clock } from '@element-plus/icons-vue'
-import { getNoticeList } from '@/api/notice.mock.js'
+import { getNoticeList } from '@/api/notice.js'
 import { formatRelativeTime } from '@/utils/format'
 
 const router = useRouter()
@@ -87,10 +87,10 @@ const notices = ref([])
 const page = ref(1)
 const size = ref(10)
 const total = ref(0)
-const filterType = ref('')
+const filterType = ref(null) // null 表示全部
 
 const filteredNotices = computed(() => {
-  if (!filterType.value) {
+  if (filterType.value === null) {
     return notices.value
   }
   return notices.value.filter(notice => notice.noticeType === filterType.value)

@@ -25,7 +25,7 @@
             </div>
             <div class="meta-item">
               <el-icon><Clock /></el-icon>
-              <span>发布时间：{{ formatTime(notice.createTime) }}</span>
+              <span>发布时间：{{ formatTime(notice.noticeCreateTime) }}</span>
             </div>
           </div>
 
@@ -82,7 +82,7 @@ import {
   Document,
   CircleCheck
 } from '@element-plus/icons-vue'
-import { getNoticeList, markNoticeRead } from '@/api/notice.mock.js'
+import { getNoticeList, markNoticeRead } from '@/api/notice.js'
 import { formatTime } from '@/utils/format'
 
 const route = useRoute()

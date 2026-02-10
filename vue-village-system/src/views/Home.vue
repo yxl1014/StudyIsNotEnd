@@ -99,7 +99,7 @@ import {
   ArrowRight
 } from '@element-plus/icons-vue'
 import { useUserStore } from '@/stores/user'
-import { getNoticeList } from '@/api/notice.mock.js'
+import { getNoticeList } from '@/api/notice.js'
 import { formatTime } from '@/utils/format'
 
 const router = useRouter()

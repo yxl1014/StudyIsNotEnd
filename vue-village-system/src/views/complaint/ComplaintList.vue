@@ -12,10 +12,10 @@
     <!-- 状态筛选 -->
     <div class="filter-bar">
       <el-radio-group v-model="statusFilter" @change="handleFilterChange">
-        <el-radio-button label="">全部</el-radio-button>
-        <el-radio-button label="待处理">待处理</el-radio-button>
-        <el-radio-button label="处理中">处理中</el-radio-button>
-        <el-radio-button label="已完成">已完成</el-radio-button>
+        <el-radio-button :label="null">全部</el-radio-button>
+        <el-radio-button :label="0">待处理</el-radio-button>
+        <el-radio-button :label="1">处理中</el-radio-button>
+        <el-radio-button :label="2">已完成</el-radio-button>
       </el-radio-group>
     </div>
 
@@ -44,7 +44,7 @@
             <div class="complaint-meta">
               <div class="meta-item">
                 <el-icon><Clock /></el-icon>
-                <span>{{ formatRelativeTime(complaint.createTime) }}</span>
+                <span>{{ formatRelativeTime(complaint.questionTime) }}</span>
               </div>
               <div v-if="complaint.choiceUser" class="meta-item">
                 <el-icon><User /></el-icon>
@@ -84,7 +84,7 @@
             </el-tag>
           </el-descriptions-item>
           <el-descriptions-item label="提交时间">
-            {{ formatTime(currentComplaint.createTime) }}
+            {{ formatTime(currentComplaint.questionTime) }}
           </el-descriptions-item>
           <el-descriptions-item label="投诉内容">
             <div class="content-text">{{ currentComplaint.questionCtx }}</div>
@@ -155,7 +155,7 @@ import {
   Clock,
   User
 } from '@element-plus/icons-vue'
-import { getComplaintList } from '@/api/complaint.mock.js'
+import { getComplaintList } from '@/api/complaint.js'
 import { formatTime, formatRelativeTime } from '@/utils/format'
 
 const router = useRouter()
@@ -164,17 +164,17 @@ const complaints = ref([])
 const page = ref(1)
 const size = ref(10)
 const total = ref(0)
-const statusFilter = ref('')
+const statusFilter = ref(null) // null 表示全部
 const showDetailDialog = ref(false)
 const currentComplaint = ref(null)
 const tempRating = ref(0)
 const submittingRating = ref(false)
 
 const filteredComplaints = computed(() => {
-  if (!statusFilter.value) {
+  if (statusFilter.value === null) {
     return complaints.value
   }
-  return complaints.value.filter(c => getStatusText(c.nodeType) === statusFilter.value)
+  return complaints.value.filter(c => c.nodeType === statusFilter.value)
 })
 
 const goBack = () => {

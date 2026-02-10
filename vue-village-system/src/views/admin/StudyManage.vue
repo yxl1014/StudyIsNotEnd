@@ -15,7 +15,7 @@
         <el-table-column prop="studyTitle" label="标题" min-width="200" />
         <el-table-column label="分类" width="120">
           <template #default="{ row }">
-            <el-tag size="small">{{ row.studyType }}</el-tag>
+            <el-tag size="small">{{ getStudyTypeText(row.studyType) }}</el-tag>
           </template>
         </el-table-column>
         <el-table-column label="状态" width="100">
@@ -31,7 +31,7 @@
         </el-table-column>
         <el-table-column label="上传时间" width="180">
           <template #default="{ row }">
-            {{ formatTime(row.createTime) }}
+            {{ formatTime(row.studyCreateTime) }}
           </template>
         </el-table-column>
         <el-table-column label="操作" width="200" fixed="right">
@@ -76,16 +76,16 @@
 
         <el-form-item label="资料分类" prop="studyType">
           <el-select v-model="studyForm.studyType" placeholder="请选择分类">
-            <el-option label="政策解读" value="政策解读" />
-            <el-option label="农技推广" value="农技推广" />
-            <el-option label="健康养生" value="健康养生" />
-            <el-option label="法律常识" value="法律常识" />
+            <el-option label="政策解读" :value="0" />
+            <el-option label="农技推广" :value="1" />
+            <el-option label="健康养生" :value="2" />
+            <el-option label="法律常识" :value="3" />
           </el-select>
         </el-form-item>
 
-        <el-form-item label="资料简介" prop="studyIntro">
+        <el-form-item label="资料简介" prop="studyTip">
           <el-input
-            v-model="studyForm.studyIntro"
+            v-model="studyForm.studyTip"
             type="textarea"
             :rows="3"
             placeholder="请输入资料简介"
@@ -142,7 +142,7 @@
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Plus, Upload } from '@element-plus/icons-vue'
-import { getStudyList, createStudy, updateStudy } from '@/api/study.mock.js'
+import { getStudyList, createStudy, updateStudy } from '@/api/study.js'
 import { useUserStore } from '@/stores/user'
 import { formatTime } from '@/utils/format'
 
@@ -157,10 +157,23 @@ const showUploadDialog = ref(false)
 const editingStudy = ref(null)
 const formRef = ref()
 
+// 学习资料类型映射
+const studyTypeMap = {
+  0: '政策解读',
+  1: '农技推广',
+  2: '健康养生',
+  3: '法律常识'
+}
+
+// 获取学习资料类型文本
+const getStudyTypeText = (type) => {
+  return studyTypeMap[type] || '政策解读'
+}
+
 const studyForm = reactive({
   studyTitle: '',
-  studyType: '政策解读',
-  studyIntro: '',
+  studyType: 0, // 默认为政策解读 (TST_ZCJD = 0)
+  studyTip: '',
   studyContent: '',
   isOpen: true,
   isTop: false
@@ -184,7 +197,7 @@ const editStudy = (study) => {
   Object.assign(studyForm, {
     studyTitle: study.studyTitle,
     studyType: study.studyType,
-    studyIntro: study.studyIntro || '',
+    studyTip: study.studyTip || '',
     studyContent: study.studyContent,
     isOpen: study.isOpen,
     isTop: study.isTop
@@ -216,21 +229,23 @@ const handleSubmit = async () => {
     const studyInfo = {
       studyTitle: studyForm.studyTitle,
       studyType: studyForm.studyType,
-      studyIntro: studyForm.studyIntro,
+      studyTip: studyForm.studyTip,
       studyContent: studyForm.studyContent,
-      uploaderTel: userStore.userTel,
-      uploaderName: userStore.userName,
       isOpen: studyForm.isOpen,
-      isTop: studyForm.isTop,
-      createTime: Date.now(),
-      readCount: 0
+      isTop: studyForm.isTop
     }
 
     if (editingStudy.value) {
+      // 编辑模式：保留原来的 ID、创建时间和阅读次数
       studyInfo.studyId = editingStudy.value.studyId
+      studyInfo.studyCreateTime = editingStudy.value.studyCreateTime
+      studyInfo.readCount = editingStudy.value.readCount || 0
       await updateStudy(studyInfo)
       ElMessage.success('更新成功')
     } else {
+      // 创建模式：设置新的创建时间和初始阅读次数
+      studyInfo.studyCreateTime = Date.now()
+      studyInfo.readCount = 0
       await createStudy(studyInfo)
       ElMessage.success('上传成功')
     }
@@ -240,6 +255,7 @@ const handleSubmit = async () => {
     loadStudies()
   } catch (error) {
     if (error !== 'cancel') {
+      console.error('操作失败:', error)
       ElMessage.error(error.message || '操作失败')
     }
   } finally {
@@ -251,8 +267,8 @@ const resetForm = () => {
   editingStudy.value = null
   Object.assign(studyForm, {
     studyTitle: '',
-    studyType: '政策解读',
-    studyIntro: '',
+    studyType: 0,
+    studyTip: '',
     studyContent: '',
     isOpen: true,
     isTop: false
