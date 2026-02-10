@@ -12,10 +12,10 @@ public interface QuestionInfoMapper {
     QuestionInfoDO selectById(Integer id);
 
     @Select("SELECT * FROM question_info WHERE question_write_tel = #{userTel}")
-    List<QuestionInfoDO> selectByWriterTel(Long userTel);
+    List<QuestionInfoDO> selectByWriterTel(@Param("userTel") Long userTel);
 
     @Select("SELECT * FROM question_info WHERE choice_user = #{choiceUser} OR choice_user IS null OR choice_user = 0")
-    List<QuestionInfoDO> selectByChoiceUser(Long choiceUser);
+    List<QuestionInfoDO> selectByChoiceUser(@Param("userTel") Long choiceUser);
 
     @Insert("""
         INSERT INTO question_info

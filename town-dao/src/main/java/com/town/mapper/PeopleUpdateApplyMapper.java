@@ -15,7 +15,7 @@ public interface PeopleUpdateApplyMapper {
     List<PeopleUpdateApplyDO> selectAll();
 
     @Select("SELECT * FROM people_update_apply WHERE apply_user_id = #{userTel}")
-    List<PeopleUpdateApplyDO> selectAllByUserTel(Long userTel);
+    List<PeopleUpdateApplyDO> selectAllByUserTel(@Param("userTel") Long userTel);
 
     @Insert("""
             INSERT INTO people_update_apply

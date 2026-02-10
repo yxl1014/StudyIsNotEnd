@@ -12,10 +12,10 @@ public interface UserReadNoticeInfoMapper {
     UserReadNoticeInfoDO selectById(Integer id);
 
     @Select("SELECT * FROM user_read_notice_info WHERE user_tel = #{userTel}")
-    List<UserReadNoticeInfoDO> selectByUserTel(Long userTel);
+    List<UserReadNoticeInfoDO> selectByUserTel(@Param("userTel") Long userTel);
 
     @Select("SELECT * FROM user_read_notice_info WHERE user_tel = #{userTel} AND notice_id = #{noticeId}")
-    List<UserReadNoticeInfoDO> selectByUserTelAndNoticeId(Long userTel, Integer noticeId);
+    List<UserReadNoticeInfoDO> selectByUserTelAndNoticeId(@Param("userTel") Long userTel, @Param("noticeId")  Integer noticeId);
 
     @Insert("""
             INSERT INTO user_read_notice_info
