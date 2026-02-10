@@ -46,8 +46,8 @@ CREATE TABLE update_info
     update_id       INT PRIMARY KEY AUTO_INCREMENT,
     info_id         BIGINT      NULL,
     info_type       INT         NULL,
-    before_msg      BLOB        NULL,
-    after_msg       BLOB        NULL,
+    before_msg      MEDIUMBLOB  NULL,
+    after_msg       MEDIUMBLOB  NULL,
     update_time     BIGINT      NULL,
     update_user_tel BIGINT      NULL,
     update_name     VARCHAR(32) NULL

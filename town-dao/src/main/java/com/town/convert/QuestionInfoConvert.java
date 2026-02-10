@@ -18,10 +18,14 @@ public interface QuestionInfoConvert {
      * Proto → Entity
      * ======================= */
 
-    @Mapping(target = "questionType",
-            expression = "java(proto.getQuestionTypeValue())")
-    @Mapping(target = "nodeType",
-            expression = "java(proto.getNodeTypeValue())")
+    @Mapping(
+            target = "questionType",
+            expression = "java(proto.hasQuestionType() ? proto.getQuestionTypeValue() : null)"
+    )
+    @Mapping(
+            target = "nodeType",
+            expression = "java(proto.hasNodeType() ? proto.getNodeTypeValue() : null)"
+    )
     @Mapping(
             target = "questPhoto",
             expression = "java(proto.hasQuestPhoto() ? proto.getQuestPhoto().toByteArray() : null)"
@@ -32,10 +36,14 @@ public interface QuestionInfoConvert {
      * Entity → Proto
      * ======================= */
 
-    @Mapping(target = "questionType",
-            expression = "java(po.QuestionType.forNumber(entity.getQuestionType()))")
-    @Mapping(target = "nodeType",
-            expression = "java(po.QuestionNodeType.forNumber(entity.getNodeType()))")
+    @Mapping(
+            target = "questionType",
+            expression = "java(entity.getQuestionType() == null ? null : po.QuestionType.forNumber(entity.getQuestionType()))"
+    )
+    @Mapping(
+            target = "nodeType",
+            expression = "java(entity.getNodeType() == null ? null : po.QuestionNodeType.forNumber(entity.getNodeType()))"
+    )
     @Mapping(target = "questPhoto", ignore = true)
     po.QuestionInfo toProto(QuestionInfoDO entity);
 

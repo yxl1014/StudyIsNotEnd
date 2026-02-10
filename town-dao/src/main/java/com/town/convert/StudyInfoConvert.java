@@ -7,10 +7,19 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface StudyInfoConvert {
 
-    @Mapping(target = "studyType", expression = "java(proto.getStudyTypeValue())")
+    /* Proto → Entity */
+    @Mapping(
+            target = "studyType",
+            expression = "java(proto.hasStudyType() ? proto.getStudyTypeValue() : null)"
+    )
     StudyInfoDO toDO(po.StudyInfo proto);
 
-    @Mapping(target = "studyType", expression = "java(po.StudyType.forNumber(entity.getStudyType()))")
+    /* Entity → Proto */
+    @Mapping(
+            target = "studyType",
+            expression = "java(entity.getStudyType() == null ? null : po.StudyType.forNumber(entity.getStudyType()))"
+    )
     po.StudyInfo toProto(StudyInfoDO entity);
+
 }
 
