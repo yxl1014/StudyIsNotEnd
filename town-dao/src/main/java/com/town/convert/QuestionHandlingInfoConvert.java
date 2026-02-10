@@ -7,10 +7,20 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface QuestionHandlingInfoConvert {
 
-    @Mapping(target = "handlingType", expression = "java(proto.getHandlingTypeValue())")
+    /* Proto → Entity */
+    @Mapping(
+            target = "handlingType",
+            expression = "java(proto.hasHandlingType() ? proto.getHandlingTypeValue() : null)"
+    )
     QuestionHandlingInfoDO toDO(po.QuestionHandlingInfo proto);
 
-    @Mapping(target = "handlingType", expression = "java(po.QuestionHandlingType.forNumber(entity.getHandlingType()))")
+    /* Entity → Proto */
+
+    @Mapping(
+            target = "handlingType",
+            expression = "java(entity.getHandlingType() == null ? null : po.QuestionHandlingType.forNumber(entity.getHandlingType()))"
+    )
     po.QuestionHandlingInfo toProto(QuestionHandlingInfoDO entity);
+
 }
 

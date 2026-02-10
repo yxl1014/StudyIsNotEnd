@@ -16,13 +16,19 @@ public interface NoticeInfoConvert {
 
     /* Proto → Entity */
 
-    @Mapping(target = "noticeType", expression = "java(proto.getNoticeTypeValue())")
+    @Mapping(
+            target = "noticeType",
+            expression = "java(proto.hasNoticeType() ? proto.getNoticeTypeValue() : null)"
+    )
     @Mapping(target = "noticeAtt", expression = "java(proto.hasNoticeAtt() ? proto.getNoticeAtt().toByteArray() : null)")
     NoticeInfoDO toDO(po.NoticeInfo proto);
 
     /* Entity → Proto */
 
-    @Mapping(target = "noticeType", expression = "java(po.TNoticeType.forNumber(entity.getNoticeType()))")
+    @Mapping(
+            target = "noticeType",
+            expression = "java(entity.getNoticeType() == null ? null : po.TNoticeType.forNumber(entity.getNoticeType()))"
+    )
     @Mapping(target = "noticeAtt", ignore = true)
     po.NoticeInfo toProto(NoticeInfoDO entity);
 

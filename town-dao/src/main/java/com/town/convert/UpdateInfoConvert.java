@@ -10,7 +10,10 @@ import org.mapstruct.MappingTarget;
 @Mapper(componentModel = "spring")
 public interface UpdateInfoConvert {
 
-    @Mapping(target = "infoType", expression = "java(proto.getInfoTypeValue())")
+    @Mapping(
+            target = "infoType",
+            expression = "java(proto.hasInfoType() ? proto.getInfoTypeValue() : null)"
+    )
     @Mapping(
             target = "beforeMsg",
             expression = "java(proto.hasBeforeMsg() ? proto.getBeforeMsg().toByteArray() : null)"
@@ -23,7 +26,7 @@ public interface UpdateInfoConvert {
 
     @Mapping(
             target = "infoType",
-            expression = "java(po.TUpdateInfoType.forNumber(entity.getInfoType()))"
+            expression = "java(entity.getInfoType() == null ? null : po.TUpdateInfoType.forNumber(entity.getInfoType()))"
     )
     @Mapping(target = "beforeMsg", ignore = true)
     @Mapping(target = "afterMsg", ignore = true)

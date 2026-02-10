@@ -15,18 +15,22 @@ public interface UserInfoConvert {
 
     @Mapping(
             target = "userPower",
-            expression = "java(proto.getUserPowerValue())"
+            expression = "java(proto.hasUserPower() ? proto.getUserPowerValue() : null)"
     )
     @Mapping(
             target = "flagType",
-            expression = "java(proto.getFlagTypeValue())"
+            expression = "java(proto.hasFlagType() ? proto.getFlagTypeValue() : null)"
     )
     UserInfoDO toDO(po.UserInfo proto);
 
-    /* Entity → Proto */
-
-    @Mapping(target = "userPower", expression = "java(po.TUserPower.forNumber(entity.getUserPower()))")
-    @Mapping(target = "flagType", expression = "java(po.TUserFlagType.forNumber(entity.getFlagType()))")
+    @Mapping(
+            target = "userPower",
+            expression = "java(entity.getUserPower() == null ? null : po.TUserPower.forNumber(entity.getUserPower()))"
+    )
+    @Mapping(
+            target = "flagType",
+            expression = "java(entity.getFlagType() == null ? null : po.TUserFlagType.forNumber(entity.getFlagType()))"
+    )
     po.UserInfo toProto(UserInfoDO entity);
 }
 
