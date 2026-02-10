@@ -11,7 +11,7 @@ public interface UserStarStudyInfoMapper {
     @Select("SELECT * FROM user_star_study_info WHERE id = #{id}")
     UserStarStudyInfoDO selectById(@Param("id") Integer id);
 
-    @Select("SELECT * FROM user_star_study_info WHERE id = #{id} AND user_tel = #{userTel}")
+    @Select("SELECT * FROM user_star_study_info WHERE study_id = #{id} AND user_tel = #{userTel}")
     UserStarStudyInfoDO selectByIdAndTel(@Param("id") Integer id, @Param("userTel") Long userTel);
 
     @Select("SELECT * FROM user_star_study_info WHERE user_tel = #{userTel}")
