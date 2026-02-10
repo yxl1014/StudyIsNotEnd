@@ -23,12 +23,22 @@ public interface PeopleInfoMapper {
     int insert(PeopleInfoDO entity);
 
     @Update("""
-        UPDATE people_info SET
-        people_name = #{peopleName},
-        people_house_id = #{peopleHouseId},
-        people_ctx = #{peopleCtx}
-        WHERE people_card_id = #{peopleCardId}
-        """)
+            <script>
+            UPDATE people_info
+            <set>
+                <if test="peopleName != null">
+                    people_name = #{peopleName},
+                </if>
+                <if test="peopleHouseId != null">
+                    people_house_id = #{peopleHouseId},
+                </if>
+                <if test="peopleCtx != null">
+                    people_ctx = #{peopleCtx},
+                </if>
+            </set>
+            WHERE people_card_id = #{peopleCardId}
+            </script>
+            """)
     int update(PeopleInfoDO entity);
 
     @Delete("DELETE FROM people_info WHERE people_card_id = #{id}")

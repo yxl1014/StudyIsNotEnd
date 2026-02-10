@@ -10,25 +10,40 @@ public interface QuestionHandlingInfoMapper {
     QuestionHandlingInfoDO selectById(Integer id);
 
     @Insert("""
-        INSERT INTO question_handling_info
-        (question_id, handling_type, handle_user_tel, handle_ctx, handle_time)
-        VALUES
-        (#{questionId}, #{handlingType}, #{handleUserTel},
-         #{handleCtx}, #{handleTime})
-        """)
+            INSERT INTO question_handling_info
+            (question_id, handling_type, handle_user_tel, handle_ctx, handle_time)
+            VALUES
+            (#{questionId}, #{handlingType}, #{handleUserTel},
+             #{handleCtx}, #{handleTime})
+            """)
     @Options(useGeneratedKeys = true, keyProperty = "handleId")
     int insert(QuestionHandlingInfoDO entity);
 
     @Update("""
-        UPDATE question_handling_info SET
-        question_id = #{questionId},
-        handling_type = #{handlingType},
-        handle_user_tel = #{handleUserTel},
-        handle_ctx = #{handleCtx},
-        handle_time = #{handleTime}
-        WHERE handle_id = #{handleId}
-        """)
+            <script>
+            UPDATE question_handling_info
+            <set>
+                <if test="questionId != null">
+                    question_id = #{questionId},
+                </if>
+                <if test="handlingType != null">
+                    handling_type = #{handlingType},
+                </if>
+                <if test="handleUserTel != null">
+                    handle_user_tel = #{handleUserTel},
+                </if>
+                <if test="handleCtx != null">
+                    handle_ctx = #{handleCtx},
+                </if>
+                <if test="handleTime != null">
+                    handle_time = #{handleTime},
+                </if>
+            </set>
+            WHERE handle_id = #{handleId}
+            </script>
+            """)
     int update(QuestionHandlingInfoDO entity);
+
 
     @Delete("DELETE FROM question_handling_info WHERE handle_id = #{id}")
     int delete(Integer id);

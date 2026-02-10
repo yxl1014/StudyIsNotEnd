@@ -27,13 +27,24 @@ public interface PeopleUpdateApplyMapper {
     int insert(PeopleUpdateApplyDO entity);
 
     @Update("""
-            UPDATE people_update_apply SET
-            apply_user_id = #{applyUserId},
-            apply_create_time = #{applyCreateTime},
-            new_people = #{newPeople}
+            <script>
+            UPDATE people_update_apply
+            <set>
+                <if test="applyUserId != null">
+                    apply_user_id = #{applyUserId},
+                </if>
+                <if test="applyCreateTime != null">
+                    apply_create_time = #{applyCreateTime},
+                </if>
+                <if test="newPeople != null">
+                    new_people = #{newPeople},
+                </if>
+            </set>
             WHERE apply_id = #{applyId}
+            </script>
             """)
     int update(PeopleUpdateApplyDO entity);
+
 
     @Delete("DELETE FROM people_update_apply WHERE apply_id = #{id}")
     int delete(Integer id);

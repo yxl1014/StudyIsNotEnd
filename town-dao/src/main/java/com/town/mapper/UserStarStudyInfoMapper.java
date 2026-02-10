@@ -27,10 +27,18 @@ public interface UserStarStudyInfoMapper {
     int insert(UserStarStudyInfoDO entity);
 
     @Update("""
-            UPDATE user_star_study_info SET
-            user_tel = #{userTel},
-            study_id = #{studyId}
+            <script>
+            UPDATE user_star_study_info
+            <set>
+                <if test="userTel != null">
+                    user_tel = #{userTel},
+                </if>
+                <if test="studyId != null">
+                    study_id = #{studyId},
+                </if>
+            </set>
             WHERE id = #{id}
+            </script>
             """)
     int update(UserStarStudyInfoDO entity);
 

@@ -29,17 +29,37 @@ public interface StudyInfoMapper {
     int insert(StudyInfoDO entity);
 
     @Update("""
-        UPDATE study_info SET
-        study_type = #{studyType},
-        study_create_time = #{studyCreateTime},
-        study_title = #{studyTitle},
-        study_tip = #{studyTip},
-        study_content = #{studyContent},
-        is_open = #{isOpen},
-        is_top = #{isTop},
-        read_count = #{readCount}
-        WHERE study_id = #{studyId}
-        """)
+            <script>
+            UPDATE study_info
+            <set>
+                <if test="studyType != null">
+                    study_type = #{studyType},
+                </if>
+                <if test="studyCreateTime != null">
+                    study_create_time = #{studyCreateTime},
+                </if>
+                <if test="studyTitle != null">
+                    study_title = #{studyTitle},
+                </if>
+                <if test="studyTip != null">
+                    study_tip = #{studyTip},
+                </if>
+                <if test="studyContent != null">
+                    study_content = #{studyContent},
+                </if>
+                <if test="isOpen != null">
+                    is_open = #{isOpen},
+                </if>
+                <if test="isTop != null">
+                    is_top = #{isTop},
+                </if>
+                <if test="readCount != null">
+                    read_count = #{readCount},
+                </if>
+            </set>
+            WHERE study_id = #{studyId}
+            </script>
+            """)
     int update(StudyInfoDO entity);
 
     @Delete("DELETE FROM study_info WHERE study_id = #{id}")
