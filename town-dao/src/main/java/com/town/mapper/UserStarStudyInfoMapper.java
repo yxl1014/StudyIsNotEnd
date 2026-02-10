@@ -9,13 +9,13 @@ import java.util.List;
 public interface UserStarStudyInfoMapper {
 
     @Select("SELECT * FROM user_star_study_info WHERE id = #{id}")
-    UserStarStudyInfoDO selectById(Integer id);
+    UserStarStudyInfoDO selectById(@Param("id") Integer id);
 
     @Select("SELECT * FROM user_star_study_info WHERE id = #{id} AND user_tel = #{userTel}")
-    UserStarStudyInfoDO selectByIdAndTel(Integer id, Long userTel);
+    UserStarStudyInfoDO selectByIdAndTel(@Param("id") Integer id, @Param("userTel") Long userTel);
 
     @Select("SELECT * FROM user_star_study_info WHERE user_tel = #{userTel}")
-    List<UserStarStudyInfoDO> selectByUserTel(Long userTel);
+    List<UserStarStudyInfoDO> selectByUserTel(@Param("userTel") Long userTel);
 
     @Insert("""
             INSERT INTO user_star_study_info
