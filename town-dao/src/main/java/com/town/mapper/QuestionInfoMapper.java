@@ -15,7 +15,7 @@ public interface QuestionInfoMapper {
     List<QuestionInfoDO> selectByWriterTel(@Param("userTel") Long userTel);
 
     @Select("SELECT * FROM question_info WHERE choice_user = #{choiceUser} OR choice_user IS null OR choice_user = 0")
-    List<QuestionInfoDO> selectByChoiceUser(@Param("userTel") Long choiceUser);
+    List<QuestionInfoDO> selectByChoiceUser(@Param("choiceUser") Long choiceUser);
 
     @Insert("""
         INSERT INTO question_info
