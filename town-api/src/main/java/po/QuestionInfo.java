@@ -128,6 +128,30 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object questionCtx_ = "";
   private com.google.protobuf.ByteString questPhoto_ = com.google.protobuf.ByteString.EMPTY;
   private int questionWriterTel_ = 0;
+  /**
+   * <pre>
+   * 问题上传附件
+   * </pre>
+   *
+   * <code>optional bytes questPhoto = 4;</code>
+   * @return Whether the questPhoto field is set.
+   */
+  @java.lang.Override
+  public boolean hasQuestPhoto() {
+    return ((bitField0_ & 0x00000008) != 0);
+  }
+  /**
+   * <pre>
+   * 问题上传附件
+   * </pre>
+   *
+   * <code>optional bytes questPhoto = 4;</code>
+   * @return The questPhoto.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getQuestPhoto() {
+    return questPhoto_;
+  }
   private long questionTime_ = 0L;
   private QuestionInfo() {
     questionType_ = 0;
@@ -179,32 +203,6 @@ private static final long serialVersionUID = 0L;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
-  }
-
-  /**
-   * <pre>
-   * 问题上传附件
-   * </pre>
-   *
-   * <code>optional bytes questPhoto = 4;</code>
-   * @return Whether the questPhoto field is set.
-   */
-  @java.lang.Override
-  public boolean hasQuestPhoto() {
-    return ((bitField0_ & 0x00000008) != 0);
-  }
-
-  /**
-   * <pre>
-   * 问题上传附件
-   * </pre>
-   *
-   * <code>optional bytes questPhoto = 4;</code>
-   * @return The questPhoto.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getQuestPhoto() {
-    return questPhoto_;
   }
 
   public static final int NODETYPE_FIELD_NUMBER = 6;

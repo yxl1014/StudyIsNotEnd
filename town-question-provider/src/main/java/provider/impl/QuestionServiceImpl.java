@@ -45,7 +45,7 @@ public class QuestionServiceImpl extends AbstractRpcService implements IQuestion
     @Override
     public ResponseMsg createQuestion(String token, CreateQuestionReq msg) {
         return execute(MsgType.TMT_CreateQuestionRsp, token, () -> {
-            if (!msg.hasQuestion()){
+            if (!msg.hasQuestion()) {
                 return BizResult.error(RespCode.TRC_PARAM_NULL);
             }
 
@@ -57,7 +57,7 @@ public class QuestionServiceImpl extends AbstractRpcService implements IQuestion
             questInfo.setQuestionTime(TimeUtil.nowMillis());
 
             int insert = daoService.quest_insert(questInfo);
-            if (insert <= 0){
+            if (insert <= 0) {
                 return BizResult.error(RespCode.TRC_DB_ERROR);
             }
 
@@ -71,12 +71,12 @@ public class QuestionServiceImpl extends AbstractRpcService implements IQuestion
         return execute(MsgType.TMT_UpdateQuestionRsp, token, () -> {
             QuestionInfo question = msg.getQuestion();
             int questId = question.getQuestionId();
-            if (questId <= 0){
+            if (questId <= 0) {
                 return BizResult.error(RespCode.TRC_PARAM_NULL);
             }
 
             QuestionInfoDO oldQuestion = daoService.quest_selectById(questId);
-            if (oldQuestion == null){
+            if (oldQuestion == null) {
                 return BizResult.error(RespCode.TRC_QUESTION_NOT_EXIST);
             }
 
@@ -84,13 +84,12 @@ public class QuestionServiceImpl extends AbstractRpcService implements IQuestion
             UpdateInfoDO updateInfoDO = null;
             if (TUserPower.TUP_CM.equals(UserContext.getUserPower())) {
                 respCode = updateByCm(question, oldQuestion);
-            }
-            else {
+            } else {
                 respCode = updateByCgb(question, oldQuestion);
-                if (respCode == RespCode.TRC_OK){
+                if (respCode == RespCode.TRC_OK) {
                     QuestionInfoDO newQuestion = daoService.quest_selectById(questId);
                     updateInfoDO = new UpdateInfoDO();
-                    updateInfoDO.setInfoId((long)questId);
+                    updateInfoDO.setInfoId((long) questId);
                     updateInfoDO.setInfoType(TUpdateInfoType.TUIT_QUESTION_VALUE);
                     updateInfoDO.setBeforeMsg(daoService.toProto(oldQuestion).toByteArray());
                     updateInfoDO.setAfterMsg(daoService.toProto(newQuestion).toByteArray());
@@ -99,11 +98,11 @@ public class QuestionServiceImpl extends AbstractRpcService implements IQuestion
                     updateInfoDO.setUpdateName(UserContext.getUserName());
                 }
             }
-            if (respCode != RespCode.TRC_OK){
+            if (respCode != RespCode.TRC_OK) {
                 return BizResult.error(respCode);
             }
             UpdateQuestionRsp rsp = UpdateQuestionRsp.newBuilder().build();
-            if (updateInfoDO != null){
+            if (updateInfoDO != null) {
                 return BizResult.ok(rsp, updateInfoDO);
             }
             return BizResult.ok(rsp);
@@ -112,10 +111,10 @@ public class QuestionServiceImpl extends AbstractRpcService implements IQuestion
 
     /// 村民修改
     private RespCode updateByCm(QuestionInfo question, QuestionInfoDO oldQuestion) {
-        if (oldQuestion.getNodeType() != QuestionNodeType.TQNT_PRE_VALUE){
+        if (oldQuestion.getNodeType() != QuestionNodeType.TQNT_PRE_VALUE) {
             return RespCode.TRC_QUESTION_IS_IN_OPT;
         }
-        if (!question.hasQuestionType() && !question.hasQuestionCtx() && !question.hasQuestPhoto()){
+        if (!question.hasQuestionType() && !question.hasQuestionCtx() && !question.hasQuestPhoto()) {
             return RespCode.TRC_PARAM_NULL;
         }
 
@@ -126,7 +125,7 @@ public class QuestionServiceImpl extends AbstractRpcService implements IQuestion
         updateDO.setQuestionTime(null);
 
         int update = daoService.quest_update(updateDO);
-        if (update <= 0){
+        if (update <= 0) {
             return RespCode.TRC_DB_ERROR;
         }
 
@@ -134,13 +133,13 @@ public class QuestionServiceImpl extends AbstractRpcService implements IQuestion
     }
 
     /// 村官干部修改
-    private RespCode updateByCgb(QuestionInfo question, QuestionInfoDO oldQuestion){
+    private RespCode updateByCgb(QuestionInfo question, QuestionInfoDO oldQuestion) {
         QuestionInfoDO updateDO = daoService.toDO(question);
-        if (oldQuestion.equals(updateDO)){
+        if (oldQuestion.equals(updateDO)) {
             return RespCode.TRC_QUESTION_NOT_UPDATE;
         }
         int update = daoService.quest_update(updateDO);
-        if (update <= 0){
+        if (update <= 0) {
             return RespCode.TRC_DB_ERROR;
         }
         return RespCode.TRC_OK;
@@ -157,10 +156,9 @@ public class QuestionServiceImpl extends AbstractRpcService implements IQuestion
             List<QuestionInfoDO> questList;
 
             if (UserContext.getUserPower() == TUserPower.TUP_CM) {
-                questList = daoService.quest_selectByWriterTel(msg.getPage(), msg.getSize(), UserContext.getUserTel());
-            }
-            else {
-                questList = daoService.quest_selectByChoiceUser(msg.getPage(), msg.getSize(), UserContext.getUserTel());
+                questList = daoService.quest_selectByWriterTelAndType(msg.getPage(), msg.getSize(), UserContext.getUserTel(), msg.getNodeTypeValue());
+            } else {
+                questList = daoService.quest_selectByChoiceUserAndType(msg.getPage(), msg.getSize(), UserContext.getUserTel(), msg.getNodeTypeValue());
             }
 
             for (QuestionInfoDO questionInfoDO : questList) {

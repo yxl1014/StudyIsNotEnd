@@ -454,7 +454,6 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
-    private long userTel_ ;
 
     @java.lang.Override
     public Builder clear() {
@@ -464,6 +463,8 @@ private static final long serialVersionUID = 0L;
       userPwd_ = "";
       return this;
     }
+
+    private long userTel_ ;
     /**
      * <code>optional int64 userTel = 1;</code>
      * @return Whether the userTel field is set.

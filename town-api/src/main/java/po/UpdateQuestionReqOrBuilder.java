@@ -36,31 +36,4 @@ public interface UpdateQuestionReqOrBuilder extends
    * <code>optional .po.QuestionInfo question = 1;</code>
    */
   po.QuestionInfoOrBuilder getQuestionOrBuilder();
-
-  /**
-   * <pre>
-   * 处理结果记录，如果状态变为已处理需要上传
-   * </pre>
-   *
-   * <code>optional .po.QuestionHandlingInfo handlingInfo = 2;</code>
-   * @return Whether the handlingInfo field is set.
-   */
-  boolean hasHandlingInfo();
-  /**
-   * <pre>
-   * 处理结果记录，如果状态变为已处理需要上传
-   * </pre>
-   *
-   * <code>optional .po.QuestionHandlingInfo handlingInfo = 2;</code>
-   * @return The handlingInfo.
-   */
-  po.QuestionHandlingInfo getHandlingInfo();
-  /**
-   * <pre>
-   * 处理结果记录，如果状态变为已处理需要上传
-   * </pre>
-   *
-   * <code>optional .po.QuestionHandlingInfo handlingInfo = 2;</code>
-   */
-  po.QuestionHandlingInfoOrBuilder getHandlingInfoOrBuilder();
 }

@@ -17,10 +17,63 @@ public final class ListUserInfoReq extends
     com.google.protobuf.GeneratedMessage implements
     // @@protoc_insertion_point(message_implements:po.ListUserInfoReq)
     ListUserInfoReqOrBuilder {
+private static final long serialVersionUID = 0L;
+  static {
+    com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+      com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+      /* major= */ 4,
+      /* minor= */ 33,
+      /* patch= */ 2,
+      /* suffix= */ "",
+      "ListUserInfoReq");
+  }
+  // Use ListUserInfoReq.newBuilder() to construct.
+  private ListUserInfoReq(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    super(builder);
+  }
+  private ListUserInfoReq() {
+  }
+
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return po.ProtocolProto.internal_static_po_ListUserInfoReq_descriptor;
+  }
+
+  @java.lang.Override
+  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+    return po.ProtocolProto.internal_static_po_ListUserInfoReq_fieldAccessorTable
+        .ensureFieldAccessorsInitialized(
+            po.ListUserInfoReq.class, po.ListUserInfoReq.Builder.class);
+  }
+
   public static final int USERTEL_FIELD_NUMBER = 1;
   public static final int PAGE_FIELD_NUMBER = 2;
   public static final int SIZE_FIELD_NUMBER = 3;
-private static final long serialVersionUID = 0L;
+  /**
+   * <pre>
+   * 用户电话
+   * </pre>
+   *
+   * <code>optional int64 userTel = 1;</code>
+   * @return Whether the userTel field is set.
+   */
+  @java.lang.Override
+  public boolean hasUserTel() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+  /**
+   * <pre>
+   * 用户电话
+   * </pre>
+   *
+   * <code>optional int64 userTel = 1;</code>
+   * @return The userTel.
+   */
+  @java.lang.Override
+  public long getUserTel() {
+    return userTel_;
+  }
   // @@protoc_insertion_point(class_scope:po.ListUserInfoReq)
   private static final po.ListUserInfoReq DEFAULT_INSTANCE;
   private static final com.google.protobuf.Parser<ListUserInfoReq>
@@ -44,169 +97,6 @@ private static final long serialVersionUID = 0L;
       return builder.buildPartial();
     }
   };
-
-  static {
-    com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
-      com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
-      /* major= */ 4,
-      /* minor= */ 33,
-      /* patch= */ 2,
-      /* suffix= */ "",
-      "ListUserInfoReq");
-  }
-
-  static {
-    DEFAULT_INSTANCE = new po.ListUserInfoReq();
-  }
-
-  private int bitField0_;
-  private long userTel_ = 0L;
-  private int page_ = 0;
-  private int size_ = 0;
-  private byte memoizedIsInitialized = -1;
-  // Use ListUserInfoReq.newBuilder() to construct.
-  private ListUserInfoReq(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-    super(builder);
-  }
-  private ListUserInfoReq() {
-  }
-
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return po.ProtocolProto.internal_static_po_ListUserInfoReq_descriptor;
-  }
-
-  public static po.ListUserInfoReq parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-
-  public static po.ListUserInfoReq parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-
-  public static po.ListUserInfoReq parseFrom(
-      com.google.protobuf.ByteString data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-
-  public static po.ListUserInfoReq parseFrom(
-      com.google.protobuf.ByteString data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-
-  public static po.ListUserInfoReq parseFrom(byte[] data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-
-  public static po.ListUserInfoReq parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-
-  public static po.ListUserInfoReq parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input);
-  }
-
-  public static po.ListUserInfoReq parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input, extensionRegistry);
-  }
-
-  public static po.ListUserInfoReq parseDelimitedFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static po.ListUserInfoReq parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-  }
-
-  public static po.ListUserInfoReq parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input);
-  }
-
-  public static po.ListUserInfoReq parseFrom(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessage
-        .parseWithIOException(PARSER, input, extensionRegistry);
-  }
-
-  public static Builder newBuilder() {
-    return DEFAULT_INSTANCE.toBuilder();
-  }
-
-  public static Builder newBuilder(po.ListUserInfoReq prototype) {
-    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-
-  public static po.ListUserInfoReq getDefaultInstance() {
-    return DEFAULT_INSTANCE;
-  }
-
-  public static com.google.protobuf.Parser<ListUserInfoReq> parser() {
-    return PARSER;
-  }
-
-  @java.lang.Override
-  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internalGetFieldAccessorTable() {
-    return po.ProtocolProto.internal_static_po_ListUserInfoReq_fieldAccessorTable
-        .ensureFieldAccessorsInitialized(
-            po.ListUserInfoReq.class, po.ListUserInfoReq.Builder.class);
-  }
-
-  /**
-   * <pre>
-   * 用户电话
-   * </pre>
-   *
-   * <code>optional int64 userTel = 1;</code>
-   * @return Whether the userTel field is set.
-   */
-  @java.lang.Override
-  public boolean hasUserTel() {
-    return ((bitField0_ & 0x00000001) != 0);
-  }
-
-  /**
-   * <pre>
-   * 用户电话
-   * </pre>
-   *
-   * <code>optional int64 userTel = 1;</code>
-   * @return The userTel.
-   */
-  @java.lang.Override
-  public long getUserTel() {
-    return userTel_;
-  }
-
   /**
    * <code>optional int32 page = 2;</code>
    * @return Whether the page field is set.
@@ -215,7 +105,6 @@ private static final long serialVersionUID = 0L;
   public boolean hasPage() {
     return ((bitField0_ & 0x00000002) != 0);
   }
-
   /**
    * <code>optional int32 page = 2;</code>
    * @return The page.
@@ -225,6 +114,11 @@ private static final long serialVersionUID = 0L;
     return page_;
   }
 
+  static {
+    DEFAULT_INSTANCE = new po.ListUserInfoReq();
+  }
+
+  private int bitField0_;
   /**
    * <code>optional int32 size = 3;</code>
    * @return Whether the size field is set.
@@ -233,7 +127,6 @@ private static final long serialVersionUID = 0L;
   public boolean hasSize() {
     return ((bitField0_ & 0x00000004) != 0);
   }
-
   /**
    * <code>optional int32 size = 3;</code>
    * @return The size.
@@ -242,7 +135,7 @@ private static final long serialVersionUID = 0L;
   public int getSize() {
     return size_;
   }
-
+  private long userTel_ = 0L;
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -344,10 +237,85 @@ private static final long serialVersionUID = 0L;
     memoizedHashCode = hash;
     return hash;
   }
+  private int page_ = 0;
+  private int size_ = 0;
+  private byte memoizedIsInitialized = -1;
+
+  public static po.ListUserInfoReq parseFrom(
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+
+  public static po.ListUserInfoReq parseFrom(
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+
+  public static po.ListUserInfoReq parseFrom(
+      com.google.protobuf.ByteString data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+
+  public static po.ListUserInfoReq parseFrom(
+      com.google.protobuf.ByteString data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+
+  public static po.ListUserInfoReq parseFrom(byte[] data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+
+  public static po.ListUserInfoReq parseFrom(
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+
+  public static po.ListUserInfoReq parseFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input);
+  }
+
+  public static po.ListUserInfoReq parseFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input, extensionRegistry);
+  }
+
+  public static po.ListUserInfoReq parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseDelimitedWithIOException(PARSER, input);
+  }
 
   @java.lang.Override
   public Builder newBuilderForType() { return newBuilder(); }
 
+  public static po.ListUserInfoReq parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+
+  public static po.ListUserInfoReq parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input);
+  }
   @java.lang.Override
   public Builder toBuilder() {
     return this == DEFAULT_INSTANCE
@@ -359,6 +327,30 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessage.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
+  }
+
+  public static po.ListUserInfoReq parseFrom(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessage
+        .parseWithIOException(PARSER, input, extensionRegistry);
+  }
+
+  public static Builder newBuilder() {
+    return DEFAULT_INSTANCE.toBuilder();
+  }
+
+  public static Builder newBuilder(po.ListUserInfoReq prototype) {
+    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+  }
+
+  public static po.ListUserInfoReq getDefaultInstance() {
+    return DEFAULT_INSTANCE;
+  }
+
+  public static com.google.protobuf.Parser<ListUserInfoReq> parser() {
+    return PARSER;
   }
 
   @java.lang.Override
@@ -382,21 +374,6 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessage.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:po.ListUserInfoReq)
       po.ListUserInfoReqOrBuilder {
-    private int bitField0_;
-    private long userTel_ ;
-    private int page_ ;
-    private int size_ ;
-    // Construct using po.ListUserInfoReq.newBuilder()
-    private Builder() {
-
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      super(parent);
-
-    }
-
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return po.ProtocolProto.internal_static_po_ListUserInfoReq_descriptor;
@@ -410,6 +387,8 @@ private static final long serialVersionUID = 0L;
               po.ListUserInfoReq.class, po.ListUserInfoReq.Builder.class);
     }
 
+    private int bitField0_;
+    private long userTel_ ;
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -543,7 +522,8 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
-
+    private int page_ ;
+    private int size_ ;
     /**
      * <pre>
      * 用户电话
@@ -556,7 +536,6 @@ private static final long serialVersionUID = 0L;
     public boolean hasUserTel() {
       return ((bitField0_ & 0x00000001) != 0);
     }
-
     /**
      * <pre>
      * 用户电话
@@ -569,7 +548,6 @@ private static final long serialVersionUID = 0L;
     public long getUserTel() {
       return userTel_;
     }
-
     /**
      * <pre>
      * 用户电话
@@ -586,7 +564,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
     /**
      * <pre>
      * 用户电话
@@ -602,6 +579,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    // Construct using po.ListUserInfoReq.newBuilder()
+    private Builder() {
+
+    }
     /**
      * <code>optional int32 page = 2;</code>
      * @return Whether the page field is set.
@@ -610,7 +591,6 @@ private static final long serialVersionUID = 0L;
     public boolean hasPage() {
       return ((bitField0_ & 0x00000002) != 0);
     }
-
     /**
      * <code>optional int32 page = 2;</code>
      * @return The page.
@@ -619,7 +599,6 @@ private static final long serialVersionUID = 0L;
     public int getPage() {
       return page_;
     }
-
     /**
      * <code>optional int32 page = 2;</code>
      * @param value The page to set.
@@ -632,7 +611,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
     /**
      * <code>optional int32 page = 2;</code>
      * @return This builder for chaining.
@@ -644,6 +622,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      super(parent);
+
+    }
     /**
      * <code>optional int32 size = 3;</code>
      * @return Whether the size field is set.

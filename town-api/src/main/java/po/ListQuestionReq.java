@@ -31,8 +31,7 @@ private static final long serialVersionUID = 0L;
   private ListQuestionReq(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
-  private ListQuestionReq() {
-  }
+  public static final int SIZE_FIELD_NUMBER = 2;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
@@ -46,8 +45,7 @@ private static final long serialVersionUID = 0L;
         .ensureFieldAccessorsInitialized(
             po.ListQuestionReq.class, po.ListQuestionReq.Builder.class);
   }
-
-  public static final int SIZE_FIELD_NUMBER = 2;
+  public static final int NODETYPE_FIELD_NUMBER = 3;
   public static final int PAGE_FIELD_NUMBER = 1;
   private int page_ = 0;
   /**
@@ -84,6 +82,33 @@ private static final long serialVersionUID = 0L;
   public int getSize() {
     return size_;
   }
+  private int nodeType_ = 0;
+  private ListQuestionReq() {
+    nodeType_ = 0;
+  }
+
+  /**
+   * <code>optional .po.QuestionNodeType nodeType = 3;</code>
+   * @return Whether the nodeType field is set.
+   */
+  @java.lang.Override public boolean hasNodeType() {
+    return ((bitField0_ & 0x00000004) != 0);
+  }
+  /**
+   * <code>optional .po.QuestionNodeType nodeType = 3;</code>
+   * @return The enum numeric value on the wire for nodeType.
+   */
+  @java.lang.Override public int getNodeTypeValue() {
+    return nodeType_;
+  }
+  /**
+   * <code>optional .po.QuestionNodeType nodeType = 3;</code>
+   * @return The nodeType.
+   */
+  @java.lang.Override public po.QuestionNodeType getNodeType() {
+    po.QuestionNodeType result = po.QuestionNodeType.forNumber(nodeType_);
+    return result == null ? po.QuestionNodeType.UNRECOGNIZED : result;
+  }
 
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
@@ -105,6 +130,9 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000002) != 0)) {
       output.writeInt32(2, size_);
     }
+    if (((bitField0_ & 0x00000004) != 0)) {
+      output.writeEnum(3, nodeType_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -121,6 +149,10 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(2, size_);
+    }
+    if (((bitField0_ & 0x00000004) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(3, nodeType_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -147,6 +179,10 @@ private static final long serialVersionUID = 0L;
       if (getSize()
           != other.getSize()) return false;
     }
+    if (hasNodeType() != other.hasNodeType()) return false;
+    if (hasNodeType()) {
+      if (nodeType_ != other.nodeType_) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -165,6 +201,10 @@ private static final long serialVersionUID = 0L;
     if (hasSize()) {
       hash = (37 * hash) + SIZE_FIELD_NUMBER;
       hash = (53 * hash) + getSize();
+    }
+    if (hasNodeType()) {
+      hash = (37 * hash) + NODETYPE_FIELD_NUMBER;
+      hash = (53 * hash) + nodeType_;
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -263,7 +303,6 @@ private static final long serialVersionUID = 0L;
     Builder builder = new Builder(parent);
     return builder;
   }
-
   /**
    * <pre>
    * 获取问题列表 村民：获取自己提出的问题，村干部：获取所有未分配处理人和处理人是自己的。
@@ -327,6 +366,19 @@ private static final long serialVersionUID = 0L;
       onBuilt();
       return result;
     }
+    private int page_ ;
+    private int size_ ;
+    private int nodeType_ = 0;
+
+    @java.lang.Override
+    public Builder clear() {
+      super.clear();
+      bitField0_ = 0;
+      page_ = 0;
+      size_ = 0;
+      nodeType_ = 0;
+      return this;
+    }
 
     private void buildPartial0(po.ListQuestionReq result) {
       int from_bitField0_ = bitField0_;
@@ -339,73 +391,11 @@ private static final long serialVersionUID = 0L;
         result.size_ = size_;
         to_bitField0_ |= 0x00000002;
       }
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        result.nodeType_ = nodeType_;
+        to_bitField0_ |= 0x00000004;
+      }
       result.bitField0_ |= to_bitField0_;
-    }
-    private int page_ ;
-
-    public Builder mergeFrom(po.ListQuestionReq other) {
-      if (other == po.ListQuestionReq.getDefaultInstance()) return this;
-      if (other.hasPage()) {
-        setPage(other.getPage());
-      }
-      if (other.hasSize()) {
-        setSize(other.getSize());
-      }
-      this.mergeUnknownFields(other.getUnknownFields());
-      onChanged();
-      return this;
-    }
-    private int size_ ;
-
-    @java.lang.Override
-    public Builder mergeFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              page_ = input.readInt32();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 8
-            case 16: {
-              size_ = input.readInt32();
-              bitField0_ |= 0x00000002;
-              break;
-            } // case 16
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
-          } // switch (tag)
-        } // while (!done)
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.unwrapIOException();
-      } finally {
-        onChanged();
-      } // finally
-      return this;
-    }
-
-    @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      bitField0_ = 0;
-      page_ = 0;
-      size_ = 0;
-      return this;
     }
 
     @java.lang.Override
@@ -416,6 +406,22 @@ private static final long serialVersionUID = 0L;
         super.mergeFrom(other);
         return this;
       }
+    }
+
+    public Builder mergeFrom(po.ListQuestionReq other) {
+      if (other == po.ListQuestionReq.getDefaultInstance()) return this;
+      if (other.hasPage()) {
+        setPage(other.getPage());
+      }
+      if (other.hasSize()) {
+        setSize(other.getSize());
+      }
+      if (other.hasNodeType()) {
+        setNodeTypeValue(other.getNodeTypeValue());
+      }
+      this.mergeUnknownFields(other.getUnknownFields());
+      onChanged();
+      return this;
     }
     /**
      * <code>optional int32 page = 1;</code>
@@ -495,6 +501,110 @@ private static final long serialVersionUID = 0L;
     public Builder clearSize() {
       bitField0_ = (bitField0_ & ~0x00000002);
       size_ = 0;
+      onChanged();
+      return this;
+    }
+
+    @java.lang.Override
+    public Builder mergeFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              page_ = input.readInt32();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 8
+            case 16: {
+              size_ = input.readInt32();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 16
+            case 24: {
+              nodeType_ = input.readEnum();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 24
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
+          } // switch (tag)
+        } // while (!done)
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.unwrapIOException();
+      } finally {
+        onChanged();
+      } // finally
+      return this;
+    }
+
+    /**
+     * <code>optional .po.QuestionNodeType nodeType = 3;</code>
+     * @return Whether the nodeType field is set.
+     */
+    @java.lang.Override public boolean hasNodeType() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional .po.QuestionNodeType nodeType = 3;</code>
+     * @return The enum numeric value on the wire for nodeType.
+     */
+    @java.lang.Override public int getNodeTypeValue() {
+      return nodeType_;
+    }
+    /**
+     * <code>optional .po.QuestionNodeType nodeType = 3;</code>
+     * @param value The enum numeric value on the wire for nodeType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setNodeTypeValue(int value) {
+      nodeType_ = value;
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional .po.QuestionNodeType nodeType = 3;</code>
+     * @return The nodeType.
+     */
+    @java.lang.Override
+    public po.QuestionNodeType getNodeType() {
+      po.QuestionNodeType result = po.QuestionNodeType.forNumber(nodeType_);
+      return result == null ? po.QuestionNodeType.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>optional .po.QuestionNodeType nodeType = 3;</code>
+     * @param value The nodeType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setNodeType(po.QuestionNodeType value) {
+      if (value == null) { throw new NullPointerException(); }
+      bitField0_ |= 0x00000004;
+      nodeType_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional .po.QuestionNodeType nodeType = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearNodeType() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      nodeType_ = 0;
       onChanged();
       return this;
     }

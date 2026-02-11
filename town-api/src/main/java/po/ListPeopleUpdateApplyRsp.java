@@ -261,11 +261,10 @@ private static final long serialVersionUID = 0L;
 
   @SuppressWarnings("serial")
   private java.util.List<po.PeopleUpdateApply> apply_;
-  private byte memoizedIsInitialized = -1;
-
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
+  private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public Builder toBuilder() {
     return this == DEFAULT_INSTANCE

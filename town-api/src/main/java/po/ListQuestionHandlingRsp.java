@@ -7,7 +7,7 @@ package po;
 
 /**
  * <pre>
- * 获取所有问题处理结果（管理员） - 回执
+ * 获取所有问题处理结果 - 回执
  * </pre>
  *
  * Protobuf type {@code po.ListQuestionHandlingRsp}
@@ -270,7 +270,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * 获取所有问题处理结果（管理员） - 回执
+   * 获取所有问题处理结果 - 回执
    * </pre>
    *
    * Protobuf type {@code po.ListQuestionHandlingRsp}

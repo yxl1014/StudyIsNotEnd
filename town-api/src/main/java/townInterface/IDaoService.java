@@ -69,8 +69,8 @@ public interface IDaoService {
     QuestionInfoDO toDO(po.QuestionInfo proto);
     po.QuestionInfo toProto(QuestionInfoDO entity);
     QuestionInfoDO quest_selectById(Integer id);
-    List<QuestionInfoDO> quest_selectByWriterTel(int page, int size, Long userTel);
-    List<QuestionInfoDO> quest_selectByChoiceUser(int page, int size, Long choiceUser);
+    List<QuestionInfoDO> quest_selectByWriterTelAndType(int page, int size, Long userTel, Integer nodeType);
+    List<QuestionInfoDO> quest_selectByChoiceUserAndType(int page, int size, Long choiceUser, Integer nodeType);
     int quest_insert(QuestionInfoDO entity);
     int quest_update(QuestionInfoDO entity);
 

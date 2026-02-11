@@ -210,7 +210,6 @@ message CreateQuestionRsp
 message UpdateQuestionReq
 {
   optional QuestionInfo question = 1; // 问题信息
-  optional QuestionHandlingInfo handlingInfo = 2; // 处理结果记录，如果状态变为已处理需要上传
 }
 
 // 修改问题（管理员） - 回执
@@ -218,13 +217,14 @@ message UpdateQuestionRsp
 {
 }
 
-// 获取所有问题处理结果（管理员）
+// 获取所有问题处理结果
 message ListQuestionHandlingReq
 {
-
+  optional int32 page = 1;
+  optional int32 size = 2;
 }
 
-// 获取所有问题处理结果（管理员） - 回执
+// 获取所有问题处理结果 - 回执
 message ListQuestionHandlingRsp
 {
   repeated QuestionHandlingInfo infos = 1; // 处理结果列表
@@ -235,6 +235,7 @@ message ListQuestionReq
 {
   optional int32 page = 1;
   optional int32 size = 2;
+  optional QuestionNodeType nodeType = 3;
 }
 
 // 获取问题列表 - 回执

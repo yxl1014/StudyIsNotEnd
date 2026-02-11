@@ -826,7 +826,6 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
-    private long userTel_ ;
 
     @java.lang.Override
     public Builder clear() {
@@ -841,6 +840,8 @@ private static final long serialVersionUID = 0L;
       flagType_ = 0;
       return this;
     }
+
+    private long userTel_ ;
     /**
      * <pre>
      * 用户电话

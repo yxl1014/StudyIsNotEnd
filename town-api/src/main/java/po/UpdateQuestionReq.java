@@ -86,44 +86,6 @@ private static final long serialVersionUID = 0L;
     return question_ == null ? po.QuestionInfo.getDefaultInstance() : question_;
   }
 
-  public static final int HANDLINGINFO_FIELD_NUMBER = 2;
-  private po.QuestionHandlingInfo handlingInfo_;
-  /**
-   * <pre>
-   * 处理结果记录，如果状态变为已处理需要上传
-   * </pre>
-   *
-   * <code>optional .po.QuestionHandlingInfo handlingInfo = 2;</code>
-   * @return Whether the handlingInfo field is set.
-   */
-  @java.lang.Override
-  public boolean hasHandlingInfo() {
-    return ((bitField0_ & 0x00000002) != 0);
-  }
-  /**
-   * <pre>
-   * 处理结果记录，如果状态变为已处理需要上传
-   * </pre>
-   *
-   * <code>optional .po.QuestionHandlingInfo handlingInfo = 2;</code>
-   * @return The handlingInfo.
-   */
-  @java.lang.Override
-  public po.QuestionHandlingInfo getHandlingInfo() {
-    return handlingInfo_ == null ? po.QuestionHandlingInfo.getDefaultInstance() : handlingInfo_;
-  }
-  /**
-   * <pre>
-   * 处理结果记录，如果状态变为已处理需要上传
-   * </pre>
-   *
-   * <code>optional .po.QuestionHandlingInfo handlingInfo = 2;</code>
-   */
-  @java.lang.Override
-  public po.QuestionHandlingInfoOrBuilder getHandlingInfoOrBuilder() {
-    return handlingInfo_ == null ? po.QuestionHandlingInfo.getDefaultInstance() : handlingInfo_;
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -141,9 +103,6 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(1, getQuestion());
     }
-    if (((bitField0_ & 0x00000002) != 0)) {
-      output.writeMessage(2, getHandlingInfo());
-    }
     getUnknownFields().writeTo(output);
   }
 
@@ -156,10 +115,6 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getQuestion());
-    }
-    if (((bitField0_ & 0x00000002) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, getHandlingInfo());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -181,11 +136,6 @@ private static final long serialVersionUID = 0L;
       if (!getQuestion()
           .equals(other.getQuestion())) return false;
     }
-    if (hasHandlingInfo() != other.hasHandlingInfo()) return false;
-    if (hasHandlingInfo()) {
-      if (!getHandlingInfo()
-          .equals(other.getHandlingInfo())) return false;
-    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -200,10 +150,6 @@ private static final long serialVersionUID = 0L;
     if (hasQuestion()) {
       hash = (37 * hash) + QUESTION_FIELD_NUMBER;
       hash = (53 * hash) + getQuestion().hashCode();
-    }
-    if (hasHandlingInfo()) {
-      hash = (37 * hash) + HANDLINGINFO_FIELD_NUMBER;
-      hash = (53 * hash) + getHandlingInfo().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -340,7 +286,6 @@ private static final long serialVersionUID = 0L;
       if (com.google.protobuf.GeneratedMessage
               .alwaysUseFieldBuilders) {
         internalGetQuestionFieldBuilder();
-        internalGetHandlingInfoFieldBuilder();
       }
     }
     @java.lang.Override
@@ -351,11 +296,6 @@ private static final long serialVersionUID = 0L;
       if (questionBuilder_ != null) {
         questionBuilder_.dispose();
         questionBuilder_ = null;
-      }
-      handlingInfo_ = null;
-      if (handlingInfoBuilder_ != null) {
-        handlingInfoBuilder_.dispose();
-        handlingInfoBuilder_ = null;
       }
       return this;
     }
@@ -397,12 +337,6 @@ private static final long serialVersionUID = 0L;
             : questionBuilder_.build();
         to_bitField0_ |= 0x00000001;
       }
-      if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.handlingInfo_ = handlingInfoBuilder_ == null
-            ? handlingInfo_
-            : handlingInfoBuilder_.build();
-        to_bitField0_ |= 0x00000002;
-      }
       result.bitField0_ |= to_bitField0_;
     }
 
@@ -420,9 +354,6 @@ private static final long serialVersionUID = 0L;
       if (other == po.UpdateQuestionReq.getDefaultInstance()) return this;
       if (other.hasQuestion()) {
         mergeQuestion(other.getQuestion());
-      }
-      if (other.hasHandlingInfo()) {
-        mergeHandlingInfo(other.getHandlingInfo());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -457,13 +388,6 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000001;
               break;
             } // case 10
-            case 18: {
-              input.readMessage(
-                  internalGetHandlingInfoFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00000002;
-              break;
-            } // case 18
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -636,163 +560,6 @@ private static final long serialVersionUID = 0L;
         question_ = null;
       }
       return questionBuilder_;
-    }
-
-    private po.QuestionHandlingInfo handlingInfo_;
-    private com.google.protobuf.SingleFieldBuilder<
-        po.QuestionHandlingInfo, po.QuestionHandlingInfo.Builder, po.QuestionHandlingInfoOrBuilder> handlingInfoBuilder_;
-    /**
-     * <pre>
-     * 处理结果记录，如果状态变为已处理需要上传
-     * </pre>
-     *
-     * <code>optional .po.QuestionHandlingInfo handlingInfo = 2;</code>
-     * @return Whether the handlingInfo field is set.
-     */
-    public boolean hasHandlingInfo() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <pre>
-     * 处理结果记录，如果状态变为已处理需要上传
-     * </pre>
-     *
-     * <code>optional .po.QuestionHandlingInfo handlingInfo = 2;</code>
-     * @return The handlingInfo.
-     */
-    public po.QuestionHandlingInfo getHandlingInfo() {
-      if (handlingInfoBuilder_ == null) {
-        return handlingInfo_ == null ? po.QuestionHandlingInfo.getDefaultInstance() : handlingInfo_;
-      } else {
-        return handlingInfoBuilder_.getMessage();
-      }
-    }
-    /**
-     * <pre>
-     * 处理结果记录，如果状态变为已处理需要上传
-     * </pre>
-     *
-     * <code>optional .po.QuestionHandlingInfo handlingInfo = 2;</code>
-     */
-    public Builder setHandlingInfo(po.QuestionHandlingInfo value) {
-      if (handlingInfoBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        handlingInfo_ = value;
-      } else {
-        handlingInfoBuilder_.setMessage(value);
-      }
-      bitField0_ |= 0x00000002;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 处理结果记录，如果状态变为已处理需要上传
-     * </pre>
-     *
-     * <code>optional .po.QuestionHandlingInfo handlingInfo = 2;</code>
-     */
-    public Builder setHandlingInfo(
-        po.QuestionHandlingInfo.Builder builderForValue) {
-      if (handlingInfoBuilder_ == null) {
-        handlingInfo_ = builderForValue.build();
-      } else {
-        handlingInfoBuilder_.setMessage(builderForValue.build());
-      }
-      bitField0_ |= 0x00000002;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 处理结果记录，如果状态变为已处理需要上传
-     * </pre>
-     *
-     * <code>optional .po.QuestionHandlingInfo handlingInfo = 2;</code>
-     */
-    public Builder mergeHandlingInfo(po.QuestionHandlingInfo value) {
-      if (handlingInfoBuilder_ == null) {
-        if (((bitField0_ & 0x00000002) != 0) &&
-          handlingInfo_ != null &&
-          handlingInfo_ != po.QuestionHandlingInfo.getDefaultInstance()) {
-          getHandlingInfoBuilder().mergeFrom(value);
-        } else {
-          handlingInfo_ = value;
-        }
-      } else {
-        handlingInfoBuilder_.mergeFrom(value);
-      }
-      if (handlingInfo_ != null) {
-        bitField0_ |= 0x00000002;
-        onChanged();
-      }
-      return this;
-    }
-    /**
-     * <pre>
-     * 处理结果记录，如果状态变为已处理需要上传
-     * </pre>
-     *
-     * <code>optional .po.QuestionHandlingInfo handlingInfo = 2;</code>
-     */
-    public Builder clearHandlingInfo() {
-      bitField0_ = (bitField0_ & ~0x00000002);
-      handlingInfo_ = null;
-      if (handlingInfoBuilder_ != null) {
-        handlingInfoBuilder_.dispose();
-        handlingInfoBuilder_ = null;
-      }
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 处理结果记录，如果状态变为已处理需要上传
-     * </pre>
-     *
-     * <code>optional .po.QuestionHandlingInfo handlingInfo = 2;</code>
-     */
-    public po.QuestionHandlingInfo.Builder getHandlingInfoBuilder() {
-      bitField0_ |= 0x00000002;
-      onChanged();
-      return internalGetHandlingInfoFieldBuilder().getBuilder();
-    }
-    /**
-     * <pre>
-     * 处理结果记录，如果状态变为已处理需要上传
-     * </pre>
-     *
-     * <code>optional .po.QuestionHandlingInfo handlingInfo = 2;</code>
-     */
-    public po.QuestionHandlingInfoOrBuilder getHandlingInfoOrBuilder() {
-      if (handlingInfoBuilder_ != null) {
-        return handlingInfoBuilder_.getMessageOrBuilder();
-      } else {
-        return handlingInfo_ == null ?
-            po.QuestionHandlingInfo.getDefaultInstance() : handlingInfo_;
-      }
-    }
-    /**
-     * <pre>
-     * 处理结果记录，如果状态变为已处理需要上传
-     * </pre>
-     *
-     * <code>optional .po.QuestionHandlingInfo handlingInfo = 2;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilder<
-        po.QuestionHandlingInfo, po.QuestionHandlingInfo.Builder, po.QuestionHandlingInfoOrBuilder> 
-        internalGetHandlingInfoFieldBuilder() {
-      if (handlingInfoBuilder_ == null) {
-        handlingInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-            po.QuestionHandlingInfo, po.QuestionHandlingInfo.Builder, po.QuestionHandlingInfoOrBuilder>(
-                getHandlingInfo(),
-                getParentForChildren(),
-                isClean());
-        handlingInfo_ = null;
-      }
-      return handlingInfoBuilder_;
     }
 
     // @@protoc_insertion_point(builder_scope:po.UpdateQuestionReq)

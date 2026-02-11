@@ -31,4 +31,20 @@ public interface ListQuestionReqOrBuilder extends
    * @return The size.
    */
   int getSize();
+
+  /**
+   * <code>optional .po.QuestionNodeType nodeType = 3;</code>
+   * @return Whether the nodeType field is set.
+   */
+  boolean hasNodeType();
+  /**
+   * <code>optional .po.QuestionNodeType nodeType = 3;</code>
+   * @return The enum numeric value on the wire for nodeType.
+   */
+  int getNodeTypeValue();
+  /**
+   * <code>optional .po.QuestionNodeType nodeType = 3;</code>
+   * @return The nodeType.
+   */
+  po.QuestionNodeType getNodeType();
 }

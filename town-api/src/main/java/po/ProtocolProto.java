@@ -362,76 +362,77 @@ public final class ProtocolProto extends com.google.protobuf.GeneratedFile {
       "UpdateInfoRsp\022\035\n\005infos\030\001 \003(\0132\016.po.Update" +
       "Info\"I\n\021CreateQuestionReq\022\'\n\010question\030\001 " +
       "\001(\0132\020.po.QuestionInfoH\000\210\001\001B\013\n\t_question\"" +
-      "\023\n\021CreateQuestionRsp\"\217\001\n\021UpdateQuestionR" +
-      "eq\022\'\n\010question\030\001 \001(\0132\020.po.QuestionInfoH\000" +
-      "\210\001\001\0223\n\014handlingInfo\030\002 \001(\0132\030.po.QuestionH" +
-      "andlingInfoH\001\210\001\001B\013\n\t_questionB\017\n\r_handli" +
-      "ngInfo\"\023\n\021UpdateQuestionRsp\"\031\n\027ListQuest" +
-      "ionHandlingReq\"B\n\027ListQuestionHandlingRs" +
-      "p\022\'\n\005infos\030\001 \003(\0132\030.po.QuestionHandlingIn" +
-      "fo\"I\n\017ListQuestionReq\022\021\n\004page\030\001 \001(\005H\000\210\001\001" +
-      "\022\021\n\004size\030\002 \001(\005H\001\210\001\001B\007\n\005_pageB\007\n\005_size\"2\n" +
-      "\017ListQuestionRsp\022\037\n\005infos\030\001 \003(\0132\020.po.Que" +
-      "stionInfo\"O\n\025ListNotifyUserInfoReq\022\021\n\004pa" +
-      "ge\030\001 \001(\005H\000\210\001\001\022\021\n\004size\030\002 \001(\005H\001\210\001\001B\007\n\005_pag" +
-      "eB\007\n\005_size\":\n\025ListNotifyUserInfoRsp\022!\n\005i" +
-      "nfos\030\001 \003(\0132\022.po.NotifyUserInfo\"E\n\016Create" +
-      "StudyReq\022%\n\tstudyInfo\030\001 \001(\0132\r.po.StudyIn" +
-      "foH\000\210\001\001B\014\n\n_studyInfo\"\020\n\016CreateStudyRsp\"" +
-      "c\n\016UpdateStudyReq\022\022\n\005isDel\030\001 \001(\010H\000\210\001\001\022%\n" +
-      "\tstudyInfo\030\002 \001(\0132\r.po.StudyInfoH\001\210\001\001B\010\n\006" +
-      "_isDelB\014\n\n_studyInfo\"\020\n\016UpdateStudyRsp\"h" +
-      "\n\014ListStudyReq\022\024\n\007studyId\030\001 \001(\005H\000\210\001\001\022\021\n\004" +
-      "page\030\002 \001(\005H\001\210\001\001\022\021\n\004size\030\003 \001(\005H\002\210\001\001B\n\n\010_s" +
-      "tudyIdB\007\n\005_pageB\007\n\005_size\",\n\014ListStudyRsp" +
-      "\022\034\n\005infos\030\001 \003(\0132\r.po.StudyInfo\"T\n\014StarSt" +
-      "udyReq\022\024\n\007studyId\030\001 \001(\005H\000\210\001\001\022\025\n\010isCancel" +
-      "\030\002 \001(\010H\001\210\001\001B\n\n\010_studyIdB\013\n\t_isCancel\"\016\n\014" +
-      "StarStudyRsp\"N\n\024ListUserStarStudyReq\022\021\n\004" +
-      "page\030\001 \001(\005H\000\210\001\001\022\021\n\004size\030\002 \001(\005H\001\210\001\001B\007\n\005_p" +
-      "ageB\007\n\005_size\"4\n\024ListUserStarStudyRsp\022\034\n\005" +
-      "infos\030\001 \003(\0132\r.po.StudyInfo\"0\n\017CreatePeop" +
-      "leReq\022\035\n\005infos\030\001 \003(\0132\016.po.PeopleInfo\"+\n\017" +
-      "CreatePeopleRsp\022\030\n\003err\030\001 \003(\0132\013.po.ErrInf" +
-      "o\"S\n\007ErrInfo\022\022\n\005index\030\001 \001(\005H\000\210\001\001\022 \n\005eCod" +
-      "e\030\002 \001(\0162\014.po.RespCodeH\001\210\001\001B\010\n\006_indexB\010\n\006" +
-      "_eCode\"]\n\017UpdatePeopleReq\022\022\n\005isDel\030\001 \001(\010" +
-      "H\000\210\001\001\022\"\n\005infos\030\002 \001(\0132\016.po.PeopleInfoH\001\210\001" +
-      "\001B\010\n\006_isDelB\010\n\006_infos\"\021\n\017UpdatePeopleRsp" +
-      "\"k\n\021ListPeopleInfoReq\022\023\n\006cardId\030\001 \001(\tH\000\210" +
-      "\001\001\022\021\n\004page\030\002 \001(\005H\001\210\001\001\022\021\n\004size\030\003 \001(\005H\002\210\001\001" +
-      "B\t\n\007_cardIdB\007\n\005_pageB\007\n\005_size\"2\n\021ListPeo" +
-      "pleInfoRsp\022\035\n\005infos\030\001 \003(\0132\016.po.PeopleInf" +
-      "o\"Q\n\032CreatePeopleUpdateApplyReq\022)\n\005apply" +
-      "\030\001 \001(\0132\025.po.PeopleUpdateApplyH\000\210\001\001B\010\n\006_a" +
-      "pply\"\034\n\032CreatePeopleUpdateApplyRsp\"t\n\030Li" +
-      "stPeopleUpdateApplyReq\022\021\n\004page\030\001 \001(\005H\000\210\001" +
-      "\001\022\021\n\004size\030\002 \001(\005H\001\210\001\001\022\024\n\007applyId\030\003 \001(\005H\002\210" +
-      "\001\001B\007\n\005_pageB\007\n\005_sizeB\n\n\010_applyId\"@\n\030List" +
-      "PeopleUpdateApplyRsp\022$\n\005apply\030\001 \003(\0132\025.po" +
-      ".PeopleUpdateApply\";\n\027DelPeopleUpdateApp" +
-      "lyReq\022\024\n\007applyId\030\001 \001(\005H\000\210\001\001B\n\n\010_applyId\"" +
-      "\031\n\027DelPeopleUpdateApplyRsp*\364\005\n\010RespCode\022" +
-      "\n\n\006TRC_OK\020\000\022\013\n\007TRC_ERR\020\001\022\027\n\023TRC_TOKEN_NO" +
-      "T_EXIST\020\002\022\025\n\021TRC_TOKEN_INVALID\020\003\022\032\n\026TRC_" +
-      "PARSE_PROTOCOL_ERR\020\004\022\031\n\025TRC_REQUEST_BODY" +
-      "_NULL\020\005\022\022\n\016TRC_PARAM_NULL\020\006\022 \n\034TRC_UPDAT" +
-      "E_SERVICE_NOT_FOUND\020\007\022\033\n\027TRC_SERVICE_UNA" +
-      "VAILABLE\020\010\022\031\n\025TRC_DB_DATA_NOT_FOUND\020d\022\020\n" +
-      "\014TRC_DB_ERROR\020e\022\023\n\017TRC_REDIS_ERROR\020f\022\027\n\022" +
-      "TRC_USER_NOT_EXIST\020\311\001\022\023\n\016TRC_USER_EXIST\020" +
-      "\312\001\022\025\n\020TRC_PASSWORD_ERR\020\313\001\022\036\n\031TRC_USER_PO" +
-      "WER_NOT_ENOUGH\020\314\001\022\024\n\017TRC_USER_IS_BAN\020\315\001\022" +
-      "\031\n\024TRC_NOTICE_NOT_EXIST\020\255\002\022\036\n\031TRC_NOTICE" +
-      "_CAN_NOT_ACCEPT\020\256\002\022\031\n\024TRC_NOTICE_IS_ACCE" +
-      "PT\020\257\002\022\033\n\026TRC_QUESTION_NOT_EXIST\020\221\003\022\033\n\026TR" +
-      "C_QUESTION_IS_IN_OPT\020\222\003\022\034\n\027TRC_QUESTION_" +
-      "NOT_UPDATE\020\223\003\022\030\n\023TRC_STUDY_NOT_EXIST\020\365\003\022" +
-      "\026\n\021TRC_STUDY_IS_STAR\020\366\003\022\034\n\027TRC_PEOPLE_CA" +
-      "RD_IS_NULL\020\331\004\022\035\n\030TRC_PEOPLE_CARD_IS_EXIS" +
-      "T\020\332\004\022!\n\034TRC_PEOPLE_CARD_IS_NOT_EXIST\020\333\004\022" +
-      "\030\n\023TRC_APPLY_NOT_FOUND\020\275\005B\025\n\002poB\rProtoco" +
-      "lProtoP\001b\006proto3"
+      "\023\n\021CreateQuestionRsp\"I\n\021UpdateQuestionRe" +
+      "q\022\'\n\010question\030\001 \001(\0132\020.po.QuestionInfoH\000\210" +
+      "\001\001B\013\n\t_question\"\023\n\021UpdateQuestionRsp\"Q\n\027" +
+      "ListQuestionHandlingReq\022\021\n\004page\030\001 \001(\005H\000\210" +
+      "\001\001\022\021\n\004size\030\002 \001(\005H\001\210\001\001B\007\n\005_pageB\007\n\005_size\"" +
+      "B\n\027ListQuestionHandlingRsp\022\'\n\005infos\030\001 \003(" +
+      "\0132\030.po.QuestionHandlingInfo\"\203\001\n\017ListQues" +
+      "tionReq\022\021\n\004page\030\001 \001(\005H\000\210\001\001\022\021\n\004size\030\002 \001(\005" +
+      "H\001\210\001\001\022+\n\010nodeType\030\003 \001(\0162\024.po.QuestionNod" +
+      "eTypeH\002\210\001\001B\007\n\005_pageB\007\n\005_sizeB\013\n\t_nodeTyp" +
+      "e\"2\n\017ListQuestionRsp\022\037\n\005infos\030\001 \003(\0132\020.po" +
+      ".QuestionInfo\"O\n\025ListNotifyUserInfoReq\022\021" +
+      "\n\004page\030\001 \001(\005H\000\210\001\001\022\021\n\004size\030\002 \001(\005H\001\210\001\001B\007\n\005" +
+      "_pageB\007\n\005_size\":\n\025ListNotifyUserInfoRsp\022" +
+      "!\n\005infos\030\001 \003(\0132\022.po.NotifyUserInfo\"E\n\016Cr" +
+      "eateStudyReq\022%\n\tstudyInfo\030\001 \001(\0132\r.po.Stu" +
+      "dyInfoH\000\210\001\001B\014\n\n_studyInfo\"\020\n\016CreateStudy" +
+      "Rsp\"c\n\016UpdateStudyReq\022\022\n\005isDel\030\001 \001(\010H\000\210\001" +
+      "\001\022%\n\tstudyInfo\030\002 \001(\0132\r.po.StudyInfoH\001\210\001\001" +
+      "B\010\n\006_isDelB\014\n\n_studyInfo\"\020\n\016UpdateStudyR" +
+      "sp\"h\n\014ListStudyReq\022\024\n\007studyId\030\001 \001(\005H\000\210\001\001" +
+      "\022\021\n\004page\030\002 \001(\005H\001\210\001\001\022\021\n\004size\030\003 \001(\005H\002\210\001\001B\n" +
+      "\n\010_studyIdB\007\n\005_pageB\007\n\005_size\",\n\014ListStud" +
+      "yRsp\022\034\n\005infos\030\001 \003(\0132\r.po.StudyInfo\"T\n\014St" +
+      "arStudyReq\022\024\n\007studyId\030\001 \001(\005H\000\210\001\001\022\025\n\010isCa" +
+      "ncel\030\002 \001(\010H\001\210\001\001B\n\n\010_studyIdB\013\n\t_isCancel" +
+      "\"\016\n\014StarStudyRsp\"N\n\024ListUserStarStudyReq" +
+      "\022\021\n\004page\030\001 \001(\005H\000\210\001\001\022\021\n\004size\030\002 \001(\005H\001\210\001\001B\007" +
+      "\n\005_pageB\007\n\005_size\"4\n\024ListUserStarStudyRsp" +
+      "\022\034\n\005infos\030\001 \003(\0132\r.po.StudyInfo\"0\n\017Create" +
+      "PeopleReq\022\035\n\005infos\030\001 \003(\0132\016.po.PeopleInfo" +
+      "\"+\n\017CreatePeopleRsp\022\030\n\003err\030\001 \003(\0132\013.po.Er" +
+      "rInfo\"S\n\007ErrInfo\022\022\n\005index\030\001 \001(\005H\000\210\001\001\022 \n\005" +
+      "eCode\030\002 \001(\0162\014.po.RespCodeH\001\210\001\001B\010\n\006_index" +
+      "B\010\n\006_eCode\"]\n\017UpdatePeopleReq\022\022\n\005isDel\030\001" +
+      " \001(\010H\000\210\001\001\022\"\n\005infos\030\002 \001(\0132\016.po.PeopleInfo" +
+      "H\001\210\001\001B\010\n\006_isDelB\010\n\006_infos\"\021\n\017UpdatePeopl" +
+      "eRsp\"k\n\021ListPeopleInfoReq\022\023\n\006cardId\030\001 \001(" +
+      "\tH\000\210\001\001\022\021\n\004page\030\002 \001(\005H\001\210\001\001\022\021\n\004size\030\003 \001(\005H" +
+      "\002\210\001\001B\t\n\007_cardIdB\007\n\005_pageB\007\n\005_size\"2\n\021Lis" +
+      "tPeopleInfoRsp\022\035\n\005infos\030\001 \003(\0132\016.po.Peopl" +
+      "eInfo\"Q\n\032CreatePeopleUpdateApplyReq\022)\n\005a" +
+      "pply\030\001 \001(\0132\025.po.PeopleUpdateApplyH\000\210\001\001B\010" +
+      "\n\006_apply\"\034\n\032CreatePeopleUpdateApplyRsp\"t" +
+      "\n\030ListPeopleUpdateApplyReq\022\021\n\004page\030\001 \001(\005" +
+      "H\000\210\001\001\022\021\n\004size\030\002 \001(\005H\001\210\001\001\022\024\n\007applyId\030\003 \001(" +
+      "\005H\002\210\001\001B\007\n\005_pageB\007\n\005_sizeB\n\n\010_applyId\"@\n\030" +
+      "ListPeopleUpdateApplyRsp\022$\n\005apply\030\001 \003(\0132" +
+      "\025.po.PeopleUpdateApply\";\n\027DelPeopleUpdat" +
+      "eApplyReq\022\024\n\007applyId\030\001 \001(\005H\000\210\001\001B\n\n\010_appl" +
+      "yId\"\031\n\027DelPeopleUpdateApplyRsp*\364\005\n\010RespC" +
+      "ode\022\n\n\006TRC_OK\020\000\022\013\n\007TRC_ERR\020\001\022\027\n\023TRC_TOKE" +
+      "N_NOT_EXIST\020\002\022\025\n\021TRC_TOKEN_INVALID\020\003\022\032\n\026" +
+      "TRC_PARSE_PROTOCOL_ERR\020\004\022\031\n\025TRC_REQUEST_" +
+      "BODY_NULL\020\005\022\022\n\016TRC_PARAM_NULL\020\006\022 \n\034TRC_U" +
+      "PDATE_SERVICE_NOT_FOUND\020\007\022\033\n\027TRC_SERVICE" +
+      "_UNAVAILABLE\020\010\022\031\n\025TRC_DB_DATA_NOT_FOUND\020" +
+      "d\022\020\n\014TRC_DB_ERROR\020e\022\023\n\017TRC_REDIS_ERROR\020f" +
+      "\022\027\n\022TRC_USER_NOT_EXIST\020\311\001\022\023\n\016TRC_USER_EX" +
+      "IST\020\312\001\022\025\n\020TRC_PASSWORD_ERR\020\313\001\022\036\n\031TRC_USE" +
+      "R_POWER_NOT_ENOUGH\020\314\001\022\024\n\017TRC_USER_IS_BAN" +
+      "\020\315\001\022\031\n\024TRC_NOTICE_NOT_EXIST\020\255\002\022\036\n\031TRC_NO" +
+      "TICE_CAN_NOT_ACCEPT\020\256\002\022\031\n\024TRC_NOTICE_IS_" +
+      "ACCEPT\020\257\002\022\033\n\026TRC_QUESTION_NOT_EXIST\020\221\003\022\033" +
+      "\n\026TRC_QUESTION_IS_IN_OPT\020\222\003\022\034\n\027TRC_QUEST" +
+      "ION_NOT_UPDATE\020\223\003\022\030\n\023TRC_STUDY_NOT_EXIST" +
+      "\020\365\003\022\026\n\021TRC_STUDY_IS_STAR\020\366\003\022\034\n\027TRC_PEOPL" +
+      "E_CARD_IS_NULL\020\331\004\022\035\n\030TRC_PEOPLE_CARD_IS_" +
+      "EXIST\020\332\004\022!\n\034TRC_PEOPLE_CARD_IS_NOT_EXIST" +
+      "\020\333\004\022\030\n\023TRC_APPLY_NOT_FOUND\020\275\005B\025\n\002poB\rPro" +
+      "tocolProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -600,7 +601,7 @@ public final class ProtocolProto extends com.google.protobuf.GeneratedFile {
     internal_static_po_UpdateQuestionReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_UpdateQuestionReq_descriptor,
-        new java.lang.String[] { "Question", "HandlingInfo", });
+        new java.lang.String[] { "Question", });
     internal_static_po_UpdateQuestionRsp_descriptor =
       getDescriptor().getMessageType(27);
     internal_static_po_UpdateQuestionRsp_fieldAccessorTable = new
@@ -612,7 +613,7 @@ public final class ProtocolProto extends com.google.protobuf.GeneratedFile {
     internal_static_po_ListQuestionHandlingReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_ListQuestionHandlingReq_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "Page", "Size", });
     internal_static_po_ListQuestionHandlingRsp_descriptor =
       getDescriptor().getMessageType(29);
     internal_static_po_ListQuestionHandlingRsp_fieldAccessorTable = new
@@ -624,7 +625,7 @@ public final class ProtocolProto extends com.google.protobuf.GeneratedFile {
     internal_static_po_ListQuestionReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_po_ListQuestionReq_descriptor,
-        new java.lang.String[] { "Page", "Size", });
+        new java.lang.String[] { "Page", "Size", "NodeType", });
     internal_static_po_ListQuestionRsp_descriptor =
       getDescriptor().getMessageType(31);
     internal_static_po_ListQuestionRsp_fieldAccessorTable = new
