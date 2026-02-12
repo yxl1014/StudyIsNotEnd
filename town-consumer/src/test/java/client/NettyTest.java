@@ -151,13 +151,14 @@ public class NettyTest {
         private RequestMsg buildCreateQuestMsg() {
             RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
             msgBuilder.setMsgType(MsgType.TMT_CreateQuestionReq);
-            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxLFwicmFuZG9tQ29kZVwiOlwiMDE1MTMwXCIsXCJjcmVhdGVUaW1lXCI6MTc2ODI4OTc3NjI3NCxcInVzZXJQb3dlclwiOlwiVFVQX0NHTVwiLFwidXNlckZsYWdUeXBlXCI6XCJUVUZUX0RFRkFVTFRcIixcInVzZXJOYW1lXCI6XCJhZG1pblwifSIsImlhdCI6MTc2ODI4OTc3NiwiZXhwIjoxNzY4Mzc2MTc2fQ.s7BVfTfBH3ryTG3scIUZD7EGNxu2QsAWhuoApPdkcNs");
+            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxLFwicmFuZG9tQ29kZVwiOlwiMTMwMDEyXCIsXCJjcmVhdGVUaW1lXCI6MTc3MDg2NTUyMzQ2MSxcInVzZXJQb3dlclwiOlwiVFVQX0NHTVwiLFwidXNlckZsYWdUeXBlXCI6XCJUVUZUX0RFRkFVTFRcIixcInVzZXJOYW1lXCI6XCJ4eHgxMjNcIn0iLCJpYXQiOjE3NzA4NjU1MjMsImV4cCI6MTc3MDk1MTkyM30.AD32gaVQH-XL0AsHTjPyD0994gIbB8Nn4oXfYFXaihQ");
             msgBuilder.setMsg(
                     CreateQuestionReq.newBuilder()
                             .setQuestion(
                                     QuestionInfo.newBuilder()
                                             .setQuestionType(QuestionType.TQT_WSHJ)
                                             .setQuestionCtx("xxxxxxxxx")
+                                            .setNodeType(QuestionNodeType.TQNT_TAIL)
                             )
                             .build().toByteString());
             RequestMsg requestMsg = msgBuilder.build();
@@ -168,7 +169,7 @@ public class NettyTest {
         private RequestMsg buildUpdateQuestMsg() {
             RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
             msgBuilder.setMsgType(MsgType.TMT_UpdateQuestionReq);
-            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxLFwicmFuZG9tQ29kZVwiOlwiMDE1MTMwXCIsXCJjcmVhdGVUaW1lXCI6MTc2ODI4OTc3NjI3NCxcInVzZXJQb3dlclwiOlwiVFVQX0NHTVwiLFwidXNlckZsYWdUeXBlXCI6XCJUVUZUX0RFRkFVTFRcIixcInVzZXJOYW1lXCI6XCJhZG1pblwifSIsImlhdCI6MTc2ODI4OTc3NiwiZXhwIjoxNzY4Mzc2MTc2fQ.s7BVfTfBH3ryTG3scIUZD7EGNxu2QsAWhuoApPdkcNs");
+            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxLFwicmFuZG9tQ29kZVwiOlwiMTMwMDEyXCIsXCJjcmVhdGVUaW1lXCI6MTc3MDg2NTUyMzQ2MSxcInVzZXJQb3dlclwiOlwiVFVQX0NHTVwiLFwidXNlckZsYWdUeXBlXCI6XCJUVUZUX0RFRkFVTFRcIixcInVzZXJOYW1lXCI6XCJ4eHgxMjNcIn0iLCJpYXQiOjE3NzA4NjU1MjMsImV4cCI6MTc3MDk1MTkyM30.AD32gaVQH-XL0AsHTjPyD0994gIbB8Nn4oXfYFXaihQ");
             msgBuilder.setMsg(
                     UpdateQuestionReq.newBuilder()
                             .setQuestion(
@@ -186,7 +187,7 @@ public class NettyTest {
         private RequestMsg buildListQuestMsg() {
             RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
             msgBuilder.setMsgType(MsgType.TMT_ListQuestionReq);
-            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxLFwicmFuZG9tQ29kZVwiOlwiMDE1MTMwXCIsXCJjcmVhdGVUaW1lXCI6MTc2ODI4OTc3NjI3NCxcInVzZXJQb3dlclwiOlwiVFVQX0NHTVwiLFwidXNlckZsYWdUeXBlXCI6XCJUVUZUX0RFRkFVTFRcIixcInVzZXJOYW1lXCI6XCJhZG1pblwifSIsImlhdCI6MTc2ODI4OTc3NiwiZXhwIjoxNzY4Mzc2MTc2fQ.s7BVfTfBH3ryTG3scIUZD7EGNxu2QsAWhuoApPdkcNs");
+            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxLFwicmFuZG9tQ29kZVwiOlwiMDU0NTA0XCIsXCJjcmVhdGVUaW1lXCI6MTc3MDg2NTgyOTAwNixcInVzZXJQb3dlclwiOlwiVFVQX0NNXCIsXCJ1c2VyRmxhZ1R5cGVcIjpcIlRVRlRfREVGQVVMVFwiLFwidXNlck5hbWVcIjpcInh4eDEyM1wifSIsImlhdCI6MTc3MDg2NTgyOSwiZXhwIjoxNzcwOTUyMjI5fQ.ctSe4E2AzpeRsggUFfGcQKT08F8X_0J3yE6loru8ZGQ");
             msgBuilder.setMsg(
                     ListQuestionReq.newBuilder()
                             .setPage(1)
@@ -268,7 +269,7 @@ public class NettyTest {
             LoginReq.Builder builder = LoginReq.newBuilder();
 //            builder.setUserTel(1);
 //            builder.setUserPwd("admin");
-            builder.setUserTel(10001);
+            builder.setUserTel(1);
             builder.setUserPwd("123456");
 
             RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();

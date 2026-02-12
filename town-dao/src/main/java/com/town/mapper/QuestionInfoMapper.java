@@ -11,7 +11,7 @@ public interface QuestionInfoMapper {
     @Select("SELECT * FROM question_info WHERE question_id = #{id}")
     QuestionInfoDO selectById(Integer id);
 
-    @Select("SELECT * FROM question_info WHERE question_write_tel = #{userTel}}")
+    @Select("SELECT * FROM question_info WHERE question_write_tel = #{userTel}")
     List<QuestionInfoDO> selectByWriterTel(@Param("userTel") Long userTel);
 
     @Select("SELECT * FROM question_info WHERE question_write_tel = #{userTel} AND node_type = #{nodeType}")
