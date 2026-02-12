@@ -76,13 +76,13 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int USERTEL_FIELD_NUMBER = 2;
-  private int userTel_ = 0;
+  private long userTel_ = 0L;
   /**
    * <pre>
    * 阅读用户电话
    * </pre>
    *
-   * <code>optional int32 userTel = 2;</code>
+   * <code>optional int64 userTel = 2;</code>
    * @return Whether the userTel field is set.
    */
   @java.lang.Override
@@ -94,11 +94,11 @@ private static final long serialVersionUID = 0L;
    * 阅读用户电话
    * </pre>
    *
-   * <code>optional int32 userTel = 2;</code>
+   * <code>optional int64 userTel = 2;</code>
    * @return The userTel.
    */
   @java.lang.Override
-  public int getUserTel() {
+  public long getUserTel() {
     return userTel_;
   }
 
@@ -174,7 +174,7 @@ private static final long serialVersionUID = 0L;
       output.writeInt32(1, id_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      output.writeInt32(2, userTel_);
+      output.writeInt64(2, userTel_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
       output.writeInt32(3, noticeId_);
@@ -197,7 +197,7 @@ private static final long serialVersionUID = 0L;
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, userTel_);
+        .computeInt64Size(2, userTel_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
       size += com.google.protobuf.CodedOutputStream
@@ -259,7 +259,8 @@ private static final long serialVersionUID = 0L;
     }
     if (hasUserTel()) {
       hash = (37 * hash) + USERTEL_FIELD_NUMBER;
-      hash = (53 * hash) + getUserTel();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUserTel());
     }
     if (hasNoticeId()) {
       hash = (37 * hash) + NOTICEID_FIELD_NUMBER;
@@ -401,16 +402,7 @@ private static final long serialVersionUID = 0L;
       super(parent);
 
     }
-    @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      bitField0_ = 0;
-      id_ = 0;
-      userTel_ = 0;
-      noticeId_ = 0;
-      readTime_ = 0L;
-      return this;
-    }
+    private long userTel_ ;
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
@@ -497,54 +489,13 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public Builder mergeFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              id_ = input.readInt32();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 8
-            case 16: {
-              userTel_ = input.readInt32();
-              bitField0_ |= 0x00000002;
-              break;
-            } // case 16
-            case 24: {
-              noticeId_ = input.readInt32();
-              bitField0_ |= 0x00000004;
-              break;
-            } // case 24
-            case 32: {
-              readTime_ = input.readInt64();
-              bitField0_ |= 0x00000008;
-              break;
-            } // case 32
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
-          } // switch (tag)
-        } // while (!done)
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.unwrapIOException();
-      } finally {
-        onChanged();
-      } // finally
+    public Builder clear() {
+      super.clear();
+      bitField0_ = 0;
+      id_ = 0;
+      userTel_ = 0L;
+      noticeId_ = 0;
+      readTime_ = 0L;
       return this;
     }
     private int bitField0_;
@@ -605,13 +556,64 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int userTel_ ;
+    @java.lang.Override
+    public Builder mergeFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              id_ = input.readInt32();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 8
+            case 16: {
+              userTel_ = input.readInt64();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 16
+            case 24: {
+              noticeId_ = input.readInt32();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 24
+            case 32: {
+              readTime_ = input.readInt64();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 32
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
+          } // switch (tag)
+        } // while (!done)
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.unwrapIOException();
+      } finally {
+        onChanged();
+      } // finally
+      return this;
+    }
+
     /**
      * <pre>
      * 阅读用户电话
      * </pre>
      *
-     * <code>optional int32 userTel = 2;</code>
+     * <code>optional int64 userTel = 2;</code>
      * @return Whether the userTel field is set.
      */
     @java.lang.Override
@@ -623,11 +625,11 @@ private static final long serialVersionUID = 0L;
      * 阅读用户电话
      * </pre>
      *
-     * <code>optional int32 userTel = 2;</code>
+     * <code>optional int64 userTel = 2;</code>
      * @return The userTel.
      */
     @java.lang.Override
-    public int getUserTel() {
+    public long getUserTel() {
       return userTel_;
     }
     /**
@@ -635,11 +637,11 @@ private static final long serialVersionUID = 0L;
      * 阅读用户电话
      * </pre>
      *
-     * <code>optional int32 userTel = 2;</code>
+     * <code>optional int64 userTel = 2;</code>
      * @param value The userTel to set.
      * @return This builder for chaining.
      */
-    public Builder setUserTel(int value) {
+    public Builder setUserTel(long value) {
 
       userTel_ = value;
       bitField0_ |= 0x00000002;
@@ -651,12 +653,12 @@ private static final long serialVersionUID = 0L;
      * 阅读用户电话
      * </pre>
      *
-     * <code>optional int32 userTel = 2;</code>
+     * <code>optional int64 userTel = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearUserTel() {
       bitField0_ = (bitField0_ & ~0x00000002);
-      userTel_ = 0;
+      userTel_ = 0L;
       onChanged();
       return this;
     }

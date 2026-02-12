@@ -34,7 +34,7 @@ public interface NotifyUserInfoOrBuilder extends
    * 电话
    * </pre>
    *
-   * <code>optional int32 userTel = 2;</code>
+   * <code>optional int64 userTel = 2;</code>
    * @return Whether the userTel field is set.
    */
   boolean hasUserTel();
@@ -43,10 +43,10 @@ public interface NotifyUserInfoOrBuilder extends
    * 电话
    * </pre>
    *
-   * <code>optional int32 userTel = 2;</code>
+   * <code>optional int64 userTel = 2;</code>
    * @return The userTel.
    */
-  int getUserTel();
+  long getUserTel();
 
   /**
    * <pre>

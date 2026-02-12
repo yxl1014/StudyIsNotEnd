@@ -225,13 +225,13 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int UPDATEUSERTEL_FIELD_NUMBER = 7;
-  private int updateUserTel_ = 0;
+  private long updateUserTel_ = 0L;
   /**
    * <pre>
    * 修改人电话
    * </pre>
    *
-   * <code>optional int32 updateUserTel = 7;</code>
+   * <code>optional int64 updateUserTel = 7;</code>
    * @return Whether the updateUserTel field is set.
    */
   @java.lang.Override
@@ -243,11 +243,11 @@ private static final long serialVersionUID = 0L;
    * 修改人电话
    * </pre>
    *
-   * <code>optional int32 updateUserTel = 7;</code>
+   * <code>optional int64 updateUserTel = 7;</code>
    * @return The updateUserTel.
    */
   @java.lang.Override
-  public int getUpdateUserTel() {
+  public long getUpdateUserTel() {
     return updateUserTel_;
   }
 
@@ -343,7 +343,7 @@ private static final long serialVersionUID = 0L;
       output.writeInt64(6, updateTime_);
     }
     if (((bitField0_ & 0x00000040) != 0)) {
-      output.writeInt32(7, updateUserTel_);
+      output.writeInt64(7, updateUserTel_);
     }
     if (((bitField0_ & 0x00000080) != 0)) {
       com.google.protobuf.GeneratedMessage.writeString(output, 8, updateName_);
@@ -383,7 +383,7 @@ private static final long serialVersionUID = 0L;
     }
     if (((bitField0_ & 0x00000040) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(7, updateUserTel_);
+        .computeInt64Size(7, updateUserTel_);
     }
     if (((bitField0_ & 0x00000080) != 0)) {
       size += com.google.protobuf.GeneratedMessage.computeStringSize(8, updateName_);
@@ -481,7 +481,8 @@ private static final long serialVersionUID = 0L;
     }
     if (hasUpdateUserTel()) {
       hash = (37 * hash) + UPDATEUSERTEL_FIELD_NUMBER;
-      hash = (53 * hash) + getUpdateUserTel();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUpdateUserTel());
     }
     if (hasUpdateName()) {
       hash = (37 * hash) + UPDATENAME_FIELD_NUMBER;
@@ -618,20 +619,7 @@ private static final long serialVersionUID = 0L;
       super(parent);
 
     }
-    @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      bitField0_ = 0;
-      updateId_ = 0;
-      infoId_ = 0L;
-      infoType_ = 0;
-      beforeMsg_ = com.google.protobuf.ByteString.EMPTY;
-      afterMsg_ = com.google.protobuf.ByteString.EMPTY;
-      updateTime_ = 0L;
-      updateUserTel_ = 0;
-      updateName_ = "";
-      return this;
-    }
+    private long updateUserTel_ ;
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
@@ -748,74 +736,17 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public Builder mergeFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              updateId_ = input.readInt32();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 8
-            case 16: {
-              infoId_ = input.readInt64();
-              bitField0_ |= 0x00000002;
-              break;
-            } // case 16
-            case 24: {
-              infoType_ = input.readEnum();
-              bitField0_ |= 0x00000004;
-              break;
-            } // case 24
-            case 34: {
-              beforeMsg_ = input.readBytes();
-              bitField0_ |= 0x00000008;
-              break;
-            } // case 34
-            case 42: {
-              afterMsg_ = input.readBytes();
-              bitField0_ |= 0x00000010;
-              break;
-            } // case 42
-            case 48: {
-              updateTime_ = input.readInt64();
-              bitField0_ |= 0x00000020;
-              break;
-            } // case 48
-            case 56: {
-              updateUserTel_ = input.readInt32();
-              bitField0_ |= 0x00000040;
-              break;
-            } // case 56
-            case 66: {
-              updateName_ = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000080;
-              break;
-            } // case 66
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
-          } // switch (tag)
-        } // while (!done)
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.unwrapIOException();
-      } finally {
-        onChanged();
-      } // finally
+    public Builder clear() {
+      super.clear();
+      bitField0_ = 0;
+      updateId_ = 0;
+      infoId_ = 0L;
+      infoType_ = 0;
+      beforeMsg_ = com.google.protobuf.ByteString.EMPTY;
+      afterMsg_ = com.google.protobuf.ByteString.EMPTY;
+      updateTime_ = 0L;
+      updateUserTel_ = 0L;
+      updateName_ = "";
       return this;
     }
     private int bitField0_;
@@ -1182,13 +1113,84 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int updateUserTel_ ;
+    @java.lang.Override
+    public Builder mergeFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              updateId_ = input.readInt32();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 8
+            case 16: {
+              infoId_ = input.readInt64();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 16
+            case 24: {
+              infoType_ = input.readEnum();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 24
+            case 34: {
+              beforeMsg_ = input.readBytes();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 34
+            case 42: {
+              afterMsg_ = input.readBytes();
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 42
+            case 48: {
+              updateTime_ = input.readInt64();
+              bitField0_ |= 0x00000020;
+              break;
+            } // case 48
+            case 56: {
+              updateUserTel_ = input.readInt64();
+              bitField0_ |= 0x00000040;
+              break;
+            } // case 56
+            case 66: {
+              updateName_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000080;
+              break;
+            } // case 66
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
+          } // switch (tag)
+        } // while (!done)
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.unwrapIOException();
+      } finally {
+        onChanged();
+      } // finally
+      return this;
+    }
+
     /**
      * <pre>
      * 修改人电话
      * </pre>
      *
-     * <code>optional int32 updateUserTel = 7;</code>
+     * <code>optional int64 updateUserTel = 7;</code>
      * @return Whether the updateUserTel field is set.
      */
     @java.lang.Override
@@ -1200,11 +1202,11 @@ private static final long serialVersionUID = 0L;
      * 修改人电话
      * </pre>
      *
-     * <code>optional int32 updateUserTel = 7;</code>
+     * <code>optional int64 updateUserTel = 7;</code>
      * @return The updateUserTel.
      */
     @java.lang.Override
-    public int getUpdateUserTel() {
+    public long getUpdateUserTel() {
       return updateUserTel_;
     }
     /**
@@ -1212,11 +1214,11 @@ private static final long serialVersionUID = 0L;
      * 修改人电话
      * </pre>
      *
-     * <code>optional int32 updateUserTel = 7;</code>
+     * <code>optional int64 updateUserTel = 7;</code>
      * @param value The updateUserTel to set.
      * @return This builder for chaining.
      */
-    public Builder setUpdateUserTel(int value) {
+    public Builder setUpdateUserTel(long value) {
 
       updateUserTel_ = value;
       bitField0_ |= 0x00000040;
@@ -1228,12 +1230,12 @@ private static final long serialVersionUID = 0L;
      * 修改人电话
      * </pre>
      *
-     * <code>optional int32 updateUserTel = 7;</code>
+     * <code>optional int64 updateUserTel = 7;</code>
      * @return This builder for chaining.
      */
     public Builder clearUpdateUserTel() {
       bitField0_ = (bitField0_ & ~0x00000040);
-      updateUserTel_ = 0;
+      updateUserTel_ = 0L;
       onChanged();
       return this;
     }

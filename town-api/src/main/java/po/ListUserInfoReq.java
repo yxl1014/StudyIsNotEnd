@@ -316,6 +316,18 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder(po.ListUserInfoReq prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
+  @java.lang.Override
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
+  }
+
+  @java.lang.Override
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+    Builder builder = new Builder(parent);
+    return builder;
+  }
   private int size_ = 0;
   private byte memoizedIsInitialized = -1;
 
@@ -329,19 +341,6 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   public Builder newBuilderForType() { return newBuilder(); }
-
-  @java.lang.Override
-  public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
-  }
-
-  @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-    Builder builder = new Builder(parent);
-    return builder;
-  }
 
   @java.lang.Override
   public com.google.protobuf.Parser<ListUserInfoReq> getParserForType() {

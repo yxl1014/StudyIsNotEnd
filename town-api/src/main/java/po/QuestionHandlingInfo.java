@@ -142,13 +142,13 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int HANDLINGUSERTEL_FIELD_NUMBER = 4;
-  private int handlingUserTel_ = 0;
+  private long handlingUserTel_ = 0L;
   /**
    * <pre>
    * 处理人
    * </pre>
    *
-   * <code>optional int32 handlingUserTel = 4;</code>
+   * <code>optional int64 handlingUserTel = 4;</code>
    * @return Whether the handlingUserTel field is set.
    */
   @java.lang.Override
@@ -160,11 +160,11 @@ private static final long serialVersionUID = 0L;
    * 处理人
    * </pre>
    *
-   * <code>optional int32 handlingUserTel = 4;</code>
+   * <code>optional int64 handlingUserTel = 4;</code>
    * @return The handlingUserTel.
    */
   @java.lang.Override
-  public int getHandlingUserTel() {
+  public long getHandlingUserTel() {
     return handlingUserTel_;
   }
 
@@ -246,7 +246,7 @@ private static final long serialVersionUID = 0L;
       output.writeEnum(3, handlingType_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
-      output.writeInt32(4, handlingUserTel_);
+      output.writeInt64(4, handlingUserTel_);
     }
     if (((bitField0_ & 0x00000010) != 0)) {
       output.writeBytes(5, handlingCtx_);
@@ -277,7 +277,7 @@ private static final long serialVersionUID = 0L;
     }
     if (((bitField0_ & 0x00000008) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(4, handlingUserTel_);
+        .computeInt64Size(4, handlingUserTel_);
     }
     if (((bitField0_ & 0x00000010) != 0)) {
       size += com.google.protobuf.CodedOutputStream
@@ -356,7 +356,8 @@ private static final long serialVersionUID = 0L;
     }
     if (hasHandlingUserTel()) {
       hash = (37 * hash) + HANDLINGUSERTEL_FIELD_NUMBER;
-      hash = (53 * hash) + getHandlingUserTel();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getHandlingUserTel());
     }
     if (hasHandlingCtx()) {
       hash = (37 * hash) + HANDLINGCTX_FIELD_NUMBER;
@@ -498,18 +499,7 @@ private static final long serialVersionUID = 0L;
       super(parent);
 
     }
-    @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      bitField0_ = 0;
-      handlingId_ = 0;
-      questId_ = 0;
-      handlingType_ = 0;
-      handlingUserTel_ = 0;
-      handlingCtx_ = com.google.protobuf.ByteString.EMPTY;
-      handlingTime_ = 0L;
-      return this;
-    }
+    private long handlingUserTel_ ;
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
@@ -610,64 +600,15 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public Builder mergeFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              handlingId_ = input.readInt32();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 8
-            case 16: {
-              questId_ = input.readInt32();
-              bitField0_ |= 0x00000002;
-              break;
-            } // case 16
-            case 24: {
-              handlingType_ = input.readEnum();
-              bitField0_ |= 0x00000004;
-              break;
-            } // case 24
-            case 32: {
-              handlingUserTel_ = input.readInt32();
-              bitField0_ |= 0x00000008;
-              break;
-            } // case 32
-            case 42: {
-              handlingCtx_ = input.readBytes();
-              bitField0_ |= 0x00000010;
-              break;
-            } // case 42
-            case 48: {
-              handlingTime_ = input.readInt64();
-              bitField0_ |= 0x00000020;
-              break;
-            } // case 48
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
-          } // switch (tag)
-        } // while (!done)
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.unwrapIOException();
-      } finally {
-        onChanged();
-      } // finally
+    public Builder clear() {
+      super.clear();
+      bitField0_ = 0;
+      handlingId_ = 0;
+      questId_ = 0;
+      handlingType_ = 0;
+      handlingUserTel_ = 0L;
+      handlingCtx_ = com.google.protobuf.ByteString.EMPTY;
+      handlingTime_ = 0L;
       return this;
     }
     private int bitField0_;
@@ -866,13 +807,74 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int handlingUserTel_ ;
+    @java.lang.Override
+    public Builder mergeFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              handlingId_ = input.readInt32();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 8
+            case 16: {
+              questId_ = input.readInt32();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 16
+            case 24: {
+              handlingType_ = input.readEnum();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 24
+            case 32: {
+              handlingUserTel_ = input.readInt64();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 32
+            case 42: {
+              handlingCtx_ = input.readBytes();
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 42
+            case 48: {
+              handlingTime_ = input.readInt64();
+              bitField0_ |= 0x00000020;
+              break;
+            } // case 48
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
+          } // switch (tag)
+        } // while (!done)
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.unwrapIOException();
+      } finally {
+        onChanged();
+      } // finally
+      return this;
+    }
+
     /**
      * <pre>
      * 处理人
      * </pre>
      *
-     * <code>optional int32 handlingUserTel = 4;</code>
+     * <code>optional int64 handlingUserTel = 4;</code>
      * @return Whether the handlingUserTel field is set.
      */
     @java.lang.Override
@@ -884,11 +886,11 @@ private static final long serialVersionUID = 0L;
      * 处理人
      * </pre>
      *
-     * <code>optional int32 handlingUserTel = 4;</code>
+     * <code>optional int64 handlingUserTel = 4;</code>
      * @return The handlingUserTel.
      */
     @java.lang.Override
-    public int getHandlingUserTel() {
+    public long getHandlingUserTel() {
       return handlingUserTel_;
     }
     /**
@@ -896,11 +898,11 @@ private static final long serialVersionUID = 0L;
      * 处理人
      * </pre>
      *
-     * <code>optional int32 handlingUserTel = 4;</code>
+     * <code>optional int64 handlingUserTel = 4;</code>
      * @param value The handlingUserTel to set.
      * @return This builder for chaining.
      */
-    public Builder setHandlingUserTel(int value) {
+    public Builder setHandlingUserTel(long value) {
 
       handlingUserTel_ = value;
       bitField0_ |= 0x00000008;
@@ -912,12 +914,12 @@ private static final long serialVersionUID = 0L;
      * 处理人
      * </pre>
      *
-     * <code>optional int32 handlingUserTel = 4;</code>
+     * <code>optional int64 handlingUserTel = 4;</code>
      * @return This builder for chaining.
      */
     public Builder clearHandlingUserTel() {
       bitField0_ = (bitField0_ & ~0x00000008);
-      handlingUserTel_ = 0;
+      handlingUserTel_ = 0L;
       onChanged();
       return this;
     }

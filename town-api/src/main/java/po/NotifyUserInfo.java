@@ -79,32 +79,22 @@ private static final long serialVersionUID = 0L;
 
   public static final int USERTEL_FIELD_NUMBER = 2;
   public static final int MSGTYPE_FIELD_NUMBER = 3;
+  public static final int MSGCTX_FIELD_NUMBER = 4;
+  private long userTel_ = 0L;
+  private int msgType_ = 0;
+
   /**
    * <pre>
    * 电话
    * </pre>
    *
-   * <code>optional int32 userTel = 2;</code>
+   * <code>optional int64 userTel = 2;</code>
    * @return Whether the userTel field is set.
    */
   @java.lang.Override
   public boolean hasUserTel() {
     return ((bitField0_ & 0x00000002) != 0);
   }
-  /**
-   * <pre>
-   * 电话
-   * </pre>
-   *
-   * <code>optional int32 userTel = 2;</code>
-   * @return The userTel.
-   */
-  @java.lang.Override
-  public int getUserTel() {
-    return userTel_;
-  }
-  public static final int MSGCTX_FIELD_NUMBER = 4;
-  private int userTel_ = 0;
   /**
    * <pre>
    * 消息类型
@@ -139,7 +129,19 @@ private static final long serialVersionUID = 0L;
     po.MsgType result = po.MsgType.forNumber(msgType_);
     return result == null ? po.MsgType.UNRECOGNIZED : result;
   }
-  private int msgType_ = 0;
+
+  /**
+   * <pre>
+   * 电话
+   * </pre>
+   *
+   * <code>optional int64 userTel = 2;</code>
+   * @return The userTel.
+   */
+  @java.lang.Override
+  public long getUserTel() {
+    return userTel_;
+  }
   private com.google.protobuf.ByteString msgCtx_ = com.google.protobuf.ByteString.EMPTY;
   /**
    * <pre>
@@ -184,7 +186,7 @@ private static final long serialVersionUID = 0L;
       output.writeInt32(1, id_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      output.writeInt32(2, userTel_);
+      output.writeInt64(2, userTel_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
       output.writeEnum(3, msgType_);
@@ -207,7 +209,7 @@ private static final long serialVersionUID = 0L;
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, userTel_);
+        .computeInt64Size(2, userTel_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
       size += com.google.protobuf.CodedOutputStream
@@ -268,7 +270,8 @@ private static final long serialVersionUID = 0L;
     }
     if (hasUserTel()) {
       hash = (37 * hash) + USERTEL_FIELD_NUMBER;
-      hash = (53 * hash) + getUserTel();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUserTel());
     }
     if (hasMsgType()) {
       hash = (37 * hash) + MSGTYPE_FIELD_NUMBER;
@@ -375,7 +378,6 @@ private static final long serialVersionUID = 0L;
     Builder builder = new Builder(parent);
     return builder;
   }
-
   /**
    * <pre>
    * 主动通知用户信息,因推送时不确定用户在不在线，所以使用上线客户端主动拉取的方式
@@ -481,66 +483,14 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-    private int userTel_ ;
-
-    @java.lang.Override
-    public Builder mergeFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              id_ = input.readInt32();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 8
-            case 16: {
-              userTel_ = input.readInt32();
-              bitField0_ |= 0x00000002;
-              break;
-            } // case 16
-            case 24: {
-              msgType_ = input.readEnum();
-              bitField0_ |= 0x00000004;
-              break;
-            } // case 24
-            case 34: {
-              msgCtx_ = input.readBytes();
-              bitField0_ |= 0x00000008;
-              break;
-            } // case 34
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
-          } // switch (tag)
-        } // while (!done)
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.unwrapIOException();
-      } finally {
-        onChanged();
-      } // finally
-      return this;
-    }
+    private long userTel_ ;
 
     @java.lang.Override
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
       id_ = 0;
-      userTel_ = 0;
+      userTel_ = 0L;
       msgType_ = 0;
       msgCtx_ = com.google.protobuf.ByteString.EMPTY;
       return this;
@@ -554,6 +504,11 @@ private static final long serialVersionUID = 0L;
         super.mergeFrom(other);
         return this;
       }
+    }
+
+    @java.lang.Override
+    public final boolean isInitialized() {
+      return true;
     }
     /**
      * <pre>
@@ -611,15 +566,63 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public final boolean isInitialized() {
-      return true;
+    public Builder mergeFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              id_ = input.readInt32();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 8
+            case 16: {
+              userTel_ = input.readInt64();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 16
+            case 24: {
+              msgType_ = input.readEnum();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 24
+            case 34: {
+              msgCtx_ = input.readBytes();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 34
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
+          } // switch (tag)
+        } // while (!done)
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.unwrapIOException();
+      } finally {
+        onChanged();
+      } // finally
+      return this;
     }
+
     /**
      * <pre>
      * 电话
      * </pre>
      *
-     * <code>optional int32 userTel = 2;</code>
+     * <code>optional int64 userTel = 2;</code>
      * @return Whether the userTel field is set.
      */
     @java.lang.Override
@@ -631,11 +634,11 @@ private static final long serialVersionUID = 0L;
      * 电话
      * </pre>
      *
-     * <code>optional int32 userTel = 2;</code>
+     * <code>optional int64 userTel = 2;</code>
      * @return The userTel.
      */
     @java.lang.Override
-    public int getUserTel() {
+    public long getUserTel() {
       return userTel_;
     }
     /**
@@ -643,11 +646,11 @@ private static final long serialVersionUID = 0L;
      * 电话
      * </pre>
      *
-     * <code>optional int32 userTel = 2;</code>
+     * <code>optional int64 userTel = 2;</code>
      * @param value The userTel to set.
      * @return This builder for chaining.
      */
-    public Builder setUserTel(int value) {
+    public Builder setUserTel(long value) {
 
       userTel_ = value;
       bitField0_ |= 0x00000002;
@@ -659,12 +662,12 @@ private static final long serialVersionUID = 0L;
      * 电话
      * </pre>
      *
-     * <code>optional int32 userTel = 2;</code>
+     * <code>optional int64 userTel = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearUserTel() {
       bitField0_ = (bitField0_ & ~0x00000002);
-      userTel_ = 0;
+      userTel_ = 0L;
       onChanged();
       return this;
     }

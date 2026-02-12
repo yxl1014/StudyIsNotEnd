@@ -187,7 +187,7 @@ public class NettyTest {
         private RequestMsg buildListQuestMsg() {
             RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();
             msgBuilder.setMsgType(MsgType.TMT_ListQuestionReq);
-            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxLFwicmFuZG9tQ29kZVwiOlwiMDU0NTA0XCIsXCJjcmVhdGVUaW1lXCI6MTc3MDg2NTgyOTAwNixcInVzZXJQb3dlclwiOlwiVFVQX0NNXCIsXCJ1c2VyRmxhZ1R5cGVcIjpcIlRVRlRfREVGQVVMVFwiLFwidXNlck5hbWVcIjpcInh4eDEyM1wifSIsImlhdCI6MTc3MDg2NTgyOSwiZXhwIjoxNzcwOTUyMjI5fQ.ctSe4E2AzpeRsggUFfGcQKT08F8X_0J3yE6loru8ZGQ");
+            msgBuilder.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsInRva2VuSW5mbyI6IntcInVzZXJUZWxcIjoxMjM0NTYsXCJyYW5kb21Db2RlXCI6XCI0MTAwNTBcIixcImNyZWF0ZVRpbWVcIjoxNzcwODY2NzEwNTU3LFwidXNlclBvd2VyXCI6XCJUVVBfQ0dNXCIsXCJ1c2VyRmxhZ1R5cGVcIjpcIlRVRlRfREVGQVVMVFwiLFwidXNlck5hbWVcIjpcInh4eFwifSIsImlhdCI6MTc3MDg2NjcxMCwiZXhwIjoxNzcwOTUzMTEwfQ.b0dYatowwKLfal1TxpQqC7F3QeV1VXegzMXqm9iM9GE");
             msgBuilder.setMsg(
                     ListQuestionReq.newBuilder()
                             .setPage(1)
@@ -269,7 +269,7 @@ public class NettyTest {
             LoginReq.Builder builder = LoginReq.newBuilder();
 //            builder.setUserTel(1);
 //            builder.setUserPwd("admin");
-            builder.setUserTel(1);
+            builder.setUserTel(123456);
             builder.setUserPwd("123456");
 
             RequestMsg.Builder msgBuilder = RequestMsg.newBuilder();

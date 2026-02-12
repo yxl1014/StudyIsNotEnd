@@ -110,7 +110,7 @@ public interface QuestionInfoOrBuilder extends
    * 问题提出者电话
    * </pre>
    *
-   * <code>optional int32 questionWriterTel = 5;</code>
+   * <code>optional int64 questionWriterTel = 5;</code>
    * @return Whether the questionWriterTel field is set.
    */
   boolean hasQuestionWriterTel();
@@ -119,10 +119,10 @@ public interface QuestionInfoOrBuilder extends
    * 问题提出者电话
    * </pre>
    *
-   * <code>optional int32 questionWriterTel = 5;</code>
+   * <code>optional int64 questionWriterTel = 5;</code>
    * @return The questionWriterTel.
    */
-  int getQuestionWriterTel();
+  long getQuestionWriterTel();
 
   /**
    * <pre>
@@ -157,7 +157,7 @@ public interface QuestionInfoOrBuilder extends
    * 指定处理人电话
    * </pre>
    *
-   * <code>optional int32 choiceUser = 7;</code>
+   * <code>optional int64 choiceUser = 7;</code>
    * @return Whether the choiceUser field is set.
    */
   boolean hasChoiceUser();
@@ -166,10 +166,10 @@ public interface QuestionInfoOrBuilder extends
    * 指定处理人电话
    * </pre>
    *
-   * <code>optional int32 choiceUser = 7;</code>
+   * <code>optional int64 choiceUser = 7;</code>
    * @return The choiceUser.
    */
-  int getChoiceUser();
+  long getChoiceUser();
 
   /**
    * <pre>

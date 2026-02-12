@@ -263,13 +263,13 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int WRITERTEL_FIELD_NUMBER = 6;
-  private int writerTel_ = 0;
+  private long writerTel_ = 0L;
   /**
    * <pre>
    * 发布者电话
    * </pre>
    *
-   * <code>optional int32 writerTel = 6;</code>
+   * <code>optional int64 writerTel = 6;</code>
    * @return Whether the writerTel field is set.
    */
   @java.lang.Override
@@ -281,11 +281,11 @@ private static final long serialVersionUID = 0L;
    * 发布者电话
    * </pre>
    *
-   * <code>optional int32 writerTel = 6;</code>
+   * <code>optional int64 writerTel = 6;</code>
    * @return The writerTel.
    */
   @java.lang.Override
-  public int getWriterTel() {
+  public long getWriterTel() {
     return writerTel_;
   }
 
@@ -459,7 +459,7 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessage.writeString(output, 5, noticeContext_);
     }
     if (((bitField0_ & 0x00000020) != 0)) {
-      output.writeInt32(6, writerTel_);
+      output.writeInt64(6, writerTel_);
     }
     if (((bitField0_ & 0x00000040) != 0)) {
       com.google.protobuf.GeneratedMessage.writeString(output, 7, writerName_);
@@ -502,7 +502,7 @@ private static final long serialVersionUID = 0L;
     }
     if (((bitField0_ & 0x00000020) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(6, writerTel_);
+        .computeInt64Size(6, writerTel_);
     }
     if (((bitField0_ & 0x00000040) != 0)) {
       size += com.google.protobuf.GeneratedMessage.computeStringSize(7, writerName_);
@@ -617,7 +617,8 @@ private static final long serialVersionUID = 0L;
     }
     if (hasWriterTel()) {
       hash = (37 * hash) + WRITERTEL_FIELD_NUMBER;
-      hash = (53 * hash) + getWriterTel();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getWriterTel());
     }
     if (hasWriterName()) {
       hash = (37 * hash) + WRITERNAME_FIELD_NUMBER;
@@ -768,22 +769,7 @@ private static final long serialVersionUID = 0L;
       super(parent);
 
     }
-    @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      bitField0_ = 0;
-      noticeId_ = 0;
-      noticeType_ = 0;
-      noticeCreateTime_ = 0L;
-      noticeTitle_ = "";
-      noticeContext_ = "";
-      writerTel_ = 0;
-      writerName_ = "";
-      isTop_ = false;
-      isAcceptRead_ = false;
-      noticeAtt_ = com.google.protobuf.ByteString.EMPTY;
-      return this;
-    }
+    private long writerTel_ ;
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
@@ -918,84 +904,19 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public Builder mergeFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              noticeId_ = input.readInt32();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 8
-            case 16: {
-              noticeType_ = input.readEnum();
-              bitField0_ |= 0x00000002;
-              break;
-            } // case 16
-            case 24: {
-              noticeCreateTime_ = input.readInt64();
-              bitField0_ |= 0x00000004;
-              break;
-            } // case 24
-            case 34: {
-              noticeTitle_ = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000008;
-              break;
-            } // case 34
-            case 42: {
-              noticeContext_ = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000010;
-              break;
-            } // case 42
-            case 48: {
-              writerTel_ = input.readInt32();
-              bitField0_ |= 0x00000020;
-              break;
-            } // case 48
-            case 58: {
-              writerName_ = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000040;
-              break;
-            } // case 58
-            case 64: {
-              isTop_ = input.readBool();
-              bitField0_ |= 0x00000080;
-              break;
-            } // case 64
-            case 72: {
-              isAcceptRead_ = input.readBool();
-              bitField0_ |= 0x00000100;
-              break;
-            } // case 72
-            case 82: {
-              noticeAtt_ = input.readBytes();
-              bitField0_ |= 0x00000200;
-              break;
-            } // case 82
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
-          } // switch (tag)
-        } // while (!done)
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.unwrapIOException();
-      } finally {
-        onChanged();
-      } // finally
+    public Builder clear() {
+      super.clear();
+      bitField0_ = 0;
+      noticeId_ = 0;
+      noticeType_ = 0;
+      noticeCreateTime_ = 0L;
+      noticeTitle_ = "";
+      noticeContext_ = "";
+      writerTel_ = 0L;
+      writerName_ = "";
+      isTop_ = false;
+      isAcceptRead_ = false;
+      noticeAtt_ = com.google.protobuf.ByteString.EMPTY;
       return this;
     }
     private int bitField0_;
@@ -1400,13 +1321,94 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int writerTel_ ;
+    @java.lang.Override
+    public Builder mergeFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              noticeId_ = input.readInt32();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 8
+            case 16: {
+              noticeType_ = input.readEnum();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 16
+            case 24: {
+              noticeCreateTime_ = input.readInt64();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 24
+            case 34: {
+              noticeTitle_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 34
+            case 42: {
+              noticeContext_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 42
+            case 48: {
+              writerTel_ = input.readInt64();
+              bitField0_ |= 0x00000020;
+              break;
+            } // case 48
+            case 58: {
+              writerName_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000040;
+              break;
+            } // case 58
+            case 64: {
+              isTop_ = input.readBool();
+              bitField0_ |= 0x00000080;
+              break;
+            } // case 64
+            case 72: {
+              isAcceptRead_ = input.readBool();
+              bitField0_ |= 0x00000100;
+              break;
+            } // case 72
+            case 82: {
+              noticeAtt_ = input.readBytes();
+              bitField0_ |= 0x00000200;
+              break;
+            } // case 82
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
+          } // switch (tag)
+        } // while (!done)
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.unwrapIOException();
+      } finally {
+        onChanged();
+      } // finally
+      return this;
+    }
+
     /**
      * <pre>
      * 发布者电话
      * </pre>
      *
-     * <code>optional int32 writerTel = 6;</code>
+     * <code>optional int64 writerTel = 6;</code>
      * @return Whether the writerTel field is set.
      */
     @java.lang.Override
@@ -1418,11 +1420,11 @@ private static final long serialVersionUID = 0L;
      * 发布者电话
      * </pre>
      *
-     * <code>optional int32 writerTel = 6;</code>
+     * <code>optional int64 writerTel = 6;</code>
      * @return The writerTel.
      */
     @java.lang.Override
-    public int getWriterTel() {
+    public long getWriterTel() {
       return writerTel_;
     }
     /**
@@ -1430,11 +1432,11 @@ private static final long serialVersionUID = 0L;
      * 发布者电话
      * </pre>
      *
-     * <code>optional int32 writerTel = 6;</code>
+     * <code>optional int64 writerTel = 6;</code>
      * @param value The writerTel to set.
      * @return This builder for chaining.
      */
-    public Builder setWriterTel(int value) {
+    public Builder setWriterTel(long value) {
 
       writerTel_ = value;
       bitField0_ |= 0x00000020;
@@ -1446,12 +1448,12 @@ private static final long serialVersionUID = 0L;
      * 发布者电话
      * </pre>
      *
-     * <code>optional int32 writerTel = 6;</code>
+     * <code>optional int64 writerTel = 6;</code>
      * @return This builder for chaining.
      */
     public Builder clearWriterTel() {
       bitField0_ = (bitField0_ & ~0x00000020);
-      writerTel_ = 0;
+      writerTel_ = 0L;
       onChanged();
       return this;
     }

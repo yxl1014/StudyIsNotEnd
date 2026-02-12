@@ -138,7 +138,7 @@ public interface UpdateInfoOrBuilder extends
    * 修改人电话
    * </pre>
    *
-   * <code>optional int32 updateUserTel = 7;</code>
+   * <code>optional int64 updateUserTel = 7;</code>
    * @return Whether the updateUserTel field is set.
    */
   boolean hasUpdateUserTel();
@@ -147,10 +147,10 @@ public interface UpdateInfoOrBuilder extends
    * 修改人电话
    * </pre>
    *
-   * <code>optional int32 updateUserTel = 7;</code>
+   * <code>optional int64 updateUserTel = 7;</code>
    * @return The updateUserTel.
    */
-  int getUpdateUserTel();
+  long getUpdateUserTel();
 
   /**
    * <pre>

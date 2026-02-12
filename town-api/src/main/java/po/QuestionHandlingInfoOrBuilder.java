@@ -81,7 +81,7 @@ public interface QuestionHandlingInfoOrBuilder extends
    * 处理人
    * </pre>
    *
-   * <code>optional int32 handlingUserTel = 4;</code>
+   * <code>optional int64 handlingUserTel = 4;</code>
    * @return Whether the handlingUserTel field is set.
    */
   boolean hasHandlingUserTel();
@@ -90,10 +90,10 @@ public interface QuestionHandlingInfoOrBuilder extends
    * 处理人
    * </pre>
    *
-   * <code>optional int32 handlingUserTel = 4;</code>
+   * <code>optional int64 handlingUserTel = 4;</code>
    * @return The handlingUserTel.
    */
-  int getHandlingUserTel();
+  long getHandlingUserTel();
 
   /**
    * <pre>

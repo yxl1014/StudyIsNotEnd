@@ -139,7 +139,7 @@ public interface NoticeInfoOrBuilder extends
    * 发布者电话
    * </pre>
    *
-   * <code>optional int32 writerTel = 6;</code>
+   * <code>optional int64 writerTel = 6;</code>
    * @return Whether the writerTel field is set.
    */
   boolean hasWriterTel();
@@ -148,10 +148,10 @@ public interface NoticeInfoOrBuilder extends
    * 发布者电话
    * </pre>
    *
-   * <code>optional int32 writerTel = 6;</code>
+   * <code>optional int64 writerTel = 6;</code>
    * @return The writerTel.
    */
-  int getWriterTel();
+  long getWriterTel();
 
   /**
    * <pre>

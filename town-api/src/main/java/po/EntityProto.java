@@ -103,14 +103,14 @@ public final class EntityProto extends com.google.protobuf.GeneratedFile {
       ".po.TNoticeTypeH\001\210\001\001\022\035\n\020noticeCreateTime" +
       "\030\003 \001(\003H\002\210\001\001\022\030\n\013noticeTitle\030\004 \001(\tH\003\210\001\001\022\032\n" +
       "\rnoticeContext\030\005 \001(\tH\004\210\001\001\022\026\n\twriterTel\030\006" +
-      " \001(\005H\005\210\001\001\022\027\n\nwriterName\030\007 \001(\tH\006\210\001\001\022\022\n\005is" +
+      " \001(\003H\005\210\001\001\022\027\n\nwriterName\030\007 \001(\tH\006\210\001\001\022\022\n\005is" +
       "Top\030\010 \001(\010H\007\210\001\001\022\031\n\014isAcceptRead\030\t \001(\010H\010\210\001" +
       "\001\022\026\n\tnoticeAtt\030\n \001(\014H\t\210\001\001B\013\n\t_noticeIdB\r" +
       "\n\013_noticeTypeB\023\n\021_noticeCreateTimeB\016\n\014_n" +
       "oticeTitleB\020\n\016_noticeContextB\014\n\n_writerT" +
       "elB\r\n\013_writerNameB\010\n\006_isTopB\017\n\r_isAccept" +
       "ReadB\014\n\n_noticeAtt\"\226\001\n\022UserReadNoticeInf" +
-      "o\022\017\n\002id\030\001 \001(\005H\000\210\001\001\022\024\n\007userTel\030\002 \001(\005H\001\210\001\001" +
+      "o\022\017\n\002id\030\001 \001(\005H\000\210\001\001\022\024\n\007userTel\030\002 \001(\003H\001\210\001\001" +
       "\022\025\n\010noticeId\030\003 \001(\005H\002\210\001\001\022\025\n\010readTime\030\004 \001(" +
       "\003H\003\210\001\001B\005\n\003_idB\n\n\010_userTelB\013\n\t_noticeIdB\013" +
       "\n\t_readTime\"\321\002\n\nUpdateInfo\022\025\n\010updateId\030\001" +
@@ -118,16 +118,16 @@ public final class EntityProto extends com.google.protobuf.GeneratedFile {
       "pe\030\003 \001(\0162\023.po.TUpdateInfoTypeH\002\210\001\001\022\026\n\tbe" +
       "foreMsg\030\004 \001(\014H\003\210\001\001\022\025\n\010afterMsg\030\005 \001(\014H\004\210\001" +
       "\001\022\027\n\nupdateTime\030\006 \001(\003H\005\210\001\001\022\032\n\rupdateUser" +
-      "Tel\030\007 \001(\005H\006\210\001\001\022\027\n\nupdateName\030\010 \001(\tH\007\210\001\001B" +
+      "Tel\030\007 \001(\003H\006\210\001\001\022\027\n\nupdateName\030\010 \001(\tH\007\210\001\001B" +
       "\013\n\t_updateIdB\t\n\007_infoIdB\013\n\t_infoTypeB\014\n\n" +
       "_beforeMsgB\013\n\t_afterMsgB\r\n\013_updateTimeB\020" +
       "\n\016_updateUserTelB\r\n\013_updateName\"\212\003\n\014Ques" +
       "tionInfo\022\027\n\nquestionId\030\001 \001(\005H\000\210\001\001\022+\n\014que" +
       "stionType\030\002 \001(\0162\020.po.QuestionTypeH\001\210\001\001\022\030" +
       "\n\013questionCtx\030\003 \001(\tH\002\210\001\001\022\027\n\nquestPhoto\030\004" +
-      " \001(\014H\003\210\001\001\022\036\n\021questionWriterTel\030\005 \001(\005H\004\210\001" +
+      " \001(\014H\003\210\001\001\022\036\n\021questionWriterTel\030\005 \001(\003H\004\210\001" +
       "\001\022+\n\010nodeType\030\006 \001(\0162\024.po.QuestionNodeTyp" +
-      "eH\005\210\001\001\022\027\n\nchoiceUser\030\007 \001(\005H\006\210\001\001\022\031\n\014quest" +
+      "eH\005\210\001\001\022\027\n\nchoiceUser\030\007 \001(\003H\006\210\001\001\022\031\n\014quest" +
       "ionTime\030\010 \001(\003H\007\210\001\001B\r\n\013_questionIdB\017\n\r_qu" +
       "estionTypeB\016\n\014_questionCtxB\r\n\013_questPhot" +
       "oB\024\n\022_questionWriterTelB\013\n\t_nodeTypeB\r\n\013" +
@@ -135,12 +135,12 @@ public final class EntityProto extends com.google.protobuf.GeneratedFile {
       "nHandlingInfo\022\027\n\nhandlingId\030\001 \001(\005H\000\210\001\001\022\024" +
       "\n\007questId\030\002 \001(\005H\001\210\001\001\0223\n\014handlingType\030\003 \001" +
       "(\0162\030.po.QuestionHandlingTypeH\002\210\001\001\022\034\n\017han" +
-      "dlingUserTel\030\004 \001(\005H\003\210\001\001\022\030\n\013handlingCtx\030\005" +
+      "dlingUserTel\030\004 \001(\003H\003\210\001\001\022\030\n\013handlingCtx\030\005" +
       " \001(\014H\004\210\001\001\022\031\n\014handlingTime\030\006 \001(\003H\005\210\001\001B\r\n\013" +
       "_handlingIdB\n\n\010_questIdB\017\n\r_handlingType" +
       "B\022\n\020_handlingUserTelB\016\n\014_handlingCtxB\017\n\r" +
       "_handlingTime\"\231\001\n\016NotifyUserInfo\022\017\n\002id\030\001" +
-      " \001(\005H\000\210\001\001\022\024\n\007userTel\030\002 \001(\005H\001\210\001\001\022!\n\007msgTy" +
+      " \001(\005H\000\210\001\001\022\024\n\007userTel\030\002 \001(\003H\001\210\001\001\022!\n\007msgTy" +
       "pe\030\003 \001(\0162\013.po.MsgTypeH\002\210\001\001\022\023\n\006msgCtx\030\004 \001" +
       "(\014H\003\210\001\001B\005\n\003_idB\n\n\010_userTelB\n\n\010_msgTypeB\t" +
       "\n\007_msgCtx\"\360\002\n\tStudyInfo\022\024\n\007studyId\030\001 \001(\005" +
@@ -153,7 +153,7 @@ public final class EntityProto extends com.google.protobuf.GeneratedFile {
       "B\022\n\020_studyCreateTimeB\r\n\013_studyTitleB\013\n\t_" +
       "studyTipB\017\n\r_studyContentB\t\n\007_isOpenB\010\n\006" +
       "_isTopB\014\n\n_readCount\"o\n\021UserStarStudyInf" +
-      "o\022\017\n\002id\030\001 \001(\005H\000\210\001\001\022\024\n\007userTel\030\002 \001(\005H\001\210\001\001" +
+      "o\022\017\n\002id\030\001 \001(\005H\000\210\001\001\022\024\n\007userTel\030\002 \001(\003H\001\210\001\001" +
       "\022\024\n\007studyId\030\003 \001(\005H\002\210\001\001B\005\n\003_idB\n\n\010_userTe" +
       "lB\n\n\010_studyId\"\264\001\n\nPeopleInfo\022\031\n\014peopleCa" +
       "rdId\030\001 \001(\tH\000\210\001\001\022\027\n\npeopleName\030\002 \001(\tH\001\210\001\001" +

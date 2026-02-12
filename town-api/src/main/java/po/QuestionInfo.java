@@ -127,7 +127,32 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private volatile java.lang.Object questionCtx_ = "";
   private com.google.protobuf.ByteString questPhoto_ = com.google.protobuf.ByteString.EMPTY;
-  private int questionWriterTel_ = 0;
+  private long questionWriterTel_ = 0L;
+  /**
+   * <pre>
+   * 问题上传附件
+   * </pre>
+   *
+   * <code>optional bytes questPhoto = 4;</code>
+   * @return Whether the questPhoto field is set.
+   */
+  @java.lang.Override
+  public boolean hasQuestPhoto() {
+    return ((bitField0_ & 0x00000008) != 0);
+  }
+  /**
+   * <pre>
+   * 问题上传附件
+   * </pre>
+   *
+   * <code>optional bytes questPhoto = 4;</code>
+   * @return The questPhoto.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getQuestPhoto() {
+    return questPhoto_;
+  }
+  private long choiceUser_ = 0L;
   private long questionTime_ = 0L;
   private QuestionInfo() {
     questionType_ = 0;
@@ -156,55 +181,6 @@ private static final long serialVersionUID = 0L;
       questionCtx_ = s;
       return s;
     }
-  }
-
-  /**
-   * <pre>
-   * 问题详细描述
-   * </pre>
-   *
-   * <code>optional string questionCtx = 3;</code>
-   * @return The bytes for questionCtx.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getQuestionCtxBytes() {
-    java.lang.Object ref = questionCtx_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      questionCtx_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  /**
-   * <pre>
-   * 问题上传附件
-   * </pre>
-   *
-   * <code>optional bytes questPhoto = 4;</code>
-   * @return Whether the questPhoto field is set.
-   */
-  @java.lang.Override
-  public boolean hasQuestPhoto() {
-    return ((bitField0_ & 0x00000008) != 0);
-  }
-
-  /**
-   * <pre>
-   * 问题上传附件
-   * </pre>
-   *
-   * <code>optional bytes questPhoto = 4;</code>
-   * @return The questPhoto.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getQuestPhoto() {
-    return questPhoto_;
   }
 
   public static final int NODETYPE_FIELD_NUMBER = 6;
@@ -245,30 +221,28 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int CHOICEUSER_FIELD_NUMBER = 7;
-  private int choiceUser_ = 0;
+
   /**
    * <pre>
-   * 指定处理人电话
+   * 问题详细描述
    * </pre>
    *
-   * <code>optional int32 choiceUser = 7;</code>
-   * @return Whether the choiceUser field is set.
+   * <code>optional string questionCtx = 3;</code>
+   * @return The bytes for questionCtx.
    */
   @java.lang.Override
-  public boolean hasChoiceUser() {
-    return ((bitField0_ & 0x00000040) != 0);
-  }
-  /**
-   * <pre>
-   * 指定处理人电话
-   * </pre>
-   *
-   * <code>optional int32 choiceUser = 7;</code>
-   * @return The choiceUser.
-   */
-  @java.lang.Override
-  public int getChoiceUser() {
-    return choiceUser_;
+  public com.google.protobuf.ByteString
+      getQuestionCtxBytes() {
+    java.lang.Object ref = questionCtx_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      questionCtx_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   /**
@@ -276,7 +250,7 @@ private static final long serialVersionUID = 0L;
    * 问题提出者电话
    * </pre>
    *
-   * <code>optional int32 questionWriterTel = 5;</code>
+   * <code>optional int64 questionWriterTel = 5;</code>
    * @return Whether the questionWriterTel field is set.
    */
   @java.lang.Override
@@ -289,12 +263,38 @@ private static final long serialVersionUID = 0L;
    * 问题提出者电话
    * </pre>
    *
-   * <code>optional int32 questionWriterTel = 5;</code>
+   * <code>optional int64 questionWriterTel = 5;</code>
    * @return The questionWriterTel.
    */
   @java.lang.Override
-  public int getQuestionWriterTel() {
+  public long getQuestionWriterTel() {
     return questionWriterTel_;
+  }
+
+  /**
+   * <pre>
+   * 指定处理人电话
+   * </pre>
+   *
+   * <code>optional int64 choiceUser = 7;</code>
+   * @return Whether the choiceUser field is set.
+   */
+  @java.lang.Override
+  public boolean hasChoiceUser() {
+    return ((bitField0_ & 0x00000040) != 0);
+  }
+
+  /**
+   * <pre>
+   * 指定处理人电话
+   * </pre>
+   *
+   * <code>optional int64 choiceUser = 7;</code>
+   * @return The choiceUser.
+   */
+  @java.lang.Override
+  public long getChoiceUser() {
+    return choiceUser_;
   }
   /**
    * <pre>
@@ -348,13 +348,13 @@ private static final long serialVersionUID = 0L;
       output.writeBytes(4, questPhoto_);
     }
     if (((bitField0_ & 0x00000010) != 0)) {
-      output.writeInt32(5, questionWriterTel_);
+      output.writeInt64(5, questionWriterTel_);
     }
     if (((bitField0_ & 0x00000020) != 0)) {
       output.writeEnum(6, nodeType_);
     }
     if (((bitField0_ & 0x00000040) != 0)) {
-      output.writeInt32(7, choiceUser_);
+      output.writeInt64(7, choiceUser_);
     }
     if (((bitField0_ & 0x00000080) != 0)) {
       output.writeInt64(8, questionTime_);
@@ -385,7 +385,7 @@ private static final long serialVersionUID = 0L;
     }
     if (((bitField0_ & 0x00000010) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(5, questionWriterTel_);
+        .computeInt64Size(5, questionWriterTel_);
     }
     if (((bitField0_ & 0x00000020) != 0)) {
       size += com.google.protobuf.CodedOutputStream
@@ -393,7 +393,7 @@ private static final long serialVersionUID = 0L;
     }
     if (((bitField0_ & 0x00000040) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(7, choiceUser_);
+        .computeInt64Size(7, choiceUser_);
     }
     if (((bitField0_ & 0x00000080) != 0)) {
       size += com.google.protobuf.CodedOutputStream
@@ -481,7 +481,8 @@ private static final long serialVersionUID = 0L;
     }
     if (hasQuestionWriterTel()) {
       hash = (37 * hash) + QUESTIONWRITERTEL_FIELD_NUMBER;
-      hash = (53 * hash) + getQuestionWriterTel();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getQuestionWriterTel());
     }
     if (hasNodeType()) {
       hash = (37 * hash) + NODETYPE_FIELD_NUMBER;
@@ -489,7 +490,8 @@ private static final long serialVersionUID = 0L;
     }
     if (hasChoiceUser()) {
       hash = (37 * hash) + CHOICEUSER_FIELD_NUMBER;
-      hash = (53 * hash) + getChoiceUser();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getChoiceUser());
     }
     if (hasQuestionTime()) {
       hash = (37 * hash) + QUESTIONTIME_FIELD_NUMBER;
@@ -593,7 +595,6 @@ private static final long serialVersionUID = 0L;
     Builder builder = new Builder(parent);
     return builder;
   }
-
   /**
    * <pre>
    * 问题信息
@@ -730,80 +731,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     private int questionType_ = 0;
-
-    @java.lang.Override
-    public Builder mergeFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              questionId_ = input.readInt32();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 8
-            case 16: {
-              questionType_ = input.readEnum();
-              bitField0_ |= 0x00000002;
-              break;
-            } // case 16
-            case 26: {
-              questionCtx_ = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000004;
-              break;
-            } // case 26
-            case 34: {
-              questPhoto_ = input.readBytes();
-              bitField0_ |= 0x00000008;
-              break;
-            } // case 34
-            case 40: {
-              questionWriterTel_ = input.readInt32();
-              bitField0_ |= 0x00000010;
-              break;
-            } // case 40
-            case 48: {
-              nodeType_ = input.readEnum();
-              bitField0_ |= 0x00000020;
-              break;
-            } // case 48
-            case 56: {
-              choiceUser_ = input.readInt32();
-              bitField0_ |= 0x00000040;
-              break;
-            } // case 56
-            case 64: {
-              questionTime_ = input.readInt64();
-              bitField0_ |= 0x00000080;
-              break;
-            } // case 64
-            default: {
-              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                done = true; // was an endgroup tag
-              }
-              break;
-            } // default:
-          } // switch (tag)
-        } // while (!done)
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.unwrapIOException();
-      } finally {
-        onChanged();
-      } // finally
-      return this;
-    }
     private java.lang.Object questionCtx_ = "";
-    private int questionWriterTel_ ;
+    private long questionWriterTel_ ;
+    private long choiceUser_ ;
     /**
      * <pre>
      * 自增唯一id
@@ -948,9 +878,9 @@ private static final long serialVersionUID = 0L;
       questionType_ = 0;
       questionCtx_ = "";
       questPhoto_ = com.google.protobuf.ByteString.EMPTY;
-      questionWriterTel_ = 0;
+      questionWriterTel_ = 0L;
       nodeType_ = 0;
-      choiceUser_ = 0;
+      choiceUser_ = 0L;
       questionTime_ = 0L;
       return this;
     }
@@ -1018,26 +948,76 @@ private static final long serialVersionUID = 0L;
       return true;
     }
 
-    /**
-     * <pre>
-     * 问题详细描述
-     * </pre>
-     *
-     * <code>optional string questionCtx = 3;</code>
-     * @return The bytes for questionCtx.
-     */
-    public com.google.protobuf.ByteString
-        getQuestionCtxBytes() {
-      java.lang.Object ref = questionCtx_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        questionCtx_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
+    @java.lang.Override
+    public Builder mergeFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
       }
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              questionId_ = input.readInt32();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 8
+            case 16: {
+              questionType_ = input.readEnum();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 16
+            case 26: {
+              questionCtx_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 26
+            case 34: {
+              questPhoto_ = input.readBytes();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 34
+            case 40: {
+              questionWriterTel_ = input.readInt64();
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 40
+            case 48: {
+              nodeType_ = input.readEnum();
+              bitField0_ |= 0x00000020;
+              break;
+            } // case 48
+            case 56: {
+              choiceUser_ = input.readInt64();
+              bitField0_ |= 0x00000040;
+              break;
+            } // case 56
+            case 64: {
+              questionTime_ = input.readInt64();
+              bitField0_ |= 0x00000080;
+              break;
+            } // case 64
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
+          } // switch (tag)
+        } // while (!done)
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.unwrapIOException();
+      } finally {
+        onChanged();
+      } // finally
+      return this;
     }
 
     private com.google.protobuf.ByteString questPhoto_ = com.google.protobuf.ByteString.EMPTY;
@@ -1102,6 +1082,28 @@ private static final long serialVersionUID = 0L;
      * </pre>
      *
      * <code>optional string questionCtx = 3;</code>
+     * @return The bytes for questionCtx.
+     */
+    public com.google.protobuf.ByteString
+        getQuestionCtxBytes() {
+      java.lang.Object ref = questionCtx_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        questionCtx_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    /**
+     * <pre>
+     * 问题详细描述
+     * </pre>
+     *
+     * <code>optional string questionCtx = 3;</code>
      * @param value The bytes for questionCtx to set.
      * @return This builder for chaining.
      */
@@ -1111,46 +1113,6 @@ private static final long serialVersionUID = 0L;
       checkByteStringIsUtf8(value);
       questionCtx_ = value;
       bitField0_ |= 0x00000004;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 问题提出者电话
-     * </pre>
-     *
-     * <code>optional int32 questionWriterTel = 5;</code>
-     * @return Whether the questionWriterTel field is set.
-     */
-    @java.lang.Override
-    public boolean hasQuestionWriterTel() {
-      return ((bitField0_ & 0x00000010) != 0);
-    }
-    /**
-     * <pre>
-     * 问题提出者电话
-     * </pre>
-     *
-     * <code>optional int32 questionWriterTel = 5;</code>
-     * @return The questionWriterTel.
-     */
-    @java.lang.Override
-    public int getQuestionWriterTel() {
-      return questionWriterTel_;
-    }
-    /**
-     * <pre>
-     * 问题提出者电话
-     * </pre>
-     *
-     * <code>optional int32 questionWriterTel = 5;</code>
-     * @param value The questionWriterTel to set.
-     * @return This builder for chaining.
-     */
-    public Builder setQuestionWriterTel(int value) {
-
-      questionWriterTel_ = value;
-      bitField0_ |= 0x00000010;
       onChanged();
       return this;
     }
@@ -1168,6 +1130,32 @@ private static final long serialVersionUID = 0L;
       bitField0_ = (bitField0_ & ~0x00000004);
       onChanged();
       return this;
+    }
+
+    /**
+     * <pre>
+     * 问题提出者电话
+     * </pre>
+     *
+     * <code>optional int64 questionWriterTel = 5;</code>
+     * @return Whether the questionWriterTel field is set.
+     */
+    @java.lang.Override
+    public boolean hasQuestionWriterTel() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+
+    /**
+     * <pre>
+     * 问题提出者电话
+     * </pre>
+     *
+     * <code>optional int64 questionWriterTel = 5;</code>
+     * @return The questionWriterTel.
+     */
+    @java.lang.Override
+    public long getQuestionWriterTel() {
+      return questionWriterTel_;
     }
 
     private int nodeType_ = 0;
@@ -1252,58 +1240,19 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int choiceUser_ ;
     /**
      * <pre>
-     * 指定处理人电话
+     * 问题提出者电话
      * </pre>
      *
-     * <code>optional int32 choiceUser = 7;</code>
-     * @return Whether the choiceUser field is set.
-     */
-    @java.lang.Override
-    public boolean hasChoiceUser() {
-      return ((bitField0_ & 0x00000040) != 0);
-    }
-    /**
-     * <pre>
-     * 指定处理人电话
-     * </pre>
-     *
-     * <code>optional int32 choiceUser = 7;</code>
-     * @return The choiceUser.
-     */
-    @java.lang.Override
-    public int getChoiceUser() {
-      return choiceUser_;
-    }
-    /**
-     * <pre>
-     * 指定处理人电话
-     * </pre>
-     *
-     * <code>optional int32 choiceUser = 7;</code>
-     * @param value The choiceUser to set.
+     * <code>optional int64 questionWriterTel = 5;</code>
+     * @param value The questionWriterTel to set.
      * @return This builder for chaining.
      */
-    public Builder setChoiceUser(int value) {
+    public Builder setQuestionWriterTel(long value) {
 
-      choiceUser_ = value;
-      bitField0_ |= 0x00000040;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 指定处理人电话
-     * </pre>
-     *
-     * <code>optional int32 choiceUser = 7;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearChoiceUser() {
-      bitField0_ = (bitField0_ & ~0x00000040);
-      choiceUser_ = 0;
+      questionWriterTel_ = value;
+      bitField0_ |= 0x00000010;
       onChanged();
       return this;
     }
@@ -1313,12 +1262,70 @@ private static final long serialVersionUID = 0L;
      * 问题提出者电话
      * </pre>
      *
-     * <code>optional int32 questionWriterTel = 5;</code>
+     * <code>optional int64 questionWriterTel = 5;</code>
      * @return This builder for chaining.
      */
     public Builder clearQuestionWriterTel() {
       bitField0_ = (bitField0_ & ~0x00000010);
-      questionWriterTel_ = 0;
+      questionWriterTel_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    /**
+     * <pre>
+     * 指定处理人电话
+     * </pre>
+     *
+     * <code>optional int64 choiceUser = 7;</code>
+     * @return Whether the choiceUser field is set.
+     */
+    @java.lang.Override
+    public boolean hasChoiceUser() {
+      return ((bitField0_ & 0x00000040) != 0);
+    }
+
+    /**
+     * <pre>
+     * 指定处理人电话
+     * </pre>
+     *
+     * <code>optional int64 choiceUser = 7;</code>
+     * @return The choiceUser.
+     */
+    @java.lang.Override
+    public long getChoiceUser() {
+      return choiceUser_;
+    }
+
+    /**
+     * <pre>
+     * 指定处理人电话
+     * </pre>
+     *
+     * <code>optional int64 choiceUser = 7;</code>
+     * @param value The choiceUser to set.
+     * @return This builder for chaining.
+     */
+    public Builder setChoiceUser(long value) {
+
+      choiceUser_ = value;
+      bitField0_ |= 0x00000040;
+      onChanged();
+      return this;
+    }
+
+    /**
+     * <pre>
+     * 指定处理人电话
+     * </pre>
+     *
+     * <code>optional int64 choiceUser = 7;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearChoiceUser() {
+      bitField0_ = (bitField0_ & ~0x00000040);
+      choiceUser_ = 0L;
       onChanged();
       return this;
     }
