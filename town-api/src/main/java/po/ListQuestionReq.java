@@ -82,11 +82,11 @@ private static final long serialVersionUID = 0L;
   public int getSize() {
     return size_;
   }
-  private int nodeType_ = 0;
+
   private ListQuestionReq() {
     nodeType_ = 0;
   }
-
+  private int nodeType_ = 0;
   /**
    * <code>optional .po.QuestionNodeType nodeType = 3;</code>
    * @return Whether the nodeType field is set.
@@ -303,6 +303,7 @@ private static final long serialVersionUID = 0L;
     Builder builder = new Builder(parent);
     return builder;
   }
+
   /**
    * <pre>
    * 获取问题列表 村民：获取自己提出的问题，村干部：获取所有未分配处理人和处理人是自己的。
@@ -366,19 +367,6 @@ private static final long serialVersionUID = 0L;
       onBuilt();
       return result;
     }
-    private int page_ ;
-    private int size_ ;
-    private int nodeType_ = 0;
-
-    @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      bitField0_ = 0;
-      page_ = 0;
-      size_ = 0;
-      nodeType_ = 0;
-      return this;
-    }
 
     private void buildPartial0(po.ListQuestionReq result) {
       int from_bitField0_ = bitField0_;
@@ -421,6 +409,19 @@ private static final long serialVersionUID = 0L;
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
+      return this;
+    }
+    private int page_ ;
+    private int size_ ;
+    private int nodeType_ = 0;
+
+    @java.lang.Override
+    public Builder clear() {
+      super.clear();
+      bitField0_ = 0;
+      page_ = 0;
+      size_ = 0;
+      nodeType_ = 0;
       return this;
     }
     /**
@@ -551,7 +552,6 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
-
     /**
      * <code>optional .po.QuestionNodeType nodeType = 3;</code>
      * @return Whether the nodeType field is set.

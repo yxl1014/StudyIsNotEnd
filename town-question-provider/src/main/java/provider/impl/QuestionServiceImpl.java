@@ -154,11 +154,19 @@ public class QuestionServiceImpl extends AbstractRpcService implements IQuestion
 
             ListQuestionRsp.Builder builder = ListQuestionRsp.newBuilder();
             List<QuestionInfoDO> questList;
-
-            if (UserContext.getUserPower() == TUserPower.TUP_CM) {
-                questList = daoService.quest_selectByWriterTelAndType(msg.getPage(), msg.getSize(), UserContext.getUserTel(), msg.getNodeTypeValue());
+            long userTel = UserContext.getUserTel();
+            if (msg.hasNodeType()) {
+                if (UserContext.getUserPower() == TUserPower.TUP_CM) {
+                    questList = daoService.quest_selectByWriterTelAndType(msg.getPage(), msg.getSize(), userTel, msg.getNodeTypeValue());
+                } else {
+                    questList = daoService.quest_selectByChoiceUserAndType(msg.getPage(), msg.getSize(), userTel, msg.getNodeTypeValue());
+                }
             } else {
-                questList = daoService.quest_selectByChoiceUserAndType(msg.getPage(), msg.getSize(), UserContext.getUserTel(), msg.getNodeTypeValue());
+                if (UserContext.getUserPower() == TUserPower.TUP_CM) {
+                    questList = daoService.quest_selectByWriterTel(msg.getPage(), msg.getSize(), userTel);
+                } else {
+                    questList = daoService.quest_selectByChoiceUser(msg.getPage(), msg.getSize(), userTel);
+                }
             }
 
             for (QuestionInfoDO questionInfoDO : questList) {

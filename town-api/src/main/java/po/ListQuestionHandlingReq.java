@@ -47,12 +47,9 @@ private static final long serialVersionUID = 0L;
             po.ListQuestionHandlingReq.class, po.ListQuestionHandlingReq.Builder.class);
   }
 
-  public static final int PAGE_FIELD_NUMBER = 1;
   public static final int SIZE_FIELD_NUMBER = 2;
-  private int bitField0_;
+  public static final int PAGE_FIELD_NUMBER = 1;
   private int page_ = 0;
-  private int size_ = 0;
-
   /**
    * <code>optional int32 page = 1;</code>
    * @return Whether the page field is set.
@@ -61,7 +58,6 @@ private static final long serialVersionUID = 0L;
   public boolean hasPage() {
     return ((bitField0_ & 0x00000001) != 0);
   }
-
   /**
    * <code>optional int32 page = 1;</code>
    * @return The page.
@@ -70,7 +66,8 @@ private static final long serialVersionUID = 0L;
   public int getPage() {
     return page_;
   }
-
+  private int bitField0_;
+  private int size_ = 0;
   /**
    * <code>optional int32 size = 2;</code>
    * @return Whether the size field is set.
@@ -321,32 +318,6 @@ private static final long serialVersionUID = 0L;
       }
       return result;
     }
-    private int page_ ;
-    private int size_ ;
-
-    @java.lang.Override
-    public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof po.ListQuestionHandlingReq) {
-        return mergeFrom((po.ListQuestionHandlingReq)other);
-      } else {
-        super.mergeFrom(other);
-        return this;
-      }
-    }
-
-    @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      bitField0_ = 0;
-      page_ = 0;
-      size_ = 0;
-      return this;
-    }
-
-    @java.lang.Override
-    public final boolean isInitialized() {
-      return true;
-    }
 
     @java.lang.Override
     public po.ListQuestionHandlingReq buildPartial() {
@@ -369,6 +340,7 @@ private static final long serialVersionUID = 0L;
       }
       result.bitField0_ |= to_bitField0_;
     }
+    private int page_ ;
 
     public Builder mergeFrom(po.ListQuestionHandlingReq other) {
       if (other == po.ListQuestionHandlingReq.getDefaultInstance()) return this;
@@ -382,6 +354,7 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+    private int size_ ;
 
     @java.lang.Override
     public Builder mergeFrom(
@@ -425,6 +398,24 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    @java.lang.Override
+    public Builder clear() {
+      super.clear();
+      bitField0_ = 0;
+      page_ = 0;
+      size_ = 0;
+      return this;
+    }
+
+    @java.lang.Override
+    public Builder mergeFrom(com.google.protobuf.Message other) {
+      if (other instanceof po.ListQuestionHandlingReq) {
+        return mergeFrom((po.ListQuestionHandlingReq)other);
+      } else {
+        super.mergeFrom(other);
+        return this;
+      }
+    }
     /**
      * <code>optional int32 page = 1;</code>
      * @return Whether the page field is set.
@@ -433,7 +424,6 @@ private static final long serialVersionUID = 0L;
     public boolean hasPage() {
       return ((bitField0_ & 0x00000001) != 0);
     }
-
     /**
      * <code>optional int32 page = 1;</code>
      * @return The page.
@@ -442,7 +432,6 @@ private static final long serialVersionUID = 0L;
     public int getPage() {
       return page_;
     }
-
     /**
      * <code>optional int32 page = 1;</code>
      * @param value The page to set.
@@ -455,7 +444,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
     /**
      * <code>optional int32 page = 1;</code>
      * @return This builder for chaining.
@@ -467,6 +455,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    @java.lang.Override
+    public final boolean isInitialized() {
+      return true;
+    }
     /**
      * <code>optional int32 size = 2;</code>
      * @return Whether the size field is set.

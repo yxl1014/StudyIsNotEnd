@@ -11,8 +11,14 @@ public interface QuestionInfoMapper {
     @Select("SELECT * FROM question_info WHERE question_id = #{id}")
     QuestionInfoDO selectById(Integer id);
 
+    @Select("SELECT * FROM question_info WHERE question_write_tel = #{userTel}}")
+    List<QuestionInfoDO> selectByWriterTel(@Param("userTel") Long userTel);
+
     @Select("SELECT * FROM question_info WHERE question_write_tel = #{userTel} AND node_type = #{nodeType}")
     List<QuestionInfoDO> selectByWriterTelAndType(@Param("userTel") Long userTel, @Param("nodeType") Integer nodeType);
+
+    @Select("SELECT * FROM question_info WHERE choice_user = #{choiceUser} OR choice_user IS null OR choice_user = 0")
+    List<QuestionInfoDO> selectByChoiceUser(@Param("choiceUser") Long choiceUser);
 
     @Select("SELECT * FROM question_info WHERE (choice_user = #{choiceUser} OR choice_user IS null OR choice_user = 0) AND node_type = #{nodeType}")
     List<QuestionInfoDO> selectByChoiceUserAndType(@Param("choiceUser") Long choiceUser, @Param("nodeType") Integer nodeType);

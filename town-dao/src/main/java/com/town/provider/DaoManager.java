@@ -235,6 +235,18 @@ public class DaoManager implements IDaoService {
     }
 
     @Override
+    public List<QuestionInfoDO> quest_selectByWriterTel(int page, int size, Long userTel) {
+        PageHelper.startPage(page, size);
+        return questionInfoMapper.selectByWriterTel(userTel);
+    }
+
+    @Override
+    public List<QuestionInfoDO> quest_selectByChoiceUser(int page, int size, Long choiceUser) {
+        PageHelper.startPage(page, size);
+        return questionInfoMapper.selectByChoiceUser(choiceUser);
+    }
+
+    @Override
     public List<QuestionInfoDO> quest_selectByWriterTelAndType(int page, int size, Long userTel, Integer nodeType) {
         PageHelper.startPage(page, size);
         return questionInfoMapper.selectByWriterTelAndType(userTel, nodeType);
