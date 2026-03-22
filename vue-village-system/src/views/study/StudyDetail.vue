@@ -19,7 +19,7 @@
           <!-- 标题 -->
           <div class="study-title">
             <h1>{{ study.studyTitle }}</h1>
-            <el-tag>{{ study.studyType }}</el-tag>
+<!--            <el-tag>{{ study.studyType }}</el-tag>-->
           </div>
 
           <!-- 元信息 -->
@@ -79,7 +79,7 @@ import {
   View,
   Download
 } from '@element-plus/icons-vue'
-import { getStudyList, toggleStarStudy } from '@/api/study.js'
+import { getStudyList, toggleStarStudy, getMyStarList } from '@/api/study.js'
 import { formatTime, formatFileSize } from '@/utils/format'
 
 const route = useRoute()
@@ -96,15 +96,28 @@ const goBack = () => {
 const loadStudy = async () => {
   try {
     loading.value = true
-    // 实际应该有单独的获取详情接口
-    const list = await getStudyList(1, 100)
-    study.value = list.find(s => s.studyId === studyId)
+
+    // 并行加载学习资料详情和收藏列表
+    const [studyList, favoriteList] = await Promise.all([
+      getStudyList(1, 1, studyId),
+      getMyStarList(1, 1000).catch(() => []) // 如果获取收藏列表失败，返回空数组
+    ])
+
+    study.value = studyList[0]
 
     if (!study.value) {
       ElMessage.error('资料不存在')
       goBack()
+      return
     }
+
+    // 检查是否已收藏
+    const favoriteIds = new Set(favoriteList.map(f => f.studyId))
+    study.value.isStar = favoriteIds.has(study.value.studyId)
+
+    console.log('学习资料详情加载完成，ID:', study.value.studyId, '收藏状态:', study.value.isStar)
   } catch (error) {
+    console.error('加载资料失败:', error)
     ElMessage.error('加载资料失败')
   } finally {
     loading.value = false
@@ -222,6 +235,9 @@ onMounted(() => {
   line-height: 1.8;
   color: #333;
   white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .download-section {

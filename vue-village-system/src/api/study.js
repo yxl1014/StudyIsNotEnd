@@ -8,16 +8,18 @@ import { request } from './request'
  * 获取学习资料列表
  * @param {number} page - 页码
  * @param {number} size - 每页数量
+ * @param {number} studyId - 学习资料ID（可选，传入则获取单个资料并增加阅读数）
  * @returns {Promise<Array>}
  */
-export async function getStudyList(page = 1, size = 10) {
+export async function getStudyList(page = 1, size = 10, studyId = 0) {
   const proto = await import('@/proto/proto.js')
   const { MsgType, ListStudyReq, ListStudyRsp } = proto.po
 
   console.log('=== 获取学习资料列表请求 ===')
-  console.log('页码:', page, '每页数量:', size)
+  console.log('页码:', page, '每页数量:', size, '资料ID:', studyId || '(全部)')
 
   const listReq = ListStudyReq.create({
+    studyId: studyId,  // ✅ 关键：传递 studyId
     page: page,
     size: size
   })
@@ -29,6 +31,9 @@ export async function getStudyList(page = 1, size = 10) {
   console.log('📚 学习资料列表响应 - 解码后的业务数据')
   console.log('========================================')
   console.log('资料数量:', listRsp.infos?.length || 0)
+  if (studyId > 0) {
+    console.log('⚠️ 注意：传入了 studyId=' + studyId + '，后端会自动增加该资料的阅读数')
+  }
   if (listRsp.infos && listRsp.infos.length > 0) {
     console.log('资料列表:')
     listRsp.infos.forEach((study, index) => {
@@ -101,19 +106,24 @@ export async function updateStudy(studyInfo, isDel = false) {
 /**
  * 收藏/取消收藏学习资料
  * @param {number} studyId - 学习资料ID
- * @param {boolean} isStar - 是否收藏
+ * @param {boolean} isStar - 是否收藏（true=收藏，false=取消收藏）
  * @returns {Promise<void>}
  */
 export async function toggleStarStudy(studyId, isStar) {
   const proto = await import('@/proto/proto.js')
   const { MsgType, StarStudyReq } = proto.po
 
+  console.log('=== 收藏/取消收藏学习资料请求 ===')
+  console.log('资料ID:', studyId, '操作:', isStar ? '收藏' : '取消收藏')
+
   const starReq = StarStudyReq.create({
     studyId: studyId,
-    isStar: isStar
+    isCancel: !isStar  // ✅ 修复：字段名改为 isCancel，并且逻辑取反
   })
 
   await request(MsgType.TMT_StarStudyReq, starReq)
+
+  console.log('✅ 操作成功')
 }
 
 /**

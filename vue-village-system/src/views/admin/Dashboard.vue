@@ -161,6 +161,8 @@ import {
 } from '@element-plus/icons-vue'
 import { getNoticeList } from '@/api/notice'
 import { getComplaintList } from '@/api/complaint'
+import { getUserList } from '@/api/user'
+import { getStudyList } from '@/api/study'
 import { formatRelativeTime } from '@/utils/format'
 
 const router = useRouter()
@@ -182,18 +184,46 @@ const goTo = (path) => {
 const loadDashboardData = async () => {
   try {
     // 加载最新公告
-    const notices = await getNoticeList(1, 5)
-    recentNotices.value = notices
-    stats.value.noticeCount = notices.length
+    try {
+      const notices = await getNoticeList(1, 100)
+      recentNotices.value = notices.slice(0, 5)
+      stats.value.noticeCount = notices.length
+    } catch (error) {
+      console.error('加载公告失败:', error)
+    }
 
-    // 加载待处理投诉
-    const complaints = await getComplaintList(1, 5)
-    recentComplaints.value = complaints.filter(c => c.nodeType === 0)
-    stats.value.complaintCount = recentComplaints.value.length
+    // 加载待处理投诉（使用普通接口）
+    try {
+      const complaints = await getComplaintList(1, 100)
+      const pendingComplaints = complaints.filter(c => c.nodeType === 0)
+      recentComplaints.value = pendingComplaints.slice(0, 5)
+      stats.value.complaintCount = pendingComplaints.length
+    } catch (error) {
+      console.error('加载投诉失败:', error)
+    }
 
-    // 其他统计数据可以从后端获取
-    stats.value.userCount = 128
-    stats.value.studyCount = 45
+    // 加载用户数据
+    try {
+      const users = await getUserList(1, 1000)
+      stats.value.userCount = users.length
+    } catch (error) {
+      console.error('加载用户失败:', error)
+    }
+
+    // 加载学习资料数据
+    try {
+      const studies = await getStudyList(1, 1000)
+      stats.value.studyCount = studies.length
+    } catch (error) {
+      console.error('加载学习资料失败:', error)
+    }
+
+    console.log('工作台统计数据:', {
+      用户数: stats.value.userCount,
+      公告数: stats.value.noticeCount,
+      待处理投诉: stats.value.complaintCount,
+      学习资料: stats.value.studyCount
+    })
   } catch (error) {
     console.error('加载数据失败:', error)
   }

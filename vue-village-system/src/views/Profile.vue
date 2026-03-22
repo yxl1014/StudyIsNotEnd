@@ -22,9 +22,6 @@
         <template #header>
           <div class="card-header">
             <span>基本信息</span>
-            <el-button text type="primary" @click="showEditDialog = true">
-              编辑
-            </el-button>
           </div>
         </template>
         <el-descriptions :column="1" border>
@@ -46,83 +43,20 @@
         </el-descriptions>
       </el-card>
     </div>
-
-    <!-- 编辑信息对话框 -->
-    <el-dialog v-model="showEditDialog" title="编辑个人信息" width="500px">
-      <el-form :model="editForm" label-width="80px">
-        <el-form-item label="用户名">
-          <el-input v-model="editForm.userName" />
-        </el-form-item>
-        <el-form-item label="修改密码">
-          <el-input
-            v-model="editForm.userPwd"
-            type="password"
-            placeholder="不修改请留空"
-            show-password
-          />
-        </el-form-item>
-      </el-form>
-      <template #footer>
-        <el-button @click="showEditDialog = false">取消</el-button>
-        <el-button type="primary" @click="handleUpdate" :loading="updating">
-          保存
-        </el-button>
-      </template>
-    </el-dialog>
   </div>
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
 import { ArrowLeft } from '@element-plus/icons-vue'
 import { useUserStore } from '@/stores/user'
-import { updateUserInfo } from '@/api/user.js'
 import { formatTime } from '@/utils/format'
 
 const router = useRouter()
 const userStore = useUserStore()
-const showEditDialog = ref(false)
-const updating = ref(false)
-
-const editForm = reactive({
-  userName: userStore.userInfo?.userName || '',
-  userPwd: ''
-})
 
 const goBack = () => {
   router.back()
-}
-
-const handleUpdate = async () => {
-  try {
-    updating.value = true
-
-    const updateData = {
-      userTel: userStore.userInfo.userTel,
-      userName: editForm.userName
-    }
-
-    if (editForm.userPwd) {
-      updateData.userPwd = editForm.userPwd
-    }
-
-    await updateUserInfo(updateData)
-
-    // 更新本地用户信息
-    userStore.setUserInfo({
-      ...userStore.userInfo,
-      userName: editForm.userName
-    })
-
-    ElMessage.success('更新成功')
-    showEditDialog.value = false
-  } catch (error) {
-    ElMessage.error(error.message || '更新失败')
-  } finally {
-    updating.value = false
-  }
 }
 </script>
 

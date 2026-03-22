@@ -49,10 +49,10 @@
           </el-breadcrumb>
         </div>
         <div class="header-right">
-          <el-button text @click="goToHome">
-            <el-icon><HomeFilled /></el-icon>
-            返回前台
-          </el-button>
+<!--          <el-button text @click="goToHome">-->
+<!--            <el-icon><HomeFilled /></el-icon>-->
+<!--            返回前台-->
+<!--          </el-button>-->
           <el-dropdown @command="handleCommand">
             <div class="user-dropdown">
               <el-avatar :size="32">{{ userStore.userName.charAt(0) }}</el-avatar>

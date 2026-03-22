@@ -115,20 +115,20 @@ export async function markNoticeRead(noticeId) {
 }
 
 /**
- * 获取公告已读用户列表
- * @param {number} noticeId - 公告ID
- * @returns {Promise<Array>}
+ * 获取当前用户已读公告列表
+ * @returns {Promise<Array>} 返回已读公告ID列表
  */
-export async function getNoticeReadList(noticeId) {
+export async function getNoticeReadList() {
   const proto = await import('@/proto/proto.js')
   const { MsgType, ListNoticeReadReq, ListNoticeReadRsp } = proto.po
 
-  const listReq = ListNoticeReadReq.create({
-    noticeId: noticeId
-  })
+  const listReq = ListNoticeReadReq.create({})
 
   const response = await request(MsgType.TMT_ListNoticeReadReq, listReq)
   const listRsp = ListNoticeReadRsp.decode(response.msg)
 
-  return listRsp.readsList || []
+  console.log('已读公告列表:', listRsp.noticeList)
+
+  // 返回已读公告ID列表
+  return listRsp.noticeList || []
 }

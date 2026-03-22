@@ -5,9 +5,9 @@
         <div class="card-header">
           <span>家庭信息管理</span>
           <div class="header-actions">
-            <el-button :icon="Upload" @click="showImportDialog = true">
-              批量导入
-            </el-button>
+<!--            <el-button :icon="Upload" @click="showImportDialog = true">-->
+<!--              批量导入-->
+<!--            </el-button>-->
             <el-button type="primary" :icon="Plus" @click="showAddDialog = true">
               添加信息
             </el-button>
@@ -25,9 +25,9 @@
           style="width: 300px"
           @change="handleSearch"
         />
-        <el-button type="primary" @click="exportData" :icon="Download">
-          导出数据
-        </el-button>
+<!--        <el-button type="primary" @click="exportData" :icon="Download">-->
+<!--          导出数据-->
+<!--        </el-button>-->
       </div>
 
       <!-- 家庭信息列表 -->
@@ -38,11 +38,6 @@
         <el-table-column label="备注" min-width="200">
           <template #default="{ row }">
             {{ row.peopleCtx || '-' }}
-          </template>
-        </el-table-column>
-        <el-table-column label="录入时间" width="180">
-          <template #default="{ row }">
-            {{ formatTime(row.createTime) }}
           </template>
         </el-table-column>
         <el-table-column label="操作" width="200" fixed="right">
@@ -254,8 +249,7 @@ const handleSubmit = async () => {
       peopleName: peopleForm.peopleName,
       peopleCardId: peopleForm.peopleCardId,
       peopleHouseId: peopleForm.peopleHouseId,
-      peopleCtx: peopleForm.peopleCtx,
-      createTime: Date.now()
+      peopleCtx: peopleForm.peopleCtx
     }
 
     if (editingPeople.value) {

@@ -103,22 +103,6 @@
           />
         </el-form-item>
 
-        <el-form-item label="上传文件">
-          <el-upload
-            action="#"
-            :auto-upload="false"
-            :limit="1"
-            accept=".pdf,.doc,.docx,.ppt,.pptx,.mp4"
-          >
-            <el-button :icon="Upload">选择文件</el-button>
-            <template #tip>
-              <div class="el-upload__tip">
-                支持PDF、Word、PPT、视频等格式，单个文件不超过50MB
-              </div>
-            </template>
-          </el-upload>
-        </el-form-item>
-
         <el-form-item label="是否公开">
           <el-switch v-model="studyForm.isOpen" />
         </el-form-item>
@@ -141,7 +125,7 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import { Plus, Upload } from '@element-plus/icons-vue'
+import { Plus } from '@element-plus/icons-vue'
 import { getStudyList, createStudy, updateStudy } from '@/api/study.js'
 import { useUserStore } from '@/stores/user'
 import { formatTime } from '@/utils/format'

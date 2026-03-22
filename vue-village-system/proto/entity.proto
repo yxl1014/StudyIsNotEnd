@@ -9,7 +9,7 @@ import "base.proto";
 
 // 登录用户信息
 message UserInfo {
-  optional int32 userTel = 1;// 用户电话
+  optional int64 userTel = 1;// 用户电话
   optional string userName = 2; // 用户姓名
   optional string userPwd = 3; // 用户密码
   optional string userTown = 4; // 用户所属村庄
@@ -94,7 +94,7 @@ message QuestionInfo{
   optional bytes questPhoto = 4; // 问题上传附件
   optional int32 questionWriterTel = 5; // 问题提出者电话
   optional QuestionNodeType nodeType = 6; // 问题节点
-  optional int32 choiceUser = 7; // 指定处理人电话
+  optional int64 choiceUser = 7; // 指定处理人电话
   optional int64 questionTime = 8; // 问题时间
 }
 

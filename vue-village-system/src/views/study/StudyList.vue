@@ -102,7 +102,7 @@ import {
   Reading,
   View
 } from '@element-plus/icons-vue'
-import { getStudyList, toggleStarStudy } from '@/api/study.js'
+import { getStudyList, toggleStarStudy, getMyStarList } from '@/api/study.js'
 import { formatRelativeTime } from '@/utils/format'
 
 const router = useRouter()
@@ -178,10 +178,27 @@ const toggleStar = async (study) => {
 const loadStudies = async () => {
   try {
     loading.value = true
-    const list = await getStudyList(page.value, size.value)
-    studies.value = list
-    total.value = list.length
+
+    // 并行加载学习资料列表和收藏列表
+    const [studyList, favoriteList] = await Promise.all([
+      getStudyList(page.value, size.value, 0),
+      getMyStarList(1, 1000).catch(() => []) // 如果获取收藏列表失败，返回空数组
+    ])
+
+    // 创建收藏ID的Set，方便快速查找
+    const favoriteIds = new Set(favoriteList.map(f => f.studyId))
+
+    // 设置每个学习资料的收藏状态
+    studies.value = studyList.map(study => ({
+      ...study,
+      isStar: favoriteIds.has(study.studyId)
+    }))
+
+    total.value = studyList.length
+
+    console.log('学习资料列表加载完成，总数:', studyList.length, '已收藏:', favoriteIds.size)
   } catch (error) {
+    console.error('加载学习资料失败:', error)
     ElMessage.error('加载学习资料失败')
   } finally {
     loading.value = false

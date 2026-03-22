@@ -2,7 +2,7 @@
   <div class="login-container">
     <div class="login-card">
       <div class="login-header">
-        <h1>村务管理系统</h1>
+        <h1>乡村一站式便民服务系统</h1>
         <p>Village Management System</p>
       </div>
 
@@ -119,9 +119,11 @@ const handleLogin = async () => {
     ElMessage.success('登录成功')
 
     // 根据权限跳转
-    if (result.userInfo.userPower === 'TUP_CGM') {
+    if (result.userInfo.userPower === 1) {
+      // 村干部 → 跳转到管理后台
       router.push('/admin')
     } else {
+      // 村民 → 跳转到首页
       router.push('/home')
     }
   } catch (error) {

@@ -17,55 +17,63 @@ const routes = [
   },
   {
     path: '/',
-    redirect: '/home'
+    name: 'Root',
+    redirect: () => {
+      const userStore = useUserStore()
+      // 根据用户角色重定向
+      if (userStore.isLoggedIn) {
+        return userStore.isAdmin ? '/admin' : '/home'
+      }
+      return '/login'
+    }
   },
   {
     path: '/home',
     name: 'Home',
     component: () => import('@/views/Home.vue'),
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true, requiresVillager: true }
   },
   {
     path: '/notice',
     name: 'NoticeList',
     component: () => import('@/views/notice/NoticeList.vue'),
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true, requiresVillager: true }
   },
   {
     path: '/notice/:id',
     name: 'NoticeDetail',
     component: () => import('@/views/notice/NoticeDetail.vue'),
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true, requiresVillager: true }
   },
   {
     path: '/complaint',
     name: 'ComplaintList',
     component: () => import('@/views/complaint/ComplaintList.vue'),
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true, requiresVillager: true }
   },
   {
     path: '/complaint/create',
     name: 'ComplaintCreate',
     component: () => import('@/views/complaint/ComplaintCreate.vue'),
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true, requiresVillager: true }
   },
   {
     path: '/study',
     name: 'StudyList',
     component: () => import('@/views/study/StudyList.vue'),
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true, requiresVillager: true }
   },
   {
     path: '/study/:id',
     name: 'StudyDetail',
     component: () => import('@/views/study/StudyDetail.vue'),
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true, requiresVillager: true }
   },
   {
     path: '/study/favorite',
     name: 'StudyFavorite',
     component: () => import('@/views/study/StudyFavorite.vue'),
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true, requiresVillager: true }
   },
   {
     path: '/profile',
@@ -138,8 +146,17 @@ router.beforeEach((to, from, next) => {
   // 需要管理员权限的页面
   if (to.meta.requiresAdmin) {
     if (!userStore.isAdmin) {
-      ElMessage.error('权限不足')
+      ElMessage.error('权限不足，村民无法访问管理页面')
       next('/home')
+      return
+    }
+  }
+
+  // 需要村民权限的页面（村干部不能访问）
+  if (to.meta.requiresVillager) {
+    if (userStore.isAdmin) {
+      ElMessage.error('村干部请使用管理后台')
+      next('/admin')
       return
     }
   }

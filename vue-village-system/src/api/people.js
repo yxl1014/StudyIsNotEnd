@@ -58,7 +58,7 @@ export async function createPeople(peopleInfo) {
   const peopleInfoProto = PeopleInfo.create(peopleInfo)
 
   const createReq = CreatePeopleReq.create({
-    peopleInfo: peopleInfoProto
+    infos: [peopleInfoProto]  // ✅ 修复：字段名改为 infos，并且是数组
   })
 
   await request(MsgType.TMT_CreatePeopleReq, createReq)
@@ -86,8 +86,8 @@ export async function updatePeople(peopleInfo, isDel = false) {
   const peopleInfoProto = PeopleInfo.create(peopleInfo)
 
   const updateReq = UpdatePeopleReq.create({
-    peopleInfo: peopleInfoProto,
-    isDel: isDel
+    isDel: isDel,
+    infos: peopleInfoProto  // ✅ 修复：字段名改为 infos
   })
 
   await request(MsgType.TMT_UpdatePeopleReq, updateReq)

@@ -5,7 +5,7 @@
       <div class="header-content">
         <div class="logo">
           <el-icon :size="24"><House /></el-icon>
-          <span>村务管理系统</span>
+          <span>乡村一站式便民服务系统</span>
         </div>
         <div class="user-info">
           <span>欢迎，{{ userStore.userName }}</span>

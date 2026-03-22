@@ -89,6 +89,23 @@
           <el-descriptions-item label="投诉内容">
             <div class="content-text">{{ currentComplaint.questionCtx }}</div>
           </el-descriptions-item>
+          <el-descriptions-item label="投诉图片" v-if="currentComplaint.questPhoto && currentComplaint.questPhoto.length > 0">
+            <div class="image-preview">
+              <el-image
+                :src="getImageUrl(currentComplaint.questPhoto)"
+                :preview-src-list="[getImageUrl(currentComplaint.questPhoto)]"
+                fit="cover"
+                style="width: 200px; height: 200px; border-radius: 4px;"
+              >
+                <template #error>
+                  <div class="image-error">
+                    <el-icon><Picture /></el-icon>
+                    <span>图片加载失败</span>
+                  </div>
+                </template>
+              </el-image>
+            </div>
+          </el-descriptions-item>
           <el-descriptions-item v-if="currentComplaint.choiceUser" label="处理人">
             {{ currentComplaint.choiceUserName }}
           </el-descriptions-item>
@@ -153,7 +170,8 @@ import {
   ArrowRight,
   Plus,
   Clock,
-  User
+  User,
+  Picture
 } from '@element-plus/icons-vue'
 import { getComplaintList } from '@/api/complaint.js'
 import { formatTime, formatRelativeTime } from '@/utils/format'
@@ -255,6 +273,14 @@ const getStatusText = (nodeType) => {
     2: '已完成'
   }
   return textMap[nodeType] || '未知'
+}
+
+// 将二进制数据转换为图片 URL
+const getImageUrl = (uint8Array) => {
+  if (!uint8Array || uint8Array.length === 0) return ''
+
+  const blob = new Blob([uint8Array], { type: 'image/jpeg' })
+  return URL.createObjectURL(blob)
 }
 
 const loadComplaints = async () => {
@@ -427,5 +453,24 @@ onMounted(() => {
 
 .rating-input {
   margin-bottom: 16px;
+}
+
+.image-preview {
+  margin-top: 8px;
+}
+
+.image-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #909399;
+  font-size: 14px;
+}
+
+.image-error .el-icon {
+  font-size: 48px;
+  margin-bottom: 8px;
 }
 </style>
